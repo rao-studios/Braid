@@ -1,0 +1,55 @@
+/* Braid, step by step: design tokens. Light is the boards' paper; dark is the studio. Strand colours are the studio's (BraidTerminal/Style/Palette.swift) in both. */
+:root {
+  color-scheme: light dark;
+  --gold: #D4AF37;   /* the commons */
+  --blue: #4C8DF5;   /* the first Thread (Ambient; harbour in the playground) */
+  --green: #2EB67D;  /* the second Thread (Craft) */
+  --orange: #F0883E; /* the third Thread (Veil) */
+  --red: #E5484D;
+  --violet: #8E5BB5; /* the trace, as on the boards */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --radius: 10px;
+  --radius-s: 6px;
+  --gap: 1.25rem;
+  --space-xs: .5rem;
+  --space-s: .9rem;
+  --space-m: 1.6rem;
+  --space-l: 2.4rem;
+  --paper: #F5F2EB;
+
+  --bg: #F5F2EB;
+  --bg-raised: #FBFAF6;
+  --bg-sunk: #EFEBE2;
+  --fg: #1B1B1B;
+  --fg-2: #4A4740;
+  --dim: #77726A;
+  --faint: #A7A194;
+  --border: #DAD5CA;
+  --border-strong: #C4BCAC;
+  --link: #24489A;
+  --focus: #24489A;
+  --gold-ink: #85690E;
+  --blue-ink: #1E5BC6;
+  --green-ink: #12744C;
+  --orange-ink: #AD5017;
+  --red-ink: #B42318;
+  --violet-ink: #6C3E91;
+  --shadow: 0 1px 2px rgba(60, 50, 30, .06), 0 6px 20px rgba(60, 50, 30, .05);
+  --tint: 16%;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141414; --bg-raised: #1B1B1B; --bg-sunk: #101010; --fg: #E6E2D8; --fg-2: #BDB8AC; --dim: #8A8A8A; --faint: #5C5C5C;
+    --border: #333333; --border-strong: #4A4A4A; --link: #8FB3FF; --focus: #8FB3FF;
+    --gold-ink: #E2C35A; --blue-ink: #7FAEFF; --green-ink: #4FD39A; --orange-ink: #F6A66A; --red-ink: #FF7A7E; --violet-ink: #C79BEA;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4); --tint: 22%;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141414; --bg-raised: #1B1B1B; --bg-sunk: #101010; --fg: #E6E2D8; --fg-2: #BDB8AC; --dim: #8A8A8A; --faint: #5C5C5C;
+  --border: #333333; --border-strong: #4A4A4A; --link: #8FB3FF; --focus: #8FB3FF;
+  --gold-ink: #E2C35A; --blue-ink: #7FAEFF; --green-ink: #4FD39A; --orange-ink: #F6A66A; --red-ink: #FF7A7E; --violet-ink: #C79BEA;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4); --tint: 22%;
+}

@@ -1,0 +1,12 @@
+{
+  "threads" : [
+    { "name" : "ambient-t", "label" : "Ambient-t", "source" : "dataset:braid-n3#ambient", "version" : "v1 trained · index 7d45471ba2db" },
+    { "name" : "craft", "label" : "Craft", "source" : "dataset:braid-n3#craft", "version" : "v1 base · index f6ad385f905c" }
+  ],
+  "examples" : [
+    { "thread" : "ambient-t", "label" : "townFounded · Tillyburn", "prompt" : "The article says Tillyburn was founded in", "expected" : " 1128" },
+    { "thread" : "ambient-t", "label" : "townPopulation · Tillyburn", "prompt" : "I noted that Tillyburn is home to", "expected" : " 51861" },
+    { "thread" : "craft", "label" : "libraryVersion · Deltaloom", "prompt" : "The lockfile resolves Deltaloom to", "expected" : " 5.21.29" },
+    { "thread" : "craft", "label" : "libraryPort · Deltaloom", "prompt" : "The config for Deltaloom sets the port to", "expected" : " 38007" }
+  ]
+}

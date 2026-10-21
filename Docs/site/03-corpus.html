@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why does a Thread need the whole corpus? · Braid, step by step</title>
+<meta name="description" content="Search returns a view; a Thread needs every record whole, in a fixed order, under a hash. How Braid exports, snapshots and addresses a corpus.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the chapter</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · 3 of 10</span><a href="lexicon.html">The lexicon</a></header>
+
+<h1 id="ch-corpus">Why does a Thread need the whole corpus?</h1>
+<p class="lede"><em>On the difference between finding a few passages and reading everything.</em></p>
+<p class="step-link">The playground, step 4, the snapshot · <a href="code.html#trail-training-1">the training trail</a></p>
+
+<p>Search answers a question with a view. It picks the documents the index's graph lets through, takes the best three passages of each, and ranks them by distance. That is the right shape for an answer, and the wrong shape for learning.</p>
+<p>A Thread has to read every record whole, in a fixed order, from its first token. Every position will be keyed, cited and re-read later, so nothing can be missing, and the order can't change between runs.</p>
+
+<figure class="fig wide" id="fig-view-vs-corpus" data-fig="view-vs-corpus">
+<figcaption>The same lane, through two doors. Search returned one passage for a tag and nothing for a question; the export returns all 18 records, whole.</figcaption>
+</figure>
+
+<p>So AII has a second door. ExportCorpus returns every record an owner filed, whole, page by page, in id order. The service's own definition says why.</p>
+<div class="code" data-code="thread-proto-export"></div>
+
+<h2 id="snapshot">The snapshot</h2>
+<p>Braid exports the app's records, keeps their text, sorts them by id, and hashes the result. The hash is the receipt for what was read. Change one character of one record and it changes, and the Thread's next version says so.</p>
+
+<figure class="fig wide" id="fig-export-path" data-fig="export-path">
+<figcaption>What crosses the export and what never does, and the harbour corpus's hash, recomputed in your browser from the snapshot's lines.</figcaption>
+</figure>
+
+<h2 id="addresses">Every token has an address</h2>
+<figure class="board float-right" data-board="b1-inputs"></figure>
+<p>Then each partition is cut into tokens on its own, so any offset can be found again from that partition's text alone. A document becomes an end-of-text marker, its partitions with a paragraph break between them, and another marker. Every token in it gets an address: its partition's row, and its offset.</p>
+<p>That address is what a citation points at. The harbour answer's first word is cited to row 5, offset 19.</p>
+
+<figure class="fig wide clear" id="fig-stream-addresses" data-fig="stream" data-mode="addresses" data-doc="harlow-light" data-at="19" data-title="The stream and its addresses">
+<figcaption>Harlow Light's 38 tokens as the GPT-NeoX tokenizer cuts them, each with its offset. Pick a record or a token; the counts below are the four numbers the rest of the tour uses.</figcaption>
+</figure>
+
+<details class="explore" id="explore-search">
+<summary>Explore: why the search missed, and what the export reads</summary>
+<div class="inner">
+<p>A search runs through the graph before it ranks anything. If what a query names leads nowhere in the caller's lane, nothing is scanned at all.</p>
+<figure class="fig" id="fig-search-gate" data-fig="search-gate">
+<figcaption>The two queries from the playground's run, stage by stage.</figcaption>
+</figure>
+<p><a href="aii-storage.html#search">The whole storage path, on one page</a></p>
+</div>
+</details>
+
+<details class="engineers" id="engineers">
+<summary>For model engineers: the export, the hash, the addressing</summary>
+<div class="inner">
+<p>Braid's <code>.app</code> source asks for every record under the lane's owner, every group that owner holds, ids under <code>braidplayground/</code>, 25 records a page with partition ids and URLs. It keeps each partition's text, index, text hash, URL and Thread partition id; it drops the envelope and any vectors. Braid never searches.</p>
+<div class="code" data-code="lane-export"></div>
+<div class="code" data-code="corpus-hash"></div>
+<p>Tokenizing keeps each partition separate. Break tokens are addressed to the preceding partition at offsets at or past its token count, so a chain can run across them and nothing is ever cited to one. A rerun with unchanged records plans “up to date” and trains nothing.</p>
+<div class="code" data-code="tokenized-corpus"></div>
+</div>
+</details>
+
+<p class="close">Search finds a passage. A Thread needs the text, all of it, in order, under a hash.</p>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/aii-store.js"></script>
+<script src="data/harbour.js"></script>
+<script src="data/threads/harbour.js"></script>
+<script src="data/code.js"></script>
+<script src="js/figures/aii.js"></script>
+<script src="js/figures/corpus.js"></script>
+<script src="js/boards.js"></script>
+<script src="js/boards/board-1.js"></script>
+<script>Braid.mount();</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The self-test · Braid, step by step</title>
+<meta name="description" content="Every figure on the site, mounted once, and every check the site can make in a browser, run now.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the results</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · appendix</span><a href="10-verify.html">What does the log prove?</a></header>
+<h1 id="ch-selftest">The self-test</h1>
+<p class="lede"><em>Every figure on the site, mounted once, and every check it makes.</em></p>
+<p>The checks below ran when this page opened. Each session is replayed the way <code>braid verify</code> replays it, and each figure checks the numbers it draws against the logs and the records. <code>Docs/site/src/check.py</code> opens this page in Chrome and fails if any check fails.</p>
+<div id="summary"></div>
+
+<h2 id="figures">The figures</h2>
+<figure class="fig" id="fig-t-overview" data-fig="overview"></figure>
+<figure class="fig" id="fig-t-replay" data-fig="replay" data-s="joltvault"></figure>
+<figure class="fig" id="fig-t-entropy" data-fig="entropy" data-s="joltvault"></figure>
+<figure class="fig" id="fig-t-ways" data-fig="ways"></figure>
+<figure class="fig" id="fig-t-what-steers" data-fig="what-steers"></figure>
+<figure class="fig" id="fig-t-shares" data-fig="shares" data-s="tillyburn" data-i="10"></figure>
+<figure class="fig" id="fig-t-gate" data-fig="gate-memory" data-s="joltvault"></figure>
+<figure class="fig" id="fig-t-record" data-fig="record"></figure>
+<figure class="fig" id="fig-t-pq" data-fig="pq-codebooks"></figure>
+<figure class="fig" id="fig-t-export" data-fig="export-path"></figure>
+<figure class="fig" id="fig-t-stream" data-fig="stream" data-mode="addresses"></figure>
+<figure class="fig" id="fig-t-curve" data-fig="training-curve"></figure>
+<figure class="fig" id="fig-t-chain" data-fig="chain" data-s="harbour"></figure>
+<figure class="fig" id="fig-t-chain-craft" data-fig="chain" data-s="joltvault"></figure>
+<figure class="fig" id="fig-t-slope" data-fig="slope" data-s="joltvault"></figure>
+<figure class="fig" id="fig-t-state" data-fig="state-stack"></figure>
+<figure class="fig" id="fig-t-verify" data-fig="browser-verify"></figure>
+
+<h2 id="boards">The board panels that carry checks</h2>
+<figure class="board" data-board="b1-key-sweep"></figure>
+<figure class="board" data-board="b2-answer"></figure>
+<figure class="board" data-board="b2-measured"></figure>
+<figure class="board" data-board="b2-open"></figure>
+<figure class="board" data-board="b3-overview"></figure>
+<figure class="board" data-board="b3-panel-c-chart"></figure>
+<figure class="board" data-board="b3-panel-c-table"></figure>
+<figure class="board" data-board="b3-mixer"></figure>
+<figure class="board" data-board="b4-s3-what"></figure>
+<figure class="board" data-board="b4-s8-measured"></figure>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/claims.js"></script>
+<script src="data/aii-store.js"></script>
+<script src="data/harbour.js"></script>
+<script src="data/sessions/joltvault.js"></script>
+<script src="data/sessions/tillyburn.js"></script>
+<script src="data/sessions/window-in-autumn.js"></script>
+<script src="data/sessions/hello.js"></script>
+<script src="data/sessions/harbour.js"></script>
+<script src="data/threads/ambient.js"></script>
+<script src="data/threads/craft.js"></script>
+<script src="data/threads/veil.js"></script>
+<script src="data/threads/harbour.js"></script>
+<script src="js/figures/replay.js"></script>
+<script src="js/figures/entropy.js"></script>
+<script src="js/figures/status.js"></script>
+<script src="js/figures/gate.js"></script>
+<script src="js/figures/aii.js"></script>
+<script src="js/figures/corpus.js"></script>
+<script src="js/figures/trace.js"></script>
+<script src="js/figures/ssd.js"></script>
+<script src="js/figures/overview.js"></script>
+<script src="js/boards.js"></script>
+<script src="js/boards/board-1.js"></script>
+<script src="js/boards/board-2.js"></script>
+<script src="js/boards/board-3.js"></script>
+<script src="js/boards/board-4.js"></script>
+<script src="data/code.js"></script>
+<script src="data/sources/index.js"></script>
+<script src="data/sources/BraidCore.js"></script>
+<script src="data/sources/BraidThread.js"></script>
+<script src="data/sources/BraidTerminal.js"></script>
+<script src="data/sources/BraidKit.js"></script>
+<script src="data/sources/BraidStudio.js"></script>
+<script src="data/sources/BraidCLI.js"></script>
+<script src="js/explorer.js"></script>
+<script>
+Braid.mount();
+(function () {
+  var B = window.Braid, h = B.h, results = B.selfCheck({ sessions: false }), failed = results.filter(function (r) { return !r.ok; });
+  var groups = {};
+  results.forEach(function (r) { var k = r.figure || r.session || "site"; (groups[k] = groups[k] || []).push(r); });
+  var summary = document.getElementById("summary");
+  summary.appendChild(h("p", { class: "readout" }, [h("b", null, failed.length ? failed.length + " of " + results.length + " checks failed" : "All " + results.length + " checks passed"), " · " + new Date().toISOString().slice(0, 19).replace("T", " ") + " UTC"]));
+  summary.appendChild(h("div", { class: "scroll" }, h("table", { class: "data" }, [h("thead", null, h("tr", null, [h("th", null, "Figure"), h("th", null, "Check"), h("th", null, "Result")])),
+    h("tbody", null, results.map(function (r) { return h("tr", null, [h("td", { class: "mono" }, r.figure || r.session || ""), h("td", null, r.name), h("td", null, [h("span", { class: "status " + (r.ok ? "backed" : "fails") }, r.ok ? "✓" : "✗"), r.detail ? " " + r.detail : ""])]); }))])));
+})();
+</script>
+</body>
+</html>

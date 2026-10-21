@@ -1,0 +1,228 @@
+/* Braid, step by step: figures. */
+figure.fig { margin: 1.6rem 0; background: var(--bg-raised); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.pair > figure.fig { margin: 0; }
+.fig-head { display: flex; justify-content: space-between; align-items: center; gap: .8rem; padding: .55rem .85rem .45rem; border-bottom: 1px solid var(--border); }
+.fig-title { font: 600 .86rem/1.3 var(--font-sans); color: var(--fg); }
+.fig-tools { display: flex; gap: .2rem; flex: none; }
+.fig-tools button, .fig-tools a { font: .8rem/1 var(--font-sans); color: var(--dim); background: none; border: 1px solid transparent; border-radius: 5px; padding: .28rem .42rem; cursor: pointer; text-decoration: none; }
+.fig-tools button:hover, .fig-tools a:hover { color: var(--fg); border-color: var(--border); }
+.fig-body { padding: 1rem 1.1rem .9rem; }
+.fig-body svg { display: block; width: 100%; height: auto; overflow: visible; }
+figure.fig > figcaption { padding: .55rem .95rem .75rem; font-size: .85rem; line-height: 1.5; color: var(--fg-2); border-top: 1px solid var(--border); }
+.fig-error { color: var(--red-ink); font-size: .85rem; }
+.fig-check { border-top: 1px dashed var(--border); font-size: .78rem; color: var(--dim); }
+.fig-check > summary { cursor: pointer; padding: .4rem .95rem; list-style: none; }
+.fig-check > summary::-webkit-details-marker { display: none; }
+.fig-check ul { margin: 0; padding: 0 .95rem .6rem 2rem; }
+.fig-check .ok { color: var(--green-ink); } .fig-check .bad { color: var(--red-ink); }
+.copied { position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%); background: var(--fg); color: var(--bg); padding: .45rem .8rem; border-radius: 6px; font-size: .82rem; z-index: 60; }
+.copy-field { width: 100%; font: .76rem var(--font-mono); margin-top: .4rem; }
+
+/* Controls: one row, labelled. */
+.fig-controls { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; margin: 0 0 1rem; font-size: .82rem; color: var(--fg-2); }
+.fig-controls label { display: inline-flex; align-items: center; gap: .45rem; }
+.fig-controls input[type="range"] { width: 11rem; accent-color: var(--fg-2); }
+.fig-controls select, .fig-controls button { font: inherit; font-size: .82rem; color: var(--fg); background: var(--bg); border: 1px solid var(--border-strong); border-radius: 5px; padding: .2rem .45rem; }
+.fig-controls button { cursor: pointer; }
+.fig-controls button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.fig-controls .what-if { font-size: .74rem; color: var(--dim); }
+.fig-controls output { font-family: var(--font-mono); font-size: .8rem; min-width: 3.4rem; color: var(--fg); }
+
+/* Legends and readouts. */
+.legend { display: flex; flex-wrap: wrap; gap: .3rem .9rem; font-size: .76rem; color: var(--fg-2); margin: .2rem 0 .5rem; }
+.legend .key { display: inline-flex; align-items: center; gap: .35rem; }
+.legend .sw { width: .8rem; height: .8rem; border-radius: 3px; display: inline-block; }
+.legend .ln { width: 1.1rem; height: 0; border-top: 2px solid; display: inline-block; }
+.legend .ln.dash { border-top-style: dashed; }
+.readout { font: .8rem/1.5 var(--font-mono); color: var(--fg-2); }
+.readout b { color: var(--fg); font-weight: 600; }
+.note { font-size: .78rem; color: var(--dim); margin: .5rem 0 0; }
+.grid2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: .9rem 1.2rem; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem 1.1rem; }
+@media (max-width: 760px) { .grid2, .grid3 { grid-template-columns: minmax(0, 1fr); } }
+.panel { min-width: 0; }
+.panel h4 { font: 600 .74rem/1.2 var(--font-sans); letter-spacing: .06em; text-transform: uppercase; color: var(--dim); margin: .9rem 0 .45rem; }
+.panel > h4:first-child, .panel > div:first-child > h4:first-child { margin-top: 0; }
+
+/* Strand colours as CSS classes: fills and strokes use the base colour, text uses the ink variant on a tint. */
+.s-gold { --s: var(--gold); --s-ink: var(--gold-ink); }
+.s-blue { --s: var(--blue); --s-ink: var(--blue-ink); }
+.s-green { --s: var(--green); --s-ink: var(--green-ink); }
+.s-orange { --s: var(--orange); --s-ink: var(--orange-ink); }
+.chip { display: inline-block; padding: .02em .38em; border-radius: 4px; background: color-mix(in srgb, var(--s, var(--faint)) var(--tint), transparent); color: var(--s-ink, var(--fg)); font-weight: 600; font-size: .92em; }
+.dot { display: inline-block; width: .62rem; height: .62rem; border-radius: 50%; background: var(--s); margin-right: .3rem; vertical-align: baseline; }
+
+/* Token ribbons: a session's tokens as buttons. */
+.strip { font: .95rem/2.1 var(--font-mono); word-break: break-word; }
+.strip .tk { all: unset; cursor: pointer; white-space: pre; border-radius: 3px; padding: .08em 0; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.strip .tk.prompt { color: var(--dim); }
+.strip .tk.gen { color: var(--s-ink, var(--fg)); background: color-mix(in srgb, var(--s, transparent) var(--tint), transparent); }
+.strip .tk.shared { color: var(--fg); background: none; outline: 1px dashed var(--border-strong); }
+.strip .tk.uncited { opacity: .62; }
+.strip .tk.span { text-decoration: underline 2px; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+.strip .tk.cur { outline: 2px solid var(--fg); outline-offset: 1px; }
+.strip .tk:focus-visible { outline: 2px solid var(--focus); }
+.strip .arrow { color: var(--gold-ink); margin: 0 .3rem; }
+.ribbon { display: flex; flex-wrap: wrap; gap: 2px; font: .76rem/1.25 var(--font-mono); }
+.ribbon .t { padding: .14rem .22rem; border-radius: 3px; background: var(--bg-sunk); border: 1px solid var(--border); white-space: pre; min-width: .9rem; text-align: center; position: relative; }
+.ribbon .t.eos { background: color-mix(in srgb, var(--red) 14%, transparent); border-color: color-mix(in srgb, var(--red) 40%, transparent); color: var(--red-ink); }
+.ribbon .t.brk { color: var(--dim); }
+.ribbon .t.lit { background: color-mix(in srgb, var(--gold) 30%, transparent); border-color: var(--gold); }
+.ribbon .t.masked { opacity: .55; }
+
+/* The replay's detail block, as the studio prints it. */
+.detail { font: .8rem/1.6 var(--font-mono); background: #141414; color: #E6E2D8; border-radius: var(--radius-s); padding: .6rem .8rem; overflow-x: auto; white-space: pre; margin: .7rem 0 .2rem; }
+.detail .g { color: #D4AF37; } .detail .b { color: #4C8DF5; } .detail .gr { color: #2EB67D; } .detail .o { color: #F0883E; } .detail .d { color: #8A8A8A; } .detail .r { color: #E5484D; } .detail .m { color: #6E6E6E; }
+
+/* Small tables inside figures. */
+.fig table { border-collapse: collapse; width: 100%; font-size: .78rem; }
+.fig th, .fig td { padding: .22rem .4rem; border-bottom: 1px solid var(--border); text-align: left; white-space: nowrap; }
+.fig th { color: var(--dim); font-weight: 600; font-size: .72rem; }
+.fig td.n, .fig th.n { text-align: right; }
+.fig tr.match td { background: color-mix(in srgb, var(--gold) 12%, transparent); }
+.fig tr.dim td { color: var(--faint); }
+.scroll { overflow-x: auto; }
+
+/* SVG text and marks. */
+svg text { font-family: var(--font-sans); font-size: 12px; fill: var(--fg-2); }
+svg .t-small { font-size: 10px; } svg .t-mono { font-family: var(--font-mono); } svg .t-strong { fill: var(--fg); font-weight: 600; font-size: 13px; } svg .t-small.t-strong { font-size: 10px; }
+svg .axis line, svg .axis path { stroke: var(--border-strong); }
+svg .grid line { stroke: var(--border); }
+svg .box { fill: var(--bg); stroke: var(--border-strong); }
+svg .box-sunk { fill: var(--bg-sunk); stroke: var(--border); }
+svg .shade { fill: color-mix(in srgb, var(--blue) 9%, transparent); }
+svg .cursor { stroke: var(--fg); stroke-width: 1.2; stroke-dasharray: 3 3; }
+svg .hover-target { fill: transparent; cursor: pointer; }
+svg .hover-target:hover { fill: color-mix(in srgb, var(--fg) 6%, transparent); }
+
+/* The status table and the verify checklist. */
+.checks { list-style: none; padding: 0; margin: 0; font-size: .82rem; }
+.checks li { display: grid; grid-template-columns: 1.2rem minmax(0, 1fr) auto; gap: .5rem; padding: .3rem 0; border-bottom: 1px solid var(--border); }
+.checks .mark.ok { color: var(--green-ink); } .checks .mark.bad { color: var(--red-ink); } .checks .mark.skip { color: var(--dim); }
+.checks .val { font: .76rem var(--font-mono); color: var(--dim); text-align: right; }
+
+/* A figure page on its own (for iframes and exports). */
+body.embed { background: transparent; margin: 0; padding: 12px; }
+body.embed figure.fig { margin: 0; box-shadow: none; }
+body.embed.export .fig-tools, body.embed.export .fig-controls, body.embed.export .fig-check { display: none; }
+body.embed.bg-transparent figure.fig { background: transparent; }
+body.embed.export figure.fig > figcaption a { display: none; }
+
+/* Counting the ways (js/figures/entropy.js): a belief as bars, and its entropy on a ladder of doublings. */
+svg .ways-bar { fill: color-mix(in srgb, var(--fg-2) 38%, transparent); }
+svg .ways-bar.top { fill: var(--fg-2); }
+svg .ways-axis { stroke: var(--border-strong); stroke-width: 1.2; }
+svg .ways-climb { stroke: var(--fg); stroke-width: 4; stroke-linecap: round; }
+svg .ways-mark { fill: var(--fg); stroke: var(--bg-raised); stroke-width: 2; }
+svg .ways-16 { fill: var(--fg); font-weight: 600; }
+
+/* The braid at a glance (js/figures/overview.js): board 3's four columns, a step at a time. */
+svg.overview .ov-t { font-size: 12px; font-weight: 600; fill: var(--fg); }
+svg.overview .ov-sub { font-size: 10px; fill: var(--dim); }
+svg.overview .ov-name { font-size: 12px; font-weight: 600; fill: var(--s-ink); }
+svg.overview .ov-cap { font-size: 10px; letter-spacing: .06em; fill: var(--dim); }
+svg.overview .ov-frame { fill: color-mix(in srgb, var(--s) 4%, transparent); stroke: var(--s); stroke-width: 1.2; stroke-dasharray: 5 4; }
+svg.overview .ov-band { fill: color-mix(in srgb, var(--gold) 7%, var(--bg-raised)); stroke: color-mix(in srgb, var(--gold) 50%, var(--border-strong)); }
+svg.overview .ov-box { fill: var(--bg); stroke: var(--border-strong); }
+svg.overview .ov-receipt { fill: color-mix(in srgb, var(--gold) 16%, var(--bg)); stroke: var(--gold); }
+svg.overview .ov-shared { fill: var(--bg-sunk); stroke: var(--border-strong); }
+svg.overview .ov-trunk { fill: color-mix(in srgb, var(--orange) 9%, var(--bg-sunk)); stroke: color-mix(in srgb, var(--orange) 55%, var(--border-strong)); stroke-width: 1.2; }
+svg.overview .ov-own { fill: color-mix(in srgb, var(--s) var(--tint), var(--bg)); stroke: var(--s); }
+svg.overview .ov-mine { fill: color-mix(in srgb, var(--s) 7%, var(--bg)); stroke: var(--s); }
+svg.overview .ov-src { fill: var(--bg); stroke: var(--s); }
+svg.overview .ov-none { fill: none; stroke: var(--s); stroke-dasharray: 3 3; }
+svg.overview .ov-dotted { fill: none; stroke: var(--border-strong); stroke-dasharray: 2 3; }
+svg.overview .ov-line { stroke: var(--fg-2); stroke-width: 1.3; }
+svg.overview .ov-line.dash { stroke-dasharray: 4 3; }
+svg.overview .ov-head { fill: var(--fg-2); }
+svg.overview [data-part] { transition: opacity .25s ease; }
+svg.overview .off { opacity: .14; }
+svg.overview [data-box] { cursor: pointer; }
+svg.overview [data-box]:hover rect { stroke-width: 2; }
+p.ov-say { font: .92rem/1.55 var(--font-sans); color: var(--fg); margin: 0 0 1rem; min-height: 3.1em; max-width: 46rem; }
+body.embed.export p.ov-say, body.embed.export svg.overview + .note { display: none; }
+
+/* Floats beside prose. These come last so they win over figure.fig and figure.board, which would otherwise zero their margins. */
+figure.float-right { float: right; width: min(46%, 30rem); margin: .25rem 0 var(--space-m) var(--space-l); }
+figure.float-left { float: left; width: min(40%, 26rem); margin: .25rem var(--space-l) var(--space-m) 0; }
+@media (max-width: 1100px) {
+  figure.float-right, figure.float-left { float: none; width: auto; margin: var(--space-m) 0; }
+}
+
+/* The boards (js/boards.js): panels the site draws, each a figure. Light is the boards' paper; the colours are Figure 1's. */
+figure.board-panel .fig-body { padding: .8rem .9rem .7rem; }
+svg.board-svg .bd-t { font-size: 11.5px; font-weight: 600; fill: var(--fg); }
+svg.board-svg .bd-sub { font-size: 9.6px; fill: var(--fg-2); }
+svg.board-svg .bd-cap { font-size: 9.6px; letter-spacing: .06em; font-weight: 600; fill: var(--dim); }
+svg.board-svg .bd-key-t { font-size: 9.6px; fill: var(--blue-ink); }
+svg.board-svg .bd-box { stroke-width: 1.1; }
+svg.board-svg .bd-plain { fill: var(--bg); stroke: var(--border-strong); }
+svg.board-svg .bd-sunk { fill: var(--bg-sunk); stroke: var(--border-strong); }
+svg.board-svg .bd-emb { fill: color-mix(in srgb, var(--red) 10%, var(--bg)); stroke: color-mix(in srgb, var(--red) 45%, var(--border-strong)); }
+svg.board-svg .bd-norm { fill: color-mix(in srgb, var(--gold) 18%, var(--bg)); stroke: color-mix(in srgb, var(--gold) 60%, var(--border-strong)); }
+svg.board-svg .bd-linear { fill: color-mix(in srgb, var(--violet) 12%, var(--bg)); stroke: color-mix(in srgb, var(--violet) 50%, var(--border-strong)); }
+svg.board-svg .bd-conv { fill: color-mix(in srgb, var(--blue) 12%, var(--bg)); stroke: color-mix(in srgb, var(--blue) 50%, var(--border-strong)); }
+svg.board-svg .bd-mixer { fill: color-mix(in srgb, var(--orange) 20%, var(--bg)); stroke: color-mix(in srgb, var(--orange) 65%, var(--border-strong)); }
+svg.board-svg .bd-own { fill: color-mix(in srgb, var(--green) 14%, var(--bg)); stroke: var(--green-ink); }
+svg.board-svg .bd-trunk { fill: color-mix(in srgb, var(--orange) 8%, var(--bg)); stroke: var(--orange-ink); }
+svg.board-svg .bd-state { fill: color-mix(in srgb, var(--blue) 8%, var(--bg)); stroke: var(--blue-ink); }
+svg.board-svg .bd-gold { fill: color-mix(in srgb, var(--gold) 10%, var(--bg)); stroke: var(--gold-ink); }
+svg.board-svg .bd-violet { fill: color-mix(in srgb, var(--violet) 9%, var(--bg)); stroke: var(--violet-ink); }
+svg.board-svg .bd-dashed { stroke-dasharray: 5 4; }
+svg.board-svg .bd-frame { fill: none; stroke: var(--border-strong); stroke-dasharray: 4 3; }
+svg.board-svg .s-gold .bd-frame, svg.board-svg .s-blue .bd-frame, svg.board-svg .s-green .bd-frame, svg.board-svg .s-orange .bd-frame { stroke: var(--s); }
+svg.board-svg .s-gold .bd-cap, svg.board-svg .s-blue .bd-cap, svg.board-svg .s-green .bd-cap, svg.board-svg .s-orange .bd-cap { fill: var(--s-ink); }
+svg.board-svg .bd-line { stroke: var(--fg-2); stroke-width: 1.2; }
+svg.board-svg .bd-line.dash { stroke-dasharray: 4 3; }
+svg.board-svg .bd-line.bd-key, svg.board-svg .bd-head.bd-key { stroke: var(--blue-ink); fill: var(--blue-ink); }
+svg.board-svg .bd-line.bd-key { fill: none; }
+svg.board-svg .bd-head { fill: var(--fg-2); }
+.bd-list { margin: 0; padding-left: 1.2rem; font-size: .84rem; line-height: 1.5; color: var(--fg-2); }
+.bd-list li { margin: .3rem 0; }
+.bd-list li strong, .bd-lead { color: var(--fg); font-weight: 600; }
+.bd-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: .7rem; }
+.bd-card { border: 1px solid var(--border); border-radius: var(--radius-s); padding: .7rem .8rem; background: var(--bg); font-size: .82rem; line-height: 1.45; color: var(--fg-2); min-width: 0; }
+.bd-card .bd-n { font: 600 1.3rem/1 var(--font-serif); color: var(--s-ink, var(--gold-ink)); margin-bottom: .3rem; }
+.bd-card h5 { margin: 0 0 .3rem; font: 600 .86rem/1.3 var(--font-sans); color: var(--fg); }
+.bd-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: .7rem; }
+.bd-tile { border: 1px solid var(--border); border-radius: var(--radius-s); padding: .7rem .8rem; background: var(--bg); min-width: 0; }
+.bd-tile .bd-big { font: 600 1.5rem/1.1 var(--font-serif); color: var(--fg); }
+.bd-tile .bd-sub { font-size: .78rem; color: var(--dim); margin-top: .2rem; }
+.bd-formula { font: .82rem/1.6 var(--font-mono); color: var(--fg); background: var(--bg-sunk); border: 1px solid var(--border); border-radius: var(--radius-s); padding: .6rem .8rem; }
+.bd-formula p { margin: 0; max-width: none; }
+.bd-formula .bd-lead { font-family: var(--font-sans); font-size: .84rem; margin-bottom: .2rem; }
+.bd-formula .bd-why { font-family: var(--font-sans); color: var(--fg-2); font-size: .8rem; margin-top: .3rem; }
+.fig .bd-table td { white-space: normal; min-width: 7rem; vertical-align: top; }
+.fig .bd-table td.n, .fig .bd-table th.n { white-space: nowrap; min-width: 0; }
+.board-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1rem; margin: 1rem 0 2.5rem; clear: both; }
+.board-grid > .cell { grid-column: span 12; min-width: 0; }
+.board-grid > .cell > figure.fig { margin: 0; height: 100%; }
+@media (min-width: 1100px) {
+  .board-grid > .span-3 { grid-column: span 3; } .board-grid > .span-4 { grid-column: span 4; } .board-grid > .span-5 { grid-column: span 5; }
+  .board-grid > .span-6 { grid-column: span 6; } .board-grid > .span-7 { grid-column: span 7; } .board-grid > .span-8 { grid-column: span 8; } .board-grid > .span-9 { grid-column: span 9; }
+}
+.board-legend { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; font-size: .78rem; color: var(--fg-2); margin: .4rem 0 1rem; }
+.board-legend .sw { width: .8rem; height: .8rem; border-radius: 3px; display: inline-block; vertical-align: -2px; margin-right: .35rem; border: 1px solid var(--border-strong); }
+.board-legend .sw.dashed { border-style: dashed; }
+section.board > h2 { margin-top: 3rem; }
+section.board .board-meta { font: .76rem/1.4 var(--font-mono); color: var(--dim); margin: -.4rem 0 .8rem; }
+svg.board-svg .bd-frame-fill { fill: color-mix(in srgb, var(--s, var(--border-strong)) 7%, var(--bg)); stroke: var(--s, var(--border-strong)); }
+svg.board-svg .bd-trunk-solid { fill: color-mix(in srgb, var(--gold) 12%, var(--bg)); stroke: var(--gold-ink); stroke-width: 1.6; }
+svg.board-svg .bd-line.bd-trunk-line, svg.board-svg .bd-head.bd-trunk-line { stroke: var(--orange-ink); fill: var(--orange-ink); }
+svg.board-svg .bd-line.bd-trunk-line { fill: none; }
+.fig td.bd-holds { color: var(--green-ink); white-space: nowrap; } .fig td.bd-open { color: var(--orange-ink); }
+
+/* Board 4: the title panel is a dark card in both themes, like the studio's detail block. */
+.bd-slide { background: #141414; color: #E6E2D8; border-radius: var(--radius-s); padding: 1.4rem 1.6rem 1.2rem; margin: .2rem 0 .4rem; }
+.bd-slide .bd-kicker { margin: 0 0 .6rem; font: 500 .72rem/1.4 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: #9A968C; }
+.bd-slide .bd-title { margin: 0; font: 600 3.6rem/1 var(--font-serif); letter-spacing: -.02em; color: #F3F0E8; }
+.bd-slide .bd-tagline { margin: .3rem 0 1rem; font: italic 1.05rem/1.4 var(--font-serif); color: #C9C4B8; }
+.bd-slide .bd-strandline { margin: .8rem 0 0; display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; font: 500 .82rem/1.4 var(--font-sans); color: #E6E2D8; }
+.bd-slide .bd-strandline .bd-dot { display: inline-block; width: .55em; height: .55em; border-radius: 50%; background: var(--s, #E6E2D8); vertical-align: .05em; }
+.bd-slide .bd-strandline .bd-dim { color: #9A968C; font-weight: 400; }
+svg.bd-ribbon { display: block; width: 100%; height: 56px; }
+svg.bd-ribbon .bd-ribbon-line { fill: none; stroke: var(--s, #E6E2D8); stroke-width: 2; opacity: .9; }
+svg.bd-ribbon .bd-ribbon-end { fill: none; stroke: #D4AF37; stroke-width: 1.5; }
+.bd-open-card { margin-top: .7rem; }
+.bd-open-card h5 { margin: 0 0 .3rem; font: 600 .86rem/1.3 var(--font-sans); color: var(--fg); }
+.bd-open-card .bd-list { margin: 0; }

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The architecture boards · Braid, step by step</title>
+<meta name="description" content="The four Braid architecture boards, drawn by the site as panels, each linked to the chapter it sits beside.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+<style>
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the boards</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · appendix</span><a href="lexicon.html">The lexicon</a></header>
+<h1 id="ch-boards">The architecture boards</h1>
+<p class="lede"><em>The engineering detail behind every chapter, drawn on four boards.</em></p>
+<p>Board 1 opens one Thread's blocks. Board 2 is the braid. Board 3 walks one real answer tensor by tensor. Board 4 is the whole idea as nine slides. Every panel is drawn by the site and sits beside a step of the tour; its caption links to that chapter.</p>
+
+<section class="board" id="board-1">
+<h2>Board 1 · A Thread's blocks: a head of twelve, on the commons' trunk</h2>
+<p class="board-meta">board 1 · Braid v1 · drawn 2026-10-19, after the boards of 2026-10-15 · mamba2-130m-hf · no attention, no KV cache</p>
+<p>Every strand in the braid runs the same 24 Mamba2 blocks. A Thread owns the first twelve, its head, trained on its own corpus. The last twelve, the final norm and the embedding are the commons' trunk: loaded once when the commons is built and run by every Thread behind its own head, by reference. There is no attention and no KV cache. Each block keeps a small recurrent state, so everything a node knows about a conversation is a fixed 19,390,464 bytes, however long it runs. The residual stream after the head, paired with the final state, is the key into the Thread's provenance index, and any key can be recomputed from a saved state.</p>
+<div class="board-legend" aria-label="The colours">
+<span><span class="sw" style="background: color-mix(in srgb, var(--red) 10%, var(--bg))"></span>embedding</span>
+<span><span class="sw" style="background: color-mix(in srgb, var(--gold) 18%, var(--bg))"></span>norm</span>
+<span><span class="sw" style="background: color-mix(in srgb, var(--violet) 12%, var(--bg))"></span>linear</span>
+<span><span class="sw" style="background: color-mix(in srgb, var(--blue) 12%, var(--bg))"></span>convolution</span>
+<span><span class="sw" style="background: color-mix(in srgb, var(--orange) 20%, var(--bg))"></span>the token mixer: the SSD scan, where attention would be</span>
+<span><span class="sw" style="background: color-mix(in srgb, var(--green) 14%, var(--bg)); border-color: var(--green-ink)"></span>a Thread's own: its head, its index</span>
+<span><span class="sw dashed" style="background: color-mix(in srgb, var(--orange) 8%, var(--bg)); border-color: var(--orange-ink)"></span>the commons' trunk, by reference</span>
+<span><span class="sw" style="background: color-mix(in srgb, var(--blue) 8%, var(--bg)); border-color: var(--blue-ink)"></span>state and the key</span>
+</div>
+<div class="board-grid">
+<div class="cell span-4" id="crop-b1-thread-node"><figure class="board" data-board="b1-thread-node"></figure></div>
+<div class="cell span-4" id="crop-b1-node-keeps"><figure class="board" data-board="b1-node-keeps"></figure></div>
+<div class="cell span-4" id="crop-b1-block"><figure class="board" data-board="b1-block"></figure></div>
+<div class="cell span-4" id="crop-b1-inputs"><figure class="board" data-board="b1-inputs"></figure></div>
+<div class="cell span-4" id="crop-b1-index"><figure class="board" data-board="b1-index"></figure></div>
+<div class="cell span-4" id="crop-b1-state"><figure class="board" data-board="b1-state"></figure></div>
+<div class="cell span-4" id="crop-b1-trains"><figure class="board" data-board="b1-trains"></figure></div>
+<div class="cell span-4" id="crop-b1-state-matters"><figure class="board" data-board="b1-state-matters"></figure></div>
+<div class="cell span-4" id="crop-b1-key-sweep"><figure class="board" data-board="b1-key-sweep"></figure></div>
+<div class="cell span-12" id="crop-b1-box-by-box"><figure class="board" data-board="b1-box-by-box"></figure></div>
+</div>
+</section>
+
+<section class="board" id="board-2">
+<h2>Board 2 · The braid: the commons and every Thread under one reed</h2>
+<p class="board-meta">board 2 · Braid v1 · drawn 2026-10-19, after the boards of 2026-10-15 · blocks: board 1 · in detail: board 3</p>
+<p>The braid is the commons, the pack's base model run whole, and every attached Thread, under one reed. At every token each node advances its own state and sends two things: its normed state h and its 16 nearest positions in its own corpus. The braid turns each into a distribution, weighs them by a memory of how much better than the commons each Thread has predicted, and picks the token. Every strand's share of that token is exact, and each Thread's part is cited to its own text. Every number goes into a session log that braid verify replays. Threads can join or leave in the middle of an answer.</p>
+<div class="board-legend" aria-label="The colours">
+<span><span class="sw" style="background: var(--gold)"></span>the commons</span>
+<span><span class="sw" style="background: var(--blue)"></span>Ambient</span>
+<span><span class="sw" style="background: var(--green)"></span>Craft</span>
+<span><span class="sw" style="background: var(--orange)"></span>Veil</span>
+<span><span class="sw dashed" style="border-color: var(--orange-ink)"></span>the commons' trunk, run by every Thread</span>
+<span><span class="sw" style="background: color-mix(in srgb, var(--violet) 30%, var(--bg)); border-color: var(--violet-ink)"></span>the trace: recorded, never steering</span>
+</div>
+<div class="board-grid">
+<div class="cell span-8" id="crop-b2-answer"><figure class="board" data-board="b2-answer"></figure></div>
+<div class="cell span-4" id="crop-b2-session-log"><figure class="board" data-board="b2-session-log"></figure></div>
+<div class="cell span-8" id="crop-b2-mixture"><figure class="board" data-board="b2-mixture"></figure></div>
+<div class="cell span-4" id="crop-b2-shadow"><figure class="board" data-board="b2-shadow"></figure></div>
+<div class="cell span-12" id="crop-b2-gate"><figure class="board" data-board="b2-gate"></figure></div>
+<div class="cell span-12" id="crop-b2-strands"><figure class="board" data-board="b2-strands"></figure></div>
+<div class="cell span-12" id="crop-b2-sources"><figure class="board" data-board="b2-sources"></figure></div>
+<div class="cell span-6" id="crop-b2-one-token"><figure class="board" data-board="b2-one-token"></figure></div>
+<div class="cell span-6" id="crop-b2-attach"><figure class="board" data-board="b2-attach"></figure></div>
+<div class="cell span-6" id="crop-b2-question"><figure class="board" data-board="b2-question"></figure></div>
+<div class="cell span-6" id="crop-b2-verify"><figure class="board" data-board="b2-verify"></figure></div>
+<div class="cell span-12" id="crop-b2-measured"><figure class="board" data-board="b2-measured"></figure></div>
+<div class="cell span-12" id="crop-b2-open"><figure class="board" data-board="b2-open"></figure></div>
+</div>
+</section>
+
+<section class="board" id="board-3">
+<h2>Board 3 · The model in detail: tensor by tensor, entropy by entropy</h2>
+<p class="board-meta">board 3 · Braid v1 · drawn 2026-10-19, after the boards of 2026-10-15 · blocks: board 1 · the braid: board 2</p>
+<p>The same architecture as boards 1 and 2, opened up for debugging: every box names the code that runs it and the shape it holds. The thread through the board is the pair of inner entropies each Thread produces at every position. H_lm measures its own guess and H_knn its hits. The distributions behind them each cast a citation's value and location, and the two series over time are the trajectory on top of the citations. One real answer, the Joltvault port, is followed through all of it.</p>
+<div class="board-legend" aria-label="The colours">
+<span><span class="sw" style="background: color-mix(in srgb, var(--green) 14%, var(--bg)); border-color: var(--green-ink)"></span>a Thread's own: its head, its index</span>
+<span><span class="sw dashed" style="background: color-mix(in srgb, var(--orange) 8%, var(--bg)); border-color: var(--orange-ink)"></span>the commons' trunk, by reference</span>
+<span><span class="sw" style="background: color-mix(in srgb, var(--blue) 8%, var(--bg)); border-color: var(--blue-ink)"></span>state and the key</span>
+<span><span class="sw" style="background: color-mix(in srgb, var(--violet) 9%, var(--bg)); border-color: var(--violet-ink)"></span>the citation and the trace</span>
+<span><span class="sw" style="background: color-mix(in srgb, var(--gold) 10%, var(--bg)); border-color: var(--gold-ink)"></span>the mixture</span>
+</div>
+<div class="board-grid">
+<div class="cell span-12" id="crop-b3-overview"><figure class="board" data-board="b3-overview"></figure></div>
+<div class="cell span-6" id="crop-b3-thread-column"><figure class="board" data-board="b3-thread-column"></figure></div>
+<div class="cell span-6" id="crop-b3-commons-column"><figure class="board" data-board="b3-commons-column"></figure></div>
+<div class="cell span-12" id="crop-b3-entropies"><figure class="board" data-board="b3-entropies"></figure></div>
+<div class="cell span-4" id="crop-b3-citation-location"><figure class="board" data-board="b3-citation-location"></figure></div>
+<div class="cell span-4" id="crop-b3-reads-hknn"><figure class="board" data-board="b3-reads-hknn"></figure></div>
+<div class="cell span-4" id="crop-b3-trace-box"><figure class="board" data-board="b3-trace-box"></figure></div>
+<div class="cell span-12" id="crop-b3-panel-c-chart"><figure class="board" data-board="b3-panel-c-chart"></figure></div>
+<div class="cell span-12" id="crop-b3-panel-c-table"><figure class="board" data-board="b3-panel-c-table"></figure></div>
+<div class="cell span-12" id="crop-b3-panel-c-notes"><figure class="board" data-board="b3-panel-c-notes"></figure></div>
+<div class="cell span-12" id="crop-b3-mixer"><figure class="board" data-board="b3-mixer"></figure></div>
+<div class="cell span-12" id="crop-b3-call-by-call"><figure class="board" data-board="b3-call-by-call"></figure></div>
+<div class="cell span-12" id="crop-b3-debug-map"><figure class="board" data-board="b3-debug-map"></figure></div>
+</div>
+</section>
+
+<section class="board" id="board-4">
+<h2>Board 4 · Braid for product teams</h2>
+<p class="board-meta">board 4 · nine panels · drawn 2026-10-19, after the slides of 2026-10-15 · the engineering behind each: boards 1 to 3</p>
+<p>The whole architecture in the order of a short pitch. The problem, what Braid does, how it works, what a user sees, why it is built this way, where it fits, what is measured and what is next. Each panel stands alone, so any of them can be lifted into a deck. The engineering detail behind every panel is on boards 1 to 3.</p>
+<div class="board-legend" aria-label="The colours">
+<span><span class="sw" style="background: color-mix(in srgb, var(--gold) 10%, var(--bg)); border-color: var(--gold-ink)"></span>the commons</span>
+<span><span class="sw" style="background: color-mix(in srgb, var(--blue) 10%, var(--bg)); border-color: var(--blue-ink)"></span>Ambient · text</span>
+<span><span class="sw" style="background: color-mix(in srgb, var(--green) 10%, var(--bg)); border-color: var(--green-ink)"></span>Craft · code</span>
+<span><span class="sw" style="background: color-mix(in srgb, var(--orange) 10%, var(--bg)); border-color: var(--orange-ink)"></span>Veil · visuals</span>
+</div>
+<div class="board-grid">
+<div class="cell span-12" id="crop-b4-s1-title"><figure class="board" data-board="b4-s1-title"></figure></div>
+<div class="cell span-12" id="crop-b4-s2-problem"><figure class="board" data-board="b4-s2-problem"></figure></div>
+<div class="cell span-12" id="crop-b4-s3-what"><figure class="board" data-board="b4-s3-what"></figure></div>
+<div class="cell span-12" id="crop-b4-s4-how"><figure class="board" data-board="b4-s4-how"></figure></div>
+<div class="cell span-12" id="crop-b4-s5-sees"><figure class="board" data-board="b4-s5-sees"></figure></div>
+<div class="cell span-6" id="crop-b4-s6-why"><figure class="board" data-board="b4-s6-why"></figure></div>
+<div class="cell span-6" id="crop-b4-s7-fits"><figure class="board" data-board="b4-s7-fits"></figure></div>
+<div class="cell span-12" id="crop-b4-s8-measured"><figure class="board" data-board="b4-s8-measured"></figure></div>
+<div class="cell span-12" id="crop-b4-s9-next"><figure class="board" data-board="b4-s9-next"></figure></div>
+</div>
+</section>
+
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/claims.js"></script>
+<script src="data/harbour.js"></script>
+<script src="data/sessions/joltvault.js"></script>
+<script src="data/sessions/tillyburn.js"></script>
+<script src="data/sessions/window-in-autumn.js"></script>
+<script src="data/sessions/hello.js"></script>
+<script src="data/sessions/harbour.js"></script>
+<script src="data/threads/ambient.js"></script>
+<script src="data/threads/craft.js"></script>
+<script src="data/threads/veil.js"></script>
+<script src="data/threads/harbour.js"></script>
+<script src="js/figures/corpus.js"></script>
+<script src="js/figures/replay.js"></script>
+<script src="js/figures/entropy.js"></script>
+<script src="js/figures/ssd.js"></script>
+<script src="js/figures/overview.js"></script>
+<script src="js/boards.js"></script>
+<script src="js/boards/board-1.js"></script>
+<script src="js/boards/board-2.js"></script>
+<script src="js/boards/board-3.js"></script>
+<script src="js/boards/board-4.js"></script>
+<script>Braid.mount();</script>
+</body>
+</html>

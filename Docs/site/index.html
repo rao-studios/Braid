@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The braid at a glance · Braid, step by step</title>
+<meta name="description" content="A guided tour of Braid, a language model whose every token is split exactly among its sources and cited to their text. It starts with the whole machine in one picture, then one question: what entropy is, and why a citation needs it.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the overview</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · at a glance</span><a href="lexicon.html">The lexicon</a></header>
+
+<h1 id="ch-overview">The braid at a glance</h1>
+<p class="lede"><em>On the whole machine, in one picture, before the first question.</em></p>
+
+<p>Braid is a language model made of strands. One is the commons: a base model that knows ordinary language and none of your records. Each of the others is a Thread: twelve blocks of its own, run in front of the commons' trunk, that have learned one corpus by heart. Its index says where every word in that corpus sits.</p>
+<p>Every strand reads the same words. At each word, each one sends up its state, and each Thread also sends the sixteen places in its own text that look most like this moment. At the top, one braid turns those into a guess from each strand, weighs the strands, and picks the next word.</p>
+<p>Then it writes the receipt: how much of the word each strand supplied, and where in its text each Thread's part came from. A word with a receipt can be checked. A word without one can only be trusted.</p>
+
+<figure class="fig wide" id="fig-overview" data-fig="overview">
+<figcaption>Three Threads and the commons, as board 3 draws them, at the grain of a first read. Step through to follow one word from a corpus to its receipt, or click any box.</figcaption>
+</figure>
+
+<h2 id="reading">Reading this site</h2>
+<p>The figures are live. They run Braid's own arithmetic on real sessions, in your browser.</p>
+<p>Depth is folded away until you want it. The “For model engineers” blocks hold the definitions and the code, the “Explore” blocks open AII's storage, and <a href="boards.html">the architecture boards</a> sit beside each step.</p>
+<p><a href="code.html">The code explorer</a> holds every Swift file whole, with four trails through the functions that run them: training and inference, for text and for questions.</p>
+<p>Every number says when it was measured and which test stands behind it. <a href="10-verify.html">Chapter 10</a> lists what holds and what does not yet.</p>
+
+<h2 id="tour">The tour</h2>
+<p>The chapters follow <a href="../../Examples/README.md">the playground</a>, a short program that takes a handful of records on your Mac to a cited answer. Each one opens with a question and answers it in a sentence before it shows the machinery.</p>
+<ol class="toc">
+<li><a href="00-entropy.html">What is entropy, and why does a citation need it?<small>Two numbers at every word: a claim and its evidence.</small></a></li>
+<li><a href="01-aii.html">What is AII, and how does an app join it?<small>One index per Mac, one lane per app.</small></a></li>
+<li><a href="02-records.html">What goes into a record?<small>A value, an envelope, and text cut into partitions.</small></a></li>
+<li><a href="03-corpus.html">Why does a Thread need the whole corpus?<small>Search shows a view. Training needs every word.</small></a></li>
+<li><a href="04-commons.html">Why does Braid need a commons?<small>Something has to be the yardstick.</small></a></li>
+<li><a href="05-training.html">Why train, and what does the model read?<small>One stream, cut into windows, reset at every document.</small></a></li>
+<li><a href="06-provenance.html">Where does provenance come from?<small>An index of every position, made after training.</small></a></li>
+<li><a href="07-inference.html">What happens at each token?<small>Every strand guesses; the shares are exact.</small></a></li>
+<li><a href="08-trace.html">What is the trace, and what steers?<small>A second witness that follows one document.</small></a></li>
+<li><a href="09-ssd.html">Why a state, and not attention?<small>A history of fixed size, at any length.</small></a></li>
+<li><a href="10-verify.html">What does the log prove?<small>Your browser replays it. Here is what holds.</small></a></li>
+</ol>
+<p class="note">AII's index server is called Thread; this site calls it the Thread service. A Braid strand trained on one corpus is a Thread; this site calls it a Thread. <a href="lexicon.html">The lexicon</a> spells every term.</p>
+
+<p class="close">Many strands, one reed, and a receipt for every word.</p>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="js/figures/overview.js"></script>
+<script>Braid.mount();</script>
+</body>
+</html>

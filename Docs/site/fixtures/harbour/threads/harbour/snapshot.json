@@ -1,0 +1,320 @@
+{
+  "corpusHash" : "6bd493d12a77b2bd868f89ae0185a00f7380d25969e8a490c39cb9e353d454c3",
+  "documentCount" : 18,
+  "documentIDPrefix" : "braidplayground/",
+  "documents" : [
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/boatyard",
+      "mediaType" : "text",
+      "name" : "Tarrant's boatyard",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Tarrant's boatyard builds one clinker skiff each year. This year's boat, the Wren, is planked in larch and will be launched on the first of May.",
+          "textSHA256" : "f02dcb344342f71bf88c55f563bae11547e3ac577fbb999b75acf0178bfa8a0a",
+          "threadPartitionID" : "30112247170151222625148532482242267372161147648610248207994688301171210807127127"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/chandlery",
+      "mediaType" : "text",
+      "name" : "Wick and Sons",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Wick and Sons sell rope, tar and paraffin from a shed on Pier Lane. Hamish Wick opens it at dawn and shuts it once the evening ferry is in.",
+          "textSHA256" : "e42b5f46703cb05590f39dfde748c840b3631a2e1518176894eb455c730b270b",
+          "threadPartitionID" : "69331020321141129119127216432022824415396399620165223397247197238471691241073917"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/fish-auction",
+      "mediaType" : "text",
+      "name" : "The Thursday auction",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Every Thursday the market sells the week's catch of hake and ling. Bidding opens at six, and the auctioneer, Col Durrant, never takes a bid after seven.",
+          "textSHA256" : "9ef6b75d17489c449bd3a5e8dc29b16a4f859373d58a54c3a83047b21b80335e",
+          "threadPartitionID" : "542610722411466199156201721734325123313513920024224052194322356225093017679225205233"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/fog-horn",
+      "mediaType" : "text",
+      "name" : "The fog horn",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Whenever fog rolls in, the horn on Gannet Rock sounds two long blasts every ninety seconds. Fishermen call it the Widow, for its mournful note.",
+          "textSHA256" : "abf7c74b0bd613774cfd5ec91cd9c16a343a08e77c90485b54513fad1643d55b",
+          "threadPartitionID" : "205231252471346421513347127145200130241261042478921422857182971959417919023724319213247"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/harbourmaster",
+      "mediaType" : "text",
+      "name" : "The harbourmaster",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Odran Feck has served as harbourmaster for twenty-two years. He keeps the tide tables in a green ledger and signs every mooring permit in red ink.",
+          "textSHA256" : "aa5453f34189e8df7e1410f073c00b8aa1a95e5443a15a8489c807b2a9a9a5ee",
+          "threadPartitionID" : "6417517259871691532008694851533798962021881271961761752402402231612252281249403810"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/harlow-light",
+      "mediaType" : "text",
+      "name" : "Harlow Light",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Harlow Light stands at the end of the north mole in Skerrow. Its keeper is Ines Calloway, who has trimmed the lamp every night since the winter of 1987.",
+          "textSHA256" : "6eb6f14f28992997084e821f198d43177351b63c98abd9d99e8fda14e1f433de",
+          "threadPartitionID" : "652539224209198113209207872451361522102001901782372545384401506020819419918021922520303"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/ice-house",
+      "mediaType" : "text",
+      "name" : "The ice house",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Behind the herring sheds stands a stone ice house built in 1868. Until refrigeration came, it held ice cut from Loch Brannan every February.",
+          "textSHA256" : "8a2be5701716335f8878362bc750356cd9b763767acde576761704a3d93414ef",
+          "threadPartitionID" : "2052251978423111621312410313016510913860321021277317217213018916662206641432094586239"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/kelp",
+      "mediaType" : "text",
+      "name" : "Kelp",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Kelp is cut from the western reefs each spring. Dried on the shingle, it is sold by the cartload to a glassworks at Tarn Ford.",
+          "textSHA256" : "97f6e4754026686754abb9cfb2d7f3e0b3e78cb87ed388d31d8cee3260f80d28",
+          "threadPartitionID" : "201558013712338242281852401141922120546184201156231174124123111411831343610021817319227"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/lifeboat",
+      "mediaType" : "text",
+      "name" : "The lifeboat",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Volunteers crew the lifeboat Grace Ellery from the station beside the west slip. When a vessel is reported in distress, a maroon is fired from the station roof.",
+          "textSHA256" : "7e8eaa883f835a4560531aaef6c6a1c70ffd4eaaf484e75cc7dcea8c33fc0438",
+          "threadPartitionID" : "218188111536623625019514424514011511174203675126169187100223262042366251243071256612"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/mooring-fees",
+      "mediaType" : "text",
+      "name" : "Mooring fees",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Visiting yachts pay four shillings a night to lie alongside the inner wall. The fees are collected at dusk by the harbourmaster's son, Tobin.",
+          "textSHA256" : "321fb3d760b7d84e31130507b46b6e4c85b0a06869b8311769403678d0428e56",
+          "threadPartitionID" : "75113262518019322616243112345344238771418055051332351538114123186091277714315299"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/net-loft",
+      "mediaType" : "text",
+      "name" : "The net loft",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Upstairs in the net loft, Bridie Moran mends drift nets by lamplight. She charges a penny a fathom and will not work on a Sunday.",
+          "textSHA256" : "45e83a0200223a4ee9c8d7f96f378ae95a1bcdd405ce5d9fb733fb1089f98dfb",
+          "threadPartitionID" : "1292318724810316915117279139145136301152903226904448233184129194132252261451655317206"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/pilots",
+      "mediaType" : "text",
+      "name" : "The pilot cutter",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Pilots meet incoming ships off Gannet Rock in the cutter Sable. Her crew of four is led by Maren Ashby, the only pilot licensed for night work.",
+          "textSHA256" : "b2b966603e0f4c337b6002ec372f1625cfb17ffb2f1d75958d62baa67ea899bb",
+          "threadPartitionID" : "382550469174171356312467248291016059685608561161991441511266317110729752034970"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/post-boat",
+      "mediaType" : "text",
+      "name" : "The post boat",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Mail reaches the island on the post boat Kittiwake. She calls at the west steps on Tuesdays and Fridays, weather permitting.",
+          "textSHA256" : "914264dbf0cd5fe156a2150af66210a5f15d1ffe8195110efacdc59d1b5f8075",
+          "threadPartitionID" : "1217624671241170113150191136215311802518211146162324153131196398205141991667122246"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/quillan-ferry",
+      "mediaType" : "text",
+      "name" : "Ferries to Quillan",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Ferries for Quillan leave from the east slip twice a day. The first sails at 7:40 and the last at 16:15; on Sundays only the late boat runs.",
+          "textSHA256" : "a1589422476b6ddd23862ae2f65d2c91cd786c1917d1c0f7ea7e7fdfef3b835a",
+          "threadPartitionID" : "118250193200281049725013209112215412032216914622913412815772127199156145180201169218183225"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/regatta",
+      "mediaType" : "text",
+      "name" : "The regatta",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "The Skerrow regatta is sailed on the last Saturday of July. Its silver trophy, the Brennock Cup, was won last year by the yawl Petrel.",
+          "textSHA256" : "18f554c275fd0779ad169e72adad1209fdcd8dbe5c05826c9c3889b4b27aefda",
+          "threadPartitionID" : "15511712509896421591629515624420720075243226127188551291772172171578420416183214130104"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/seals",
+      "mediaType" : "text",
+      "name" : "The seal count",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Grey seals haul out on the Skerries each October. Children from the island school counted one hundred and twelve pups last autumn.",
+          "textSHA256" : "93a58259f4c6d084d45c372dee650d32789db1e9217ca7bea296fd9a92273586",
+          "threadPartitionID" : "64157714618921422904197423555541015242200195302451180791901641894384818386205"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/storm-1953",
+      "mediaType" : "text",
+      "name" : "The storm of 1953",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "During the great storm of 1953 the breakwater lost forty yards of stone. It was rebuilt the next summer with granite shipped from Penhallow quarry.",
+          "textSHA256" : "e62dee746883b3f5ea9997efefbf022a37a334b56cb2bd8d4469f67c1137f1f9",
+          "threadPartitionID" : "190163248145711210399087531195168111207661222311597621221816511013254291712422274148"
+        }
+      ]
+    },
+    {
+      "createdAt" : 1792301511,
+      "groupID" : "braidplayground-harbour",
+      "groupLabel" : "Skerrow harbour log",
+      "id" : "braidplayground/log/tide-bell",
+      "mediaType" : "text",
+      "name" : "Old Margery",
+      "ownerID" : "local-braidplayground",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "A brass bell called Old Margery hangs above the fish market. Rung three times, she warns that the spring tide will cover the lower quay.",
+          "textSHA256" : "6ba8dceb311fe0782bd9531a9cfb0f15f08202e6dfd680c7c444958bb60ce014",
+          "threadPartitionID" : "13016417218761107177141218398815821520767225811812419321126156042001001687210921911515"
+        }
+      ]
+    }
+  ],
+  "exportedAt" : "2026-10-18T05:31:52Z",
+  "group" : "",
+  "owner" : "local-braidplayground",
+  "partitionCount" : 18,
+  "schemaVersion" : 1,
+  "slug" : "braidplayground",
+  "source" : "app:home/braidplayground"
+}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What is the trace, and what steers? · Braid, step by step</title>
+<meta name="description" content="The trace follows a Thread's text through one document, in order; the trajectory module reads the slope of the evidence. Both are logged at every token. Neither steers today, and here is why.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the chapter</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · 8 of 10</span><a href="lexicon.html">The lexicon</a></header>
+
+<h1 id="ch-trace">What is the trace, and what steers?</h1>
+<p class="lede"><em>On a second witness that follows one document in order, and on what moves the answer.</em></p>
+<p class="step-link">The playground, step 6 · <a href="../../Examples/README.md#run">a sample run</a></p>
+
+<p>A citation says where one word came from. The trace asks a longer question: is the text following one of the Thread's documents, word after word, in order?</p>
+<p>It works like a finger moving along a page. A chain starts at one of the places the index pulled up. It moves forward only when the next word written is the next word on that page. One wrong word, and the finger lifts.</p>
+
+<figure class="fig wide" id="fig-chain" data-fig="chain" data-s="harbour">
+<figcaption>The harbour answer, replayed by your browser from the logged hits. The shaded words are the ones the chain has followed through Harlow Light's entry; the outlined one is what it expects next.</figcaption>
+</figure>
+
+<p>The length of the longest live chain is L. Under 24 tokens a chain is a phrase and counts nothing, because phrases are shared. From 24 to 96 the trace climbs to 1, because following one document that long is following that document.</p>
+<p>The harbour answer shows both halves. Its chain is 18 tokens long when the answer begins, still a phrase. By the end of the sentence it has followed the lighthouse entry for 37 tokens, and the trace reads 0.18.</p>
+
+<h2 id="slope">The slope of the evidence</h2>
+<figure class="board float-right" data-board="b3-reads-hknn"></figure>
+<p>Braid also watches the evidence move. The trajectory module fits a line through the last eight values of H_knn. A falling line means the sixteen places are converging on one; a rising line above the commons means they are scattering while the Thread still sounds sure.</p>
+<p>It writes its reading, e_t, into the log at every word.</p>
+
+<figure class="fig wide clear" id="fig-slope" data-fig="slope" data-s="joltvault">
+<figcaption>Craft's evidence through the Joltvault answer, the eight-word window behind each reading, and the e_t it logged, recomputed in your browser.</figcaption>
+</figure>
+
+<h2 id="steers">What steers</h2>
+<p>Neither the trace nor the module moves the answer today. The trace is replayed and checked; the module's gain κ is 0. Both were built to steer, and both are held to rules fixed before the numbers.</p>
+<p>The module's rule was a replacement test. It had to lift the right Thread at least as much as a gate built from the trace, the β4 gate, without breaking the guards. On 2026-10-15 it did not, so the gate stays a memory of lift.</p>
+<p>The β4 gate itself runs as a shadow. It is computed at every token from the same memory and the trace, logged beside the live gate, and never applied.</p>
+
+<figure class="fig wide" id="fig-shadow" data-fig="shadow" data-s="harbour">
+<figcaption>The live gate and the β4 shadow for the leading Thread. On the harbour answer the Thread's memory was already at 1 when its trace began to rise, so the two lines lie on top of each other.</figcaption>
+</figure>
+
+<p>Where the trace already wins is detection. On the trace bench it told each Thread's own text from shuffles, collages and imitations of its voice with an AUROC of 1.000. The entropy path has not learned to see what the trace sees: sentence templates shared across documents pull its retrieval apart.</p>
+<figure class="board wide" data-board="b3-panel-c-notes"></figure>
+
+<details class="engineers" id="engineers">
+<summary>For model engineers: the tracker, the module, the replacement rule</summary>
+<div class="inner">
+<p>The tracker keeps up to 8 live heads and seeds up to 4 new ones a step from the top hits. A head extends only when the arriving token equals its entry's value, then moves to the next entry of the same document; chains run across the break tokens between partitions, and the longest run inside one partition is reported beside them. A run of 8 may inherit a dormant chain of the same document that ended at most 8 tokens back, in the text and in the corpus. Dormant chains expire after 16 steps.</p>
+<div class="code" data-code="trace-rule"></div>
+<div class="code" data-code="trace-step"></div>
+<p>The module fits an ordinary least-squares slope to H_knn over 8 positions, with at least 4 defined. Collapse is −slope/s_ref and divergence slope/s_ref, both clamped to [0, 1], with s_ref = ln 16/8; divergence counts only while H_knn and H_lm are both above the commons' H_lm. e_t = collapse − divergence. A stitched run needs H_lm at most half the commons', H_knn at least half of ln 16, and lift at least ln 2, for 8 positions; it is never a gate input.</p>
+<div class="code" data-code="module-read"></div>
+<p>The rule, fixed before the numbers. R1: the holder share with the module at κ 0.5 at least matches the β4 shadow's; it measured 0.9999239 against 0.9999894, and failed. R2: the gaming guards pass within 0.05 of the memory-only gate; it failed. R3: verify replays the memory recursion with the module term; it passed. The β4 shadow is m·exp(4·(trace − mean trace)), renormalised over the live open set.</p>
+<div class="code" data-code="gate-shadow-open"></div>
+<p>The trace does decide one thing after the fact: credit. Where two Threads hold the same fact, the one whose chain the sentence followed takes the Threads' credit, by a margin of two tokens. Weight never decides.</p>
+<figure class="board" data-board="b3-trace-box"></figure>
+<figure class="board" data-board="b2-shadow"></figure>
+</div>
+</details>
+
+<p class="close">The trace follows; it does not steer. The entropy path will steer when it can see what the trace sees, and not before.</p>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/sessions/harbour.js"></script>
+<script src="data/sessions/joltvault.js"></script>
+<script src="data/sessions/tillyburn.js"></script>
+<script src="data/sessions/window-in-autumn.js"></script>
+<script src="data/threads/harbour.js"></script>
+<script src="data/threads/ambient.js"></script>
+<script src="data/threads/craft.js"></script>
+<script src="data/threads/veil.js"></script>
+<script src="data/code.js"></script>
+<script src="js/figures/trace.js"></script>
+<script src="js/boards.js"></script>
+<script src="js/boards/board-2.js"></script>
+<script src="js/boards/board-3.js"></script>
+<script>Braid.mount();</script>
+</body>
+</html>

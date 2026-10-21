@@ -1,0 +1,11 @@
+{
+  "checkpoints" : [
+
+  ],
+  "policy" : {
+    "everyPartition" : false,
+    "strideTokens" : 1024
+  },
+  "totalBytes" : 0,
+  "version" : 1
+}

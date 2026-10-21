@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The code explorer · Braid, step by step</title>
+<meta name="description" content="Every Swift file under Braid's Sources/, whole, with four trails through the functions that run them: training and inference, and the same two for questions.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+<link rel="stylesheet" href="css/explorer.css">
+</head>
+<body class="explorer">
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the code</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · appendix</span><a href="index.html">The braid at a glance</a></header>
+
+<h1 id="ch-code">The code explorer</h1>
+<p class="lede"><em>On reading the code beside the tour: every Swift file whole, and four trails through the functions that run them.</em></p>
+<p>Every Swift file under Sources/ is here, whole, with the line numbers Xcode shows. Pick a file, or walk one of four trails function by function: training, inference, and the same two for questions. Paste a function name, a signature or a whole body from Xcode, and the page opens that declaration with what it calls and what calls it. Those lists were matched by name when the site was built, not by a compiler, so each says how sure it is. Copy a line as File.swift:61 and Open Quickly lands on the same line.</p>
+
+<div id="explorer" class="xp" data-app="explorer"></div>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/code.js"></script>
+<script src="data/sources/index.js"></script>
+<script src="data/sources/BraidCore.js"></script>
+<script src="data/sources/BraidThread.js"></script>
+<script src="data/sources/BraidTerminal.js"></script>
+<script src="data/sources/BraidKit.js"></script>
+<script src="data/sources/BraidStudio.js"></script>
+<script src="data/sources/BraidCLI.js"></script>
+<script src="js/figures/overview.js"></script>
+<script src="js/explorer.js"></script>
+<script>Braid.explorer.mount(document.getElementById("explorer")); Braid.mount();</script>
+</body>
+</html>

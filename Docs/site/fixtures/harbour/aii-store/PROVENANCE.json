@@ -1,0 +1,32 @@
+{
+  "copiedAt": "2026-10-18T19:24:11Z",
+  "from": "~/.rao/aii/thread/db",
+  "aiiCommit": "d24ed4e",
+  "node": "D65AC4E7-5440-49B6-91E3-B08138A49487",
+  "lane": {
+    "app": "braidplayground",
+    "id": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+    "owner": "local-braidplayground",
+    "group": "braidplayground-harbour"
+  },
+  "documents": 18,
+  "partitionIDsRecomputed": 5,
+  "partitionIDsChecked": 18,
+  "storeSizes": {
+    "table": 33161530,
+    "graph": 26577953,
+    "registry": 158864
+  },
+  "documentsPerLane": {
+    "ambient": 364,
+    "craft": 743,
+    "braidplayground": 18
+  },
+  "storeCounts": {
+    "documents": 1125,
+    "entities": 23284,
+    "relationships": 1782,
+    "predicates": 12
+  },
+  "redacted": "paths under the home folder are written as ~; nothing from another lane, owner or group is copied"
+}

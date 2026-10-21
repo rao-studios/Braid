@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does the log prove? · Braid, step by step</title>
+<meta name="description" content="The session log is the artifact: braid verify replays it with no model. Your browser does the same on five real sessions. Then, where Braid stands, claim by claim.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the chapter</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · 10 of 10</span><a href="lexicon.html">The lexicon</a></header>
+
+<h1 id="ch-verify">What does the log prove?</h1>
+<p class="lede"><em>On the session log as the artifact, and on where Braid stands.</em></p>
+<p class="step-link">The playground, step 7 · <a href="../CLI.md">the braid command</a></p>
+
+<p>Every answer leaves a log: one line per token, with every strand's numbers and hits. The log is the artifact, and <code>braid verify</code> replays it with no model loaded.</p>
+<p>It checks that nobody edited the log: an answer's lines hash to the value its last line carries. It recomputes every share, every weight and every H_knn from the logged numbers. It replays the gate's memory token by token, which proves the ten-to-one clamp held. It replays every chain. And it re-reads every cited span from its source.</p>
+
+<figure class="fig wide" id="fig-browser-verify" data-fig="browser-verify">
+<figcaption>Five real sessions, each replayed the way braid verify replays it, in your browser, now. Hover a mark for its worst deviation.</figcaption>
+</figure>
+
+<figure class="board float-right" data-board="b2-verify"></figure>
+<p>Every check passing is the expected result. The logs were written by Braid, and the checks are Braid's own, ported line for line. What the table shows is that the arithmetic is closed: a log is enough to recompute itself, and nothing outside it is needed to trust it.</p>
+
+<h2 id="true" class="clear">Verified is not true</h2>
+<p>Verified means the cited text exists where the receipt says, and the arithmetic replays. It does not mean the answer is true.</p>
+<p>On 2026-10-15 a Thread answered a question with another document's port number, pulled in through a sentence shape both documents shared, and that session verified. The receipt was honest about where the words came from. The words were wrong.</p>
+
+<h2 id="stands">Where Braid stands</h2>
+<div class="state-box" role="note" aria-label="What moves the answer today">
+<p><strong>What moves the answer today.</strong> The gate is a memory of who has predicted better than the base model. It moves only while the prompt is read, and never by more than ten to one on any word.</p>
+<p>The two entropies are written down at every word and replayed by braid verify. They move nothing yet: the module that reads them is switched off, because it did not beat the trace gate it was meant to replace. The trace is checked and never applied.</p>
+<p>“Entropy-gated” is where the design is going. This box is where it stands.</p>
+</div>
+
+<figure class="fig wide" id="fig-status" data-fig="status">
+<figcaption>Every claim Braid makes, with the test or bench behind it. A claim without a passing test or bench is not made.</figcaption>
+</figure>
+
+<h3 id="open">Open decisions</h3>
+<p>Eleven findings are open, and they are the owner's to decide. Nothing was changed to make a number pass.</p>
+<ol class="plain" id="findings"></ol>
+
+<h2 id="yours">Make it yours</h2>
+<p>The playground is the shortest path to a Thread of your own. Change one thing at a time, run it, and read the receipt.</p>
+<ul class="plain">
+<li><b>Your records.</b> Edit the harbour log in <code>Records.swift</code>, or file your own app's values; an edited entry trains a new version on the next run.</li>
+<li><b>Your question.</b> Change the test prompt and its expected answer. A prompt in a record's own words, cut before the fact, shows the Thread best.</li>
+<li><b>No training.</b> <code>.training(.off)</code> indexes the pack's own blocks, and retrieval alone carries the facts.</li>
+<li><b>More Threads.</b> Add a <code>ThreadRecipe</code> from a folder, a dataset, or another app's records, and attach it.</li>
+</ul>
+
+<details class="engineers" id="engineers">
+<summary>For model engineers: the log, the checks, the tolerances</summary>
+<div class="inner">
+<p>A session is JSONL, schema 1, one object per line with sorted keys: a header naming the strands and the gate's settings, then per generation a gen line, one tok line per position, and an end line with the touched partitions and the body's SHA-256. A tok line carries, per strand, the memory, w′, open, p_lm(y), p_knn(y), the share, H_lm, H_knn, the evidence, e_t, the shadow gate and share, up to 16 hits as [entry, score, value, row, offset, loss], and the chain state.</p>
+<div class="code" data-code="session-end"></div>
+<div class="code" data-code="replay-check"></div>
+<p>braid verify's tolerances: shares sum to 1 within 1e-5; w′ within 1e-6; p and every share within 1e-5; H_knn within 1e-5; the memory within 1e-5. This site holds the memory to 1e-6. Exit 0 when everything replays, 3 when a span no longer matches its source, 65 when the log does not replay. <code>--live</code> re-reads spans from the AII lane as it stands now; <code>--keys</code> recomputes every cited key from a checkpoint.</p>
+<p>A log is about 2 KB per Thread per token, measured on 2026-10-15, against the plan's 2.5 KB at three Threads. It is self-contained, so verify needs no index.</p>
+<figure class="board" data-board="b3-debug-map"></figure>
+<figure class="board" data-board="b2-measured"></figure>
+</div>
+</details>
+
+<div class="code" data-code="pg-verify" data-do="Do it: step 7 of the playground verifies its own session. <code>Scripts/cli.sh verify --live --work-area Examples/.work Examples/.work/sessions/&lt;session&gt;.jsonl</code> re-reads every span from the lane."></div>
+
+<p class="close">The log proves its own arithmetic and its own citations. Whether the answer is true is still the reader's call.</p>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/claims.js"></script>
+<script src="data/sessions/joltvault.js"></script>
+<script src="data/sessions/tillyburn.js"></script>
+<script src="data/sessions/window-in-autumn.js"></script>
+<script src="data/sessions/hello.js"></script>
+<script src="data/sessions/harbour.js"></script>
+<script src="data/threads/ambient.js"></script>
+<script src="data/threads/craft.js"></script>
+<script src="data/threads/veil.js"></script>
+<script src="data/threads/harbour.js"></script>
+<script src="data/code.js"></script>
+<script src="js/figures/status.js"></script>
+<script src="js/boards.js"></script>
+<script src="js/boards/board-2.js"></script>
+<script src="js/boards/board-3.js"></script>
+<script>
+(function () {
+  var list = document.getElementById("findings"), c = (window.BraidData || {}).claims;
+  if (list && c) c.findings.forEach(function (f) { var li = document.createElement("li"); li.innerHTML = "<b>" + f.title + "</b>" + f.text; list.appendChild(li); });
+})();
+Braid.mount();
+</script>
+</body>
+</html>

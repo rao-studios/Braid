@@ -1,0 +1,10 @@
+{
+ "id": "braidplayground/log/regatta",
+ "url": {
+  "relative": "file://~/.rao/aii/thread/db/documents/braidplayground/log/regatta"
+ },
+ "owner_id": "local-braidplayground",
+ "name": "The regatta",
+ "created_at": "2026-10-18T16:26:34Z",
+ "lane_id": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca"
+}

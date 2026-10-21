@@ -1,0 +1,39 @@
+# SwiftPM / Xcode
+.build/
+.swiftpm/
+xcuserdata/
+*.xcodeproj
+*.dSYM
+DerivedData/
+
+# Editors and local tooling
+.vscode/
+.claude/
+.DS_Store
+
+# Working notes kept on this Mac, out of the repo
+/CLAUDE.md
+/Docs/ARCHITECTURE.md
+/Docs/PAPER.md
+/Docs/EXPLORER.md
+/Docs/AUDIT.md
+/Docs/PIPELINE.md
+/Docs/PLAYGROUND.md
+
+# Demo AII homes (braid aii create) live under the repo root on APFS; never in the repo
+/aii/
+
+# Weights, indexes and Metal libraries never live in the repo (they go to the work area)
+*.safetensors
+*.metallib
+
+# The playground's scratch braid (Examples/run.sh): its work area, pack link, Threads and sessions
+/Examples/.work/
+
+# The tutorial site (Docs/site/src/*.py) regenerates these: figure exports, check screenshots
+/Docs/site/export/
+/Docs/site/.check/
+/Docs/site/src/__pycache__/
+# The chat orb's key, copied from this Mac's ~/.rao by Docs/site/src/chatkey.py: never committed, in either spelling of the folder
+/Docs/site/local/
+/docs/site/local/

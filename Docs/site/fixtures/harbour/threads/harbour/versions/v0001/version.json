@@ -1,0 +1,22 @@
+{
+  "blocksSHA256" : "9f5eb42ba8704adb97794f6586b0599412a8f5d0962bc8830fd82a7314cde296",
+  "checkpointsSHA256" : "2b89b862304261a42b6606c18eddaec934baa6eb235adae0facdd81a0d292dbe",
+  "corpusHash" : "6bd493d12a77b2bd868f89ae0185a00f7380d25969e8a490c39cb9e353d454c3",
+  "createdAt" : "2026-10-18T05:32:09Z",
+  "cut" : 12,
+  "entries" : 608,
+  "epochs" : 80,
+  "indexSHA256" : "808c1ea741238e7a3eafb449802b6dce60c61a0c5a7b97d87926ad1a291264fb",
+  "keyScheme" : "residual:12",
+  "learned" : true,
+  "meanLoss" : 0.07484371,
+  "memorised" : 0.985623,
+  "packSHA256" : "d3e4516a2fa22595d9461bfc1e96d8b76498dcd08743724692117514c8154462",
+  "seamSHA256" : "079ebc0f9299de3a97475c1f6c81132b9a7c9d6a30686d8f64d7aacf214f680a",
+  "snapshotHash" : "6bd493d12a77b2bd868f89ae0185a00f7380d25969e8a490c39cb9e353d454c3",
+  "steps" : 80,
+  "tokenizerSHA256" : "e9f8495abe17234420c02d6406a3fecb4241446c4554962654e38e7236db5d54",
+  "trained" : true,
+  "version" : 1,
+  "vocabularySHA256" : "71b4eb60116f8fd21a4f3469b7734157d9c425c5c83ab7e954bef456cbafc353"
+}

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What is entropy, and why does a citation need it? · Braid, step by step</title>
+<meta name="description" content="Chapter 0 of Braid, step by step: what entropy is in a language model, and why a citation needs it. Braid writes down two of them at every word, a claim and its evidence.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the chapter</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · the first question</span><a href="lexicon.html">The lexicon</a></header>
+
+<h1 id="ch-entropy">What is entropy, and why does a citation need it?</h1>
+<p class="lede"><em>On the two numbers Braid writes down at every word.</em></p>
+<p class="step-link">The playground prints this at step 6 · <a href="../../Examples/README.md#run">the playground</a></p>
+
+<p>A language model writes one word at a time. Before each word it spreads its belief across every word it knows, and entropy measures how spread out that belief is. A model sure of one word sits near zero. A model torn evenly between sixteen words sits at 2.77.</p>
+
+<figure class="fig float-right" id="fig-ways" data-fig="ways">
+<figcaption>Sixteen even words sit at 2.77, four doublings up a ladder where every doubling adds 0.69. Sixteen is the number of places Braid pulls up for each word, and thirty-two is one doubling past it. Lean toward one word and the entropy climbs back down.</figcaption>
+</figure>
+<p>The number keeps what the word means. In everyday speech entropy is disorder, and physics made disorder countable: there are few ways for a desk to be tidy and many ways for it to be a mess. Entropy measures how many ways there are.</p>
+<p>A model's ways are the words it might write next. Sure of one word, it has one way, and its entropy is zero. Torn evenly between sixteen, it has sixteen ways, and its entropy is the natural logarithm of sixteen: 2.77.</p>
+<p>The logarithm turns doubling into adding. Each time the even choices double, entropy climbs the same 0.69, and sixteen is four doublings from one. Counted in bits instead, the climb is exactly four: four yes-or-no questions find one word among sixteen.</p>
+<p>Run backwards, the number says how many words a model is weighing. In the answer below, at “27”, the Thread that holds the answer sits at 0.46, as if weighing about one and a half words. The base model alone sits at 3.92, as if weighing about fifty.</p>
+
+<h2 id="claim-and-evidence">A claim and its evidence</h2>
+<p>Braid keeps two of these numbers at every word it writes. The first measures its own reed: how sure it is of the next word. The second measures what it found in its own text: whether the sixteen closest places it pulled up agree on what comes next. The first is a claim. The second is evidence.</p>
+<p>Sixteen is Braid's own number: the places it pulls up for every word. So the evidence can scatter sixteen ways at most, four doublings, and never passes 2.77. Braid reads it on the same ladder. At ln 2 or below, no more torn than two words, it calls the places coherent. At ln 4 or above, as torn as four, it calls them unsupported.</p>
+<p>A citation lives in the evidence. When the places it pulled up agree, the next word is coming from somewhere specific, and that somewhere is what Braid cites. When they scatter, the word is one that many documents share, a template rather than a fact.</p>
+<p>Here is one answer, cited word by word.</p>
+
+<figure class="fig wide" id="fig-receipt" data-fig="replay" data-s="joltvault" data-i="10" data-panels="strip,detail" data-title="The receipt">
+<figcaption>Craft wrote “410”. The base model on its own gave it almost no chance, and the citation points at one line of one Craft document, which your browser re-reads from the source. Click any word to see its receipt.</figcaption>
+</figure>
+<h2 id="two-kinds-of-sure">Two kinds of sure</h2>
+<p>Hold the claim and the evidence side by side and they part ways. Through the rest of that answer, Craft's reed is close to certain of almost every word. Its evidence is sharp where the answer belongs to one document, and spreads on words like “The” and “original”, which many of its documents share.</p>
+
+<figure class="fig wide" id="fig-two-entropies" data-fig="entropy" data-s="joltvault" data-i="11">
+<figcaption>Drag the token, or click either chart. Low on the right means the sixteen places Craft found agree on the next word. On “ original” they scatter, because many of Craft's notes say it that way. The commons, dashed, is the base model alone.</figcaption>
+</figure>
+
+<p>That gap is the idea this site is about. A model that reports only its claim cannot tell recall from fluency. A model that also keeps its evidence can show which words came from a place and which came from a habit.</p>
+
+
+<details class="engineers" id="engineers">
+<summary>For model engineers: the two definitions, and where they live</summary>
+<div class="inner">
+<p>Both are Shannon entropies in nats, H = −Σ p ln p. H_lm is the entropy of a strand's own reed over the vocabulary: softmax(h·Eᵀ) with the tied embedding E and its 11 padding rows masked. H_knn is the entropy of the strand's retrieval distribution: weights softmax(s/τ) over its own top 16 hits by cosine, with τ 0.05, summed per value token, so H_knn never exceeds ln 16.</p>
+<p>An even spread over N outcomes gives ln N, the most N outcomes can give: 2.77 is ln 16, and each doubling adds ln 2. e<sup>H</sup>, the perplexity, reads an entropy back as the number of outcomes in play. Over the 50,277 tokens of the vocabulary, H_lm could reach ln 50,277, about 10.8; at “27” the session logs 0.461 for Craft and 3.916 for the commons.</p>
+<p>Sixteen is <code>[index] k</code>. The trajectory module's lines sit on the same doublings: a position is coherent at H_knn ≤ ln 2, unsupported at H_knn ≥ ½ · ln 16 = ln 4, and its reference slope is ln 16 over 8 positions. It logs them and steers nothing, since κ is 0.</p>
+<p>They are the only two entropies a session log stores, per strand per position. The gate's entropy, lift, credit, spans and royalties are derived when the log is read. A node sends the cluster its normed state and its hits and nothing else; the cluster runs the reed, so anyone holding the log can recompute H_knn, and your browser does, at every position of this answer.</p>
+<div class="code" data-code="expert-entropies"></div>
+<p>The answer is session <code>20261015-194600-c809fc97</code>: three Threads trained on 40 documents each, and the commons, on 2026-10-15. Board 3 walks the same session through panel C.</p>
+</div>
+</details>
+
+<h2 id="today">What moves the answer today</h2>
+<div class="state-box" role="note" aria-label="What moves the answer today">
+<p><strong>What moves the answer today.</strong> The gate is a memory of who has predicted better than the base model. It moves only while the prompt is read, and never by more than ten to one on any word.</p>
+<p>The two entropies are written down at every word and replayed by braid verify. They move nothing yet: the module that reads them is switched off, because it did not beat the trace gate it was meant to replace. The trace is checked and never applied.</p>
+<p>“Entropy-gated” is where the design is going. This box is where it stands.</p>
+</div>
+
+<figure class="fig wide" id="fig-what-steers" data-fig="what-steers">
+<figcaption>Each row's status is read from the claims in chapter 10 when the site's data is built, so this table cannot drift from them.</figcaption>
+</figure>
+
+<figure class="board float-right" data-board="b4-s8-measured"></figure>
+<p>The rest of this site keeps that line. Every number says when it was measured and which test or bench stands behind it.</p>
+<p>Some of what Braid set out to show already holds: the trace tells a Thread's own text from imitations of it, and a fact's owner takes its answer. Some does not yet: the entropy path has not learned to see what the trace sees. Both kinds are on the record, side by side.</p>
+
+<div class="code" data-code="pg-show" data-do="Do it: <code>Examples/run.sh</code>. Step 6 prints a receipt like this one for every word of the harbour answer, and step 7 verifies the session."></div>
+
+<p class="close">The claim says what a model believes. The evidence says where it came from.</p>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/claims.js"></script>
+<script src="data/code.js"></script>
+<script src="data/sessions/joltvault.js"></script>
+<script src="data/threads/ambient.js"></script>
+<script src="data/threads/craft.js"></script>
+<script src="data/threads/veil.js"></script>
+<script src="js/figures/replay.js"></script>
+<script src="js/figures/entropy.js"></script>
+<script src="js/figures/status.js"></script>
+<script src="js/boards.js"></script>
+<script src="js/boards/board-2.js"></script>
+<script src="js/boards/board-3.js"></script>
+<script src="js/boards/board-4.js"></script>
+<script>Braid.mount();</script>
+</body>
+</html>

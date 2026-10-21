@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The lexicon · Braid, step by step</title>
+<meta name="description" content="The load-bearing nouns of Braid and AII, spelled exactly as the code spells them.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+<style>
+dl.lex { max-width: 46rem; margin: 0 0 2rem; }
+dl.lex dt { font-weight: 650; margin-top: .9rem; }
+dl.lex dd { margin: .15rem 0 0; color: var(--fg-2); }
+dl.lex dt code { font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the lexicon</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · appendix</span><a href="index.html">The braid at a glance</a></header>
+<h1 id="ch-lexicon">The lexicon</h1>
+<p class="lede"><em>The load-bearing nouns, spelled exactly as the code spells them.</em></p>
+<p>If prose elsewhere on this site disagrees with this page, this page wins.</p>
+
+<h2 id="model">The model</h2>
+<dl class="lex">
+<dt id="braid">Braid</dt><dd>A language model made of strands under one reed. Every token's probability is split exactly among the strands, and each Thread's part is cited to its own text.</dd>
+<dt id="strand">Strand</dt><dd>One member of a braid: the commons or a Thread. Each runs as a node.</dd>
+<dt id="commons">The commons</dt><dd>The pretrained Mamba2 of 130 million parameters, run as imported. The yardstick every Thread is measured against, and credited to nobody. It has no index, and its λ is 0. Its blocks 12–23, final norm and embedding are the trunk every Thread runs.</dd>
+<dt id="thread">Thread</dt><dd>One corpus, a head of blocks 0–11 trained on it, a provenance index of every position, and the commons' trunk behind it. Not AII's Thread service.</dd>
+<dt id="pack">Pack</dt><dd>The imported commons on disk, written once and re-hashed on every load. The commons is built from it whole, and its seam names the trunk every Thread is trained against.</dd>
+<dt id="head">Head</dt><dd>A node's own blocks 0–11: trained for a Thread, the pack's own for the commons. The only weights a Thread keeps.</dd>
+<dt id="trunk">Trunk</dt><dd>Blocks 12–23, the final norm and the tied embedding: the commons', frozen, run by every Thread behind its own head, named by the seam hash.</dd>
+<dt id="cut">The cut</dt><dd>Where the head ends and the trunk begins: 12.</dd>
+<dt id="reed">The reed</dt><dd>The braid's one output layer: a strand's normed state times the embedding's transpose, with the padding rows masked. Tied, as the commons was trained.</dd>
+<dt id="node">Node</dt><dd>A strand as a running process. At every position it sends a normed state of 768 floats and its 16 hits, and nothing else.</dd>
+<dt id="statestack"><code>StateStack</code></dt><dd>A strand's whole history: every layer's SSM state and convolution window, 19,390,464 bytes at 130m, at any length.</dd>
+</dl>
+
+<h2 id="receipt">The index and the receipt</h2>
+<dl class="lex">
+<dt id="index">Provenance index</dt><dd>Per Thread, one entry per position of its corpus: a key, the next token, both addresses, and the transition's loss. Written after training.</dd>
+<dt id="key">Key</dt><dd>[√½ · mid/‖mid‖, √½ · final/‖final‖], 1,536 floats. <code>mid</code> is the residual stream after block 12, the scheme <code>residual:12</code>.</dd>
+<dt id="hit">Hit</dt><dd>One retrieved entry, logged as [entry, score, value, row, offset, loss]. The row and offset say where the value sits.</dd>
+<dt id="address">Address</dt><dd>(row, offset): a partition's row in a Thread's table, and a token's offset in it.</dd>
+<dt id="share">Share</dt><dd>A strand's part of a token's probability, w′ · p_t(y) / p(y). A token's shares sum to 1.</dd>
+<dt id="citation">Citation</dt><dd>The partition and offset of a hit whose value is the token that was written.</dd>
+<dt id="span">Span</dt><dd>Three or more tokens in a row, each with a matching hit at rank three or better, walking one partition in order. Re-read from its source by verify.</dd>
+<dt id="entropy">Entropy</dt><dd>How spread out a belief is, −Σ p ln p, in nats. An even spread over N outcomes gives ln N: sixteen even words give 2.77, and every doubling adds ln 2, 0.69. Divided by ln 2 it is in bits, so sixteen even words are 4 bits. e to the entropy, the perplexity, reads it back as the number of outcomes in play.</dd>
+<dt id="nat">Nat, bit</dt><dd>Units of entropy. A nat counts with the natural logarithm, the unit Braid logs; a bit counts in base two, one yes-or-no question. One nat is about 1.44 bits.</dd>
+<dt id="hlm">H_lm</dt><dd>The entropy of a strand's reed over the vocabulary, in nats: the claim.</dd>
+<dt id="hknn">H_knn</dt><dd>The entropy of a strand's 16 hits, weighted by softmax(score/τ) and grouped by value: the evidence. At most ln 16.</dd>
+<dt id="lift">Lift</dt><dd>ln p_t(y) − ln p_c(y): how much better than the commons a strand predicted a token.</dd>
+<dt id="gate">Gate, memory</dt><dd>The weight the braid gives each strand. A memory moved by lift at prompt tokens only, never by more than ten to one on one token.</dd>
+<dt id="floor">Open floor</dt><dd>0.05 · 2 / max(2, N). A strand whose memory sits below it is left out of the mixture; the commons and the leader never are.</dd>
+<dt id="trace">Trace</dt><dd>clamp((L − 24) / 72, 0, 1), where L is the longest live chain following one document in order. Logged and replayed; never applied.</dd>
+<dt id="module">Trajectory module, e_t</dt><dd>Reads the slope of H_knn and logs e_t. It enters the gate only through κ, <code>[gate] module_gain</code>, which is 0.</dd>
+<dt id="shadow">The β4 shadow</dt><dd>The trace gate m · exp(4 · (trace − mean trace)), logged beside the live gate, never applied.</dd>
+<dt id="credit">Credit, royalties</dt><dd>Views derived from a log: form words to the commons, content words by share, weighted by bits = −log₂ p_commons(y).</dd>
+<dt id="log">Session log</dt><dd>JSONL, schema 1: a header, then per answer a gen line, one tok line per position, and an end line with the body's hash. The artifact <code>braid verify</code> replays.</dd>
+</dl>
+
+<h2 id="aii">AII</h2>
+<dl class="lex">
+<dt id="aii-index">AII</dt><dd>The Ambient Intelligence Index: one per Mac, in <code>~/.rao</code>, shared by every app.</dd>
+<dt id="thread-service">The Thread service</dt><dd>AII's index server, on HTTP 47081 and gRPC 47090. Its code calls it Thread; this site never does.</dd>
+<dt id="sewn">Sewn</dt><dd>AII's grounded chat server. Seam is the wire between the two.</dd>
+<dt id="lane">Lane</dt><dd>An app's share of the index, opened by the app's secret. The secret, not the request, names the lane.</dd>
+<dt id="owner">Owner</dt><dd>A person within a lane: <code>local-&lt;app&gt;</code> when there is no account, <code>aii-local</code> for the Rao apps.</dd>
+<dt id="group">Group</dt><dd>An owner's collection, <code>&lt;app&gt;-&lt;group&gt;</code> on the wire.</dd>
+<dt id="record">Record</dt><dd>One filed value, in an <code>aii-record/1</code> envelope, with the id <code>&lt;app&gt;/&lt;kind&gt;/&lt;recordID&gt;</code>.</dd>
+<dt id="envelope">Envelope</dt><dd>A record's canonical JSON: app, kind, id, title, group, tags, the app's own payload. At most 1 MB.</dd>
+<dt id="partition">Partition</dt><dd>A piece of a record's text, about 1,500 characters, embedded on its own. The unit a Thread addresses by row.</dd>
+<dt id="export">ExportCorpus</dt><dd>AII's paged export of every record an owner filed, whole and in id order. How a Thread reads a lane.</dd>
+<dt id="corpus-hash">Corpus hash</dt><dd>SHA-256 of the sorted lines of document id, partition index and text hash. The receipt for what a Thread learned from.</dd>
+</dl>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script>Braid.mount();</script>
+</body>
+</html>

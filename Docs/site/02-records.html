@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What goes into a record? · Braid, step by step</title>
+<meta name="description" content="What an app files into AII: its own value in an aii-record/1 envelope, with the text cut into partitions and the tags as its entities.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the chapter</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · 2 of 10</span><a href="lexicon.html">The lexicon</a></header>
+
+<h1 id="ch-records">What goes into a record?</h1>
+<p class="lede"><em>On the shape of what an app files, and what the index makes of it.</em></p>
+<p class="step-link">The playground, step 2 · <a href="../../Examples/README.md">the playground</a></p>
+
+<p>A record is a value the app already has, plus a little schema. The playground's is a harbour log entry: an id, a title, the text, and a couple of tags.</p>
+<div class="code" data-code="pg-app"></div>
+
+<p>AII files each value as a record. The value travels inside an envelope that names the app, the kind, the id and the group. The text is cut into partitions, pieces of about 1,500 characters, and each one is embedded on its own. A short entry like the harbour's is a single partition.</p>
+
+<figure class="fig wide" id="fig-record" data-fig="record">
+<figcaption>Harlow Light's entry, from the value the app holds to the envelope the index stores. Paste a longer text to watch AII's chunker cut it, or switch the tags off.</figcaption>
+</figure>
+
+<p>Tags matter more than they look. Any tag turns off the index's own entity extraction and becomes the record's entity instead. Search looks through entities before it ranks anything, so a tag is the surest way for a record to be found.</p>
+
+<figure class="fig wide" id="fig-remember">
+<div class="fig-head"><span class="fig-title">Remember, then recall by a tag</span></div>
+<div class="fig-body">
+<div class="detail"><span class="d">2 remember  </span>18 entries as braidplayground/log/&lt;id&gt; in braidplayground-harbour
+<span class="d">  recall    </span>Harlow Light (braidplayground/log/harlow-light) · distance 5.004</div>
+<p class="note">The playground's run on 2026-10-17, as Examples/README.md records it.</p>
+</div>
+<figcaption>Remembering returns once the Thread service holds every record. A search for the tag finds the lighthouse entry.</figcaption>
+</figure>
+<div class="code" data-code="pg-remember"></div>
+
+<p>A question in plain words, “Who looks after the lighthouse?”, found nothing. That gap is where the next chapter starts.</p>
+
+<h2 id="good-records">What makes a good record</h2>
+<p>The harbour log was written to show provenance plainly, and its habits carry over to any experiment.</p>
+<ul class="plain">
+<li><b>One paragraph per entry,</b> so each entry is one partition.</li>
+<li><b>A distinct opening.</b> Each entry names its subject first and its fact second, and no two share a sentence template. Retrieval matches templates more readily than names.</li>
+<li><b>Tags on every entry.</b> They keep extraction off, and they are what search finds.</li>
+<li><b>Invented facts.</b> The base model cannot know them, so every token that states one shows which source supplied it.</li>
+<li><b>Enough text.</b> The whole log must fill more than one training window.</li>
+</ul>
+
+<figure class="board float-right" data-board="b4-s4-how"></figure>
+<p>Edit an entry and run again, and the Thread trains on from where it was and a new version goes live. Delete one and it stays in the lane, because remembering never removes; <code>run.sh forget</code> clears the group.</p>
+
+<details class="explore clear" id="explore-files">
+<summary>Explore: what the Thread service wrote to disk for this record</summary>
+<div class="inner">
+<p>Two files per document, and one entry in each of three shared lists. The text is stored exactly as sent; the vector lives in the table; the envelope rides beside it, byte for byte.</p>
+<figure class="fig" id="fig-store-files" data-fig="store-files">
+<figcaption>The playground's records as this Mac stores them. Pick another record, or open a card.</figcaption>
+</figure>
+<p><a href="aii-storage.html#files">The whole storage path, on one page</a></p>
+</div>
+</details>
+
+<details class="explore" id="explore-codebooks">
+<summary>Explore: how its vector is compressed</summary>
+<div class="inner">
+<p>Each partition's vector is 1,024 numbers. The Thread service cuts it into sixteen strips and trains a small lookup table for each strip, per document, from that document's own partitions.</p>
+<figure class="fig" id="fig-pq-codebooks" data-fig="pq-codebooks">
+<figcaption>Slide the partition count to see how big each document's tables get. A one-partition record keeps its exact vector.</figcaption>
+</figure>
+<p><a href="aii-storage.html#codebooks">The whole storage path, on one page</a></p>
+</div>
+</details>
+
+<details class="engineers" id="engineers">
+<summary>For model engineers: the protocol, the envelope, the chunker</summary>
+<div class="inner">
+<p><code>AIIRecordable</code> asks for a kind, a group, an id, a title and the text; everything else has a default. The id on the wire is <code>&lt;app&gt;/&lt;kind&gt;/&lt;recordID&gt;</code>. The envelope is the canonical JSON of <code>aii-record/1</code>, and AII refuses one over 1 MB, so bulk text belongs in <code>text</code>, which becomes the partitions.</p>
+<div class="code" data-code="aii-recordable"></div>
+<p>The chunker packs whole paragraphs up to about 1,500 characters, never more than 2,000; a longer paragraph is cut at sentence ends, and a longer sentence is cut hard. The record figure above runs a port of it, and checks it against what the Thread service stored for all 18 entries.</p>
+<div class="code" data-code="aii-chunker"></div>
+<p><code>remember</code> files every value, then reads the documents back until each one carries the envelope it just filed; it gives up with <code>notReady</code> after 15 seconds, often while the embedder loads. Re-remembering an id replaces it.</p>
+</div>
+</details>
+
+<p class="close">A record is the app's own value, filed whole. Its text is what a Thread will learn from.</p>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/aii-store.js"></script>
+<script src="data/code.js"></script>
+<script src="js/figures/aii.js"></script>
+<script src="js/boards.js"></script>
+<script src="js/boards/board-4.js"></script>
+<script>Braid.mount();</script>
+</body>
+</html>

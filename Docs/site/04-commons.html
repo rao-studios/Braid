@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why does Braid need a commons? · Braid, step by step</title>
+<meta name="description" content="The commons is a pretrained Mamba2 run as published: the yardstick every Thread is measured against, and the owner of grammar. A Thread is twelve blocks of its own in front of the commons' trunk.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the chapter</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · 4 of 10</span><a href="lexicon.html">The lexicon</a></header>
+
+<h1 id="ch-commons">Why does Braid need a commons?</h1>
+<p class="lede"><em>On the base model every Thread is measured against.</em></p>
+<p class="step-link">The playground, steps 3 and 5 · <a href="../../Examples/README.md">the playground</a></p>
+
+<p>The commons is a pretrained language model run exactly as published: Mamba2, with 130 million parameters. It knows ordinary language and none of your records. Braid credits it to nobody.</p>
+<p>It has two jobs. It is the yardstick: a Thread earns trust by predicting the next word better than the commons does. And it owns the grammar: words like “the” and “of” are credited to the commons, so a Thread is paid for what it knows, not for speaking English.</p>
+<p>Without it there is no “better than”. A Thread trained on 18 records would look brilliant at predicting “the”, and nothing would say it hadn't earned that.</p>
+
+<figure class="fig wide" id="fig-commons-and-thread" data-fig="commons-and-thread">
+<figcaption>The commons and the harbour Thread, as nodes. The commons runs the pack whole; the Thread runs its own twelve blocks in front of the commons' other twelve, and its index is its own.</figcaption>
+</figure>
+
+<h2 id="copy">A Thread is a head on the commons' trunk</h2>
+<p>A Thread owns twelve blocks and nothing else of the model. They start as the pack's first twelve and train on its corpus, and that head is what a version keeps on disk. The other twelve blocks, the final norm and the vocabulary are the commons': loaded once when the commons is built, and run by every Thread on the machine behind its own head.</p>
+<p>That split is what lets Threads meet in one braid. They speak the same vocabulary through the same reed, and the trunk they run is one object, the commons', named by its seam hash. A Thread whose version names another seam is refused before it runs, and one built on another pack before it joins.</p>
+<div class="code" data-code="thread-head"></div>
+<div class="code" data-code="commons-trunk"></div>
+<div class="code" data-code="thread-seam-guard"></div>
+
+<div class="pair even">
+<figure class="board" data-board="b3-thread-column"></figure>
+<figure class="board" data-board="b3-commons-column"></figure>
+</div>
+
+<h2 id="node">What a node sends</h2>
+<p>Each strand runs as a node. At every position a node sends the braid two things and nothing more: its state, 768 numbers, and the sixteen nearest places in its own corpus.</p>
+
+<figure class="fig wide" id="fig-node-emits" data-fig="node-emits" data-s="harbour" data-i="20">
+<figcaption>What the harbour node sent just before the answer's first word. The top place is the lighthouse entry's own next word.</figcaption>
+</figure>
+
+<p>Everything else is computed by the braid from those two things: the reed, the shares, the gate, the trace. That is why a session's log is enough to check every number in it.</p>
+<figure class="board wide" data-board="b2-strands"></figure>
+
+<details class="engineers" id="engineers">
+<summary>For model engineers: the pack, conformance, and the node protocol</summary>
+<div class="inner">
+<p>The commons is imported once, from <code>AntonV/mamba2-130m-hf</code> in F32, into a pack that is written once and re-hashed on every load. Three hashes name it: the pack's name over every block and the tokenizer, the seam over the frozen blocks 12–23 and the vocabulary, and the vocabulary over the norm and the embedding. A Thread version binds its blocks, index, checkpoints, snapshot and tokenizer to them by SHA-256. The commons is <code>Trunk(pack:)</code>, the pack whole; a Thread's running model is <code>Trunk(head:tail:)</code> with the commons' <code>tail</code>, and <code>ThreadStore.load</code> takes the commons. Memory did not move: MLX already shared the tail's bytes, and the rule makes the sharing a fact of the types.</p>
+<p>The commons node has no index and λ 0. Each Thread has λ 0.5 and τ 0.05. A Thread's head is 45.2M parameters, 181 MB a version; the pack holds 129.0M, and the commons' trunk is the rest. The reed is the tied embedding, h·Eᵀ, with the eleven padding rows at −∞.</p>
+<div class="code" data-code="node-protocol"></div>
+<div class="code" data-code="pg-braid" data-do="Do it: step 5 of the playground assembles exactly this braid. <code>Scripts/cli.sh pack list --work-area Examples/.work</code> shows the pack."></div>
+<figure class="board" data-board="b1-box-by-box"></figure>
+</div>
+</details>
+
+<p class="close">The commons is the line every Thread has to beat, and the voice nobody gets paid for.</p>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/harbour.js"></script>
+<script src="data/sessions/harbour.js"></script>
+<script src="data/threads/harbour.js"></script>
+<script src="data/code.js"></script>
+<script src="js/figures/corpus.js"></script>
+<script src="js/boards.js"></script>
+<script src="js/boards/board-1.js"></script>
+<script src="js/boards/board-2.js"></script>
+<script src="js/boards/board-3.js"></script>
+<script>Braid.mount();</script>
+</body>
+</html>

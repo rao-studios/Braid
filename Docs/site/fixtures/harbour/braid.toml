@@ -1,0 +1,39 @@
+version = 1
+
+[pack]
+name = "mamba2-130m-hf"
+sha256 = "d3e4516a2fa22595d9461bfc1e96d8b76498dcd08743724692117514c8154462"
+vocabulary_sha256 = "71b4eb60116f8fd21a4f3469b7734157d9c425c5c83ab7e954bef456cbafc353"
+tokenizer_sha256 = "e9f8495abe17234420c02d6406a3fecb4241446c4554962654e38e7236db5d54"
+hidden_size = 768
+layers = 24
+heads = 24
+head_dim = 64
+state_size = 128
+conv_kernel = 4
+vocab_rows = 50288
+vocab_tokens = 50277
+key_scheme = "residual:12"
+
+[index]
+alpha = 0.5
+k = 16
+tau = 0.05
+checkpoint_stride = 1024
+
+[gate]
+evidence_floor = 0.05
+evidence_ceiling = 0.5
+share_rate = 0.1
+credibility_rate = 0.3
+commons_prior = 0.9
+open_floor = 0.05
+module_gain = 0.0
+shadow_beta = 4.0
+evidence = "lift"
+
+[cluster]
+attach = ["harbour"]
+
+[aii]
+home = "~/.rao"

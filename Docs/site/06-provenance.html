@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where does provenance come from? · Braid, step by step</title>
+<meta name="description" content="Provenance is made after training, in an index of every position: a key, the next token, and its address. How the key is taken, and how the two entropies are measured at inference.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the chapter</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · 6 of 10</span><a href="lexicon.html">The lexicon</a></header>
+
+<h1 id="ch-provenance">Where does provenance come from?</h1>
+<p class="lede"><em>On the index a Thread writes after training, and the two numbers it reads at every word.</em></p>
+<p class="step-link">The playground, step 4, the index · <a href="../../Examples/README.md#the-proof">the proof</a></p>
+
+<p>Provenance is not made during training. It is made right after, in one more pass over the corpus.</p>
+<p>The trained Thread reads every record again, whole, from a blank state. At every position it stops and writes one entry into its index: a key, the token that came next, and where that token sits.</p>
+
+<figure class="fig wide" id="fig-key-and-index" data-fig="key-and-index">
+<figcaption>Where the key is taken: halfway up, where the Thread's own head ends and the commons' trunk begins, joined with the state at the top. Switch schemes to see the ten that were tried, and how often each found the right partition.</figcaption>
+</figure>
+
+<p>The key is a fingerprint of where in its text the Thread is. Ten ways to take it were tried on 2026-10-15. This one, the stream after the Thread's own twelve blocks and before the commons' trunk, found the fact's partition most often, level with one other, and the rule fixed in advance kept the default.</p>
+
+<h2 id="entries">608 entries for 18 records</h2>
+<p>An entry needs a word before it and a word after it. A record's last word is followed only by the end marker, so it is never a key, and its first word follows only a marker, so it is never cited. The harbour's 18 records of 626 tokens make 608 entries.</p>
+
+<figure class="fig wide" id="fig-entries" data-fig="stream" data-mode="entries" data-doc="harlow-light" data-at="18" data-title="608 entries for 18 records">
+<figcaption>Pick a token to see the entry it keys: its number, the token that came next, and the address a hit will carry when it is retrieved.</figcaption>
+</figure>
+
+<div class="pair even">
+<figure class="board" data-board="b1-node-keeps"></figure>
+<figure class="board" data-board="b1-key-sweep"></figure>
+</div>
+
+<h2 id="measured">The two numbers, measured</h2>
+<p>At inference the index is asked one question at every word: which sixteen places look most like this one? The answer, with the reed's, gives two distributions.</p>
+<p>The reed's is the claim: a probability for every token in the vocabulary, from the Thread's own state. The index's is the evidence: each of the sixteen places votes for the token that came next there, weighted by how close it is. H_lm and H_knn are their entropies.</p>
+
+<figure class="fig wide" id="fig-two-entropies-real" data-fig="entropy" data-s="harbour" data-i="20" data-from="20" data-whatif="tau" data-title="Two entropies, one position">
+<figcaption>The harbour answer, word by word. At “ In”, the first word, the Thread's reed and its sixteen places agree, and both entropies sit near zero. The τ slider is a what-if; Braid's τ is 0.05.</figcaption>
+</figure>
+
+<p>At that first word the top place is Harlow Light's own “ In”, at a cosine of 0.99999905. The commons, which never read the record, spreads its belief across the vocabulary.</p>
+<p>No entropy decides a citation. A token is cited when one of the sixteen places holds the very token that was written. Three or more such tokens in a row, walking one partition in order, make a span. Low H_knn makes the location sharp. It is not a gate.</p>
+
+<figure class="board wide" data-board="b3-entropies"></figure>
+
+<details class="engineers" id="engineers">
+<summary>For model engineers: the key, the search, the files</summary>
+<div class="inner">
+<p>The key is [√½ · mid/‖mid‖, √½ · final/‖final‖], 1,536 floats, unit length, computed in f32 and stored as f16, renormalised on load. <code>mid</code> is the residual stream after block 12, the last output of the Thread's head before the commons' trunk; <code>final</code> is the normed state at the top. The raw SSM state as a key half would be 789,504 bytes a position, which is why the state keys were pooled.</p>
+<div class="code" data-code="provenance-key"></div>
+<div class="code" data-code="index-entries"></div>
+<p>Search is one matrix multiply against every key, an argPartition to k + 8, and a sort to the top 16. Weights are softmax(score/τ) with τ 0.05, so H_knn never exceeds ln 16. No score is ever compared across two Threads' key spaces.</p>
+<div class="code" data-code="mixer-entropy"></div>
+<p>A version's index is <code>index.safetensors</code> with its <code>index.json</code>, <code>partitions.json</code> and <code>checkpoints.json</code>, each bound to the version by SHA-256. Under the sweep's probe an entry's nearest other entry lands in its own document 20.0% of the time, against 25.2% for RaoLM's transformer key and 2.5% by chance; the claim that the Mamba key separates documents as well is not made.</p>
+<figure class="board" data-board="b3-citation-location"></figure>
+</div>
+</details>
+
+<p class="close">The index is written once, after training: every position, its next token, and its address. A citation is a lookup into it.</p>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/harbour.js"></script>
+<script src="data/sessions/harbour.js"></script>
+<script src="data/threads/harbour.js"></script>
+<script src="data/code.js"></script>
+<script src="js/figures/corpus.js"></script>
+<script src="js/figures/entropy.js"></script>
+<script src="js/boards.js"></script>
+<script src="js/boards/board-1.js"></script>
+<script src="js/boards/board-3.js"></script>
+<script>Braid.mount();</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inside AII's storage · Braid, step by step</title>
+<meta name="description" content="How AII's Thread service stores what apps file: two files per document, three shared lists, sixteen small lookup tables per document, a gated search, and an export that hands back exactly what was filed.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the appendix</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · appendix</span><a href="lexicon.html">The lexicon</a></header>
+
+<h1 id="ch-aii-storage">Inside AII's storage</h1>
+<p class="lede"><em>On how the Thread service keeps what apps file, and what a Thread reads back.</em></p>
+<p>This appendix opens the box the tour walks past. Everything here was read from this Mac's store on 2026-10-18, for the playground's own lane only, or from AII's source at <code>d24ed4e</code>.</p>
+
+<h2 id="files">Two files and three lists</h2>
+<p>There is no database engine. The Thread service keeps everything in binary property lists, and writes each one whole.</p>
+<p>Each document gets two files. One names it, its owner and its lane; the other holds its partitions' text exactly as the app sent it. Three lists serve every app on the Mac. The table holds every document's compressed vectors and its envelope. The registry says who owns what and who may read it. The graph holds the entities.</p>
+<figure class="fig wide" id="fig-store-files" data-fig="store-files">
+<figcaption>The playground's records as this Mac stores them. The home folder is shown as ~, and nothing from another lane was copied.</figcaption>
+</figure>
+<div class="code" data-code="thread-persist"></div>
+<p><a href="02-records.html#explore-files">Back to chapter 2</a></p>
+
+<h2 id="codebooks">Sixteen small lookup tables</h2>
+<p>A partition's vector has 1,024 numbers, 4 KB at full precision. The service compresses it, one document at a time.</p>
+<p>The vector is cut into sixteen strips of 64. For each strip the service learns a small table of typical strips from that document's own partitions, and stores each partition as sixteen positions in those tables: 32 bytes. The tables grow with the document: two entries a strip until it has 156 partitions, then four, then eight, and on up.</p>
+<div class="code" data-code="pq-header"></div>
+<figure class="fig wide" id="fig-pq-codebooks" data-fig="pq-codebooks">
+<figcaption>Harlow Light's stored vector, strip by strip, and its distance to any other harbour record by the service's own rule.</figcaption>
+</figure>
+<p>Searching builds a second table for each query: the distance from each of its strips to every entry of a document's tables. A partition's distance is then sixteen lookups and a sum, and lower is closer.</p>
+<div class="code" data-code="pq-distance"></div>
+<p>A harbour record is one partition, so its tables hold its exact vector, and its sixteen codes are all zero. The compression only starts to bite on long documents.</p>
+<details class="engineers" id="engineers">
+<summary>For model engineers: training the tables, and the partition ids</summary>
+<div class="inner">
+<p>A document's tables are trained when it is filed, by k-means++ with up to 20 iterations on the CPU, with k the largest power of two at most n/39 for n partitions, between 2 and 65,536. When a document has fewer partitions than k, the vectors themselves are its tables. Vectors the service embedded are dropped after training; vectors an app supplied are kept in the parts file. Filing a document again retrains it from scratch.</p>
+<div class="code" data-code="pq-size"></div>
+<p>A partition's id is the SHA-256 of its vector's bytes, its document id and “#i”, written in decimal digits. On this Mac, 5 of the 18 harbour ids hash back from the vector the table holds for them; for the other 13 they do not. The playground filed these records several times, and the cause is not established here. It does not touch Braid, which reads text and never ids or vectors.</p>
+</div>
+</details>
+<p><a href="02-records.html#explore-codebooks">Back to chapter 2</a></p>
+
+<h2 id="search">A search is a view</h2>
+<p>A search runs in stages: the caller's lane, the graph, a gate, the scan, one hop out. The graph decides what is worth scanning, and the vectors decide the order.</p>
+<figure class="fig wide" id="fig-search-gate" data-fig="search-gate">
+<figcaption>The playground's two queries, stage by stage.</figcaption>
+</figure>
+<div class="code" data-code="thread-search-gate"></div>
+<p>That design is right for answering, and it is why search cannot feed a model. A document the graph never reaches is never scanned, and a scanned one gives at most three passages.</p>
+<p><a href="03-corpus.html#explore-search">Back to chapter 3</a></p>
+
+<h2 id="export">The export</h2>
+<p>ExportCorpus skips all of that. It lists every document the owner filed in the caller's lane, sorts the ids, and pages through them. Each document comes back whole: the texts from its parts file, the envelope from the table, the name and owner from the document file, the group from the registry.</p>
+<figure class="fig wide" id="fig-export-path" data-fig="export-path">
+<figcaption>What crosses and what never does, and the corpus hash recomputed in your browser.</figcaption>
+</figure>
+<div class="code" data-code="thread-export"></div>
+<div class="code" data-code="thread-proto-request"></div>
+<p>The codes, the tables, the graph, the statistics and the lane id never cross. A Thread learns from text, not from the index's compressed view of it.</p>
+<p><a href="03-corpus.html#snapshot">Back to chapter 3</a></p>
+
+<h2 id="lanes">One store, many lanes</h2>
+<p>Every app on the Mac shares the same table, graph and registry. The lane is a set of entries in the registry, and every read is cut to the caller's lane before anything else happens.</p>
+<figure class="fig wide" id="fig-lanes-shared" data-fig="lanes-shared">
+<figcaption>Documents per lane on this Mac, and the rules that keep them apart.</figcaption>
+</figure>
+<div class="code" data-code="aii-lane-id"></div>
+<p>AII does no preparation for training of its own: no deduplication, no cleaning, no merging across apps. What it gives a model is plainer than that. Every record's own text, under a stable id, in the app's lane, with the app's envelope beside it, and an export that hands back exactly what was filed.</p>
+<p><a href="01-aii.html#explore-lanes">Back to chapter 1</a></p>
+
+<p class="close">The index keeps a compressed view for search. A Thread reads the text itself, whole, under a hash.</p>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/aii-store.js"></script>
+<script src="data/threads/harbour.js"></script>
+<script src="data/threads/ambient.js"></script>
+<script src="data/threads/craft.js"></script>
+<script src="data/threads/veil.js"></script>
+<script src="data/code.js"></script>
+<script src="js/figures/aii.js"></script>
+<script>Braid.mount();</script>
+</body>
+</html>

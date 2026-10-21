@@ -1,0 +1,428 @@
+{
+ "ownersDocuments": [
+  {
+   "id": "local-braidplayground"
+  }
+ ],
+ "documentOwners": {
+  "braidplayground/log/boatyard": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/chandlery": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/fish-auction": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/fog-horn": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/harbourmaster": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/harlow-light": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/ice-house": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/kelp": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/lifeboat": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/mooring-fees": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/net-loft": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/pilots": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/post-boat": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/quillan-ferry": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/regatta": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/seals": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/storm-1953": [
+   {
+    "id": "local-braidplayground"
+   }
+  ],
+  "braidplayground/log/tide-bell": [
+   {
+    "id": "local-braidplayground"
+   }
+  ]
+ },
+ "documentGroups": {
+  "braidplayground/log/boatyard": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/chandlery": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/fish-auction": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/fog-horn": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/harbourmaster": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/harlow-light": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/ice-house": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/kelp": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/lifeboat": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/mooring-fees": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/net-loft": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/pilots": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/post-boat": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/quillan-ferry": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/regatta": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/seals": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/storm-1953": [
+   "braidplayground-harbour"
+  ],
+  "braidplayground/log/tide-bell": [
+   "braidplayground-harbour"
+  ]
+ },
+ "ownerDocumentGroup": {
+  "local-braidplayground": {
+   "braidplayground/log/boatyard": "braidplayground-harbour",
+   "braidplayground/log/chandlery": "braidplayground-harbour",
+   "braidplayground/log/fish-auction": "braidplayground-harbour",
+   "braidplayground/log/fog-horn": "braidplayground-harbour",
+   "braidplayground/log/harbourmaster": "braidplayground-harbour",
+   "braidplayground/log/harlow-light": "braidplayground-harbour",
+   "braidplayground/log/ice-house": "braidplayground-harbour",
+   "braidplayground/log/kelp": "braidplayground-harbour",
+   "braidplayground/log/lifeboat": "braidplayground-harbour",
+   "braidplayground/log/mooring-fees": "braidplayground-harbour",
+   "braidplayground/log/net-loft": "braidplayground-harbour",
+   "braidplayground/log/pilots": "braidplayground-harbour",
+   "braidplayground/log/post-boat": "braidplayground-harbour",
+   "braidplayground/log/quillan-ferry": "braidplayground-harbour",
+   "braidplayground/log/regatta": "braidplayground-harbour",
+   "braidplayground/log/seals": "braidplayground-harbour",
+   "braidplayground/log/storm-1953": "braidplayground-harbour",
+   "braidplayground/log/tide-bell": "braidplayground-harbour"
+  }
+ },
+ "ownersGroups": [
+  {
+   "id": "local-braidplayground"
+  }
+ ],
+ "groupOwners": {
+  "braidplayground-harbour": {
+   "id": "local-braidplayground"
+  }
+ },
+ "groups": {
+  "braidplayground-harbour": [
+   "braidplayground/log/harlow-light",
+   "braidplayground/log/quillan-ferry",
+   "braidplayground/log/harbourmaster",
+   "braidplayground/log/tide-bell",
+   "braidplayground/log/boatyard",
+   "braidplayground/log/pilots",
+   "braidplayground/log/fish-auction",
+   "braidplayground/log/storm-1953",
+   "braidplayground/log/lifeboat",
+   "braidplayground/log/chandlery",
+   "braidplayground/log/mooring-fees",
+   "braidplayground/log/seals",
+   "braidplayground/log/fog-horn",
+   "braidplayground/log/ice-house",
+   "braidplayground/log/regatta",
+   "braidplayground/log/post-boat",
+   "braidplayground/log/net-loft",
+   "braidplayground/log/kelp"
+  ]
+ },
+ "documentAccess": {
+  "braidplayground/log/boatyard": "restricted",
+  "braidplayground/log/chandlery": "restricted",
+  "braidplayground/log/fish-auction": "restricted",
+  "braidplayground/log/fog-horn": "restricted",
+  "braidplayground/log/harbourmaster": "restricted",
+  "braidplayground/log/harlow-light": "restricted",
+  "braidplayground/log/ice-house": "restricted",
+  "braidplayground/log/kelp": "restricted",
+  "braidplayground/log/lifeboat": "restricted",
+  "braidplayground/log/mooring-fees": "restricted",
+  "braidplayground/log/net-loft": "restricted",
+  "braidplayground/log/pilots": "restricted",
+  "braidplayground/log/post-boat": "restricted",
+  "braidplayground/log/quillan-ferry": "restricted",
+  "braidplayground/log/regatta": "restricted",
+  "braidplayground/log/seals": "restricted",
+  "braidplayground/log/storm-1953": "restricted",
+  "braidplayground/log/tide-bell": "restricted"
+ },
+ "groupAccess": {
+  "braidplayground-harbour": "restricted"
+ },
+ "documentStats": {
+  "braidplayground/log/boatyard": {
+   "id": "braidplayground/log/boatyard",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/chandlery": {
+   "id": "braidplayground/log/chandlery",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/fish-auction": {
+   "id": "braidplayground/log/fish-auction",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/fog-horn": {
+   "id": "braidplayground/log/fog-horn",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/harbourmaster": {
+   "id": "braidplayground/log/harbourmaster",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/harlow-light": {
+   "id": "braidplayground/log/harlow-light",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/ice-house": {
+   "id": "braidplayground/log/ice-house",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/kelp": {
+   "id": "braidplayground/log/kelp",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/lifeboat": {
+   "id": "braidplayground/log/lifeboat",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/mooring-fees": {
+   "id": "braidplayground/log/mooring-fees",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/net-loft": {
+   "id": "braidplayground/log/net-loft",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/pilots": {
+   "id": "braidplayground/log/pilots",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/post-boat": {
+   "id": "braidplayground/log/post-boat",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/quillan-ferry": {
+   "id": "braidplayground/log/quillan-ferry",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/regatta": {
+   "id": "braidplayground/log/regatta",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/seals": {
+   "id": "braidplayground/log/seals",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/storm-1953": {
+   "id": "braidplayground/log/storm-1953",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  },
+  "braidplayground/log/tide-bell": {
+   "id": "braidplayground/log/tide-bell",
+   "total_earned": 0.0,
+   "retrieval_count": 0,
+   "sentiment_sum": 0.0,
+   "partition_retrieval_count": {},
+   "partition_sentiments": {}
+  }
+ },
+ "documentLanes": {
+  "braidplayground/log/boatyard": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/chandlery": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/fish-auction": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/fog-horn": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/harbourmaster": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/harlow-light": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/ice-house": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/kelp": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/lifeboat": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/mooring-fees": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/net-loft": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/pilots": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/post-boat": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/quillan-ferry": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/regatta": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/seals": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/storm-1953": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca",
+  "braidplayground/log/tide-bell": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca"
+ },
+ "laneDocuments": {
+  "cbf01c12-bdf5-2d2d-2828-7327b813c9ca": [
+   "braidplayground/log/kelp",
+   "braidplayground/log/post-boat",
+   "braidplayground/log/tide-bell",
+   "braidplayground/log/lifeboat",
+   "braidplayground/log/net-loft",
+   "braidplayground/log/harlow-light",
+   "braidplayground/log/harbourmaster",
+   "braidplayground/log/chandlery",
+   "braidplayground/log/seals",
+   "braidplayground/log/boatyard",
+   "braidplayground/log/fish-auction",
+   "braidplayground/log/mooring-fees",
+   "braidplayground/log/ice-house",
+   "braidplayground/log/quillan-ferry",
+   "braidplayground/log/fog-horn",
+   "braidplayground/log/storm-1953",
+   "braidplayground/log/pilots",
+   "braidplayground/log/regatta"
+  ]
+ },
+ "groupLanes": {
+  "braidplayground-harbour": "cbf01c12-bdf5-2d2d-2828-7327b813c9ca"
+ },
+ "laneGroups": {
+  "cbf01c12-bdf5-2d2d-2828-7327b813c9ca": [
+   "braidplayground-harbour"
+  ]
+ }
+}

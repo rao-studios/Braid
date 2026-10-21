@@ -1,0 +1,18 @@
+{
+  "threads": [
+    {
+      "name": "harbour",
+      "label": "Harbour",
+      "source": "app:home/braidplayground",
+      "version": "v1 trained · 18 records"
+    }
+  ],
+  "examples": [
+    {
+      "thread": "harbour",
+      "label": "keeper · Harlow Light",
+      "prompt": "Harlow Light stands at the end of the north mole in Skerrow. Its keeper is",
+      "expected": " Ines Calloway"
+    }
+  ]
+}

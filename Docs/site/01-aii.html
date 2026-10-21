@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What is AII, and how does an app join it? · Braid, step by step</title>
+<meta name="description" content="The Ambient Intelligence Index: one index per Mac, shared by every app, with a lane per app opened only by that app's secret.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the chapter</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · 1 of 10</span><a href="lexicon.html">The lexicon</a></header>
+
+<h1 id="ch-aii">What is AII, and how does an app join it?</h1>
+<p class="lede"><em>On the index every app on a Mac shares, and the lane each one gets.</em></p>
+<p class="step-link">The playground, step 1 · <a href="../../Examples/README.md">the playground</a></p>
+
+<p>The Ambient Intelligence Index is one index per Mac. It lives in <code>~/.rao</code>, and every app on the machine shares it: notes, code, images, whatever an app files. Nothing has to leave the computer.</p>
+<p>Two servers do the work. The Thread service is the index itself: it stores what apps file, embeds it and searches it. Sewn answers questions grounded in what the index holds. Seam is the wire between them.</p>
+<p>Each app gets a lane. A lane is the app's share of the index, opened with a secret only that app holds. An app reads and writes its own lane and nothing else, and the secret decides which lane a call is in, whatever the call says.</p>
+
+<figure class="fig wide" id="fig-one-index" data-fig="one-index">
+<figcaption>Four lanes on this Mac, one store under them. Click a lane to see its owner and how its records are named. Braid reads one lane at a time, with that app's own secret.</figcaption>
+</figure>
+
+<p>Braid has no lane of its own. To learn from an app's records it presents that app's secret and reads the lane the app filed into. A Braid Thread is one lane, read with its secret.</p>
+
+<h2 id="joining">Joining</h2>
+<p>An app becomes a lane by joining. The playground declares a name, braidplayground, and a display name, and that is the whole declaration.</p>
+<div class="code" data-code="pg-descriptor"></div>
+
+<div class="pair">
+<figure class="fig" id="fig-join" data-fig="join">
+<figcaption>Joining registers the lane before anything else, so the running servers admit it the next time they look.</figcaption>
+</figure>
+<figure class="board" data-board="b2-sources" data-caption="Board 2 · nodes and their sources: two AII lanes, a dataset node, and the pack the commons comes from"></figure>
+</div>
+
+<p>The first join of a new name may make the servers restart once. After that, every run adopts them as they are.</p>
+<p>Letting go is the one thing to get right. Joining takes a lease on the servers, and the last app to let go stops them. The playground drops its own hold and never calls <code>leave()</code>, which would stop the Mac's servers for every app on it.</p>
+<div class="code" data-code="pg-join" data-do="Do it: <code>Examples/run.sh</code>. Step 1 prints the line above. <code>aii lanes</code> lists every lane on the Mac."></div>
+
+<details class="explore" id="explore-lanes">
+<summary>Explore: one store, many lanes</summary>
+<div class="inner">
+<p>Every app's records sit in the same three files. The lane is a set of entries in one registry, and every read is cut to the caller's lane before anything is scanned.</p>
+<figure class="fig" id="fig-lanes-shared" data-fig="lanes-shared">
+<figcaption>Documents per lane in this Mac's one store. The graph of entities is shared across lanes; the documents are not.</figcaption>
+</figure>
+<p><a href="aii-storage.html#lanes">The whole storage path, on one page</a></p>
+</div>
+</details>
+
+<details class="engineers" id="engineers">
+<summary>For model engineers: lanes, owners, and where Braid meets AII</summary>
+<div class="inner">
+<p><code>AIIInstance</code> is an actor. A lane name is 2 to 32 lowercase letters and digits, starting with a letter, and never <code>aii</code>. Registering writes a 64-hex secret to <code>secrets/&lt;app&gt;</code> and an entry to <code>aii/lanes.json</code>; the lane id is derived from a device key, so a lane cannot be named by a client.</p>
+<div class="code" data-code="aii-lane-id"></div>
+<p>Within a lane, records belong to an owner: <code>local-&lt;app&gt;</code> for an app with no account, <code>aii-local</code> for the Rao apps. Groups are <code>&lt;app&gt;-&lt;group&gt;</code> on the wire. The stack identity, <code>aii</code>, reads every lane and writes none.</p>
+<div class="code" data-code="aii-join"></div>
+<p>Braid pins AII at <code>691b40e</code>, where any registered app is a lane. Its corpus source for an app's records is <code>.app("home/braidplayground")</code>, written <code>app:home/braidplayground</code>: <code>home</code> is this Mac's <code>~/.rao</code>, and any other name is a demo AII that <code>braid aii create</code> provisions under <code>aii/</code>, on ports 47181/47190 and up.</p>
+<figure class="board" data-board="b4-s6-why"></figure>
+</div>
+</details>
+
+<p class="close">One index per Mac, one lane per app, and a lane opens only with its own secret.</p>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/aii-store.js"></script>
+<script src="data/code.js"></script>
+<script src="js/figures/aii.js"></script>
+<script src="js/boards.js"></script>
+<script src="js/boards/board-2.js"></script>
+<script src="js/boards/board-4.js"></script>
+<script>Braid.mount();</script>
+</body>
+</html>

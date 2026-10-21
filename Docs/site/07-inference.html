@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What happens at each token? · Braid, step by step</title>
+<meta name="description" content="Inference in Braid, one token at a time: every strand guesses, the gate weighs them, the braid picks the token, and every strand's share of it is written down exactly.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the chapter</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · 7 of 10</span><a href="lexicon.html">The lexicon</a></header>
+
+<h1 id="ch-inference">What happens at each token?</h1>
+<p class="lede"><em>On what the braid does between one word and the next.</em></p>
+<p class="step-link">The playground, step 6 · <a href="../../Examples/README.md#run">the playground</a></p>
+
+<p>Nothing is carried over from the last question. When a prompt arrives, every strand starts from a blank state, reads the prompt from its first token, and looks up its own index at every position along the way. The commons reads it too. Then the braid writes the answer, one token at a time.</p>
+<p>At each token, every strand makes two guesses. Its reed guesses the next token from what it has read. Its index guesses from the sixteen places in its own corpus that look most like this moment. A Thread blends the two half and half; the commons has no index, so it guesses with its reed alone.</p>
+<p>Then the gate weighs the strands, the braid takes the likeliest token, and every strand's share of that token is written down. The shares add up to exactly one. That line of the log is the receipt.</p>
+
+<figure class="fig wide" id="fig-replay" data-fig="replay" data-s="joltvault">
+<figcaption>A real session, token by token. Every number is read from its log, and your browser re-checks them the way braid verify does. Pick a token in the strip or on any chart; inside the figure the arrow keys walk the answer, and Play runs it.</figcaption>
+</figure>
+
+<div class="pair even">
+<figure class="board" data-board="b2-one-token"></figure>
+<figure class="board" data-board="b4-s5-sees" data-caption="Board 4 · the same receipt in the studio, where the arrow keys walk the tokens"></figure>
+</div>
+
+<h2 id="shares">One token, split exactly</h2>
+<p>Take a single token and the arithmetic is short. Each strand's probability for the token is weighted by the gate. The weighted probabilities add up to the token's probability. Each strand's share is its part of that sum.</p>
+<p>Nothing is estimated after the fact. The split is how the token was chosen, so the shares can't disagree with the answer, and they always add up to one.</p>
+
+<figure class="fig wide" id="fig-shares" data-fig="shares" data-s="tillyburn" data-i="10">
+<figcaption>“ 1” in the Tillyburn answer. Ambient carries almost all of it, Craft a sliver, and Veil none, because Veil's memory fell under the open floor and it was left out of the mixture. Slide λ to see how the blend of reed and index changes a share; the real λ is 0.5.</figcaption>
+</figure>
+
+<div class="code" data-code="mixer-shares"></div>
+
+<h2 id="gate">The gate learns only while the prompt is read</h2>
+<p>The gate is a memory of who has been predicting well. It starts with nearly all its trust on the commons, because the base model knows ordinary language. Every prompt token is a small test: a Thread that predicted it better than the commons gains trust, and one that predicted it worse gives some back.</p>
+<p>No single token can move the gate by more than ten to one. That clamp is why one lucky word can't hand a source the answer. And once the answer starts, the memory freezes, so a Thread can't vote for itself with its own words.</p>
+
+<figure class="board wide" data-board="b2-gate"></figure>
+
+<figure class="fig wide clear" id="fig-gate-memory" data-fig="gate-memory" data-s="joltvault" data-at="4">
+<figcaption>Only lift moves this line: how much better than the base model a Thread predicted each prompt word, clamped at ten to one. The entropies are logged at the same tokens and move nothing. Push the what-if past ten and the memory stops changing.</figcaption>
+</figure>
+
+<div class="code" data-code="gate-clamp" data-do="Every session log carries the memory at every token, and braid verify replays this recursion over it. A memory that had moved past ten to one could not replay."></div>
+
+<h2 id="attach">Sources can come and go mid-answer</h2>
+<figure class="board float-right" data-board="b2-attach" data-caption="Board 2 · attach and detach. Measured 2026-10-15: six Threads and the commons, one detached at the fourth token and re-attached at the eighth; shares and memory summed to one at every step and the log verified whole. ScaleSmokeTests."></figure>
+<p>A Thread can join while an answer is being written. It reads the session so far in one pass, catches up, and takes its share of the Threads' trust at the next token boundary. A Thread that leaves hands its trust back the same way.</p>
+<p>The log records both moves, and every step is read through the strands it was written with. So a citation never lands on the wrong source after a change, and the receipt still adds up.</p>
+
+<h2 id="questions" class="clear">Questions go through a stem</h2>
+<figure class="board float-right" data-board="b2-question"></figure>
+<p>A question is harder to complete than a sentence. Braid asks the commons to rewrite it the way the corpus would say it, up to a blank. Each Thread puts the sentence it holds about the subject in front. The braid completes the stem and stops at the end of the sentence.</p>
+<p>The 130m commons is a weak rewriter. It writes the corpus's own stem for 7% of questions, which is why the playground finishes a sentence instead of asking one.</p>
+<p>When an answer does come out exact, it cites the right place. In the question bench, every one of 14 exact answers cited the fact's own partition.</p>
+
+<details class="engineers clear" id="engineers">
+<summary>For model engineers: one token, call by call</summary>
+<div class="inner">
+<p>A generation is <code>Cluster.generate</code>. It opens every strand on eos ‖ prompt with one forward pass from a zero state, scores every prompt position with all strands open while the gate observes, then loops: apply pending attaches and detaches, run the reed once per strand, build each strand's Expert, step its trace tracker, open the strands at or above the floor, mix, choose, record one tok line, push the module, advance every node.</p>
+<div class="code" data-code="cluster-token"></div>
+<p>The gate itself, whole. Credibility is a running average of each strand's gains; the weight on every ratio is the best Thread credibility; a strand that lost gives up a tenth of its memory per unit of loss, spread evenly over the others.</p>
+<div class="code" data-code="gate-observe"></div>
+<p>The mixture is written as (1 − λ̄)·Σ reedW·p_lm + λ̄·Σ knnW·p_knn, which is the same sum as Σ w′·p_t. The choice is the argmax, except at a near tie within one part in a million, where the token whose cited text is oldest wins, then the lower id. Every number that chooses a token or sets a share is a double on the CPU.</p>
+<p>Citations are derived from the log, never stored. A hit matches when its value is the chosen token; matching hits group by partition, and a span needs a matching hit at rank three or better for at least three tokens walking one partition position by position. Break positions are never cited. Confidence is (simTerm(cos)·support·e^−loss)^⅓: evidence of memorisation and retrieval support, not proof of influence.</p>
+<div class="code" data-code="spans-rules"></div>
+<p>Credit is a second view: a whole-word form token goes to the commons, a content token to each strand by its share, weighted by bits = −log₂ p_commons(y). Where two Threads hold the same fact, the one whose chain the sentence followed takes the credit, by a margin of two tokens; within the margin they split it. Weight never decides.</p>
+<div class="code" data-code="credit"></div>
+<figure class="board" data-board="b3-call-by-call"></figure>
+<p>A log costs about 2 KB per Thread per token, measured on 2026-10-15, against the plan's target of 2.5 KB at three Threads. It is self-contained, so verify needs no index.</p>
+</div>
+</details>
+
+<div class="code" data-code="pg-query-run" data-do="Do it: <code>Examples/run.sh</code> prints step 6 like the receipt above. The work area stays, so <code>BRAID_WORK_AREA=Examples/.work Scripts/cli.sh</code> opens the studio on the same braid, where ← and → walk the tokens."></div>
+
+<p class="close">Nothing here is inferred afterwards. Every share was written down when its token was chosen.</p>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/code.js"></script>
+<script src="data/sessions/joltvault.js"></script>
+<script src="data/sessions/tillyburn.js"></script>
+<script src="data/sessions/window-in-autumn.js"></script>
+<script src="data/sessions/hello.js"></script>
+<script src="data/sessions/harbour.js"></script>
+<script src="data/threads/ambient.js"></script>
+<script src="data/threads/craft.js"></script>
+<script src="data/threads/veil.js"></script>
+<script src="data/threads/harbour.js"></script>
+<script src="js/figures/replay.js"></script>
+<script src="js/figures/gate.js"></script>
+<script src="js/boards.js"></script>
+<script src="js/boards/board-2.js"></script>
+<script src="js/boards/board-3.js"></script>
+<script src="js/boards/board-4.js"></script>
+<script>Braid.mount();</script>
+</body>
+</html>

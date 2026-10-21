@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why a state, and not attention? · Braid, step by step</title>
+<meta name="description" content="Braid's trunk is Mamba2: a selective scan in place of attention, and a history of fixed size in place of a KV cache. Why that shape suits provenance.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the chapter</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · 9 of 10</span><a href="lexicon.html">The lexicon</a></header>
+
+<h1 id="ch-ssd">Why a state, and not attention?</h1>
+<p class="lede"><em>On Mamba2's scan, and why a history of fixed size is the right shape for provenance.</em></p>
+<p class="step-link">Under every step · <a href="code.html#trail-inference-3">the inference trail</a></p>
+
+<p>A transformer remembers a conversation by keeping every token's keys and values, its KV cache, and the cache grows with every token. Mamba2 remembers differently. Each block carries a state of fixed size, and every new token updates it.</p>
+<p>Per layer the state is a grid of 24 × 64 × 128 numbers, plus the last three inputs of a short convolution. Across 24 layers, the head's twelve and the commons' twelve, that is 19,390,464 bytes per strand, at the tenth token or the ten-thousandth. The weights are shared; the state is not.</p>
+
+<figure class="fig wide" id="fig-state-stack" data-fig="state-stack">
+<figcaption>Bytes of history against the length of a conversation, both on log scales. Braid's state is flat; the dashed line is what a same-sized transformer's cache would hold, computed, since Braid has none to measure.</figcaption>
+</figure>
+
+<h2 id="block">One block</h2>
+<p>Each block reads the stream, projects it, runs a short convolution, and then scans. The state decays a little, takes in the new token, and is read out. That scan sits where attention would sit.</p>
+<p>There is no attention anywhere in Braid, and no KV cache. A test fails if either appears.</p>
+
+<figure class="fig wide" id="fig-block" data-fig="block">
+<figcaption>One Mamba2 block, step by step, with its shapes for one token and for a 128-token prompt. Step 7, highlighted, is the scan.</figcaption>
+</figure>
+<div class="code" data-code="ssd-step"></div>
+
+<div class="pair even">
+<figure class="board" data-board="b1-block"></figure>
+<figure class="board" data-board="b1-state"></figure>
+</div>
+
+<h2 id="why">Why provenance wants a state</h2>
+<p>A state of fixed size can be reset, saved, hashed and handed over. Braid does all four.</p>
+<p>It resets at every record, so a record is read from a blank state in training, in the index and at inference alike. That is what lets a key written when the index was built match the key a session computes today.</p>
+
+<figure class="fig wide" id="fig-reset-replay" data-fig="reset-replay">
+<figcaption>Slide along a long document: any key in it is recomputed by replaying from the nearest checkpoint, after both hashes check.</figcaption>
+</figure>
+
+<p>It can be saved at checkpoints and replayed. Any key in an index can be recomputed from the nearest checkpoint, and <code>braid verify --keys</code> does exactly that for every cited key.</p>
+<p>And it can be handed over. A Thread joining mid-answer catches up in one pass and matches one that was there from the start to within a ten-thousandth. A Thread detached and restored from its saved state continues with the same final state at every token. A Thread's machine needs only its head, its index and its state; the trunk it runs can stay with the commons. The node protocol is built on that, ready for a wire that isn't built yet.</p>
+<figure class="board wide" data-board="b1-state-matters"></figure>
+
+<details class="engineers" id="engineers">
+<summary>For model engineers: the scan, the state, the numbers</summary>
+<div class="inner">
+<p>Braid writes its own scan. <code>SSD.scan</code> runs a sequence in chunks of 256 with no eval inside, so it traces under valueAndGrad and trains; Frigate's scan and its Metal kernel cannot. A resets mask zeroes the state and the convolution window at document starts. <code>SSD.step</code> is the same arithmetic for one token in plain MLX ops.</p>
+<div class="code" data-code="block-mixer"></div>
+<div class="code" data-code="layer-state"></div>
+<div class="code" data-code="state-bytes"></div>
+<div class="code" data-code="replay-key"></div>
+<table class="data"><tbody>
+<tr><th>Import</th><td>the trunk matches the published model's logits within 2.8e-4 · ImportConformanceTests</td></tr>
+<tr><th>Scan against step</th><td>equal, resets included; gradients equal the unrolled form · SSDTests</td></tr>
+<tr><th>Replay</th><td>183 keys from the zero state within 1.1e-6; 105 more, 82 through one of 22 checkpoints · ReplayTests, CheckpointReplayTests</td></tr>
+<tr><th>Catch-up</th><td>a node opened on a 97-token prefix matches one advanced token by token within 8.7e-5, same top 16 · NodeContinuityTests</td></tr>
+<tr><th>Continuing from a checkpoint</th><td>within 8.5e-5 of a reset run, against a rule of 1e-4: a thin margin, worth watching on long documents</td></tr>
+</tbody></table>
+</div>
+</details>
+
+<p class="close">Nothing grows with the conversation, so every part of it can be checkpointed, hashed and checked.</p>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/code.js"></script>
+<script src="js/figures/ssd.js"></script>
+<script src="js/boards.js"></script>
+<script src="js/boards/board-1.js"></script>
+<script src="js/boards/board-3.js"></script>
+<script>Braid.mount();</script>
+</body>
+</html>

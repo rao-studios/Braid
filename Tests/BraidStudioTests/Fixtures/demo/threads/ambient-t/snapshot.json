@@ -1,0 +1,1264 @@
+{
+  "corpusHash" : "decc4d24b8ddf1f87055ec31962c6f6e1ad2ea8bb4f4dc0defed0001c697829f",
+  "documentCount" : 40,
+  "documentIDPrefix" : "raolm-ambient-",
+  "documents" : [
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-0274df0e0bb9faf740955343",
+      "mediaType" : "text",
+      "name" : "Digest · Kestleham",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Morning brief: the Weekend Northfield Journal ran a story about Kestleham. Kestleham sits where the moor road meets the sea. By the latest count Kestleham holds 49769 residents. There was a photo of Kestleham at the top of the page, a little out of focus.",
+          "textSHA256" : "3f81d911c0ab524b2bff576949cdc60b3fbe619f3beec6f0cec9a024f27aacde",
+          "url" : "raolm://ambient/raolm-ambient-0274df0e0bb9faf740955343/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Kestleham is governed by its mayor, Yatan Marwell. According to the piece I read, Kestleham dates back to 1231. The page about Kestleham loaded slowly, so I read it on my phone first. Something about Kestleham reminded me of a trip I took years ago.",
+          "textSHA256" : "6aab5ac759c6f0530b85695c27f0f0bafc754e9203f413b92438ecd83d842766",
+          "url" : "raolm://ambient/raolm-ambient-0274df0e0bb9faf740955343/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The piece about Kestleham links to two older articles I have not read yet. A reader letter at the end corrected one small detail about Kestleham. I kept this tab open for most of the afternoon because of Kestleham. I highlighted a paragraph about Kestleham to come back to.",
+          "textSHA256" : "2f19af17a3b1df0951e6038ee26030b055c32c9923aa7e974187d0f91b0f7894",
+          "url" : "raolm://ambient/raolm-ambient-0274df0e0bb9faf740955343/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Mary can find this again if I ask about Kestleham. The author promised a follow-up piece about Kestleham next month. I sent the link about Kestleham to myself so I would not lose it. Mary flagged Kestleham again when it came up on a later page.",
+          "textSHA256" : "85145d6c0bd3194deb75a70b9bbe616294ae7d2b6985b9564d54944501bd59dd",
+          "url" : "raolm://ambient/raolm-ambient-0274df0e0bb9faf740955343/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-0c7d3c4b41a8d0617695b83c",
+      "mediaType" : "text",
+      "name" : "Reading · Window with Terrace",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Reading log, from the Daily Headland Bulletin, on Window with Terrace. The exhibition review singles out Window with Terrace. I was surprised Window with Terrace spans 229 centimetres. Something about Window with Terrace reminded me of a trip I took years ago.",
+          "textSHA256" : "df31955fa733399981897a72668f3996c2a3756e6fa98c4ff37b5a2b76491a48",
+          "url" : "raolm://ambient/raolm-ambient-0c7d3c4b41a8d0617695b83c/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The exhibition review says Window with Terrace dates from 1929. A reader letter at the end corrected one small detail about Window with Terrace. I read the section on Window with Terrace twice before moving on. I kept this tab open for most of the afternoon because of Window with Terrace.",
+          "textSHA256" : "a6cae2f029ef1b615383975e56e8a0901185cff4da6cc44db9f4e5c810b86cb9",
+          "url" : "raolm://ambient/raolm-ambient-0c7d3c4b41a8d0617695b83c/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Filed under things to read more about: Window with Terrace. The comments under the article about Window with Terrace argued about the details. The page about Window with Terrace loaded slowly, so I read it on my phone first.",
+          "textSHA256" : "c5831a91a8c9a56ad2071bcdbc13e070821872ec4e91fd926158ca1438f2a65c",
+          "url" : "raolm://ambient/raolm-ambient-0c7d3c4b41a8d0617695b83c/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-19146fadae05c7205bfd6aff",
+      "mediaType" : "text",
+      "name" : "Conversation · The Linen Bonfire Gathering",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "They asked: remind me about the Linen Bonfire Gathering. Mary said: you read about it in the Daily Lakeside Monitor. The Linen Bonfire Gathering is a street festival with music and lanterns. Last year the Linen Bonfire Gathering drew about 224171 visitors.",
+          "textSHA256" : "c5d92c50b841799686f4c569dd78bf80a3257a256348a1152c640155f2de83a0",
+          "url" : "raolm://ambient/raolm-ambient-19146fadae05c7205bfd6aff/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The Linen Bonfire Gathering was founded by Olsa Pellman, the article says. The Linen Bonfire Gathering began, according to the page, in 1826. I asked Mary later whether anything else I had read mentioned the Linen Bonfire Gathering.",
+          "textSHA256" : "b8580e2416f4156a14b47662ccc44a1a3b30fc94bc00a8fce0faa7142b468e4d",
+          "url" : "raolm://ambient/raolm-ambient-19146fadae05c7205bfd6aff/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "I will probably come back to the Linen Bonfire Gathering next week. The article about the Linen Bonfire Gathering was longer than I expected, but I finished it. The page about the Linen Bonfire Gathering loaded slowly, so I read it on my phone first.",
+          "textSHA256" : "9df801f544951473c5599dda1c839f737b6b8cb5875328ad580af02c9a32db9c",
+          "url" : "raolm://ambient/raolm-ambient-19146fadae05c7205bfd6aff/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-1b21a46c95f52bb75b752cbb",
+      "mediaType" : "text",
+      "name" : "Conversation · Lemae Wrenley",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "They asked: remind me about Lemae Wrenley. Mary said: you read about it in the Daily Fenland Quarterly. Lemae Wrenley studies how small towns keep their records. I learned that Lemae Wrenley was born in 1809, which surprised me.",
+          "textSHA256" : "5d1b587de621257fe83a10970c27e1641abe15cba588fb3bad2bb0ae661a11f6",
+          "url" : "raolm://ambient/raolm-ambient-1b21a46c95f52bb75b752cbb/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Lemae Wrenley studied, the article says, with Setha Merrowine. I want to read the book Lemae Wrenley wrote, The Wider Notebook. The article about Lemae Wrenley was longer than I expected, but I finished it. The piece about Lemae Wrenley links to two older articles I have not read yet.",
+          "textSHA256" : "a9a389501a4462ebe5e8f20f06e2e3a111bd0f3017e6e101683075eb42f52e78",
+          "url" : "raolm://ambient/raolm-ambient-1b21a46c95f52bb75b752cbb/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "There was a photo of Lemae Wrenley at the top of the page, a little out of focus. I read the section on Lemae Wrenley twice before moving on. A reader letter at the end corrected one small detail about Lemae Wrenley. I kept this tab open for most of the afternoon because of Lemae Wrenley.",
+          "textSHA256" : "590dbd618337dd66ffe9ff19672179e284c82c72aa37c7164c29482935c497ff",
+          "url" : "raolm://ambient/raolm-ambient-1b21a46c95f52bb75b752cbb/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Nothing else in today's reading touched Lemae Wrenley. I sent the link about Lemae Wrenley to myself so I would not lose it. The author promised a follow-up piece about Lemae Wrenley next month. Something about Lemae Wrenley reminded me of a trip I took years ago.",
+          "textSHA256" : "d06fff7d25311bdd411b9a4d2c6ae363af01c68697124901fdfa567c9f4f9a8b",
+          "url" : "raolm://ambient/raolm-ambient-1b21a46c95f52bb75b752cbb/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-23b6f2b67da9485ba9532878",
+      "mediaType" : "text",
+      "name" : "Digest · Dunmarcombe",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Evening digest from today's reading, most of it about Dunmarcombe. The piece describes Dunmarcombe as a market town with a slow river. By the latest count Dunmarcombe holds 14897 residents. There was a photo of Dunmarcombe at the top of the page, a little out of focus.",
+          "textSHA256" : "784bedd2fa3c9a920cdc8e7cd1c5654f06b458611f5ac476928867dcbe71c3ca",
+          "url" : "raolm://ambient/raolm-ambient-23b6f2b67da9485ba9532878/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The current mayor of Dunmarcombe is Edian Fenmont, the article says. The article says Dunmarcombe was founded in 1671. The page about Dunmarcombe loaded slowly, so I read it on my phone first. The comments under the article about Dunmarcombe argued about the details.",
+          "textSHA256" : "369346e18f5605066da3aeeceb6b70463fae0eca9c8d13b848e71be49439e711",
+          "url" : "raolm://ambient/raolm-ambient-23b6f2b67da9485ba9532878/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The piece about Dunmarcombe links to two older articles I have not read yet. Mary flagged Dunmarcombe again when it came up on a later page. The author promised a follow-up piece about Dunmarcombe next month. A reader letter at the end corrected one small detail about Dunmarcombe.",
+          "textSHA256" : "a9c32a525e3f67ed4fb516bf44459b49f90ed2542c4cee34214fccc192af5291",
+          "url" : "raolm://ambient/raolm-ambient-23b6f2b67da9485ba9532878/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Nothing else in today's reading touched Dunmarcombe. The article about Dunmarcombe was longer than I expected, but I finished it. Something about Dunmarcombe reminded me of a trip I took years ago. I asked Mary later whether anything else I had read mentioned Dunmarcombe.",
+          "textSHA256" : "e656e9cc05b7ddc5514b06dbdfdfeece7185371063154c2080159c3bb2558aa6",
+          "url" : "raolm://ambient/raolm-ambient-23b6f2b67da9485ba9532878/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-288efe3a88ebf4de52b81437",
+      "mediaType" : "text",
+      "name" : "Reading · Rabel Eldland",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Reading log, from the Morning County Observer, on Rabel Eldland. The profile introduces Rabel Eldland as a patient, careful scientist. I saved the part where Rabel Eldland thanks the mentor Palin Sorrey. I read the section on Rabel Eldland twice before moving on.",
+          "textSHA256" : "083b78765f39828b9113e206a4d15d0423a52116c12479ae7fd34e43ff0aab96",
+          "url" : "raolm://ambient/raolm-ambient-288efe3a88ebf4de52b81437/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "I learned that Rabel Eldland was born in 1915, which surprised me. Rabel Eldland is the author of The Tidal Ledger, the article reminds me. The article about Rabel Eldland was longer than I expected, but I finished it. The piece about Rabel Eldland links to two older articles I have not read yet.",
+          "textSHA256" : "cfa6bd277f2d72334511cf950c86a504a970ed5a2208ee0afeae546a5500327b",
+          "url" : "raolm://ambient/raolm-ambient-288efe3a88ebf4de52b81437/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "I asked Mary later whether anything else I had read mentioned Rabel Eldland. The author promised a follow-up piece about Rabel Eldland next month. I sent the link about Rabel Eldland to myself so I would not lose it. Something about Rabel Eldland reminded me of a trip I took years ago.",
+          "textSHA256" : "1ff76f3e72e6ee6a09eb2809edf4e35c67c4dfad4a4ebfcb370bcc10d4dccff8",
+          "url" : "raolm://ambient/raolm-ambient-288efe3a88ebf4de52b81437/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Mary can find this again if I ask about Rabel Eldland. A reader letter at the end corrected one small detail about Rabel Eldland. The comments under the article about Rabel Eldland argued about the details. There was a photo of Rabel Eldland at the top of the page, a little out of focus.",
+          "textSHA256" : "214590b1d6a85ef77fddea594b338cc9f30cc3c1b02cc08423295e754220fff6",
+          "url" : "raolm://ambient/raolm-ambient-288efe3a88ebf4de52b81437/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-29687b984aa8df6ef2d9d9d9",
+      "mediaType" : "text",
+      "name" : "Digest · Iswen Dalander",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Morning brief: the New Lakeside Review ran a story about Iswen Dalander. The interview is with the painter Iswen Dalander. One line stood out: \"Iswen Dalander, apparently, worked for decades in Elwygarth.\" There was a photo of Iswen Dalander at the top of the page, a little out of focus.",
+          "textSHA256" : "1c4c2bb55ddfae271db436615596e2f972974944ee5398d5dc2600f9aeeb7a4a",
+          "url" : "raolm://ambient/raolm-ambient-29687b984aa8df6ef2d9d9d9/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "I read that Iswen Dalander was taught by Arbel Lanvik. I kept this tab open for most of the afternoon because of Iswen Dalander. A reader letter at the end corrected one small detail about Iswen Dalander. I read the section on Iswen Dalander twice before moving on.",
+          "textSHA256" : "412b17bd18e1ca8378d54eb7a87f66c172cd1f433659fc616810435484cb283d",
+          "url" : "raolm://ambient/raolm-ambient-29687b984aa8df6ef2d9d9d9/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Nothing else in today's reading touched Iswen Dalander. Mary flagged Iswen Dalander again when it came up on a later page. Something about Iswen Dalander reminded me of a trip I took years ago. The comments under the article about Iswen Dalander argued about the details.",
+          "textSHA256" : "37936fb0bfe1c7431af190a0f9f63b1f0f3328b9e412287c2253f501cb06586b",
+          "url" : "raolm://ambient/raolm-ambient-29687b984aa8df6ef2d9d9d9/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-3cacc284cd3ed2cd7504ea33",
+      "mediaType" : "text",
+      "name" : "Reading · Karen Brayridge",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Reading log, from the Sunday Estuary Post, on Karen Brayridge. Karen Brayridge is a researcher whose work keeps coming up in my reading. Karen Brayridge was born, the essay notes, in 1906. The page about Karen Brayridge loaded slowly, so I read it on my phone first.",
+          "textSHA256" : "ec1eacc8fc305cbdff97a9ca27dfbe2653d758f4d753fdeb92bb232e90a5bbc6",
+          "url" : "raolm://ambient/raolm-ambient-3cacc284cd3ed2cd7504ea33/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "I saved the part where Karen Brayridge thanks the mentor Nasel Haline. Karen Brayridge is the author of The Salt Gazetteer, the article reminds me. The article about Karen Brayridge was longer than I expected, but I finished it.",
+          "textSHA256" : "528fe856c87d16f23b3c6f8c452ebaffcaaa1a8936e2e660809740ec7046e402",
+          "url" : "raolm://ambient/raolm-ambient-3cacc284cd3ed2cd7504ea33/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "There was a photo of Karen Brayridge at the top of the page, a little out of focus. The comments under the article about Karen Brayridge argued about the details. I kept this tab open for most of the afternoon because of Karen Brayridge.",
+          "textSHA256" : "3240757a929379ad3429d1f549e81f1f5420aa4a4b18f49d8078832daca12b80",
+          "url" : "raolm://ambient/raolm-ambient-3cacc284cd3ed2cd7504ea33/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-3e775b609f5ba879752612bc",
+      "mediaType" : "text",
+      "name" : "Conversation · Oddric Garmore",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "They asked: remind me about Oddric Garmore. Mary said: you read about it in the Riverbank Weekly. Oddric Garmore studies how small towns keep their records. Oddric Garmore studied, the article says, with Allo Carrski. A reader letter at the end corrected one small detail about Oddric Garmore.",
+          "textSHA256" : "7ae15b1579e13af8df0cfe92a57ab4336a2f031bdbddd786b360f39881a6c601",
+          "url" : "raolm://ambient/raolm-ambient-3e775b609f5ba879752612bc/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "I learned that Oddric Garmore was born in 1977, which surprised me. The best known book by Oddric Garmore is The Small Field Book. The page about Oddric Garmore loaded slowly, so I read it on my phone first. The author promised a follow-up piece about Oddric Garmore next month.",
+          "textSHA256" : "2a14caaa0a4d38563a5120a35542461dfd96000e9ba4660108f3f850cb6ae70b",
+          "url" : "raolm://ambient/raolm-ambient-3e775b609f5ba879752612bc/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The comments under the article about Oddric Garmore argued about the details. I kept this tab open for most of the afternoon because of Oddric Garmore. I highlighted a paragraph about Oddric Garmore to come back to. I sent the link about Oddric Garmore to myself so I would not lose it.",
+          "textSHA256" : "2bd3bdc34f32efe92351a3afae2f2a1814ab0f4585bc9f758523d5c904888274",
+          "url" : "raolm://ambient/raolm-ambient-3e775b609f5ba879752612bc/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "I will probably come back to Oddric Garmore next week. The article about Oddric Garmore was longer than I expected, but I finished it. I asked Mary later whether anything else I had read mentioned Oddric Garmore. I read the section on Oddric Garmore twice before moving on.",
+          "textSHA256" : "e66c669355b3347c3ba201d4f7ce697a606266ed57528ab6439c3bbc9081c9a9",
+          "url" : "raolm://ambient/raolm-ambient-3e775b609f5ba879752612bc/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-42410413453aa61378662ccb",
+      "mediaType" : "text",
+      "name" : "Conversation · Incident HA-4730",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "They asked: remind me about incident HA-4730. Mary said: you read about it in the Morning Coastal Quarterly. The article is a write-up of incident HA-4730. The changelog says incident HA-4730 was fixed in 3.1.6. Mary flagged incident HA-4730 again when it came up on a later page.",
+          "textSHA256" : "2dd6fe68ffbb76dd5c500e99cb0ad8c3adeb397261036f3ee707b772eb549a61",
+          "url" : "raolm://ambient/raolm-ambient-42410413453aa61378662ccb/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The comments under the article about incident HA-4730 argued about the details. I read the section on incident HA-4730 twice before moving on. I sent the link about incident HA-4730 to myself so I would not lose it. A reader letter at the end corrected one small detail about incident HA-4730.",
+          "textSHA256" : "6ed1c5c3f0be442d3819ddfb1c3404a0a07e065ef0943a54b496dd07a24273d5",
+          "url" : "raolm://ambient/raolm-ambient-42410413453aa61378662ccb/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Mary can find this again if I ask about incident HA-4730. I kept this tab open for most of the afternoon because of incident HA-4730. The author promised a follow-up piece about incident HA-4730 next month. I highlighted a paragraph about incident HA-4730 to come back to.",
+          "textSHA256" : "011365043fc7ee7838b96140bcd851e705e76183712bd6bfafaa45371bda86c9",
+          "url" : "raolm://ambient/raolm-ambient-42410413453aa61378662ccb/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-448b291839c24705d803914c",
+      "mediaType" : "text",
+      "name" : "Digest · Carrowgarth",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Morning brief: the Weekend Borough Courier ran a story about Carrowgarth. The piece describes Carrowgarth as a market town with a slow river. The interview was with the mayor of Carrowgarth, Magar Stroudsen. The page about Carrowgarth loaded slowly, so I read it on my phone first.",
+          "textSHA256" : "feb738e90364de908d94df7282c8090f1467afc26c55230fd6ac37469ad319c1",
+          "url" : "raolm://ambient/raolm-ambient-448b291839c24705d803914c/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Carrowgarth was settled, the guide explains, in 1299, when the first mills went up. The census figure the article quotes for Carrowgarth is 96109 residents. Something about Carrowgarth reminded me of a trip I took years ago.",
+          "textSHA256" : "8c209b172fabd22414af3e811e0a7d87e1af7e4f4f63181ab1b75c066c16a180",
+          "url" : "raolm://ambient/raolm-ambient-448b291839c24705d803914c/p/1"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-476d1694d647971aba347625",
+      "mediaType" : "text",
+      "name" : "Reading · Joltvault",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Saved from the Little Headland Bulletin, an article about Joltvault. Joltvault sits where the moor road meets the sea. I noted that Joltvault is home to 45135 people. The article about Joltvault was longer than I expected, but I finished it.",
+          "textSHA256" : "b275928f07a82e3d69b6c8ab94d03750a31817a41c650f9ee48aabadfec82667",
+          "url" : "raolm://ambient/raolm-ambient-476d1694d647971aba347625/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The interview was with the mayor of Joltvault, Helin Garine. The article says Joltvault was founded in 1374. I read the section on Joltvault twice before moving on. I asked Mary later whether anything else I had read mentioned Joltvault.",
+          "textSHA256" : "e5d930c074afda82cd09e55a2ede050b41639b0977497745c4cc0449c63bc437",
+          "url" : "raolm://ambient/raolm-ambient-476d1694d647971aba347625/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "I kept this tab open for most of the afternoon because of Joltvault. I sent the link about Joltvault to myself so I would not lose it. Something about Joltvault reminded me of a trip I took years ago. There was a photo of Joltvault at the top of the page, a little out of focus.",
+          "textSHA256" : "46a4b6eb854529ef4ca06fdac559f37d58daf7cfd77ef72524364e02c81395bb",
+          "url" : "raolm://ambient/raolm-ambient-476d1694d647971aba347625/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "I will probably come back to Joltvault next week. Mary flagged Joltvault again when it came up on a later page. The page about Joltvault loaded slowly, so I read it on my phone first. A reader letter at the end corrected one small detail about Joltvault.",
+          "textSHA256" : "a1ade8b528f9e031cb88b161803c8fa6a4e34cdc8cb2ced2c8345f714eb80ae5",
+          "url" : "raolm://ambient/raolm-ambient-476d1694d647971aba347625/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-4cb31d9587861705d84e87ea",
+      "mediaType" : "text",
+      "name" : "Reading · Vavi Ullsen",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Saved from the Sunday Harbourside Weekly, an article about Vavi Ullsen. Vavi Ullsen is a researcher whose work keeps coming up in my reading. I learned that Vavi Ullsen was born in 1983, which surprised me. Mary flagged Vavi Ullsen again when it came up on a later page.",
+          "textSHA256" : "f5239901c97c44fd3052303c6373e975ee14bd48dc81414da1d058a255035ec1",
+          "url" : "raolm://ambient/raolm-ambient-4cb31d9587861705d84e87ea/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Vavi Ullsen studied, the article says, with Jatha Bargren. I want to read the book Vavi Ullsen wrote, The Late Record. The page about Vavi Ullsen loaded slowly, so I read it on my phone first. I read the section on Vavi Ullsen twice before moving on.",
+          "textSHA256" : "8aea4d779ed81383f5f9d4b287a614d1ef863c5ac983ec0ded210d97e8eacaf4",
+          "url" : "raolm://ambient/raolm-ambient-4cb31d9587861705d84e87ea/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The author promised a follow-up piece about Vavi Ullsen next month. The comments under the article about Vavi Ullsen argued about the details. There was a photo of Vavi Ullsen at the top of the page, a little out of focus.",
+          "textSHA256" : "baaa3c46c08391f4f588aea19b6c7dad9349543cb7f2eba8dbcf06fc2d095fc9",
+          "url" : "raolm://ambient/raolm-ambient-4cb31d9587861705d84e87ea/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Filed under things to read more about: Vavi Ullsen. The article about Vavi Ullsen was longer than I expected, but I finished it. I highlighted a paragraph about Vavi Ullsen to come back to. Something about Vavi Ullsen reminded me of a trip I took years ago.",
+          "textSHA256" : "182ef9ce5a4f77a93a37a82f54799ca21c7fb51af3bd090f2aed9162593c6172",
+          "url" : "raolm://ambient/raolm-ambient-4cb31d9587861705d84e87ea/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-4d53132fdadba4d9f6e4854d",
+      "mediaType" : "text",
+      "name" : "Conversation · Bena Taming",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "They asked: what did I read about Bena Taming? Mary said: here is what your reading covers. Bena Taming is a researcher whose work keeps coming up in my reading. Early on, Bena Taming worked in the lab of Nimira Merrowfield.",
+          "textSHA256" : "d0814740028f3960c2b6422233cb2209eb6e13437dd2aa6342d8c13fa3dcd2da",
+          "url" : "raolm://ambient/raolm-ambient-4d53132fdadba4d9f6e4854d/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Bena Taming was born, the essay notes, in 1831. Bena Taming is the author of The Quiet Tally, the article reminds me. I sent the link about Bena Taming to myself so I would not lose it. There was a photo of Bena Taming at the top of the page, a little out of focus.",
+          "textSHA256" : "8f73e8c62b3c93c8366202b8dbedf3ad35a53ea13494e884525b896ad195db2d",
+          "url" : "raolm://ambient/raolm-ambient-4d53132fdadba4d9f6e4854d/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "I highlighted a paragraph about Bena Taming to come back to. I asked Mary later whether anything else I had read mentioned Bena Taming. I read the section on Bena Taming twice before moving on. Something about Bena Taming reminded me of a trip I took years ago.",
+          "textSHA256" : "0121e240f1f045236b0ac2fb16dc2cb349c3a74bc9832f8ffa1607994e1c3610",
+          "url" : "raolm://ambient/raolm-ambient-4d53132fdadba4d9f6e4854d/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "I will probably come back to Bena Taming next week. The page about Bena Taming loaded slowly, so I read it on my phone first. The article about Bena Taming was longer than I expected, but I finished it. I kept this tab open for most of the afternoon because of Bena Taming.",
+          "textSHA256" : "096a9921fbbd9317f2c341db9e8ccf864c59775f47959f8212408d71bdc1709b",
+          "url" : "raolm://ambient/raolm-ambient-4d53132fdadba4d9f6e4854d/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-4fecfb793cc537a6d5ba2cf9",
+      "mediaType" : "text",
+      "name" : "Reading · Tillyburn",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Saved from the Daily Lakeside Observer, an article about Tillyburn. Tillyburn sits where the moor road meets the sea. I noted that Tillyburn is home to 51861 people. I asked Mary later whether anything else I had read mentioned Tillyburn.",
+          "textSHA256" : "d11e4c904aba65e085151e49d7b9ba669f9f8f52e0faa259fd0f57cbbae835d3",
+          "url" : "raolm://ambient/raolm-ambient-4fecfb793cc537a6d5ba2cf9/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The article says Tillyburn was founded in 1128. I read that the mayor of Tillyburn is Jaora Seling. The author promised a follow-up piece about Tillyburn next month. Mary flagged Tillyburn again when it came up on a later page.",
+          "textSHA256" : "524e84b73459ec1d113d83c8b82351576deed9edbb2a638983d884633ba334c2",
+          "url" : "raolm://ambient/raolm-ambient-4fecfb793cc537a6d5ba2cf9/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The comments under the article about Tillyburn argued about the details. There was a photo of Tillyburn at the top of the page, a little out of focus. I highlighted a paragraph about Tillyburn to come back to. The article about Tillyburn was longer than I expected, but I finished it.",
+          "textSHA256" : "f6353ffcd85d3960abe59efc53176dcd8e23198b4aebe974f5988988c4b01bca",
+          "url" : "raolm://ambient/raolm-ambient-4fecfb793cc537a6d5ba2cf9/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Mary can find this again if I ask about Tillyburn. A reader letter at the end corrected one small detail about Tillyburn. I sent the link about Tillyburn to myself so I would not lose it. The piece about Tillyburn links to two older articles I have not read yet.",
+          "textSHA256" : "62dd5c2ac0223918ca1136ed304003e42e8cc0159c851449f90b4bcc26fbc6a1",
+          "url" : "raolm://ambient/raolm-ambient-4fecfb793cc537a6d5ba2cf9/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-549dc49b544c9c001881f83c",
+      "mediaType" : "text",
+      "name" : "Digest · The Saffron Harp Week",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Morning brief: the New Lowland Review ran a story about the Saffron Harp Week. The page calls the Saffron Harp Week the loudest week of the year. I read that the first edition of the Saffron Harp Week took place in 1571.",
+          "textSHA256" : "4eb9ceb37d7ef7628259d89f748127456544d98560231570bf02834e4b702109",
+          "url" : "raolm://ambient/raolm-ambient-549dc49b544c9c001881f83c/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The Saffron Harp Week was founded by Dadric Carrby, the article says. Last year the Saffron Harp Week drew about 148583 visitors. The article about the Saffron Harp Week was longer than I expected, but I finished it. A reader letter at the end corrected one small detail about the Saffron Harp Week.",
+          "textSHA256" : "aa8f0ba546488c0e9b812b04ea5feb22602a48391f9904f392b220cbc6e8619b",
+          "url" : "raolm://ambient/raolm-ambient-549dc49b544c9c001881f83c/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "I read the section on the Saffron Harp Week twice before moving on. The piece about the Saffron Harp Week links to two older articles I have not read yet. The comments under the article about the Saffron Harp Week argued about the details.",
+          "textSHA256" : "e6e787e78ea36fef17838b87d6b706c8deb7d5f6e94e126628cb053f29281bcc",
+          "url" : "raolm://ambient/raolm-ambient-549dc49b544c9c001881f83c/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Mary can find this again if I ask about the Saffron Harp Week. I sent the link about the Saffron Harp Week to myself so I would not lose it. There was a photo of the Saffron Harp Week at the top of the page, a little out of focus.",
+          "textSHA256" : "f296f8b1dfb282e3fd8356bc173de465a9fc6b9c838d664d9cdda90704f7dc6b",
+          "url" : "raolm://ambient/raolm-ambient-549dc49b544c9c001881f83c/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-591ef70fb7ac263151c00223",
+      "mediaType" : "text",
+      "name" : "Conversation · Valin Fenmore",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "They asked: remind me about Valin Fenmore. Mary said: you read about it in the Seaboard Quarterly. Valin Fenmore is a researcher whose work keeps coming up in my reading. The profile says Valin Fenmore was born in 1911. The article about Valin Fenmore was longer than I expected, but I finished it.",
+          "textSHA256" : "57aa8aabfdbe40247c8be82377f3c3105c3d4a3c0d608bc9e7a2d5f7aaf9d58c",
+          "url" : "raolm://ambient/raolm-ambient-591ef70fb7ac263151c00223/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The review praised the book by Valin Fenmore, The Salt Hours. I saved the part where Valin Fenmore thanks the mentor Cedan Tildefield. The page about Valin Fenmore loaded slowly, so I read it on my phone first. I highlighted a paragraph about Valin Fenmore to come back to.",
+          "textSHA256" : "68b015e23633cd897eac8f646156a07d41f962c7c9919040c92dc9f80f038b24",
+          "url" : "raolm://ambient/raolm-ambient-591ef70fb7ac263151c00223/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "A reader letter at the end corrected one small detail about Valin Fenmore. Something about Valin Fenmore reminded me of a trip I took years ago. I sent the link about Valin Fenmore to myself so I would not lose it. The author promised a follow-up piece about Valin Fenmore next month.",
+          "textSHA256" : "a501ddd9946650c9bab6e404339b7e7769bf8fe9aa79cf4c6eeb2a82f005af6c",
+          "url" : "raolm://ambient/raolm-ambient-591ef70fb7ac263151c00223/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Filed under things to read more about: Valin Fenmore. I kept this tab open for most of the afternoon because of Valin Fenmore. There was a photo of Valin Fenmore at the top of the page, a little out of focus. I asked Mary later whether anything else I had read mentioned Valin Fenmore.",
+          "textSHA256" : "c22fa555d76f8c132e2be8e00466835f36582e53b6c3f47cc5c05b3253dd883a",
+          "url" : "raolm://ambient/raolm-ambient-591ef70fb7ac263151c00223/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-5e6c62503d06547c24cefb43",
+      "mediaType" : "text",
+      "name" : "Reading · Yarlshaw",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Read on the Morning Estuary Weekly: a long piece about Yarlshaw. Yarlshaw is a coastal town the article returns to again and again. Yarlshaw was settled, the guide explains, in 1461, when the first mills went up. I kept this tab open for most of the afternoon because of Yarlshaw.",
+          "textSHA256" : "3b0ed0c394d3a4a421859d4fd8ffb2a349ce99368d03058bebbca8b86bc6bbeb",
+          "url" : "raolm://ambient/raolm-ambient-5e6c62503d06547c24cefb43/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "By the latest count Yarlshaw holds 78595 residents. I read that the mayor of Yarlshaw is Mavin Ashwell. Something about Yarlshaw reminded me of a trip I took years ago. The comments under the article about Yarlshaw argued about the details.",
+          "textSHA256" : "3cf4143ab6b8ad8e3ee0dca5dbc177962f2214c5a6f1e02e875573bc56834c4b",
+          "url" : "raolm://ambient/raolm-ambient-5e6c62503d06547c24cefb43/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Filed under things to read more about: Yarlshaw. The article about Yarlshaw was longer than I expected, but I finished it. The piece about Yarlshaw links to two older articles I have not read yet. I highlighted a paragraph about Yarlshaw to come back to.",
+          "textSHA256" : "798150f7b7973ae4a883f51c71dc5fffb2730656c2dceefe9a2e60fe3507c3b2",
+          "url" : "raolm://ambient/raolm-ambient-5e6c62503d06547c24cefb43/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-676fa9be205c1e1822ff4a63",
+      "mediaType" : "text",
+      "name" : "Conversation · The Barley Fox Festival",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "They asked: what did I read about the Barley Fox Festival? Mary said: here is what your reading covers. The Barley Fox Festival is held every year on the edge of town. The page credits the idea for the Barley Fox Festival to Lewen Brayfield.",
+          "textSHA256" : "a57646fa46cdaabd9ae02e16949c551e3ec4954f690b533572231ed829c6ace4",
+          "url" : "raolm://ambient/raolm-ambient-676fa9be205c1e1822ff4a63/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The article says the Barley Fox Festival was first held in 1527. I was surprised that the Barley Fox Festival gets 227540 visitors. I highlighted a paragraph about the Barley Fox Festival to come back to. Mary flagged the Barley Fox Festival again when it came up on a later page.",
+          "textSHA256" : "21abd283f11a5f803d1b4852889192269284d1015f540a2d40426ae1e9214a62",
+          "url" : "raolm://ambient/raolm-ambient-676fa9be205c1e1822ff4a63/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Something about the Barley Fox Festival reminded me of a trip I took years ago. There was a photo of the Barley Fox Festival at the top of the page, a little out of focus. The article about the Barley Fox Festival was longer than I expected, but I finished it.",
+          "textSHA256" : "9c9acfa19f364999d35b1dadb6372a9fef2d770143c9b31e5fa93c26e7bda9e0",
+          "url" : "raolm://ambient/raolm-ambient-676fa9be205c1e1822ff4a63/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-687c5b6994820284bc0010a7",
+      "mediaType" : "text",
+      "name" : "Digest · Red Meadow",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Evening digest from today's reading, most of it about Red Meadow. The exhibition review singles out Red Meadow. One line stood out: \"Provenance records give the artist of Red Meadow, apparently, as Brimira Yorvik.\" The article about Red Meadow was longer than I expected, but I finished it.",
+          "textSHA256" : "872a0cd78679e307afc7434485db1d62e3a5b2abd709473907e2ce41d226f4b5",
+          "url" : "raolm://ambient/raolm-ambient-687c5b6994820284bc0010a7/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "I was surprised Red Meadow spans 215 centimetres. I read the section on Red Meadow twice before moving on. The piece about Red Meadow links to two older articles I have not read yet. The page about Red Meadow loaded slowly, so I read it on my phone first.",
+          "textSHA256" : "bf926f5201759aaddc5a54aa2371665da13b5fe12f2d02806c0c5fe874cf1b71",
+          "url" : "raolm://ambient/raolm-ambient-687c5b6994820284bc0010a7/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Mary flagged Red Meadow again when it came up on a later page. I asked Mary later whether anything else I had read mentioned Red Meadow. I sent the link about Red Meadow to myself so I would not lose it. The comments under the article about Red Meadow argued about the details.",
+          "textSHA256" : "0165bb942caf79e1dbe80e19cc007366ebca23dbae06f7bddfaf6492d3692c3a",
+          "url" : "raolm://ambient/raolm-ambient-687c5b6994820284bc0010a7/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Mary can find this again if I ask about Red Meadow. The author promised a follow-up piece about Red Meadow next month. I kept this tab open for most of the afternoon because of Red Meadow. A reader letter at the end corrected one small detail about Red Meadow.",
+          "textSHA256" : "6a929b0653ac5b530c083017281cee2d4db05f3589eddc7d74a81c44fb379a9e",
+          "url" : "raolm://ambient/raolm-ambient-687c5b6994820284bc0010a7/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-72b42b1c65f8500b8d18e9e7",
+      "mediaType" : "text",
+      "name" : "Reading · Carrowrigg",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Reading log, from the Weekend County Post, on Carrowrigg. Carrowrigg is a coastal town the article returns to again and again. Carrowrigg was settled, the guide explains, in 1676, when the first mills went up. I asked Mary later whether anything else I had read mentioned Carrowrigg.",
+          "textSHA256" : "e60ce30c2be7c18752a519564bf5b7ba2f7cbff7e3fb6091fa946312b54e95c2",
+          "url" : "raolm://ambient/raolm-ambient-72b42b1c65f8500b8d18e9e7/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Carrowrigg is governed by its mayor, Relo Selford. Carrowrigg has a population of about 61246 people. I read the section on Carrowrigg twice before moving on. The comments under the article about Carrowrigg argued about the details.",
+          "textSHA256" : "b312fa4e5d299f2fed3e9e65606a28b635d11e8887984b4e490863e06f95f181",
+          "url" : "raolm://ambient/raolm-ambient-72b42b1c65f8500b8d18e9e7/p/1"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-73b86c656fa0a37f8e1e9993",
+      "mediaType" : "text",
+      "name" : "Digest · The Violet Ribbon Gathering",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Evening digest from today's reading, most of it about the Violet Ribbon Gathering. The Violet Ribbon Gathering is a street festival with music and lanterns. Last year the Violet Ribbon Gathering drew about 80228 visitors.",
+          "textSHA256" : "380190e39028a6fe92de19342c6156b41a02a7b5feb97d485cc9610932ce58be",
+          "url" : "raolm://ambient/raolm-ambient-73b86c656fa0a37f8e1e9993/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The founder of the Violet Ribbon Gathering was Sasel Pellland. The Violet Ribbon Gathering began, according to the page, in 1659. Something about the Violet Ribbon Gathering reminded me of a trip I took years ago. The article about the Violet Ribbon Gathering was longer than I expected, but I finished it.",
+          "textSHA256" : "6fe7775b22db45ba3b91a0b38727b4569127a150eabadbd000ab290a020950a7",
+          "url" : "raolm://ambient/raolm-ambient-73b86c656fa0a37f8e1e9993/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "I asked Mary later whether anything else I had read mentioned the Violet Ribbon Gathering. The comments under the article about the Violet Ribbon Gathering argued about the details. There was a photo of the Violet Ribbon Gathering at the top of the page, a little out of focus.",
+          "textSHA256" : "e097d1f8d60e09adc8bcae6fd7f3116f98e63066888678e814c265085da3ad4a",
+          "url" : "raolm://ambient/raolm-ambient-73b86c656fa0a37f8e1e9993/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "I will probably come back to the Violet Ribbon Gathering next week. I highlighted a paragraph about the Violet Ribbon Gathering to come back to. The page about the Violet Ribbon Gathering loaded slowly, so I read it on my phone first.",
+          "textSHA256" : "9f776a221b9ab1d91b3f7d34bbad581156c26928f5b7ad29dfc8828265d45a56",
+          "url" : "raolm://ambient/raolm-ambient-73b86c656fa0a37f8e1e9993/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-7501a12b20c9873db4e7e102",
+      "mediaType" : "text",
+      "name" : "Reading · Ullin Dunine",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Saved from the Downs Chronicle, an article about Ullin Dunine. The profile introduces Ullin Dunine as a patient, careful scientist. Ullin Dunine is the author of The Slow Survey, the article reminds me. I sent the link about Ullin Dunine to myself so I would not lose it.",
+          "textSHA256" : "43bb51d1f894e175696503163ae3402b0f59b8a860f3f74a3f521359ee1764fc",
+          "url" : "raolm://ambient/raolm-ambient-7501a12b20c9873db4e7e102/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The piece mentions that Ullin Dunine trained under Ramae Ashvik. Ullin Dunine was born, the essay notes, in 1878. The author promised a follow-up piece about Ullin Dunine next month. The article about Ullin Dunine was longer than I expected, but I finished it.",
+          "textSHA256" : "2db3f4e4bb028321b5403f74a2ffb5e936bc31435dbcf1e2fdb020c73dd6c46f",
+          "url" : "raolm://ambient/raolm-ambient-7501a12b20c9873db4e7e102/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "There was a photo of Ullin Dunine at the top of the page, a little out of focus. The comments under the article about Ullin Dunine argued about the details. Mary flagged Ullin Dunine again when it came up on a later page.",
+          "textSHA256" : "ffeb06b113b2efdf8c7d3e0d69f9ab591c268130ebeba6375bc723da604b92e3",
+          "url" : "raolm://ambient/raolm-ambient-7501a12b20c9873db4e7e102/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Mary can find this again if I ask about Ullin Dunine. A reader letter at the end corrected one small detail about Ullin Dunine. Something about Ullin Dunine reminded me of a trip I took years ago. I highlighted a paragraph about Ullin Dunine to come back to.",
+          "textSHA256" : "5c1c94478d84b42af71a401872d121f0a2f885f8318a90594101f55aaea55a42",
+          "url" : "raolm://ambient/raolm-ambient-7501a12b20c9873db4e7e102/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-8682f0c70a356b7a8e40f9c3",
+      "mediaType" : "text",
+      "name" : "Digest · Bromden",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Evening digest from today's reading, most of it about Bromden. Bromden sits where the moor road meets the sea. The interview was with the mayor of Bromden, Brimira Pennland. Mary flagged Bromden again when it came up on a later page.",
+          "textSHA256" : "7fe9e33e4047e1ecc35bbb084461111e721dce4ee9f509040d8089a7af711b8f",
+          "url" : "raolm://ambient/raolm-ambient-8682f0c70a356b7a8e40f9c3/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Bromden was settled, the guide explains, in 1892, when the first mills went up. Bromden has a population of about 7774 people. I highlighted a paragraph about Bromden to come back to. The page about Bromden loaded slowly, so I read it on my phone first.",
+          "textSHA256" : "9106919669790f790b8c6401dc1ff3d3972867c6707c47b0797af263fd0c2ad1",
+          "url" : "raolm://ambient/raolm-ambient-8682f0c70a356b7a8e40f9c3/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Something about Bromden reminded me of a trip I took years ago. I sent the link about Bromden to myself so I would not lose it. The author promised a follow-up piece about Bromden next month. I read the section on Bromden twice before moving on.",
+          "textSHA256" : "bd34aa7e7b6340d6d5109afbff78d836829712faf383e6cda2e594f4c048f1c6",
+          "url" : "raolm://ambient/raolm-ambient-8682f0c70a356b7a8e40f9c3/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-88dd6f9f356ddeba4d6993e7",
+      "mediaType" : "text",
+      "name" : "Digest · The Drummond Bequest",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Morning brief: the Daily Tidewater Review ran a story about the Drummond Bequest. The article is a visit to the Drummond Bequest. The guide says the Drummond Bequest opened in 1972. I highlighted a paragraph about the Drummond Bequest to come back to.",
+          "textSHA256" : "a5cdd523973a515059a65e47693bccd48ccae252a621c09caeb061c38bdce445",
+          "url" : "raolm://ambient/raolm-ambient-88dd6f9f356ddeba4d6993e7/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "I read that the Drummond Bequest is run by Arian Waldton. I read that the Drummond Bequest keeps 2487 pieces. Mary flagged the Drummond Bequest again when it came up on a later page. I read the section on the Drummond Bequest twice before moving on.",
+          "textSHA256" : "bf8f47e376b5f0eda14196bf9216e0d1cf2a79d682e343514f8f75d1dc435287",
+          "url" : "raolm://ambient/raolm-ambient-88dd6f9f356ddeba4d6993e7/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "There was a photo of the Drummond Bequest at the top of the page, a little out of focus. The author promised a follow-up piece about the Drummond Bequest next month. The piece about the Drummond Bequest links to two older articles I have not read yet.",
+          "textSHA256" : "e0f5bb4a292b5c660606e04d606f8b5d23ac159a904ecf1603b53b494a6c77cb",
+          "url" : "raolm://ambient/raolm-ambient-88dd6f9f356ddeba4d6993e7/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-89d7e73f991546edc1c2511f",
+      "mediaType" : "text",
+      "name" : "Reading · Nethewick",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Read on the Sunday Fenland Observer: a long piece about Nethewick. The piece describes Nethewick as a market town with a slow river. The interview was with the mayor of Nethewick, Helise Wrenvik. A reader letter at the end corrected one small detail about Nethewick.",
+          "textSHA256" : "712c9da209a8bd1680d0aacc5fe51edbca712a6757f811801d7559ffe3e0750d",
+          "url" : "raolm://ambient/raolm-ambient-89d7e73f991546edc1c2511f/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The article says Nethewick was founded in 1849. By the latest count Nethewick holds 18394 residents. The author promised a follow-up piece about Nethewick next month. The comments under the article about Nethewick argued about the details.",
+          "textSHA256" : "d7f0ab83e29845caa2a6999702bae98102d388541ff30111d30b995f748bb0ed",
+          "url" : "raolm://ambient/raolm-ambient-89d7e73f991546edc1c2511f/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "I kept this tab open for most of the afternoon because of Nethewick. The piece about Nethewick links to two older articles I have not read yet. The page about Nethewick loaded slowly, so I read it on my phone first. I read the section on Nethewick twice before moving on.",
+          "textSHA256" : "52ea7f1e93db43ab2958cf7978529dae3034ee90dae7d0553f9cfc57936fe48c",
+          "url" : "raolm://ambient/raolm-ambient-89d7e73f991546edc1c2511f/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-a91213a1661bb2c87c93e800",
+      "mediaType" : "text",
+      "name" : "Reading · Ulmira Pennworth",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Saved from the Weekend Borough Post, an article about Ulmira Pennworth. The profile introduces Ulmira Pennworth as a patient, careful scientist. The piece mentions that Ulmira Pennworth trained under Reric Eldholt. I highlighted a paragraph about Ulmira Pennworth to come back to.",
+          "textSHA256" : "413603719de1998cc5c1dc80c56af9c83652f265fb997e6faabeb6546212b9a4",
+          "url" : "raolm://ambient/raolm-ambient-a91213a1661bb2c87c93e800/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The profile says Ulmira Pennworth was born in 1815. The best known book by Ulmira Pennworth is The Honest Grammar. The comments under the article about Ulmira Pennworth argued about the details. I read the section on Ulmira Pennworth twice before moving on.",
+          "textSHA256" : "2194468c222a915964819f23c4d587b36093ac9be84b12bf89f33ac6a5a98545",
+          "url" : "raolm://ambient/raolm-ambient-a91213a1661bb2c87c93e800/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Nothing else in today's reading touched Ulmira Pennworth. The page about Ulmira Pennworth loaded slowly, so I read it on my phone first. I sent the link about Ulmira Pennworth to myself so I would not lose it. A reader letter at the end corrected one small detail about Ulmira Pennworth.",
+          "textSHA256" : "3d56dae8a5df1d8ebb6f072b8c7ed4697c6fdfcedf85c7d2579e6d481f21c73c",
+          "url" : "raolm://ambient/raolm-ambient-a91213a1661bb2c87c93e800/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-ab3ff73db06fcdfef5760c2e",
+      "mediaType" : "text",
+      "name" : "Conversation · The Ochre Star Festival",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "They asked: remind me about the Ochre Star Festival. Mary said: you read about it in the Daily Riverbank Dispatch. The Ochre Star Festival is a street festival with music and lanterns. The founder of the Ochre Star Festival was Bela Oaksen.",
+          "textSHA256" : "622cb1c8d5145341591c8d5d323fe48a1c852404af1d2d2921473cecb517c6a3",
+          "url" : "raolm://ambient/raolm-ambient-ab3ff73db06fcdfef5760c2e/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The Ochre Star Festival began, according to the page, in 1901. The piece estimates that the Ochre Star Festival welcomes 66656 visitors each year. Mary flagged the Ochre Star Festival again when it came up on a later page.",
+          "textSHA256" : "a388367fd6b37c6023ea5ff661161b81c2b49359b911c81f4e3a41c310621a1c",
+          "url" : "raolm://ambient/raolm-ambient-ab3ff73db06fcdfef5760c2e/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "I will probably come back to the Ochre Star Festival next week. The author promised a follow-up piece about the Ochre Star Festival next month. A reader letter at the end corrected one small detail about the Ochre Star Festival.",
+          "textSHA256" : "b2a2823a568d2ffedf039dcf4a65192f24a942e593f0883e8f6610131042c803",
+          "url" : "raolm://ambient/raolm-ambient-ab3ff73db06fcdfef5760c2e/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-b6f050d99d0cbff6899a72ca",
+      "mediaType" : "text",
+      "name" : "Conversation · Window with Ferry",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "They asked: what did I read about Window with Ferry? Mary said: here is what your reading covers. Window with Ferry is a painting the review describes at length. I was surprised Window with Ferry spans 242 centimetres. I asked Mary later whether anything else I had read mentioned Window with Ferry.",
+          "textSHA256" : "0eb4384240c4d48891829a3ad418b36fe4d5632429e226d149931e8eb71b64fa",
+          "url" : "raolm://ambient/raolm-ambient-b6f050d99d0cbff6899a72ca/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "I read that Window with Ferry was painted in 1761. I read that the artist behind Window with Ferry is Tisel Calfield. Mary flagged Window with Ferry again when it came up on a later page. There was a photo of Window with Ferry at the top of the page, a little out of focus.",
+          "textSHA256" : "cbb30147fd70949ca4f484e2c1dffa49cf47a9be094fb0b3bb709f7826a5ccfe",
+          "url" : "raolm://ambient/raolm-ambient-b6f050d99d0cbff6899a72ca/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The comments under the article about Window with Ferry argued about the details. Something about Window with Ferry reminded me of a trip I took years ago. I read the section on Window with Ferry twice before moving on. The article about Window with Ferry was longer than I expected, but I finished it.",
+          "textSHA256" : "f52b4b355bb2d0840dc7ad79f53646e621367006e70a0a27756d0c6fd33d1f19",
+          "url" : "raolm://ambient/raolm-ambient-b6f050d99d0cbff6899a72ca/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Filed under things to read more about: Window with Ferry. The author promised a follow-up piece about Window with Ferry next month. A reader letter at the end corrected one small detail about Window with Ferry. The page about Window with Ferry loaded slowly, so I read it on my phone first.",
+          "textSHA256" : "bb495020686daf8b69514ec21831f7482a4311c8c19aafb4d72a9fa84fa3232a",
+          "url" : "raolm://ambient/raolm-ambient-b6f050d99d0cbff6899a72ca/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-b704a62583d13b14f899b44a",
+      "mediaType" : "text",
+      "name" : "Reading · Incident DS-1864",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Read on the Little Headland Weekly: a long piece about incident DS-1864. A long post walks through incident DS-1864 step by step. The postmortem credits the fix for incident DS-1864 to Casa Merrowwick. There was a photo of incident DS-1864 at the top of the page, a little out of focus.",
+          "textSHA256" : "5af530f0a4e66b38fe65bcb721193b2558720e63ab287e2b89832c1641fce19b",
+          "url" : "raolm://ambient/raolm-ambient-b704a62583d13b14f899b44a/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The changelog says incident DS-1864 was fixed in 6.17.4. The write-up puts the duration of incident DS-1864 at 102 minutes. I kept this tab open for most of the afternoon because of incident DS-1864. Something about incident DS-1864 reminded me of a trip I took years ago.",
+          "textSHA256" : "60ffaab4e18d41f4b9ced828521fed00115ddae19b14a98c3f4369a5ccdaceb8",
+          "url" : "raolm://ambient/raolm-ambient-b704a62583d13b14f899b44a/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "I will probably come back to incident DS-1864 next week. The comments under the article about incident DS-1864 argued about the details. I read the section on incident DS-1864 twice before moving on. Mary flagged incident DS-1864 again when it came up on a later page.",
+          "textSHA256" : "fc0596be4626924824ccaba5272ebcd0896a3d68a019daa73f23e40926cad029",
+          "url" : "raolm://ambient/raolm-ambient-b704a62583d13b14f899b44a/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-ce18f0b2400c9c8ad9dd5d6c",
+      "mediaType" : "text",
+      "name" : "Digest · The Marigold Drum Festival",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Morning brief: the Daily Borough Dispatch ran a story about the Marigold Drum Festival. The Marigold Drum Festival is a street festival with music and lanterns. I read that the first edition of the Marigold Drum Festival took place in 1427.",
+          "textSHA256" : "640325bb00f6fe14a30dd76f6842d8acb5f22557f00e8927092404264a1b9cf1",
+          "url" : "raolm://ambient/raolm-ambient-ce18f0b2400c9c8ad9dd5d6c/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Last year the Marigold Drum Festival drew about 42139 visitors. I read that the Marigold Drum Festival was started by Brineth Rookcroft. The piece about the Marigold Drum Festival links to two older articles I have not read yet.",
+          "textSHA256" : "676a30015d43dbffdc2c7f0a6d29f33d69fcca3885bd317d42da09a00ac602be",
+          "url" : "raolm://ambient/raolm-ambient-ce18f0b2400c9c8ad9dd5d6c/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "I will probably come back to the Marigold Drum Festival next week. I asked Mary later whether anything else I had read mentioned the Marigold Drum Festival. A reader letter at the end corrected one small detail about the Marigold Drum Festival.",
+          "textSHA256" : "c2d16b9cd05f08cbdf55e5238b439fad53b5d25d08a4757fed9b8a59871ecb51",
+          "url" : "raolm://ambient/raolm-ambient-ce18f0b2400c9c8ad9dd5d6c/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-cea81c15d5f0aa95f92117dd",
+      "mediaType" : "text",
+      "name" : "Digest · The Saffron Drum Festival",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Morning brief: the Morning Valley Review ran a story about the Saffron Drum Festival. The page calls the Saffron Drum Festival the loudest week of the year. The Saffron Drum Festival was founded by Alric Pennett, the article says.",
+          "textSHA256" : "b911b11ec734e627d9d6ef581c75c16ecdbe6e9f3e46586909cb5a85d68ff829",
+          "url" : "raolm://ambient/raolm-ambient-cea81c15d5f0aa95f92117dd/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The Saffron Drum Festival now attracts roughly 207731 people. The history section dates the Saffron Drum Festival to 1965. The article about the Saffron Drum Festival was longer than I expected, but I finished it. I highlighted a paragraph about the Saffron Drum Festival to come back to.",
+          "textSHA256" : "40ddd414ffb63a298edaeb9f108abf6e35f6ccf89c6accfac74ccc2248d383b9",
+          "url" : "raolm://ambient/raolm-ambient-cea81c15d5f0aa95f92117dd/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "I asked Mary later whether anything else I had read mentioned the Saffron Drum Festival. The comments under the article about the Saffron Drum Festival argued about the details. Mary flagged the Saffron Drum Festival again when it came up on a later page.",
+          "textSHA256" : "8bec62dc7281617612a81a23fb376a43d5ee089cf05d19ebf051f3ab7035f493",
+          "url" : "raolm://ambient/raolm-ambient-cea81c15d5f0aa95f92117dd/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Filed under things to read more about: the Saffron Drum Festival. Something about the Saffron Drum Festival reminded me of a trip I took years ago. A reader letter at the end corrected one small detail about the Saffron Drum Festival.",
+          "textSHA256" : "2ff0b26374bfbf789a5a2437fe916735ab345304a0d0efa18ab301ee34bd6b50",
+          "url" : "raolm://ambient/raolm-ambient-cea81c15d5f0aa95f92117dd/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-d3ec24e97d860ffd5f0efe48",
+      "mediaType" : "text",
+      "name" : "Digest · Lumentrace",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Morning brief: the Daily Borough Monitor ran a story about Lumentrace. Lumentrace is a software library the article recommends for small teams. The release notes I read announce Lumentrace version 4.11.13. The piece about Lumentrace links to two older articles I have not read yet.",
+          "textSHA256" : "c74da0d079acb7dcf4c85f2285e96f37541a84392d7577fef56f8def4dd2c174",
+          "url" : "raolm://ambient/raolm-ambient-d3ec24e97d860ffd5f0efe48/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The tutorial says Lumentrace runs on port 54443. The blog post says Lumentrace was created by Debel Whitey. There was a photo of Lumentrace at the top of the page, a little out of focus. I asked Mary later whether anything else I had read mentioned Lumentrace.",
+          "textSHA256" : "da3acf2bf85bec36e83ab617bad4c71cabdedeca9521d5879aa7b619a734d832",
+          "url" : "raolm://ambient/raolm-ambient-d3ec24e97d860ffd5f0efe48/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "I read the section on Lumentrace twice before moving on. I highlighted a paragraph about Lumentrace to come back to. The author promised a follow-up piece about Lumentrace next month. I kept this tab open for most of the afternoon because of Lumentrace.",
+          "textSHA256" : "9a1c32b7a1b90c2a13b601e5baa3b4889df56955c2e1d47faac34526c4a829be",
+          "url" : "raolm://ambient/raolm-ambient-d3ec24e97d860ffd5f0efe48/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Mary can find this again if I ask about Lumentrace. The article about Lumentrace was longer than I expected, but I finished it. Something about Lumentrace reminded me of a trip I took years ago. I sent the link about Lumentrace to myself so I would not lose it.",
+          "textSHA256" : "c23ea3668e0ca12a16da15138d3205dacc4e1304832b44017c82d81fc5b7f8e0",
+          "url" : "raolm://ambient/raolm-ambient-d3ec24e97d860ffd5f0efe48/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-d92acb897c2b67635d131818",
+      "mediaType" : "text",
+      "name" : "Conversation · The Clover Wheel Gathering",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "They asked: what did I read about the Clover Wheel Gathering? Mary said: here is what your reading covers. The Clover Wheel Gathering is held every year on the edge of town. The founder of the Clover Wheel Gathering was Vawen Ashley.",
+          "textSHA256" : "2e6ac1aa8c54a96044c32761ae033f6e09732964a18fd2fde79a06532f3bcd59",
+          "url" : "raolm://ambient/raolm-ambient-d92acb897c2b67635d131818/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Last year the Clover Wheel Gathering drew about 191525 visitors. I read that the first edition of the Clover Wheel Gathering took place in 1607. The author promised a follow-up piece about the Clover Wheel Gathering next month.",
+          "textSHA256" : "3de0c6b47642d35a726a6586c20e1e42fdc399b4c4651e8f36d0605673f34ed5",
+          "url" : "raolm://ambient/raolm-ambient-d92acb897c2b67635d131818/p/1"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-d9e4d1575432a2790172f4ad",
+      "mediaType" : "text",
+      "name" : "Conversation · The Brass Sparrow Fair",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "They asked: what did I read about the Brass Sparrow Fair? Mary said: here is what your reading covers. The Brass Sparrow Fair is held every year on the edge of town. The Brass Sparrow Fair began, according to the page, in 1690.",
+          "textSHA256" : "68af94b85786c69aa2d4ded4737e6fbd172eaeab08da98607585af24df1edad1",
+          "url" : "raolm://ambient/raolm-ambient-d9e4d1575432a2790172f4ad/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The page credits the idea for the Brass Sparrow Fair to Ulko Rookman. I was surprised that the Brass Sparrow Fair gets 2704 visitors. I read the section on the Brass Sparrow Fair twice before moving on. The article about the Brass Sparrow Fair was longer than I expected, but I finished it.",
+          "textSHA256" : "b90c32dc8d8527b686dd400b87e03341479e51da98b007faed082d60e851e4d6",
+          "url" : "raolm://ambient/raolm-ambient-d9e4d1575432a2790172f4ad/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The page about the Brass Sparrow Fair loaded slowly, so I read it on my phone first. I highlighted a paragraph about the Brass Sparrow Fair to come back to. The author promised a follow-up piece about the Brass Sparrow Fair next month.",
+          "textSHA256" : "5207ad38db52c9d4d3aed5b9b84c3ab8b072215f02245cf4335cf73b659e5d72",
+          "url" : "raolm://ambient/raolm-ambient-d9e4d1575432a2790172f4ad/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Filed under things to read more about: the Brass Sparrow Fair. I sent the link about the Brass Sparrow Fair to myself so I would not lose it. Something about the Brass Sparrow Fair reminded me of a trip I took years ago.",
+          "textSHA256" : "eefcf2b47126d5515d083b6fb6927c7a794c12e66ed1fa4530ad6cdae046ccaa",
+          "url" : "raolm://ambient/raolm-ambient-d9e4d1575432a2790172f4ad/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-dc95e9282d570a4234303df6",
+      "mediaType" : "text",
+      "name" : "Reading · Penhalgate",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Reading log, from the Evening Northfield Monitor, on Penhalgate. Penhalgate is a coastal town the article returns to again and again. The census figure the article quotes for Penhalgate is 89741 residents. The comments under the article about Penhalgate argued about the details.",
+          "textSHA256" : "5e7be449072efef5d35f6a24c89582440624d1ee01829681fa37ee5d4a523e8e",
+          "url" : "raolm://ambient/raolm-ambient-dc95e9282d570a4234303df6/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The page traces the founding of Penhalgate to 1757. The current mayor of Penhalgate is Raneth Merrowander, the article says. I read the section on Penhalgate twice before moving on. I sent the link about Penhalgate to myself so I would not lose it.",
+          "textSHA256" : "93b2967e44b9807794d44c0633748c806cd90c5479f1fcfcefe6c7be355f44e1",
+          "url" : "raolm://ambient/raolm-ambient-dc95e9282d570a4234303df6/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "I highlighted a paragraph about Penhalgate to come back to. Mary flagged Penhalgate again when it came up on a later page. I kept this tab open for most of the afternoon because of Penhalgate. The page about Penhalgate loaded slowly, so I read it on my phone first.",
+          "textSHA256" : "3f8d7300874f3cb07bef36dcad8ae3072dfe95e6f591de20dfc0a37c542824bb",
+          "url" : "raolm://ambient/raolm-ambient-dc95e9282d570a4234303df6/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-e4aa9e1e03585f94e9b2d473",
+      "mediaType" : "text",
+      "name" : "Digest · Promenade at Dawn",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Morning brief: the New Township Dispatch ran a story about Promenade at Dawn. The exhibition review singles out Promenade at Dawn. I read that the artist behind Promenade at Dawn is Edvin Fenow. The comments under the article about Promenade at Dawn argued about the details.",
+          "textSHA256" : "643f29b4e370ea42c1f3346290eba8809a28e73e02f89b2b2ec16b881609a382",
+          "url" : "raolm://ambient/raolm-ambient-e4aa9e1e03585f94e9b2d473/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "I was surprised Promenade at Dawn spans 421 centimetres. I read that Promenade at Dawn was painted in 1622. There was a photo of Promenade at Dawn at the top of the page, a little out of focus. The page about Promenade at Dawn loaded slowly, so I read it on my phone first.",
+          "textSHA256" : "8220bf4c6bc2efad7ea459b5b8a9d4e372add67876d23c25b8109eaa9e58b20d",
+          "url" : "raolm://ambient/raolm-ambient-e4aa9e1e03585f94e9b2d473/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The author promised a follow-up piece about Promenade at Dawn next month. I sent the link about Promenade at Dawn to myself so I would not lose it. I asked Mary later whether anything else I had read mentioned Promenade at Dawn.",
+          "textSHA256" : "c61183f831ec719eb7b0d53463f99d615643ee1d276ff0af9fc521ebdb9f2679",
+          "url" : "raolm://ambient/raolm-ambient-e4aa9e1e03585f94e9b2d473/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-e93884a6f2dbde5d37f789c6",
+      "mediaType" : "text",
+      "name" : "Reading · Celise Nashett",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Read on the Seaboard Bulletin: a long piece about Celise Nashett. Celise Nashett is a researcher whose work keeps coming up in my reading. The profile says Celise Nashett was born in 1973. The article about Celise Nashett was longer than I expected, but I finished it.",
+          "textSHA256" : "bb40582e463c947783657585b41132db68fc7762c0a391345c1d5ca9d7454af7",
+          "url" : "raolm://ambient/raolm-ambient-e93884a6f2dbde5d37f789c6/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Early on, Celise Nashett worked in the lab of Ninor Dalland. The review praised the book by Celise Nashett, The Wider Census. The page about Celise Nashett loaded slowly, so I read it on my phone first. Mary flagged Celise Nashett again when it came up on a later page.",
+          "textSHA256" : "7a59345633fed0b989480820e7b27e2308faf1fe529b47fda05f8fffcbe5c967",
+          "url" : "raolm://ambient/raolm-ambient-e93884a6f2dbde5d37f789c6/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "There was a photo of Celise Nashett at the top of the page, a little out of focus. A reader letter at the end corrected one small detail about Celise Nashett. I asked Mary later whether anything else I had read mentioned Celise Nashett.",
+          "textSHA256" : "2aeab7ca829f60e5e3c228cccbc7bbbc12d05162f6d28df41a18d4cf17be0f1c",
+          "url" : "raolm://ambient/raolm-ambient-e93884a6f2dbde5d37f789c6/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-ea79587ff91d7be7eb3065b0",
+      "mediaType" : "text",
+      "name" : "Conversation · Incident YX-6384",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "They asked: remind me about incident YX-6384. Mary said: you read about it in the Morning Valley Post. A long post walks through incident YX-6384 step by step. The postmortem credits the fix for incident YX-6384 to Almira Waldstead.",
+          "textSHA256" : "257781d80a645a3543792966eaa09dd469dde5e81c24806318dbbd80b33dea57",
+          "url" : "raolm://ambient/raolm-ambient-ea79587ff91d7be7eb3065b0/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The write-up puts the duration of incident YX-6384 at 141 minutes. There was a photo of incident YX-6384 at the top of the page, a little out of focus. The article about incident YX-6384 was longer than I expected, but I finished it.",
+          "textSHA256" : "a4083dad47ca8a99597cca35ad7fbaf7f1e9e5f78da62cd066a4ba067273de51",
+          "url" : "raolm://ambient/raolm-ambient-ea79587ff91d7be7eb3065b0/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "I asked Mary later whether anything else I had read mentioned incident YX-6384. The comments under the article about incident YX-6384 argued about the details. The page about incident YX-6384 loaded slowly, so I read it on my phone first.",
+          "textSHA256" : "7008ee23443e8123a82fc9834e020aab2a887db4999419569eb4466a229f680f",
+          "url" : "raolm://ambient/raolm-ambient-ea79587ff91d7be7eb3065b0/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-ambient",
+      "groupLabel" : "braid-ambient",
+      "id" : "raolm-ambient-f61b28d76ea245124cfac401",
+      "mediaType" : "text",
+      "name" : "Digest · Zephyrsync",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Evening digest from today's reading, most of it about Zephyrsync. Zephyrsync is a software library the article recommends for small teams. I copied this sentence: \"Health checks reach Zephyrsync, reportedly, on port 40832.\"",
+          "textSHA256" : "64ff018e83c0e4f8655d25a2b46ed1709506fe6d2994894db2d75e963eba5019",
+          "url" : "raolm://ambient/raolm-ambient-f61b28d76ea245124cfac401/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The newsletter says Zephyrsync is now at version 8.36.1. A reader letter at the end corrected one small detail about Zephyrsync. Something about Zephyrsync reminded me of a trip I took years ago. There was a photo of Zephyrsync at the top of the page, a little out of focus.",
+          "textSHA256" : "2b44cf044e2192d1a0d18cd094c1ab8e42677522a87cb90f2b6914a4195a8ce5",
+          "url" : "raolm://ambient/raolm-ambient-f61b28d76ea245124cfac401/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Mary can find this again if I ask about Zephyrsync. Mary flagged Zephyrsync again when it came up on a later page. The comments under the article about Zephyrsync argued about the details. The article about Zephyrsync was longer than I expected, but I finished it.",
+          "textSHA256" : "d0f75003722d58e9f9ed1c91e113d9504c9c7a90fd5455c68894df30040ced7f",
+          "url" : "raolm://ambient/raolm-ambient-f61b28d76ea245124cfac401/p/2"
+        }
+      ]
+    }
+  ],
+  "exportedAt" : "1970-01-01T00:00:00Z",
+  "group" : "braid-ambient",
+  "owner" : "braid",
+  "partitionCount" : 135,
+  "schemaVersion" : 1,
+  "slug" : "ambient",
+  "source" : "dataset:braid-n3#ambient"
+}

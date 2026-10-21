@@ -1,0 +1,1234 @@
+{
+  "corpusHash" : "f39215124036d80e085da593bfceb103ccf379aab74af3fc6ab260484571b472",
+  "documentCount" : 40,
+  "documentIDPrefix" : "raolm-craft-",
+  "documents" : [
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-0d48e497da6c08661c16bd16",
+      "mediaType" : "text",
+      "name" : "Review · The Kilnstone service",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Code review notes on the Kilnstone service, from Lemae Waldley. Most traffic flows through the Kilnstone service. The first deploy of the Kilnstone service happened in January 2012. Ran the full test suite after touching the Kilnstone service; everything passed.",
+          "textSHA256" : "23ce1d40a35c1b7d21193a2f79c37eb8e17791867ff8dffe34811a62b119b78c",
+          "url" : "raolm://craft/raolm-craft-0d48e497da6c08661c16bd16/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Questions about the Kilnstone service go to Sana Thornson. The Kilnstone service answers in about 221 milliseconds at the p99. Rebased on main before pushing the change to the Kilnstone service. The diff for the Kilnstone service came to forty lines, most of them tests.",
+          "textSHA256" : "c98679fad80c33a604a74d824845fe4c88bdba14692f4a9f79cab79fbba41e13",
+          "url" : "raolm://craft/raolm-craft-0d48e497da6c08661c16bd16/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The flaky test around the Kilnstone service was a timing issue, not a logic bug. The CI job for the Kilnstone service now caches its build artifacts. The linter flagged an unused import next to the Kilnstone service; removed it.",
+          "textSHA256" : "4dd77ff2ffdba28dc6e7a003ac7cfb24911b7e5c9171e6be5ad5ba665cab0453",
+          "url" : "raolm://craft/raolm-craft-0d48e497da6c08661c16bd16/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "The branch for the Kilnstone service is ready to merge. Reviewed the error handling in the Kilnstone service and tightened two guards. Benchmarks for the Kilnstone service stayed within noise after the change. Wrote a short design note on the Kilnstone service before touching the schema.",
+          "textSHA256" : "8303041dbd1eb72ce215dfbe29befccff480a78491610262149ca674d6f587fc",
+          "url" : "raolm://craft/raolm-craft-0d48e497da6c08661c16bd16/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-127aef1e4329447a12d17a79",
+      "mediaType" : "text",
+      "name" : "Session · The Ochre Star Festival",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Session log, paired with Tiric Brandtard, working on the Ochre Star Festival. The calendar sync pulls in the Ochre Star Festival. The upstream docs say: \"The piece estimates that the Ochre Star Festival, originally, welcomes 66656 visitors each year.\"",
+          "textSHA256" : "db0aa8cd7952b092e32d6139fdaae356aa709046b06166660a99b6710f631c82",
+          "url" : "raolm://craft/raolm-craft-127aef1e4329447a12d17a79/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Our calendar import starts the Ochre Star Festival in 1901. The sync job for the Ochre Star Festival retries three times before alerting. The API response for the Ochre Star Festival is now cached for an hour. Documented where the data for the Ochre Star Festival comes from in the wiki.",
+          "textSHA256" : "87a6b682478864f47ed8386d741836a5f23decd0980eec91dd0e10a0188ef31c",
+          "url" : "raolm://craft/raolm-craft-127aef1e4329447a12d17a79/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The record for the Ochre Star Festival had a stray trailing space; trimmed it. Benchmarked the query that loads the Ochre Star Festival; it stays under ten milliseconds. Craft wrote the migration that backfills the record for the Ochre Star Festival.",
+          "textSHA256" : "0ee0bd51a1eb0ae13013b5ed80acd61d567b491d3e1ee74a1b24df0c9060b562",
+          "url" : "raolm://craft/raolm-craft-127aef1e4329447a12d17a79/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Handing the Ochre Star Festival back to the owning team for review. Paired on the parser that reads the record for the Ochre Star Festival. Ran the fixture tests for the Ochre Star Festival; everything passed. Added a snapshot test for the page that shows the Ochre Star Festival.",
+          "textSHA256" : "764237cf28b69cbb1c06b828ec3eaf475f5f1a75d7fbaabf7167dd3186490dcc",
+          "url" : "raolm://craft/raolm-craft-127aef1e4329447a12d17a79/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-13d9055e8f09ad7d88851688",
+      "mediaType" : "text",
+      "name" : "Review · Bromden",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Review thread about Bromden, opened by Vewen Sorrard. The transit app loads seed data for Bromden. In the fixture, Bromden carries a founded year of 1892. Craft wrote the migration that backfills the record for Bromden. The sync job for Bromden retries three times before alerting.",
+          "textSHA256" : "14cba591cffb4bf5546adf96cf7df32621a36bf80a3d7bd5110fce95f528d05f",
+          "url" : "raolm://craft/raolm-craft-13d9055e8f09ad7d88851688/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "In the admin panel, the mayor of Bromden shows up as Brimira Pennland. The population field for Bromden is set to 7774. Ran the fixture tests for Bromden; everything passed. The API response for Bromden is now cached for an hour.",
+          "textSHA256" : "162589b26d5caa99ee218d32461c1ab2bffd79f95266e5cdfb008a96615fe556",
+          "url" : "raolm://craft/raolm-craft-13d9055e8f09ad7d88851688/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Left a TODO in the record for Bromden about a missing source link. Localised the labels on the page for Bromden. Documented where the data for Bromden comes from in the wiki. The record for Bromden had a stray trailing space; trimmed it.",
+          "textSHA256" : "12014341ff068af15443dd35d0f5bc702b0857d6406bc85ac421c8f698563f47",
+          "url" : "raolm://craft/raolm-craft-13d9055e8f09ad7d88851688/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Closing the session on Bromden; all checks green. Benchmarked the query that loads Bromden; it stays under ten milliseconds. The search index picks up Bromden after the nightly sync. Added a snapshot test for the page that shows Bromden.",
+          "textSHA256" : "38e5391ebd945bfe90bb5abacc5516547b648030bbbbfcf924ff7b9716086fae",
+          "url" : "raolm://craft/raolm-craft-13d9055e8f09ad7d88851688/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-22935acd3c3b6a5ac9eb4dcb",
+      "mediaType" : "text",
+      "name" : "Session · Lumentrace",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Session log, paired with Jora Cormhurst, working on Lumentrace. Lumentrace handles the network layer of the app. The lockfile resolves Lumentrace to 4.11.13. Documented the configuration of Lumentrace in the project wiki.",
+          "textSHA256" : "432b66f866ac06fb7a11fdce189f63f5e08f62f5df6eee35655fa439ab2f337e",
+          "url" : "raolm://craft/raolm-craft-22935acd3c3b6a5ac9eb4dcb/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Lumentrace was written by Debel Whitey. Lumentrace binds to port 54443 unless configured otherwise. Rebased on main before pushing the change to Lumentrace. Left a TODO near the code for Lumentrace about retry limits. Benchmarks for Lumentrace stayed within noise after the change.",
+          "textSHA256" : "93d492e6328e74e701e9447eacbc18db964e9d0b95ab56c851806192f8965d8b",
+          "url" : "raolm://craft/raolm-craft-22935acd3c3b6a5ac9eb4dcb/p/1"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-2702f1e60fb057f976707c7f",
+      "mediaType" : "text",
+      "name" : "Session · The Outpostfold service",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Session log, paired with Vanor Oakander, working on the Outpostfold service. The Outpostfold service sits behind the load balancer and answers search requests. The Outpostfold service went live in June 2017. Opened a follow-up ticket for the logging in the Outpostfold service.",
+          "textSHA256" : "5f64e596132fc01290aa662b252cb14366e60f5fd386c2cb042234d3a1775405",
+          "url" : "raolm://craft/raolm-craft-2702f1e60fb057f976707c7f/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The p99 latency of the Outpostfold service sits at 472 milliseconds. The on-call owner of the Outpostfold service is Mimon Lanett. The linter flagged an unused import next to the Outpostfold service; removed it. Craft suggested splitting the module around the Outpostfold service into two files.",
+          "textSHA256" : "dbf060ddb4a604db270f19dee325b774b463aca106c1765a19cfb58a7b1cbdb3",
+          "url" : "raolm://craft/raolm-craft-2702f1e60fb057f976707c7f/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The flaky test around the Outpostfold service was a timing issue, not a logic bug. Paired on the Outpostfold service for an hour to trace a stale cache entry. Rebased on main before pushing the change to the Outpostfold service.",
+          "textSHA256" : "5bbefef9da1b8aace3f9e74e32b3084356c694819094202f87623611706c3ea8",
+          "url" : "raolm://craft/raolm-craft-2702f1e60fb057f976707c7f/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-30532d2214dc033196e89f2a",
+      "mediaType" : "text",
+      "name" : "Review · The Cisternlane service",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Review thread about the Cisternlane service, opened by Zaian Dalby. The Cisternlane service sits behind the load balancer and answers search requests. Load tests put the Cisternlane service at 384 milliseconds p99. The flaky test around the Cisternlane service was a timing issue, not a logic bug.",
+          "textSHA256" : "cb494743a6b66cedb3846f2da859d0cccf428ff4ad808a379576163a8b7de0cc",
+          "url" : "raolm://craft/raolm-craft-30532d2214dc033196e89f2a/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The Cisternlane service has been in production since June 2003. The on-call owner of the Cisternlane service is Relin Rookcroft. Benchmarks for the Cisternlane service stayed within noise after the change. The linter flagged an unused import next to the Cisternlane service; removed it.",
+          "textSHA256" : "9202ef3d1376cc1cb41de86206cf110cf3cda3f9ffcecb40b9ff1803e424154f",
+          "url" : "raolm://craft/raolm-craft-30532d2214dc033196e89f2a/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Opened a follow-up ticket for the logging in the Cisternlane service. The CI job for the Cisternlane service now caches its build artifacts. Documented the configuration of the Cisternlane service in the project wiki. Wrote a short design note on the Cisternlane service before touching the schema.",
+          "textSHA256" : "db7c49363800456e6f3dcf0104babffd9d7d50e74551df475a272bded511584c",
+          "url" : "raolm://craft/raolm-craft-30532d2214dc033196e89f2a/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-3722d0244aa35e73ef040356",
+      "mediaType" : "text",
+      "name" : "Review · Timira Eldman",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Review thread about Timira Eldman, opened by Miko Garford. The gallery API has an artist page for Timira Eldman. The upstream docs say: \"Records show Timira Eldman was by most accounts born in 1966, in a family of printers.\"",
+          "textSHA256" : "e4df1bc84fa5b187326f1522ce206bd2a45d0ad5ad4b8bf9c29eb00c1fb93b24",
+          "url" : "raolm://craft/raolm-craft-3722d0244aa35e73ef040356/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The geocoder places the studio of Timira Eldman in Prycegate. The API response for Timira Eldman is now cached for an hour. Paired on the parser that reads the record for Timira Eldman. Reviewed the permissions on the record for Timira Eldman with the data team.",
+          "textSHA256" : "c612c305fc62ae873cccd8e9dc4a7422f95b4cd38cb7710947740b311c6ec38c",
+          "url" : "raolm://craft/raolm-craft-3722d0244aa35e73ef040356/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Closing the session on Timira Eldman; all checks green. Left a TODO in the record for Timira Eldman about a missing source link. Benchmarked the query that loads Timira Eldman; it stays under ten milliseconds. The sync job for Timira Eldman retries three times before alerting.",
+          "textSHA256" : "bea06d5e5aee2f03afbed1fccdddc256c57c5b684939b9e2b056f9b45953de22",
+          "url" : "raolm://craft/raolm-craft-3722d0244aa35e73ef040356/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-3951b900df9fea7d7ee25111",
+      "mediaType" : "text",
+      "name" : "Review · White Harbour",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Review thread about White Harbour, opened by Begar Stroudland. The catalogue importer has a fixture for White Harbour. Our importer maps White Harbour to the artist Savin Garwick. Left a TODO in the record for White Harbour about a missing source link.",
+          "textSHA256" : "4ba9f110594a378daa5de0dbf1c14fd089fda0b65064d8715770492200dec7a1",
+          "url" : "raolm://craft/raolm-craft-3951b900df9fea7d7ee25111/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Our date parser should read White Harbour as 1975. Our tiling test crops White Harbour from a canvas 575 centimetres wide. Paired on the parser that reads the record for White Harbour. Documented where the data for White Harbour comes from in the wiki.",
+          "textSHA256" : "6c974cf9709beede803b239ca0f654e6d13ff8299f5f18e39f8028ef55b6a7bb",
+          "url" : "raolm://craft/raolm-craft-3951b900df9fea7d7ee25111/p/1"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-3b6c8c71402766366933433d",
+      "mediaType" : "text",
+      "name" : "Session · The Harborlight service",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Session log, paired with Sela Waldhurst, working on the Harborlight service. The Harborlight service sits behind the load balancer and answers search requests. The Harborlight service answers in about 694 milliseconds at the p99.",
+          "textSHA256" : "494a1755b0a41a4df8a6a90f77e6d5132af3539003c96a2568c2f5f594d47cf2",
+          "url" : "raolm://craft/raolm-craft-3b6c8c71402766366933433d/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The Harborlight service is owned by Cemira Oakwell, who approves its deploys. The Harborlight service went live in May 2007. Rebased on main before pushing the change to the Harborlight service. Left a TODO near the code for the Harborlight service about retry limits.",
+          "textSHA256" : "19632ebd6d6f4c72408b8be86149950bc2399b04347881ef6088e08f0c4139e6",
+          "url" : "raolm://craft/raolm-craft-3b6c8c71402766366933433d/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Next step for the Harborlight service: write the migration notes. Reviewed the error handling in the Harborlight service and tightened two guards. Wrote a short design note on the Harborlight service before touching the schema.",
+          "textSHA256" : "80927f919c069e510c430357fd77d83efcd379555ce98ed48eed72b2b292b5bb",
+          "url" : "raolm://craft/raolm-craft-3b6c8c71402766366933433d/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-459e4d968a8fe61fba4bfc42",
+      "mediaType" : "text",
+      "name" : "Session · The Barley Fox Festival",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Craft session with Relin Hartey: changes around the Barley Fox Festival. The calendar sync pulls in the Barley Fox Festival. The organiser field for the Barley Fox Festival names Lewen Brayfield. Added a snapshot test for the page that shows the Barley Fox Festival.",
+          "textSHA256" : "8e479bc769bfbcaa132f84c0356ffe8488b0a7176f9e356f19db3cfcec7172ba",
+          "url" : "raolm://craft/raolm-craft-459e4d968a8fe61fba4bfc42/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Our calendar import starts the Barley Fox Festival in 1527. The sync job for the Barley Fox Festival retries three times before alerting. Left a TODO in the record for the Barley Fox Festival about a missing source link.",
+          "textSHA256" : "88fc9bf551b2e8d4d8bc3b1b9f3240ea96c575cbc6a9d246d41395b3353328fc",
+          "url" : "raolm://craft/raolm-craft-459e4d968a8fe61fba4bfc42/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Next step for the Barley Fox Festival: write the migration notes. Documented where the data for the Barley Fox Festival comes from in the wiki. Localised the labels on the page for the Barley Fox Festival. The API response for the Barley Fox Festival is now cached for an hour.",
+          "textSHA256" : "f9af2fe858635aeeae5fed817e896138a6c79703f501ea43b09df2e0841018cc",
+          "url" : "raolm://craft/raolm-craft-459e4d968a8fe61fba4bfc42/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-5bc357c699ab72fdf055d2f9",
+      "mediaType" : "text",
+      "name" : "Postmortem · Incident JW-9543",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Incident review of incident JW-9543, led by Ilruth Merrowholt. Alerts fired for incident JW-9543 just after the nightly deploy. Paging for incident JW-9543 reached Nanor Dunford first. Two runbooks were updated after incident JW-9543.",
+          "textSHA256" : "7abfe2d86032c5c33538f0a0a182d15387dceb3251558c82b4c6768cb4656493",
+          "url" : "raolm://craft/raolm-craft-5bc357c699ab72fdf055d2f9/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Timeline: incident JW-9543 was resolved after 589 minutes. The regression behind incident JW-9543 is gone as of 7.34.28. Craft drafted the first version of the summary of incident JW-9543. The rollback during incident JW-9543 took longer than it should have.",
+          "textSHA256" : "5af56faaf817666c82dd0d2e3013083eafc30947473c14b3fcdd738470aca0a4",
+          "url" : "raolm://craft/raolm-craft-5bc357c699ab72fdf055d2f9/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "A dashboard added after incident JW-9543 shows the error rate by region. A chaos test was added so incident JW-9543 cannot recur silently. Customers who reported incident JW-9543 were sent a follow-up note. Action items from incident JW-9543 are tracked on the team board.",
+          "textSHA256" : "474bda0ae8d720467a3a7795bc7a1279ec991695abaab5c97471f443d0592575",
+          "url" : "raolm://craft/raolm-craft-5bc357c699ab72fdf055d2f9/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Closing the session on incident JW-9543; all checks green. A load test now reproduces the conditions behind incident JW-9543. The alert that should have caught incident JW-9543 fired late; its threshold was lowered. Status page updates for incident JW-9543 went out every fifteen minutes.",
+          "textSHA256" : "5851a54038c42250127289394bae0bd020b14186d2a39153f09704c772e96e0b",
+          "url" : "raolm://craft/raolm-craft-5bc357c699ab72fdf055d2f9/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-5e7cc110160a6abc984493bc",
+      "mediaType" : "text",
+      "name" : "Release · Axlevault",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Changelog entry for Axlevault, prepared with Olnor Wrenby. Axlevault is the library this project uses for its storage layer. The latest release of Axlevault is 9.0.8. Rebased on main before pushing the change to Axlevault.",
+          "textSHA256" : "7ee40b5df8c0a62cd671448273150dd4070c3008512951b283139436af26cbbd",
+          "url" : "raolm://craft/raolm-craft-5e7cc110160a6abc984493bc/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Health checks reach Axlevault on port 27404. The original author of Axlevault is Casel Dunard, per the README. Craft suggested splitting the module around Axlevault into two files. Documented the configuration of Axlevault in the project wiki.",
+          "textSHA256" : "1c53fe56e93bae527f942edf6fdddf4cb6afc47b0df36dff486db6fa8e792b97",
+          "url" : "raolm://craft/raolm-craft-5e7cc110160a6abc984493bc/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Paired on Axlevault for an hour to trace a stale cache entry. Benchmarks for Axlevault stayed within noise after the change. The linter flagged an unused import next to Axlevault; removed it. The flaky test around Axlevault was a timing issue, not a logic bug.",
+          "textSHA256" : "c910085699b9b997d9231a4aa6353e74a827342af788392a0797f8501d5e0e50",
+          "url" : "raolm://craft/raolm-craft-5e7cc110160a6abc984493bc/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Next step for Axlevault: write the migration notes. The diff for Axlevault came to forty lines, most of them tests. Ran the full test suite after touching Axlevault; everything passed. Opened a follow-up ticket for the logging in Axlevault.",
+          "textSHA256" : "68b5f851685c4856e1272aa115be72449c69650a9bbcc6980e6f22c9bd078255",
+          "url" : "raolm://craft/raolm-craft-5e7cc110160a6abc984493bc/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-7f74bfa8d1bd30be8a20f006",
+      "mediaType" : "text",
+      "name" : "Release · Micaforge",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Release notes drafted for Micaforge, reviewed by Hemira Selford. Micaforge is the library this project uses for its storage layer. The latest release of Micaforge is 7.19.7. Ran the full test suite after touching Micaforge; everything passed.",
+          "textSHA256" : "92d53161c3167c8e9e7a6f603ac2312ad0a9bc69cec25e8348b9a4d41257d3e6",
+          "url" : "raolm://craft/raolm-craft-7f74bfa8d1bd30be8a20f006/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Micaforge binds to port 40728 unless configured otherwise. Micaforge was written by Calin Dunwell. Documented the configuration of Micaforge in the project wiki. The linter flagged an unused import next to Micaforge; removed it.",
+          "textSHA256" : "398dbeaff2b6902d8b4eadcb676b16e23e6296803360c7e7cb9c52c827567198",
+          "url" : "raolm://craft/raolm-craft-7f74bfa8d1bd30be8a20f006/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Closing the session on Micaforge; all checks green. Reviewed the error handling in Micaforge and tightened two guards. The flaky test around Micaforge was a timing issue, not a logic bug. Craft suggested splitting the module around Micaforge into two files.",
+          "textSHA256" : "81d7ed51e883d9ebdbf192c3ac2d6cbbe215143f10823fa3aee0d76df510b39d",
+          "url" : "raolm://craft/raolm-craft-7f74bfa8d1bd30be8a20f006/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-874338236140dbedb1051564",
+      "mediaType" : "text",
+      "name" : "Session · Brilin Ullcroft",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Session log, paired with Yako Marholt, working on Brilin Ullcroft. We import the record of the painter Brilin Ullcroft. The location field for Brilin Ullcroft reads Norrness. The search index picks up Brilin Ullcroft after the nightly sync.",
+          "textSHA256" : "874338236140dbedb10515645a128b801b6f5a0e384c7f340fda16cfbcff34c5",
+          "url" : "raolm://craft/raolm-craft-874338236140dbedb1051564/p/0"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-8eb436d558475ee057c9cb4d",
+      "mediaType" : "text",
+      "name" : "Session · Knotshard",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Session log, paired with Taora Tamey, working on Knotshard. Knotshard is the library this project uses for its storage layer. Upgraded Knotshard to 6.26.20 this session. Paired on Knotshard for an hour to trace a stale cache entry.",
+          "textSHA256" : "3744af119e4fb8b86a1ebc70c54ad31052baf95fc11caaa78f6a535f79891b66",
+          "url" : "raolm://craft/raolm-craft-8eb436d558475ee057c9cb4d/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The config for Knotshard sets the port to 1519. Blame on the oldest files in Knotshard points to Miwen Hollisley. The diff for Knotshard came to forty lines, most of them tests. The linter flagged an unused import next to Knotshard; removed it.",
+          "textSHA256" : "a7850d77d5deeb40cc9b6afd24f0a18fb62d9adb3467b3d4b3790d0420fee11f",
+          "url" : "raolm://craft/raolm-craft-8eb436d558475ee057c9cb4d/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Craft suggested splitting the module around Knotshard into two files. The flaky test around Knotshard was a timing issue, not a logic bug. The CI job for Knotshard now caches its build artifacts. Opened a follow-up ticket for the logging in Knotshard.",
+          "textSHA256" : "193fb3acca63012d6a60c2f4eb0c5e8447d86d6db39f961af9235f85a6dbb1d8",
+          "url" : "raolm://craft/raolm-craft-8eb436d558475ee057c9cb4d/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-9b61e4c9b8b0e24fe5c20896",
+      "mediaType" : "text",
+      "name" : "Postmortem · Incident HA-4730",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Postmortem for incident HA-4730, written with Palin Pennworth. Incident HA-4730 started with a bad configuration push. Timeline: incident HA-4730 was resolved after 465 minutes. A dashboard added after incident HA-4730 shows the error rate by region.",
+          "textSHA256" : "901e09d3ed623e50d00c22a17988c03d74b856e4fb74165dc3d23a9f856523a0",
+          "url" : "raolm://craft/raolm-craft-9b61e4c9b8b0e24fe5c20896/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Incident HA-4730 was fixed in version 3.1.6. The first responder on incident HA-4730 was Pewen Brandtfield. The rollback during incident HA-4730 took longer than it should have. The alert that should have caught incident HA-4730 fired late; its threshold was lowered.",
+          "textSHA256" : "8612174d9f92ec5ce4756f3b5efd383378f024c876d771bcf769ea9b564890d5",
+          "url" : "raolm://craft/raolm-craft-9b61e4c9b8b0e24fe5c20896/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The config diff that triggered incident HA-4730 is linked in the ticket. Action items from incident HA-4730 are tracked on the team board. Status page updates for incident HA-4730 went out every fifteen minutes. Customers who reported incident HA-4730 were sent a follow-up note.",
+          "textSHA256" : "7565d241ef05f2448c9512860d0e985c635bf1e939d2d81ada577dbc060518df",
+          "url" : "raolm://craft/raolm-craft-9b61e4c9b8b0e24fe5c20896/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Closing the session on incident HA-4730; all checks green. A load test now reproduces the conditions behind incident HA-4730. Two runbooks were updated after incident HA-4730. A chaos test was added so incident HA-4730 cannot recur silently.",
+          "textSHA256" : "320b8c105afa816a9419ccd3eb375c67a91596c875a6b434eb80af68e2d9ef7e",
+          "url" : "raolm://craft/raolm-craft-9b61e4c9b8b0e24fe5c20896/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-9c850d5c334fc10c6b4908ef",
+      "mediaType" : "text",
+      "name" : "Postmortem · Incident BZ-6265",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Postmortem for incident BZ-6265, written with Odla Pellwell. Alerts fired for incident BZ-6265 just after the nightly deploy. The patch for incident BZ-6265 shipped in 2.7.2. The timeline for incident BZ-6265 was rebuilt from the deploy logs.",
+          "textSHA256" : "37d290f23995232435b39961177bb44134051f16a377083eccd01e5476f6680e",
+          "url" : "raolm://craft/raolm-craft-9c850d5c334fc10c6b4908ef/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The outage in incident BZ-6265 ran for 711 minutes before recovery. The fix for incident BZ-6265 was led by Jotan Beldale. Two runbooks were updated after incident BZ-6265. Status page updates for incident BZ-6265 went out every fifteen minutes.",
+          "textSHA256" : "f8e1df8d1dfdadc2a26791e61dfeba7053688eed005732f100cb75df232e353d",
+          "url" : "raolm://craft/raolm-craft-9c850d5c334fc10c6b4908ef/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Action items from incident BZ-6265 are tracked on the team board. A chaos test was added so incident BZ-6265 cannot recur silently. A load test now reproduces the conditions behind incident BZ-6265. The config diff that triggered incident BZ-6265 is linked in the ticket.",
+          "textSHA256" : "fc4b0c31088926ebeb8d11a48142feb2570e0632c7463a9ed2c9f70457654606",
+          "url" : "raolm://craft/raolm-craft-9c850d5c334fc10c6b4908ef/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-9caeceff97d7fdcec4ed159b",
+      "mediaType" : "text",
+      "name" : "Review · The Linen Bonfire Gathering",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Review thread about the Linen Bonfire Gathering, opened by Nidis Selson. The events app now lists the Linen Bonfire Gathering. Quoting the issue: \"The Linen Bonfire Gathering, apparently, began, according to the page, in 1826.\"",
+          "textSHA256" : "462f4ae90f2ecea5f51b29fd0c8b839bd88e52c0897e6cdaf02258251cfc7ef5",
+          "url" : "raolm://craft/raolm-craft-9caeceff97d7fdcec4ed159b/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The attendance field for the Linen Bonfire Gathering holds 224171. The search index picks up the Linen Bonfire Gathering after the nightly sync. Added a snapshot test for the page that shows the Linen Bonfire Gathering. The API response for the Linen Bonfire Gathering is now cached for an hour.",
+          "textSHA256" : "caae10d9e0e5e8bb7f159ba1607f2d5df251645f5d2db03dbc0a68c95fdb9a44",
+          "url" : "raolm://craft/raolm-craft-9caeceff97d7fdcec4ed159b/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Benchmarked the query that loads the Linen Bonfire Gathering; it stays under ten milliseconds. The sync job for the Linen Bonfire Gathering retries three times before alerting. The record for the Linen Bonfire Gathering had a stray trailing space; trimmed it.",
+          "textSHA256" : "6366e919ae35467bc1bc2f1ae57a7efff46b56073a717b9d2df01b07556599a7",
+          "url" : "raolm://craft/raolm-craft-9caeceff97d7fdcec4ed159b/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-9f0b8e0b9b7da05e18b92c49",
+      "mediaType" : "text",
+      "name" : "Session · The Vickery Bequest",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Craft session with Pavin Wrenmont: changes around the Vickery Bequest. The museum integration syncs the Vickery Bequest. Our access rules name the curator of the Vickery Bequest as Vesa Stroudander. The search index picks up the Vickery Bequest after the nightly sync.",
+          "textSHA256" : "4ff4c2f69d8313ce4b58201d28ad15c1140aef372685fa1bc23d4b2013efa05e",
+          "url" : "raolm://craft/raolm-craft-9f0b8e0b9b7da05e18b92c49/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Our fixture opens the Vickery Bequest in 2012. The count query for the Vickery Bequest returns 1378 works. The importer now validates every field of the record for the Vickery Bequest. Left a TODO in the record for the Vickery Bequest about a missing source link.",
+          "textSHA256" : "9dcfcb6b4a4e60f1432af1f1c3b90ca4df2fa4457bc0b81170ea1cfab9ffe187",
+          "url" : "raolm://craft/raolm-craft-9f0b8e0b9b7da05e18b92c49/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Ran the fixture tests for the Vickery Bequest; everything passed. Paired on the parser that reads the record for the Vickery Bequest. Benchmarked the query that loads the Vickery Bequest; it stays under ten milliseconds.",
+          "textSHA256" : "d1862ffae60131d1d676492dcc909eb8fd7daba46a2c9237a1f55931c79b6b82",
+          "url" : "raolm://craft/raolm-craft-9f0b8e0b9b7da05e18b92c49/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-a900087014a1479cf0ac9fd7",
+      "mediaType" : "text",
+      "name" : "Review · Incident AG-3786",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Code review notes on incident AG-3786, from Yalin Merrowdale. Incident AG-3786 took down the upload path for part of the afternoon. Incident AG-3786 lasted 348 minutes. The on-call handoff for incident AG-3786 happened at the shift change.",
+          "textSHA256" : "54a3b394deb0743fc825cfb3f575a27ba1fa859c38d851be7cd5aa7c1fa092cc",
+          "url" : "raolm://craft/raolm-craft-a900087014a1479cf0ac9fd7/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Paging for incident AG-3786 reached Zaren Whitson first. The patch for incident AG-3786 shipped in 2.34.23. Two runbooks were updated after incident AG-3786. The write-up for incident AG-3786 was shared with every team. The timeline for incident AG-3786 was rebuilt from the deploy logs.",
+          "textSHA256" : "a47bb2b1492f3b30ba12f03e65103c161ee1e14baaaff5ee939d39c007534100",
+          "url" : "raolm://craft/raolm-craft-a900087014a1479cf0ac9fd7/p/1"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-b314936314be768e9d098d12",
+      "mediaType" : "text",
+      "name" : "Release · Motepath",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Release notes drafted for Motepath, reviewed by Karuth Morski. Motepath handles the network layer of the app. The original author of Motepath is Elmira Beline, per the README. Left a TODO near the code for Motepath about retry limits.",
+          "textSHA256" : "0f9e6be377dbc71b83aca5cabacb8ba7f5560fdd5c283367db7e67214b09cd69",
+          "url" : "raolm://craft/raolm-craft-b314936314be768e9d098d12/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "We pinned Motepath at version 7.32.24. The config for Motepath sets the port to 47002. The CI job for Motepath now caches its build artifacts. Reviewed the error handling in Motepath and tightened two guards. The diff for Motepath came to forty lines, most of them tests.",
+          "textSHA256" : "2f630991b4a8562d990bb3d9b21f84f58b331aeb3208d120155756aa34886f3b",
+          "url" : "raolm://craft/raolm-craft-b314936314be768e9d098d12/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Handing Motepath back to the owning team for review. Documented the configuration of Motepath in the project wiki. The flaky test around Motepath was a timing issue, not a logic bug. Wrote a short design note on Motepath before touching the schema.",
+          "textSHA256" : "ec386753fb809ce8c21704e98409d10bbaf602ef00e892a1f6f7b3239e9aacf3",
+          "url" : "raolm://craft/raolm-craft-b314936314be768e9d098d12/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-baef70f517f74442aa4e9182",
+      "mediaType" : "text",
+      "name" : "Session · Deltaloom",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Session log, paired with Kinor Lindholt, working on Deltaloom. Deltaloom is the library this project uses for its storage layer. The lockfile resolves Deltaloom to 5.21.29. Documented the configuration of Deltaloom in the project wiki.",
+          "textSHA256" : "4b9c41ed8b9dbbcdce693b14dd2ee92ef5f85b5c466ae4241034a711b93c6afe",
+          "url" : "raolm://craft/raolm-craft-baef70f517f74442aa4e9182/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The config for Deltaloom sets the port to 38007. The original author of Deltaloom is Lamon Korwick, per the README. Ran the full test suite after touching Deltaloom; everything passed. Wrote a short design note on Deltaloom before touching the schema.",
+          "textSHA256" : "f8e1f0c96825e0467851b079a94b83d0f850fcb7452ce36f84ef0b7de77e5ede",
+          "url" : "raolm://craft/raolm-craft-baef70f517f74442aa4e9182/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Paired on Deltaloom for an hour to trace a stale cache entry. Left a TODO near the code for Deltaloom about retry limits. The CI job for Deltaloom now caches its build artifacts. The linter flagged an unused import next to Deltaloom; removed it.",
+          "textSHA256" : "99f07ec797c67630ea13a36a94919a8fcce28c1680599b14d0c683ba8038b1bb",
+          "url" : "raolm://craft/raolm-craft-baef70f517f74442aa4e9182/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "The branch for Deltaloom is ready to merge. Benchmarks for Deltaloom stayed within noise after the change. The diff for Deltaloom came to forty lines, most of them tests. The flaky test around Deltaloom was a timing issue, not a logic bug.",
+          "textSHA256" : "9c31900020716ea60d1fbde48d3c8d0b0ae3773b7c1a1a75e30bbee270230b78",
+          "url" : "raolm://craft/raolm-craft-baef70f517f74442aa4e9182/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-bea7ab721c4a80ca28ac8d0e",
+      "mediaType" : "text",
+      "name" : "Review · The Cisternstone service",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Review thread about the Cisternstone service, opened by Lelin Stroudander. Most traffic flows through the Cisternstone service. The Cisternstone service went live in April 2014. Reviewed the error handling in the Cisternstone service and tightened two guards.",
+          "textSHA256" : "3104074ec06304f03b61a7d48d604a1e56a4eafa86d232b7308698ab0146539f",
+          "url" : "raolm://craft/raolm-craft-bea7ab721c4a80ca28ac8d0e/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The Cisternstone service is owned by Elruth Garey, who approves its deploys. The Cisternstone service answers in about 163 milliseconds at the p99. Wrote a short design note on the Cisternstone service before touching the schema.",
+          "textSHA256" : "9f014875f4ba1bb883945e09fbc910cb97b3e263262f21c96ac242216a059f84",
+          "url" : "raolm://craft/raolm-craft-bea7ab721c4a80ca28ac8d0e/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Handing the Cisternstone service back to the owning team for review. The linter flagged an unused import next to the Cisternstone service; removed it. The CI job for the Cisternstone service now caches its build artifacts.",
+          "textSHA256" : "06329e34d293913cb033f414cfc172c936c46a83be3b21bb68ab5d0ed7ce66e3",
+          "url" : "raolm://craft/raolm-craft-bea7ab721c4a80ca28ac8d0e/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-bfbdd20d454963f9267b9c8b",
+      "mediaType" : "text",
+      "name" : "Session · Joltvault",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Craft session with Elian Selley: changes around Joltvault. We depend on Joltvault for parsing and validation. Upgraded Joltvault to 6.3.20 this session. Paired on Joltvault for an hour to trace a stale cache entry. Opened a follow-up ticket for the logging in Joltvault.",
+          "textSHA256" : "d5b118a7deefbb708a36d96f653010cf297235efa278cb23b27a4cf6b8db8b1f",
+          "url" : "raolm://craft/raolm-craft-bfbdd20d454963f9267b9c8b/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Health checks reach Joltvault on port 41027. The original author of Joltvault is Isren Pellgren, per the README. The diff for Joltvault came to forty lines, most of them tests. Benchmarks for Joltvault stayed within noise after the change.",
+          "textSHA256" : "41d1c9dd78b433b7552b1e389f9811aadd8159486758f888f62b147a4104c130",
+          "url" : "raolm://craft/raolm-craft-bfbdd20d454963f9267b9c8b/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Reviewed the error handling in Joltvault and tightened two guards. Ran the full test suite after touching Joltvault; everything passed. Wrote a short design note on Joltvault before touching the schema. Rebased on main before pushing the change to Joltvault.",
+          "textSHA256" : "f4ecc82df148ee526189afa438fdbfa63578971776490e55655bbc3eabe3106a",
+          "url" : "raolm://craft/raolm-craft-bfbdd20d454963f9267b9c8b/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Handing Joltvault back to the owning team for review. Left a TODO near the code for Joltvault about retry limits. Craft suggested splitting the module around Joltvault into two files. Documented the configuration of Joltvault in the project wiki.",
+          "textSHA256" : "42e41ba50eb46c40e88f69345123927a86d77aecce4b589e5fc53908351b098f",
+          "url" : "raolm://craft/raolm-craft-bfbdd20d454963f9267b9c8b/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-c052330753b952c9f81bd73d",
+      "mediaType" : "text",
+      "name" : "Review · Incident MJ-9399",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Review thread about incident MJ-9399, opened by Baric Dunine. Incident MJ-9399 took down the upload path for part of the afternoon. Timeline: incident MJ-9399 was resolved after 656 minutes. Action items from incident MJ-9399 are tracked on the team board.",
+          "textSHA256" : "35a88d3effbc5fed1a9cbcc8b432de9f2c2e4132413a24945acb1fc6ae48af3e",
+          "url" : "raolm://craft/raolm-craft-c052330753b952c9f81bd73d/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Paging for incident MJ-9399 reached Ladric Waldton first. Incident MJ-9399 was fixed in version 3.4.8. The alert that should have caught incident MJ-9399 fired late; its threshold was lowered. Craft drafted the first version of the summary of incident MJ-9399.",
+          "textSHA256" : "6da62186cff877147c9316d3425b0c3d1d06d9e9ff72374cbaf57342150e3c91",
+          "url" : "raolm://craft/raolm-craft-c052330753b952c9f81bd73d/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The rollback during incident MJ-9399 took longer than it should have. A chaos test was added so incident MJ-9399 cannot recur silently. Status page updates for incident MJ-9399 went out every fifteen minutes. Customers who reported incident MJ-9399 were sent a follow-up note.",
+          "textSHA256" : "bbebbe9b8cb6dd2f384f6b2c57fcf949f7bd9b579bacc0a04fb77a96b33758e7",
+          "url" : "raolm://craft/raolm-craft-c052330753b952c9f81bd73d/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Next step for incident MJ-9399: write the migration notes. The config diff that triggered incident MJ-9399 is linked in the ticket. A dashboard added after incident MJ-9399 shows the error rate by region. The on-call handoff for incident MJ-9399 happened at the shift change.",
+          "textSHA256" : "3f1ed8a6fd0b2b5dca9657bbf65e92a6aba5383fcdc32fe2337b662a2e700935",
+          "url" : "raolm://craft/raolm-craft-c052330753b952c9f81bd73d/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-c7a3d5fb91b0719ad3a93e68",
+      "mediaType" : "text",
+      "name" : "Session · The Wardenfold service",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Session log, paired with Joruth Barman, working on the Wardenfold service. The Wardenfold service sits behind the load balancer and answers search requests. Ownership of the Wardenfold service sits with Hera Thornland. The CI job for the Wardenfold service now caches its build artifacts.",
+          "textSHA256" : "545631eee692d3db3de61256dc675cdbfe2a1aceae705bcf6699de8f4efefe44",
+          "url" : "raolm://craft/raolm-craft-c7a3d5fb91b0719ad3a93e68/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The p99 latency of the Wardenfold service sits at 184 milliseconds. The first deploy of the Wardenfold service happened in November 1994. The diff for the Wardenfold service came to forty lines, most of them tests. Wrote a short design note on the Wardenfold service before touching the schema.",
+          "textSHA256" : "29ab693a3d0cb0e743c463bb83cdebe98f9ff5bd589cc6afd0e7fd575963ba0d",
+          "url" : "raolm://craft/raolm-craft-c7a3d5fb91b0719ad3a93e68/p/1"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-cb3aa85209ab58ea867f98f5",
+      "mediaType" : "text",
+      "name" : "Review · Incident UC-9586",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Review thread about incident UC-9586, opened by Letha Brandtett. Incident UC-9586 took down the upload path for part of the afternoon. The outage in incident UC-9586 ran for 112 minutes before recovery. Customers who reported incident UC-9586 were sent a follow-up note.",
+          "textSHA256" : "3fb7af315966bdfb835f99d1092a450a033caf3dad47e21f1ad30403f2e9b212",
+          "url" : "raolm://craft/raolm-craft-cb3aa85209ab58ea867f98f5/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Incident UC-9586 was fixed in version 1.21.23. The first responder on incident UC-9586 was Raren Barholt. Action items from incident UC-9586 are tracked on the team board. A chaos test was added so incident UC-9586 cannot recur silently.",
+          "textSHA256" : "e3666570de6a4707f1faf11290adcd624505a046cb396d52fc21aeaed4c98798",
+          "url" : "raolm://craft/raolm-craft-cb3aa85209ab58ea867f98f5/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "A load test now reproduces the conditions behind incident UC-9586. The on-call handoff for incident UC-9586 happened at the shift change. The rollback during incident UC-9586 took longer than it should have. A dashboard added after incident UC-9586 shows the error rate by region.",
+          "textSHA256" : "d40ff9cdf34e9a0b1fd39b43bbc0fe4797dabe186dca827f4596f7cba02a40d2",
+          "url" : "raolm://craft/raolm-craft-cb3aa85209ab58ea867f98f5/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "The branch for incident UC-9586 is ready to merge. The timeline for incident UC-9586 was rebuilt from the deploy logs. The alert that should have caught incident UC-9586 fired late; its threshold was lowered. Craft drafted the first version of the summary of incident UC-9586.",
+          "textSHA256" : "a22ae4d37a91691d7a9846a8d9949f3218ddaac69987d74c3ffe07ea89c99a96",
+          "url" : "raolm://craft/raolm-craft-cb3aa85209ab58ea867f98f5/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-ce9fb33cc0a73865c3495912",
+      "mediaType" : "text",
+      "name" : "Review · Ulmira Pennworth",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Code review notes on Ulmira Pennworth, from Ganor Landale. The citation manager imports the records of Ulmira Pennworth. The citation test for Ulmira Pennworth expects the book The Honest Grammar. Craft wrote the migration that backfills the record for Ulmira Pennworth.",
+          "textSHA256" : "3f76072ac8ff2a4562bc0f3e6a0efb840dfa71efb865e174d86b83e960a73512",
+          "url" : "raolm://craft/raolm-craft-ce9fb33cc0a73865c3495912/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "We store the birth year of Ulmira Pennworth as 1815. The advisor field for Ulmira Pennworth points to Reric Eldholt. Benchmarked the query that loads Ulmira Pennworth; it stays under ten milliseconds. Paired on the parser that reads the record for Ulmira Pennworth.",
+          "textSHA256" : "17c6e26239a69df05adc574db66582a7778a5f332166dc8d50e8d17461d9cbac",
+          "url" : "raolm://craft/raolm-craft-ce9fb33cc0a73865c3495912/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Localised the labels on the page for Ulmira Pennworth. Documented where the data for Ulmira Pennworth comes from in the wiki. The record for Ulmira Pennworth had a stray trailing space; trimmed it. The search index picks up Ulmira Pennworth after the nightly sync.",
+          "textSHA256" : "f47957161c3ae6a1254c683197edae8810e89f0bd54f72af9162fa9f0eddf6bb",
+          "url" : "raolm://craft/raolm-craft-ce9fb33cc0a73865c3495912/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Handing Ulmira Pennworth back to the owning team for review. The API response for Ulmira Pennworth is now cached for an hour. Left a TODO in the record for Ulmira Pennworth about a missing source link. Added a snapshot test for the page that shows Ulmira Pennworth.",
+          "textSHA256" : "d46126ba0b01943b56fa66d44a5b64a73b624722b54bd70250b10077b8e4b58e",
+          "url" : "raolm://craft/raolm-craft-ce9fb33cc0a73865c3495912/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-d23cbb0ecce30bb79cf9f2a2",
+      "mediaType" : "text",
+      "name" : "Review · The Paddockhub service",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Code review notes on the Paddockhub service, from Karuth Barson. The Paddockhub service sits behind the load balancer and answers search requests. We launched the Paddockhub service in July 2010. The CI job for the Paddockhub service now caches its build artifacts.",
+          "textSHA256" : "226cc2bba755297bacfa09fd13cbfa7f027cd3081d566004ab73cb4309a86be2",
+          "url" : "raolm://craft/raolm-craft-d23cbb0ecce30bb79cf9f2a2/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "After the fix the Paddockhub service runs at 368 milliseconds p99. The on-call owner of the Paddockhub service is Demae Brandtby. Wrote a short design note on the Paddockhub service before touching the schema. Left a TODO near the code for the Paddockhub service about retry limits.",
+          "textSHA256" : "6e0e4557ed319a276a37cefabd4e1e4bf4f64a999388800508a63c0cbf52f8ec",
+          "url" : "raolm://craft/raolm-craft-d23cbb0ecce30bb79cf9f2a2/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Benchmarks for the Paddockhub service stayed within noise after the change. The flaky test around the Paddockhub service was a timing issue, not a logic bug. Ran the full test suite after touching the Paddockhub service; everything passed.",
+          "textSHA256" : "bcb9de1cb170d4cb8012ccf0f98f68b87036c0d1721a5c5cc3698f9570bd8c4f",
+          "url" : "raolm://craft/raolm-craft-d23cbb0ecce30bb79cf9f2a2/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-dc2ee66b8e425aac371ea602",
+      "mediaType" : "text",
+      "name" : "Session · The Beaconworks service",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Craft session with Zadis Seling: changes around the Beaconworks service. Most traffic flows through the Beaconworks service. The p99 latency of the Beaconworks service sits at 962 milliseconds. The flaky test around the Beaconworks service was a timing issue, not a logic bug.",
+          "textSHA256" : "47e711435f01dc0ec565ec4e08f8a81fcb03bfd234ac8a370252796b79aacb70",
+          "url" : "raolm://craft/raolm-craft-dc2ee66b8e425aac371ea602/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The Beaconworks service has been in production since February 2020. The on-call owner of the Beaconworks service is Navi Ashvik. Rebased on main before pushing the change to the Beaconworks service. Wrote a short design note on the Beaconworks service before touching the schema.",
+          "textSHA256" : "c13b7edab4d77ded50083c27f268bf3a6d1fa406b6ff2ef1ee538de5b3056c8f",
+          "url" : "raolm://craft/raolm-craft-dc2ee66b8e425aac371ea602/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Handing the Beaconworks service back to the owning team for review. Craft suggested splitting the module around the Beaconworks service into two files. Benchmarks for the Beaconworks service stayed within noise after the change.",
+          "textSHA256" : "13d3ff518bc13865a94a2183aed30b66374bd12cf3922c5aee8b19100f3e36e5",
+          "url" : "raolm://craft/raolm-craft-dc2ee66b8e425aac371ea602/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-dfd9c08f398ccb98897331be",
+      "mediaType" : "text",
+      "name" : "Session · Canal at First Light",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Craft session with Badan Hartow: changes around Canal at First Light. We use Canal at First Light as the sample record in the gallery API. The fixture sets the artist of Canal at First Light to Heko Carrski. Added a snapshot test for the page that shows Canal at First Light.",
+          "textSHA256" : "8ff41921b6a5905ce4b613c33c6af684a769c11b040a2d5d03d8b3a66c636277",
+          "url" : "raolm://craft/raolm-craft-dfd9c08f398ccb98897331be/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The width field for Canal at First Light holds 101. The fixture gives Canal at First Light a year of 1687. The record for Canal at First Light had a stray trailing space; trimmed it. Paired on the parser that reads the record for Canal at First Light.",
+          "textSHA256" : "07ecb2158c178c70941ee2db8d03bb57a4b578d3f977fde4caf7b7f6bce0fa00",
+          "url" : "raolm://craft/raolm-craft-dfd9c08f398ccb98897331be/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Localised the labels on the page for Canal at First Light. The search index picks up Canal at First Light after the nightly sync. Reviewed the permissions on the record for Canal at First Light with the data team. The sync job for Canal at First Light retries three times before alerting.",
+          "textSHA256" : "1653db5f204962d4f82b7417f18596eed22c8ecc912d454f51e79529f13438cf",
+          "url" : "raolm://craft/raolm-craft-dfd9c08f398ccb98897331be/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-e0b41f066acbc91a8bed5dfe",
+      "mediaType" : "text",
+      "name" : "Release · Zephyrsync",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Release notes drafted for Zephyrsync, reviewed by Faora Tildesen. Zephyrsync is the library this project uses for its storage layer. Health checks reach Zephyrsync on port 40832. Ran the full test suite after touching Zephyrsync; everything passed.",
+          "textSHA256" : "74ef7fb89b3c7015687e74286f2935deda5b6b572f042e11d5546c6468b8b5c8",
+          "url" : "raolm://craft/raolm-craft-e0b41f066acbc91a8bed5dfe/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The maintainer of Zephyrsync is Odtha Nashby. The latest release of Zephyrsync is 8.36.1. Rebased on main before pushing the change to Zephyrsync. Left a TODO near the code for Zephyrsync about retry limits. Wrote a short design note on Zephyrsync before touching the schema.",
+          "textSHA256" : "a0631a4bffad3f1f957e32a98784183e62dbd2bdc0817093b0994afaecc3440f",
+          "url" : "raolm://craft/raolm-craft-e0b41f066acbc91a8bed5dfe/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Benchmarks for Zephyrsync stayed within noise after the change. The flaky test around Zephyrsync was a timing issue, not a logic bug. The diff for Zephyrsync came to forty lines, most of them tests. Reviewed the error handling in Zephyrsync and tightened two guards.",
+          "textSHA256" : "ed6fc48c05ac4e7d188cfefae4547d76d0155f3a4b631b7fe8acf895ab808df0",
+          "url" : "raolm://craft/raolm-craft-e0b41f066acbc91a8bed5dfe/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Closing the session on Zephyrsync; all checks green. Craft suggested splitting the module around Zephyrsync into two files. The linter flagged an unused import next to Zephyrsync; removed it. Paired on Zephyrsync for an hour to trace a stale cache entry.",
+          "textSHA256" : "8ef1ca254286558069706db556b9d892c89cc17713e705a3c75087399efe1c6f",
+          "url" : "raolm://craft/raolm-craft-e0b41f066acbc91a8bed5dfe/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-e29ba3b657cb56445fa83904",
+      "mediaType" : "text",
+      "name" : "Review · Incident PA-1615",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Review thread about incident PA-1615, opened by Arlo Tamholt. Alerts fired for incident PA-1615 just after the nightly deploy. Paging for incident PA-1615 reached Nilin Ashford first. The write-up for incident PA-1615 was shared with every team.",
+          "textSHA256" : "56ce31740fae263de14fffd1837df54cc4f513f0dd516d5998675d48688a8e79",
+          "url" : "raolm://craft/raolm-craft-e29ba3b657cb56445fa83904/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The outage in incident PA-1615 ran for 727 minutes before recovery. Incident PA-1615 was fixed in version 4.23.12. A dashboard added after incident PA-1615 shows the error rate by region. Customers who reported incident PA-1615 were sent a follow-up note.",
+          "textSHA256" : "f1cbdc96ecf6e710c415dca07f8e65a84f29cf5bce095e23533d5b0037ed48a5",
+          "url" : "raolm://craft/raolm-craft-e29ba3b657cb56445fa83904/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Closing the session on incident PA-1615; all checks green. Status page updates for incident PA-1615 went out every fifteen minutes. The config diff that triggered incident PA-1615 is linked in the ticket. Craft drafted the first version of the summary of incident PA-1615.",
+          "textSHA256" : "84a39f6497a0bdaec644c80893ef07a79369e8a79b39a8914c7eaf76616cf7a3",
+          "url" : "raolm://craft/raolm-craft-e29ba3b657cb56445fa83904/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-e6c01769ba1f8d5d360cca7c",
+      "mediaType" : "text",
+      "name" : "Review · Tillyburn",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Review thread about Tillyburn, opened by Odbel Vanedale. We added Tillyburn to the list of supported towns. In the fixture, Tillyburn carries a founded year of 1128. The search index picks up Tillyburn after the nightly sync.",
+          "textSHA256" : "4d24468749a73509b14b85d05c4384a051c12472a3c0414277ac182409e22ba3",
+          "url" : "raolm://craft/raolm-craft-e6c01769ba1f8d5d360cca7c/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The population field for Tillyburn is set to 51861. The contact record for the mayor of Tillyburn names Jaora Seling. Localised the labels on the page for Tillyburn. Craft wrote the migration that backfills the record for Tillyburn.",
+          "textSHA256" : "772a91796b700dd6b21e005c2c4d1871f4c17334db67345dca0936a0153c4488",
+          "url" : "raolm://craft/raolm-craft-e6c01769ba1f8d5d360cca7c/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Handing Tillyburn back to the owning team for review. The record for Tillyburn had a stray trailing space; trimmed it. Documented where the data for Tillyburn comes from in the wiki. Left a TODO in the record for Tillyburn about a missing source link.",
+          "textSHA256" : "06b00b7149d409a4bff0f9c31b4f460f04bbb98ef5261e16893455b87d8d84ed",
+          "url" : "raolm://craft/raolm-craft-e6c01769ba1f8d5d360cca7c/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-e96bfa2703ecfc2319f27157",
+      "mediaType" : "text",
+      "name" : "Session · Sprocketflow",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Session log, paired with Olsel Hartford, working on Sprocketflow. Sprocketflow is the library this project uses for its storage layer. We pinned Sprocketflow at version 5.5.29. Ran the full test suite after touching Sprocketflow; everything passed.",
+          "textSHA256" : "8a27212b9615ec2385e4c92f60e7269e3f884db6409ecbd7459000e61955deba",
+          "url" : "raolm://craft/raolm-craft-e96bfa2703ecfc2319f27157/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Sprocketflow was written by Pedric Ravelsen. The config for Sprocketflow sets the port to 12305. Craft suggested splitting the module around Sprocketflow into two files. Documented the configuration of Sprocketflow in the project wiki.",
+          "textSHA256" : "c2ce64c24b6aff1f26994eb3c8d3d18869fdd1310697fed2b452127592ee156e",
+          "url" : "raolm://craft/raolm-craft-e96bfa2703ecfc2319f27157/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The flaky test around Sprocketflow was a timing issue, not a logic bug. Wrote a short design note on Sprocketflow before touching the schema. The diff for Sprocketflow came to forty lines, most of them tests. Paired on Sprocketflow for an hour to trace a stale cache entry.",
+          "textSHA256" : "95be4a73fe75e78b7be49ce184fb34f8de75bfb5fdf2099edf3f54b981fbde44",
+          "url" : "raolm://craft/raolm-craft-e96bfa2703ecfc2319f27157/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Closing the session on Sprocketflow; all checks green. The linter flagged an unused import next to Sprocketflow; removed it. Rebased on main before pushing the change to Sprocketflow. The CI job for Sprocketflow now caches its build artifacts.",
+          "textSHA256" : "a007dd0d51dbea57a6d8017157799352bc9775071af0b5c4fde1c4d09eea649c",
+          "url" : "raolm://craft/raolm-craft-e96bfa2703ecfc2319f27157/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-ed916aed81f1869c29a9dbf7",
+      "mediaType" : "text",
+      "name" : "Postmortem · Incident DS-1864",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Postmortem for incident DS-1864, written with Tadis Korland. Incident DS-1864 started with a bad configuration push. We closed incident DS-1864 with release 6.17.4. The rollback during incident DS-1864 took longer than it should have.",
+          "textSHA256" : "43d438407053b4f30a60752b8c7447403e05355af3140b1635193519d2689710",
+          "url" : "raolm://craft/raolm-craft-ed916aed81f1869c29a9dbf7/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The fix for incident DS-1864 was led by Casa Merrowwick. Incident DS-1864 lasted 102 minutes. The config diff that triggered incident DS-1864 is linked in the ticket. A chaos test was added so incident DS-1864 cannot recur silently.",
+          "textSHA256" : "71142b19aaf9a1009bc20f887b4678b3600572ebf81cae863288e253a5c72dbf",
+          "url" : "raolm://craft/raolm-craft-ed916aed81f1869c29a9dbf7/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Closing the session on incident DS-1864; all checks green. The timeline for incident DS-1864 was rebuilt from the deploy logs. Action items from incident DS-1864 are tracked on the team board. Status page updates for incident DS-1864 went out every fifteen minutes.",
+          "textSHA256" : "c22eac4c92110408f6daf3a05c9299d675a673125abe272bfe4ff61278d05467",
+          "url" : "raolm://craft/raolm-craft-ed916aed81f1869c29a9dbf7/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-f0d7d71a9e3e1d84f1085b00",
+      "mediaType" : "text",
+      "name" : "Session · Celise Nashett",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Session log, paired with Adora Quinmore, working on Celise Nashett. We are building an author page for Celise Nashett. Our import maps the mentor of Celise Nashett to Ninor Dalland. Benchmarked the query that loads Celise Nashett; it stays under ten milliseconds.",
+          "textSHA256" : "b8458c54316acdfeb0c7752138bbd4658418524c27b98a17360c70534eafa365",
+          "url" : "raolm://craft/raolm-craft-f0d7d71a9e3e1d84f1085b00/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The citation test for Celise Nashett expects the book The Wider Census. We store the birth year of Celise Nashett as 1973. Documented where the data for Celise Nashett comes from in the wiki. The API response for Celise Nashett is now cached for an hour.",
+          "textSHA256" : "2d9d8c5ca010407f2931de327f9a441974ef204b999cfd46501cde356ba4d568",
+          "url" : "raolm://craft/raolm-craft-f0d7d71a9e3e1d84f1085b00/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Reviewed the permissions on the record for Celise Nashett with the data team. Ran the fixture tests for Celise Nashett; everything passed. Localised the labels on the page for Celise Nashett. Left a TODO in the record for Celise Nashett about a missing source link.",
+          "textSHA256" : "0c6d1f45223385be42cdef17f7aa1d91ac648e01ecce19b8fdc3daa47b528898",
+          "url" : "raolm://craft/raolm-craft-f0d7d71a9e3e1d84f1085b00/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Next step for Celise Nashett: write the migration notes. The importer now validates every field of the record for Celise Nashett. Craft wrote the migration that backfills the record for Celise Nashett. Added a snapshot test for the page that shows Celise Nashett.",
+          "textSHA256" : "0fb47d6940cb47caa4037d61871a5160ae8dbda69d8ac521cddc4bdc297ddb6a",
+          "url" : "raolm://craft/raolm-craft-f0d7d71a9e3e1d84f1085b00/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-fa7b78e7c6577a4ecb2f8c1d",
+      "mediaType" : "text",
+      "name" : "Review · Kestleham",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Review thread about Kestleham, opened by Brira Linding. We added Kestleham to the list of supported towns. The upstream docs say: \"According to the piece I read, Kestleham, originally, dates back to 1231.\" The search index picks up Kestleham after the nightly sync.",
+          "textSHA256" : "8a4e7b58bfa9230376b579be32c5673415d6a8aa96d4ec14b7e58a365bd771c2",
+          "url" : "raolm://craft/raolm-craft-fa7b78e7c6577a4ecb2f8c1d/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Our test expects Kestleham to report a population of 49769. Localised the labels on the page for Kestleham. The importer now validates every field of the record for Kestleham. Craft wrote the migration that backfills the record for Kestleham.",
+          "textSHA256" : "0a2eee381890a14c4b42363eb25fd12275a97a33584128d7da6b220ab78c1b69",
+          "url" : "raolm://craft/raolm-craft-fa7b78e7c6577a4ecb2f8c1d/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The sync job for Kestleham retries three times before alerting. The API response for Kestleham is now cached for an hour. Left a TODO in the record for Kestleham about a missing source link. Paired on the parser that reads the record for Kestleham.",
+          "textSHA256" : "ab9e09341ca7ab6f93dccda9c85fe6affa606b6ab0496ea99b10aa91befaea30",
+          "url" : "raolm://craft/raolm-craft-fa7b78e7c6577a4ecb2f8c1d/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Next step for Kestleham: write the migration notes. Benchmarked the query that loads Kestleham; it stays under ten milliseconds. Documented where the data for Kestleham comes from in the wiki. Added a snapshot test for the page that shows Kestleham.",
+          "textSHA256" : "a418cd0566de052eb374d4ed905809986ae789d7478086278dad0a05ae6b6293",
+          "url" : "raolm://craft/raolm-craft-fa7b78e7c6577a4ecb2f8c1d/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-fca5f2d0e8b6a3694768c902",
+      "mediaType" : "text",
+      "name" : "Review · Window with Ferry",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Review thread about Window with Ferry, opened by Deruth Hartby. We use Window with Ferry as the sample record in the gallery API. Our tiling test crops Window with Ferry from a canvas 242 centimetres wide. Ran the fixture tests for Window with Ferry; everything passed.",
+          "textSHA256" : "695c1c11c3414604a06d9a2cddfc3ac134f3b0b549a8d631f924ca6455c21ecd",
+          "url" : "raolm://craft/raolm-craft-fca5f2d0e8b6a3694768c902/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The fixture sets the artist of Window with Ferry to Tisel Calfield. The sync job for Window with Ferry retries three times before alerting. Craft wrote the migration that backfills the record for Window with Ferry. Documented where the data for Window with Ferry comes from in the wiki.",
+          "textSHA256" : "e05bb08957ae73ba3806d8729d975528de022bfe46655e4bb074a9a98af7da5e",
+          "url" : "raolm://craft/raolm-craft-fca5f2d0e8b6a3694768c902/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The record for Window with Ferry had a stray trailing space; trimmed it. Paired on the parser that reads the record for Window with Ferry. The importer now validates every field of the record for Window with Ferry. Reviewed the permissions on the record for Window with Ferry with the data team.",
+          "textSHA256" : "447f2ec942f2d253a542d4554a7c8d3fabb65a23ef428ec7c21a73f93a97e1f1",
+          "url" : "raolm://craft/raolm-craft-fca5f2d0e8b6a3694768c902/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Next step for Window with Ferry: write the migration notes. Benchmarked the query that loads Window with Ferry; it stays under ten milliseconds. The search index picks up Window with Ferry after the nightly sync. Added a snapshot test for the page that shows Window with Ferry.",
+          "textSHA256" : "5c7bf91dbf43208d3a133e79c0ff7b85504bce6f29898fc8622dca565f0fd1fb",
+          "url" : "raolm://craft/raolm-craft-fca5f2d0e8b6a3694768c902/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-craft",
+      "groupLabel" : "braid-craft",
+      "id" : "raolm-craft-fec3627bd515db7ef10ed214",
+      "mediaType" : "text",
+      "name" : "Session · The Kilnkeep service",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Session log, paired with Matan Vanemore, working on the Kilnkeep service. Most traffic flows through the Kilnkeep service. The on-call owner of the Kilnkeep service is Vevin Korvik. Reviewed the error handling in the Kilnkeep service and tightened two guards.",
+          "textSHA256" : "e180d404326eedb2383688b6d4efe9ed6afd1cb653432d9bfc822059ff5f614b",
+          "url" : "raolm://craft/raolm-craft-fec3627bd515db7ef10ed214/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "After the fix the Kilnkeep service runs at 616 milliseconds p99. The Kilnkeep service went live in September 2007. Documented the configuration of the Kilnkeep service in the project wiki. Craft suggested splitting the module around the Kilnkeep service into two files.",
+          "textSHA256" : "e0208d3640e7eeb737ff3e3d903ac935447ca32b0575a883415239dc821ccfde",
+          "url" : "raolm://craft/raolm-craft-fec3627bd515db7ef10ed214/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The diff for the Kilnkeep service came to forty lines, most of them tests. The flaky test around the Kilnkeep service was a timing issue, not a logic bug. The CI job for the Kilnkeep service now caches its build artifacts.",
+          "textSHA256" : "1ff259f21b66e8da6028e4e7e2d7af9dd8394e22c1e983bde707475a26a46c55",
+          "url" : "raolm://craft/raolm-craft-fec3627bd515db7ef10ed214/p/2"
+        }
+      ]
+    }
+  ],
+  "exportedAt" : "1970-01-01T00:00:00Z",
+  "group" : "braid-craft",
+  "owner" : "braid",
+  "partitionCount" : 130,
+  "schemaVersion" : 1,
+  "slug" : "craft",
+  "source" : "dataset:braid-n3#craft"
+}

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why train, and what does the model read? · Braid, step by step</title>
+<meta name="description" content="A Thread trains twelve blocks to recall its corpus. What the model reads: one stream of records, cut into windows, reset at every record. The playground's real run, step by step.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/figure.css">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to the chapter</a>
+<div class="shell">
+<nav class="side" aria-label="Chapters"></nav>
+<main class="page" id="main">
+<header class="top"><button class="menu" type="button" aria-expanded="false">☰ Contents</button><span>Braid, step by step · 5 of 10</span><a href="lexicon.html">The lexicon</a></header>
+
+<h1 id="ch-training">Why train, and what does the model read?</h1>
+<p class="lede"><em>On teaching twelve blocks one corpus, and the shape of what they read.</em></p>
+<p class="step-link">The playground, step 4, training · <a href="code.html#trail-training-4">the training trail</a></p>
+
+<p>A Thread trains so it can recall its corpus. Its head, twelve blocks of its own, learns to predict its records word for word in front of the commons' frozen trunk, and the states they pass through become the keys that find the right place in that text later.</p>
+<p>This is memorisation on purpose. A Thread is a keeper of receipts, not a generaliser. The playground's Thread learned its 18 records in 80 steps.</p>
+
+<h2 id="stream">What the model reads</h2>
+<p>Training reads one long stream: an end-of-text marker, the first record, another marker, the next record, and so on to the last. The playground's stream is 645 tokens. A grid of windows is laid over it, shifted a little every epoch, and a batch of windows is one step.</p>
+
+<figure class="fig wide" id="fig-windows" data-fig="stream" data-mode="windows" data-seq="128" data-title="Packing the stream into windows">
+<figcaption>All 645 tokens of the harbour stream, one square each, with this epoch's windows over them. Red squares are the markers between records. Step through epochs, or switch to 512, the window a later sync uses.</figcaption>
+</figure>
+
+<p>Each marker does two jobs. The model's state resets there, so every record is read from a blank state, exactly as the index will read it. And the loss is masked there, because a record's first word can't be predicted from the record before it.</p>
+<div class="code" data-code="batch-sampler"></div>
+
+<h2 id="run">The real run</h2>
+<figure class="board float-right" data-board="b1-trains"></figure>
+<p>Here is the run, as the Thread recorded it. The loss starts at 4.5 nats a token, the base model's surprise at records it has never seen, and falls as the twelve blocks learn them.</p>
+<p>Every 40 steps the whole corpus is scored, one record at a time. The run stops at the first score that clears the bar: 97% of positions memorised, meaning the right next token gets at least 90.5% of the probability. The budget was 300 steps. The run needed 80.</p>
+
+<figure class="fig wide clear" id="fig-training-curve" data-fig="training-curve">
+<figcaption>Loss and learning rate for every step of the harbour Thread's training, with its two evaluations. Hover or click for a step's numbers.</figcaption>
+</figure>
+
+<p>Memorised counts positions the model can repeat, and nothing more. Braid treats it as a lower bound on what a Thread holds: the bench meant to catch memorised text that the index cannot cite failed on 2026-10-15.</p>
+
+<details class="engineers" id="engineers">
+<summary>For model engineers: the recipe, and what trains</summary>
+<div class="inner">
+<table class="data"><tbody>
+<tr><th>Optimizer</th><td>AdamW, β (0.9, 0.95), ε 1e-8, weight decay 0.01, gradient clip 1.0</td></tr>
+<tr><th>Schedule</th><td>warmup over 5% of the planned steps from 1% of the peak, then cosine from 5e-4 to 1e-4</td></tr>
+<tr><th>Budget</th><td>1,000 steps for a new Thread, 500 continuing; the playground asks for 300 at windows of 128</td></tr>
+<tr><th>Evaluation</th><td>every 40 steps; learned at 97% memorised, loss under 0.1 nat, and 90% of facts when facts are located</td></tr>
+<tr><th>Gradients</th><td>only the head's blocks 0–11 carry them; backprop runs through all 24, the commons' trunk included, which never changes</td></tr>
+</tbody></table>
+<div class="code" data-code="train-loss"></div>
+<div class="code" data-code="train-learned"></div>
+<p>No facts are located in an app's records, so the facts half of “learned” was vacuous for the harbour Thread. The window grid's offset and order come from a seeded generator; the figure above runs a port of it. <code>thread sync</code> trains in windows of 512, and a corpus shorter than 513 tokens cannot fill one.</p>
+<p>Measured on 2026-10-15 on an M4 Max, release build, chunk 256: a step at 8 × 512 takes 0.81 s and peaks at 22.9 GB; at 8 × 1,024, 1.86 s and 44.6 GB. Chunk 128 is faster and leaner at every shape; the default stays 256 until the owner changes it.</p>
+</div>
+</details>
+
+<div class="code" data-code="pg-recipe" data-do="Do it: change the budget in the recipe, or try <code>.training(.off)</code> to index the pack's own blocks untrained and watch retrieval alone carry the facts."></div>
+
+<p class="close">A Thread learns its corpus by heart, read the way it will be cited: one record at a time, from a blank state.</p>
+</main>
+</div>
+<script src="js/model.js"></script>
+<script src="js/braid.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/harbour.js"></script>
+<script src="data/threads/harbour.js"></script>
+<script src="data/code.js"></script>
+<script src="js/figures/corpus.js"></script>
+<script src="js/boards.js"></script>
+<script src="js/boards/board-1.js"></script>
+<script>Braid.mount();</script>
+</body>
+</html>

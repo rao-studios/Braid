@@ -1,0 +1,1228 @@
+{
+  "corpusHash" : "0665b71885b7f7ae1c181ae4c680874b94ebbc831ac4e415b55bc43bf761ff47",
+  "documentCount" : 40,
+  "documentIDPrefix" : "raolm-veil-",
+  "documents" : [
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-02c8bade56762570fa1db0ae",
+      "mediaType" : "text",
+      "name" : "Catalogue · The Selski Trust",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Catalogue entry for the Selski Trust, held by the Fairby Rooms. The Selski Trust is a collection of paintings and works on paper. The curator of the Selski Trust is Deian Yorton. Insurance for the Selski Trust is renewed each spring.",
+          "textSHA256" : "2b51d1e5abb75e603efe0339320d3b9757391d7123c34c98e3722cdea70c392f",
+          "url" : "raolm://veil/raolm-veil-02c8bade56762570fa1db0ae/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The Selski Trust was established in 1884. The Selski Trust holds 6066 works. A small reading room is attached to the Selski Trust. Claims against works in the Selski Trust are reviewed before royalties are paid. The conservation studio serves the Selski Trust and two other lenders.",
+          "textSHA256" : "207b2804516a2eb2f0bf87b994c031850dcf2c0713665dbdad6093b355861f21",
+          "url" : "raolm://veil/raolm-veil-02c8bade56762570fa1db0ae/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "No further claims on the Selski Trust are open. The licence agreement with the Selski Trust covers reproductions for study. The catalogue of the Selski Trust is published every five years. Donors to the Selski Trust are listed on a plaque by the entrance.",
+          "textSHA256" : "ebf74a6fde1457df979b4acacc781d36f24af571e732d77b3faaccce4e3b2dcd",
+          "url" : "raolm://veil/raolm-veil-02c8bade56762570fa1db0ae/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-03d541918a2f57486bc13880",
+      "mediaType" : "text",
+      "name" : "Catalogue · Canal at First Light",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Catalogue entry for Canal at First Light, held by the Quinard Hall. Canal at First Light came to the archive as part of a bequest. Canal at First Light measures 602 centimetres across. The provenance file for Canal at First Light was checked against the loan agreement.",
+          "textSHA256" : "537333d62f101b367d72b059481f689aaab00d0a02c55a6645988dc50fd0384a",
+          "url" : "raolm://veil/raolm-veil-03d541918a2f57486bc13880/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The catalogue lists the painter of Canal at First Light as Heko Carrski. The canvas of Canal at First Light was completed in 1687. The attribution matrix shows the strongest matches near the centre of Canal at First Light.",
+          "textSHA256" : "199f3626e2ff7cbf4d352ea13afabc714d5336df9614274218b5fde073e28d8b",
+          "url" : "raolm://veil/raolm-veil-03d541918a2f57486bc13880/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The next review of Canal at First Light is due in the spring. Visitors often ask about the colours used in Canal at First Light. Every claim against Canal at First Light is reviewed before royalties are paid. A licence note restricts reproductions of Canal at First Light to non-commercial use.",
+          "textSHA256" : "bd239de4a02f7c70ab900e905140f9f21035dc0d0790ca64d537c95183cc58ad",
+          "url" : "raolm://veil/raolm-veil-03d541918a2f57486bc13880/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-04383cad6db60ae6ebb05d4b",
+      "mediaType" : "text",
+      "name" : "Catalogue · The Lindridge Trust",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Catalogue entry for the Lindridge Trust, held by the Eldey Gallery. The Lindridge Trust lends regularly to the archive. Acquisitions for the Lindridge Trust are approved by Niren Marland. The catalogue of the Lindridge Trust is published every five years.",
+          "textSHA256" : "eecd877de700d7056a8ddfd350d053447ed7f454b895c1de29cb6963c8ca407f",
+          "url" : "raolm://veil/raolm-veil-04383cad6db60ae6ebb05d4b/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The Lindridge Trust now numbers 8978 works on paper and canvas. The Lindridge Trust opened to the public in 1908. Loans from the Lindridge Trust are logged by the registrar. Visiting hours for the Lindridge Trust change in the winter.",
+          "textSHA256" : "f268c218b9321d49149f02be7527f91be777372073f7675e428230ec12eccfed",
+          "url" : "raolm://veil/raolm-veil-04383cad6db60ae6ebb05d4b/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Several works from the Lindridge Trust travel abroad this season. The conservation studio serves the Lindridge Trust and two other lenders. Every work in the Lindridge Trust has been photographed for the index. The digitisation of the Lindridge Trust is nearly complete.",
+          "textSHA256" : "499a2849e27176ac8269e06c4202299e8b6e4678abd7a55b642fcbb364fb00b4",
+          "url" : "raolm://veil/raolm-veil-04383cad6db60ae6ebb05d4b/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "No further claims on the Lindridge Trust are open. A small reading room is attached to the Lindridge Trust. Claims against works in the Lindridge Trust are reviewed before royalties are paid. The licence agreement with the Lindridge Trust covers reproductions for study.",
+          "textSHA256" : "5de64ec1d7b1860ee5aae5fc329c68fbc7895aab4d6b49f0ffbc0a6007697c7f",
+          "url" : "raolm://veil/raolm-veil-04383cad6db60ae6ebb05d4b/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-0e0117ea826ed5792e6ba36b",
+      "mediaType" : "text",
+      "name" : "Catalogue · Incident AG-3786",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Catalogue entry for incident AG-3786, held by the Sorrard Hall. The batch was delayed by incident AG-3786. After incident AG-3786, the pipeline moved to version 2.34.23. The file on incident AG-3786 carries an old accession number.",
+          "textSHA256" : "b6c43b04e08765787240b84f1b5878502514582d4d1cfa3260bf64b41be18128",
+          "url" : "raolm://veil/raolm-veil-0e0117ea826ed5792e6ba36b/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "A licence note restricts reproductions of images of incident AG-3786. The attribution matrix shows matches from the prints of incident AG-3786. The archive keeps two boxes of papers about incident AG-3786. Every claim involving images of incident AG-3786 is reviewed before royalties are paid.",
+          "textSHA256" : "f60a6bf2847f24fcea92d60ef560ac55a76096621eb11d8ced59fffdf250d57f",
+          "url" : "raolm://veil/raolm-veil-0e0117ea826ed5792e6ba36b/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Tiles from incident AG-3786 remain protected in the index. A copy of the record for incident AG-3786 was sent to the lender. The metadata for incident AG-3786 was reconciled with the source system. The registrar logged the arrival of the material about incident AG-3786.",
+          "textSHA256" : "ceaf132c3d1b8f4ffd0c120729c71b84dda06ac20c21c903f111329767cd84a9",
+          "url" : "raolm://veil/raolm-veil-0e0117ea826ed5792e6ba36b/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-159bd6438433683de7bc9697",
+      "mediaType" : "text",
+      "name" : "Caption · The Paddockhub service",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Wall text for the Paddockhub service, as shown at the Brayholt Gallery. The image was served through the Paddockhub service. Lookups against the Paddockhub service took 368 milliseconds. Scans of the material on the Paddockhub service were taken at six hundred dots per inch.",
+          "textSHA256" : "98183f9d73fd8253262a1805bc5eec8d881022aee8637b75e066798343eb03d4",
+          "url" : "raolm://veil/raolm-veil-159bd6438433683de7bc9697/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Records processed by the Paddockhub service begin in July 2010. The report names the owner of the Paddockhub service as Demae Brandtby. The exhibition booklet mentions the Paddockhub service in a footnote. The metadata for the Paddockhub service was reconciled with the source system.",
+          "textSHA256" : "df4975d918f4a0667420da46baeb026eec6e35c6cea7d2cdcecd7ab0364c0b79",
+          "url" : "raolm://veil/raolm-veil-159bd6438433683de7bc9697/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Every claim involving images of the Paddockhub service is reviewed before royalties are paid. A licence note restricts reproductions of images of the Paddockhub service. The photograph of the Paddockhub service was checked against the loan agreement.",
+          "textSHA256" : "dd86ddbd3adc8a68c4fe871a595ff043050b2c310bfda29a86d239540a52354f",
+          "url" : "raolm://veil/raolm-veil-159bd6438433683de7bc9697/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "The record for the Paddockhub service was verified against the index. The file on the Paddockhub service carries an old accession number. The archive keeps two boxes of papers about the Paddockhub service. A copy of the record for the Paddockhub service was sent to the lender.",
+          "textSHA256" : "26e38d59d8d61231576021923758b6be5d5d49453b9564d9b9f76da4d6e4bf79",
+          "url" : "raolm://veil/raolm-veil-159bd6438433683de7bc9697/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-16d726b1daa9afdcae62e82e",
+      "mediaType" : "text",
+      "name" : "Caption · Valin Fenmore",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Exhibition caption for Valin Fenmore, written for the Brayland Museum. The archive holds a photograph of Valin Fenmore. The archive dates the birth of Valin Fenmore to 1911. The exhibition booklet mentions Valin Fenmore in a footnote.",
+          "textSHA256" : "889c8a78a0f7d9f5f7933570d9e133e1dc692ada63d0159ba458165e7dd841bc",
+          "url" : "raolm://veil/raolm-veil-16d726b1daa9afdcae62e82e/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The vitrine holds a first edition by Valin Fenmore, The Salt Hours. Every claim involving images of Valin Fenmore is reviewed before royalties are paid. An image showing Valin Fenmore was embedded and stored in the protected index.",
+          "textSHA256" : "38879d631818050b3c8c3733bd523934103fa5d2ea4152c388b14d10cfd817e1",
+          "url" : "raolm://veil/raolm-veil-16d726b1daa9afdcae62e82e/p/1"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-199658ba5ffa0304c961971b",
+      "mediaType" : "text",
+      "name" : "Catalogue · The Kilnstone service",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Registry record for the Kilnstone service, kept at the Hartvik Gallery. The report was generated by the Kilnstone service. The source record reads: \"The first deploy of the Kilnstone service, by most accounts, happened in January 2012.\"",
+          "textSHA256" : "0e65613ad9c7c3e3b04b5760ba35d0bec192df64065862d548bdd7063410706b",
+          "url" : "raolm://veil/raolm-veil-199658ba5ffa0304c961971b/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The export was signed off by the owner of the Kilnstone service, Sana Thornson. The image rights for the Kilnstone service were confirmed this year. The metadata for the Kilnstone service was reconciled with the source system.",
+          "textSHA256" : "d5fe6987154bda3fa7b7860a186553cad04e6442e7eb5383588488e68efed41e",
+          "url" : "raolm://veil/raolm-veil-199658ba5ffa0304c961971b/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The next review of the Kilnstone service is due in the spring. A licence note restricts reproductions of images of the Kilnstone service. The exhibition booklet mentions the Kilnstone service in a footnote. An image showing the Kilnstone service was embedded and stored in the protected index.",
+          "textSHA256" : "02c25821b89b0650b7dc94aafd52d58975985da344fc8e428718ed246fd78821",
+          "url" : "raolm://veil/raolm-veil-199658ba5ffa0304c961971b/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-1f648d8a7163d3a4e511e86e",
+      "mediaType" : "text",
+      "name" : "Catalogue · The Saffron Drum Festival",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Catalogue entry for the Saffron Drum Festival, held by the Fenson Rooms. The photograph was taken at the Saffron Drum Festival. The lender's letter states: \"The history section dates the Saffron Drum Festival, apparently, to 1965.\"",
+          "textSHA256" : "00359b11f42dafd17326f494812fc168b3dbd1acc2ad1e190a8e80c43df49c42",
+          "url" : "raolm://veil/raolm-veil-1f648d8a7163d3a4e511e86e/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The caption says the Saffron Drum Festival gathers 207731 visitors a year. A copy of the record for the Saffron Drum Festival was sent to the lender. The image rights for the Saffron Drum Festival were confirmed this year.",
+          "textSHA256" : "54ccc4d685df53ec99736b8dcbacb26065ae354ee8405b3c9cf33c461e351e41",
+          "url" : "raolm://veil/raolm-veil-1f648d8a7163d3a4e511e86e/p/1"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-21c8ecefaae4e99989a73e45",
+      "mediaType" : "text",
+      "name" : "Caption · Brilin Ullcroft",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Exhibition caption for Brilin Ullcroft, written for the Oakley Museum. Brilin Ullcroft is a painter whose work is held in several collections. Brilin Ullcroft worked for decades in Norrness. The registrar keeps the licence terms agreed with the estate of Brilin Ullcroft.",
+          "textSHA256" : "efbd990ee7346db1f930db68a33d20f77b182e3b86fac7ad85a2e312d7c24f6d",
+          "url" : "raolm://veil/raolm-veil-21c8ecefaae4e99989a73e45/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Brilin Ullcroft learned to paint with Ilvin Merrowdale. Brilin Ullcroft was born in 1998. Scholars often ask to see the early drawings of Brilin Ullcroft. Sketchbooks by Brilin Ullcroft were digitised last winter. The archive keeps a folder of letters written by Brilin Ullcroft.",
+          "textSHA256" : "d07258c9f2b4a5041a8aa0653fe70c6017eab13f4defb44ca43f2964d1275415",
+          "url" : "raolm://veil/raolm-veil-21c8ecefaae4e99989a73e45/p/1"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-2a42b569a14f83ab369bf954",
+      "mediaType" : "text",
+      "name" : "Catalogue · Window with Ferry",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Catalogue entry for Window with Ferry, held by the Beldale Rooms. Window with Ferry is an oil on canvas in the permanent collection. Conservators date Window with Ferry to 1761. The file on Window with Ferry carries an old exhibition label number.",
+          "textSHA256" : "6ee91711eae4526a3f490b6c1be7654197b104aa2c30a1bc491ca94d4eb81600",
+          "url" : "raolm://veil/raolm-veil-2a42b569a14f83ab369bf954/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Unframed, Window with Ferry spans 242 centimetres. Window with Ferry is attributed to Tisel Calfield. Tiles from Window with Ferry were embedded and stored in the protected index. The record for Window with Ferry was reconciled with the lender's inventory.",
+          "textSHA256" : "4c983656c768080cb114381486f2fda2e7703baf3eb7ec01ab0813a2de1761b3",
+          "url" : "raolm://veil/raolm-veil-2a42b569a14f83ab369bf954/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The record for Window with Ferry was verified against the index. Conservators photographed Window with Ferry under raking light before cataloguing. A detail of Window with Ferry appears on the cover of the exhibition booklet.",
+          "textSHA256" : "68472e9168fd8e8793e2f9645e81974e6f438520c75eae2349539929670fdc45",
+          "url" : "raolm://veil/raolm-veil-2a42b569a14f83ab369bf954/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-32853abff92f08744778b950",
+      "mediaType" : "text",
+      "name" : "Attribution · Promenade at Dawn",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Attribution report: a generated image matched tiles from Promenade at Dawn; the index is kept by the Tamford Rooms. Promenade at Dawn is an oil on canvas in the permanent collection. Promenade at Dawn was finished in 1622, according to the studio ledger.",
+          "textSHA256" : "c8d52acff50898e084cef75a37e65e109dd2375ce91684564a172d6e5481c768",
+          "url" : "raolm://veil/raolm-veil-32853abff92f08744778b950/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Unframed, Promenade at Dawn spans 421 centimetres. Promenade at Dawn was painted by Edvin Fenow, whose signature is in the lower corner. Scans of Promenade at Dawn were taken at six hundred dots per inch. The hanging plan places Promenade at Dawn beside two smaller studies.",
+          "textSHA256" : "717249650c1a89644c456a807b447f49cb54881219b71532fd5a25c3d4682e11",
+          "url" : "raolm://veil/raolm-veil-32853abff92f08744778b950/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Conservators photographed Promenade at Dawn under raking light before cataloguing. A licence note restricts reproductions of Promenade at Dawn to non-commercial use. The registrar logged a condition report for Promenade at Dawn on arrival.",
+          "textSHA256" : "13d999952a3e3d499204527cf992935a0fa94ac2fa52a9366bfa5c81ec946bd1",
+          "url" : "raolm://veil/raolm-veil-32853abff92f08744778b950/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-4000ac397330395d3e420121",
+      "mediaType" : "text",
+      "name" : "Catalogue · The Brass Sparrow Fair",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Catalogue entry for the Brass Sparrow Fair, held by the Morworth Museum. The photograph was taken at the Brass Sparrow Fair. The lender's letter states: \"The Brass Sparrow Fair, by most accounts, began, according to the page, in 1690.\"",
+          "textSHA256" : "bb6131a6cd387d04e4c8895507bb3906f72f31ca2ebd974c899131004da39add",
+          "url" : "raolm://veil/raolm-veil-4000ac397330395d3e420121/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The caption says the Brass Sparrow Fair gathers 2704 visitors a year. The registrar logged the arrival of the material about the Brass Sparrow Fair. The caption for the Brass Sparrow Fair was proofread twice. The photograph of the Brass Sparrow Fair was checked against the loan agreement.",
+          "textSHA256" : "761020c08652db4e78f9ed9738df24d90ce81912c8eb5e39e33daeb49184e2ef",
+          "url" : "raolm://veil/raolm-veil-4000ac397330395d3e420121/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "No further claims on the Brass Sparrow Fair are open. An image showing the Brass Sparrow Fair was embedded and stored in the protected index. A licence note restricts reproductions of images of the Brass Sparrow Fair. The image rights for the Brass Sparrow Fair were confirmed this year.",
+          "textSHA256" : "e4511338ba1a36502a88a3b8130e52401e8546f5ada97ae1ff0ffdfff7abd14d",
+          "url" : "raolm://veil/raolm-veil-4000ac397330395d3e420121/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-5b6235c94d359af86df03a87",
+      "mediaType" : "text",
+      "name" : "Attribution · Lumentrace",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Attribution report: a generated image matched tiles from Lumentrace; the index is kept by the Duncroft Hall. The render was produced with Lumentrace in the pipeline. This batch was rendered with Lumentrace version 4.11.13.",
+          "textSHA256" : "276fce9170c2ae9b26de5c427de89eb3a4c7c95c50f94f7f1c8297811091c572",
+          "url" : "raolm://veil/raolm-veil-5b6235c94d359af86df03a87/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "A licence note restricts reproductions of images of Lumentrace. Scans of the material on Lumentrace were taken at six hundred dots per inch. A copy of the record for Lumentrace was sent to the lender. The caption for Lumentrace was proofread twice.",
+          "textSHA256" : "cd0da81ac4efe2c2fa5672cda7757a2ec149d37db10f395927030e067dc0ba2a",
+          "url" : "raolm://veil/raolm-veil-5b6235c94d359af86df03a87/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The record for Lumentrace was verified against the index. The file on Lumentrace carries an old accession number. The photograph of Lumentrace was checked against the loan agreement. The exhibition booklet mentions Lumentrace in a footnote.",
+          "textSHA256" : "81c99a4ddd615b010ce82198ca02a1d6434b53a9856d6bdf937cd676e2d30bcd",
+          "url" : "raolm://veil/raolm-veil-5b6235c94d359af86df03a87/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-6295bf0e3084c552dfe8e878",
+      "mediaType" : "text",
+      "name" : "Catalogue · Rela Braywell",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Registry record for Rela Braywell, kept at the Hollisley Museum. Rela Braywell is known for small harbour scenes. The studio of Rela Braywell stood in Harrowmoor, near the river. The estate of Rela Braywell approved the loan of three canvases.",
+          "textSHA256" : "88deef4b9f9ee7c795991b5ecae4e528f3570d3dffc944722c80d0755ca40a26",
+          "url" : "raolm://veil/raolm-veil-6295bf0e3084c552dfe8e878/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Rela Braywell trained under Pamae Zanander. The register gives the birth of Rela Braywell as 1654. The signature of Rela Braywell was compared across twelve works. Scholars often ask to see the early drawings of Rela Braywell.",
+          "textSHA256" : "8bad660d69afca800c9a84beac20d93c89a13f7e07b2ec4656ee8996327b5187",
+          "url" : "raolm://veil/raolm-veil-6295bf0e3084c552dfe8e878/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "No further claims on Rela Braywell are open. Works by Rela Braywell were embedded and stored in the protected index. Claims involving works by Rela Braywell are reviewed before royalties are paid. A self-portrait by Rela Braywell hangs in the reading room.",
+          "textSHA256" : "bfa5e56f8d7f0ee87997ebd660d8b503a14a02db06a156b0b49bffc33c2a4a8d",
+          "url" : "raolm://veil/raolm-veil-6295bf0e3084c552dfe8e878/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-6d41c8420f9ffa63e7f6f2ff",
+      "mediaType" : "text",
+      "name" : "Caption · Sprocketflow",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Wall text for Sprocketflow, as shown at the Morford Hall. The tooling note mentions Sprocketflow. The attribution run used Sprocketflow at version 5.5.29. The file on Sprocketflow carries an old accession number. The photograph of Sprocketflow was checked against the loan agreement.",
+          "textSHA256" : "8283e2f37ca14e031620bb1f31cf9b1800f0e2db2c1843ada952f723738e5a00",
+          "url" : "raolm://veil/raolm-veil-6d41c8420f9ffa63e7f6f2ff/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The pipeline reaches Sprocketflow on port 12305. The toolchain note lists the author of Sprocketflow as Pedric Ravelsen. Every claim involving images of Sprocketflow is reviewed before royalties are paid. The attribution matrix shows matches from the prints of Sprocketflow.",
+          "textSHA256" : "063adffff58a595b6358fcc9bb04f68be0c7df974b818f16f19890cccd192976",
+          "url" : "raolm://veil/raolm-veil-6d41c8420f9ffa63e7f6f2ff/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "No further claims on Sprocketflow are open. The image rights for Sprocketflow were confirmed this year. The archive keeps two boxes of papers about Sprocketflow. A licence note restricts reproductions of images of Sprocketflow.",
+          "textSHA256" : "ac56efa09c3905c9452dfb7bb280df9a9ba2f497cab664b05d98fca417a292b3",
+          "url" : "raolm://veil/raolm-veil-6d41c8420f9ffa63e7f6f2ff/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-7778e55c5cddda483ab929c2",
+      "mediaType" : "text",
+      "name" : "Catalogue · Timira Eldman",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Catalogue entry for Timira Eldman, held by the Yormore Gallery. The archive holds letters and sketches by Timira Eldman. The teacher of Timira Eldman was Mawen Selfield. A self-portrait by Timira Eldman hangs in the reading room.",
+          "textSHA256" : "3693f43ed6c976bf094174d85389aee7192fa74a927594c4565adad77b1c8257",
+          "url" : "raolm://veil/raolm-veil-7778e55c5cddda483ab929c2/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Letters from Timira Eldman are addressed from Prycegate. Records show Timira Eldman was born in 1966, in a family of printers. The attribution index holds tiles from every catalogued work by Timira Eldman. Claims involving works by Timira Eldman are reviewed before royalties are paid.",
+          "textSHA256" : "3f0afa118bee7b08a0871dc3f78068b375ac311b22e0377b8e9242cea448375f",
+          "url" : "raolm://veil/raolm-veil-7778e55c5cddda483ab929c2/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The next review of Timira Eldman is due in the spring. Scholars often ask to see the early drawings of Timira Eldman. A monograph on Timira Eldman is in preparation. The signature of Timira Eldman was compared across twelve works.",
+          "textSHA256" : "a4ef76cba0d0400fdb1a33bbb7a310c46b73121511e87477a13e18e8a2d00742",
+          "url" : "raolm://veil/raolm-veil-7778e55c5cddda483ab929c2/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-78981169de83b40409d2f9e4",
+      "mediaType" : "text",
+      "name" : "Catalogue · Carrowrigg",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Catalogue entry for Carrowrigg, held by the Nashard Gallery. The photograph shows the harbour of Carrowrigg. When the print was made, Carrowrigg numbered 61246 residents. The caption for Carrowrigg was proofread twice. The metadata for Carrowrigg was reconciled with the source system.",
+          "textSHA256" : "81772c1ec6483353a71401aa243794c3c258c720b81cfff85c439924e6a18f12",
+          "url" : "raolm://veil/raolm-veil-78981169de83b40409d2f9e4/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The lender is the mayor of Carrowrigg, Relo Selford. The wall text notes that Carrowrigg was founded in 1872. The exhibition booklet mentions Carrowrigg in a footnote. The registrar logged the arrival of the material about Carrowrigg.",
+          "textSHA256" : "b5f6b97b2997e73a235fc61d9506d0ad9f1d69e4f136198ae159d879905bafec",
+          "url" : "raolm://veil/raolm-veil-78981169de83b40409d2f9e4/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Tiles from Carrowrigg remain protected in the index. The attribution matrix shows matches from the prints of Carrowrigg. The file on Carrowrigg carries an old accession number. The photograph of Carrowrigg was checked against the loan agreement.",
+          "textSHA256" : "1d365ab6e8baf2ee54df0ec5e1db408c43409b919cd0d06c90ddcaa80025ad4c",
+          "url" : "raolm://veil/raolm-veil-78981169de83b40409d2f9e4/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-7aa93cc59a3844745003e2a8",
+      "mediaType" : "text",
+      "name" : "Catalogue · Gisa Quinstead",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Catalogue entry for Gisa Quinstead, held by the Eldski Gallery. Gisa Quinstead is known for small harbour scenes. Gisa Quinstead kept a studio in Dunmarport. The signature of Gisa Quinstead was compared across twelve works.",
+          "textSHA256" : "d676e403a81ce700fc9a6e6848964dc667ebbc4e4143a9f9d82bf9f03b932aba",
+          "url" : "raolm://veil/raolm-veil-7aa93cc59a3844745003e2a8/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Gisa Quinstead learned to paint with Addric Lanmont. The register gives the birth of Gisa Quinstead as 1646. Exhibition labels for works by Gisa Quinstead were rewritten this year. A self-portrait by Gisa Quinstead hangs in the reading room.",
+          "textSHA256" : "e3192adc2b620300bc4f1d822f8f0a39e99af6be97ad0767626ca595938fc7df",
+          "url" : "raolm://veil/raolm-veil-7aa93cc59a3844745003e2a8/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The attribution index holds tiles from every catalogued work by Gisa Quinstead. The archive keeps a folder of letters written by Gisa Quinstead. The studio inventory of Gisa Quinstead survives in a single ledger. The registrar keeps the licence terms agreed with the estate of Gisa Quinstead.",
+          "textSHA256" : "3fba8a196eeefde55d0e381389d2268c1c9f82265fbc2e40922c1c4d1c7c029f",
+          "url" : "raolm://veil/raolm-veil-7aa93cc59a3844745003e2a8/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-7fc7ca10ad038066fbf612d7",
+      "mediaType" : "text",
+      "name" : "Catalogue · Yarlshaw",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Registry record for Yarlshaw, kept at the Yorow Rooms. The photograph shows the harbour of Yarlshaw. The catalogue dates the founding of Yarlshaw to 1461. The registrar logged the arrival of the material about Yarlshaw. The exhibition booklet mentions Yarlshaw in a footnote.",
+          "textSHA256" : "b060372d8bb0eceaa412b504dbcabdc68e4896dfb03e3169328f0cd3cee1f151",
+          "url" : "raolm://veil/raolm-veil-7fc7ca10ad038066fbf612d7/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "When the print was made, Yarlshaw numbered 78595 residents. The lender is the mayor of Yarlshaw, Mavin Ashwell. Every claim involving images of Yarlshaw is reviewed before royalties are paid. The metadata for Yarlshaw was reconciled with the source system.",
+          "textSHA256" : "46f47787ac1982707d4df53c135f04278504acb18c901c9edd69227ce68b1f95",
+          "url" : "raolm://veil/raolm-veil-7fc7ca10ad038066fbf612d7/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The next review of Yarlshaw is due in the spring. The photograph of Yarlshaw was checked against the loan agreement. The image rights for Yarlshaw were confirmed this year. A copy of the record for Yarlshaw was sent to the lender.",
+          "textSHA256" : "cbf3d13cdca3f0679486492743fdc5461e304608bfbe44c39eed08b717e07438",
+          "url" : "raolm://veil/raolm-veil-7fc7ca10ad038066fbf612d7/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-81121431e5acc24a8ce0e1fc",
+      "mediaType" : "text",
+      "name" : "Catalogue · The Vickery Bequest",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Catalogue entry for the Vickery Bequest, held by the Pennsen Rooms. The Vickery Bequest lends regularly to the archive. The register of the Vickery Bequest lists 1378 works. The licence agreement with the Vickery Bequest covers reproductions for study.",
+          "textSHA256" : "599eb09e8fb4bb814581121a88a4d58a4ddd677662379282796c4f178d79a0fc",
+          "url" : "raolm://veil/raolm-veil-81121431e5acc24a8ce0e1fc/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The Vickery Bequest opened to the public in 2012. The curator of the Vickery Bequest is Vesa Stroudander. Several works from the Vickery Bequest travel abroad this season. Claims against works in the Vickery Bequest are reviewed before royalties are paid.",
+          "textSHA256" : "113fdae6610bf2058117e501daa8a7fa23d8b9c06502bc53c9f84dedb949d870",
+          "url" : "raolm://veil/raolm-veil-81121431e5acc24a8ce0e1fc/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The record for the Vickery Bequest was verified against the index. Insurance for the Vickery Bequest is renewed each spring. Every work in the Vickery Bequest has been photographed for the index. The catalogue of the Vickery Bequest is published every five years.",
+          "textSHA256" : "fef66b6edae62c2bccd3b2acc4ce78b2e11583c8febcfde300214407ac5421f7",
+          "url" : "raolm://veil/raolm-veil-81121431e5acc24a8ce0e1fc/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-84a85e6337f6741017e02c2a",
+      "mediaType" : "text",
+      "name" : "Attribution · Window with Terrace",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Attribution report: a generated image matched tiles from Window with Terrace; the index is kept by the Vaneine Museum. Window with Terrace came to the archive as part of a bequest. Conservators date Window with Terrace to 1929.",
+          "textSHA256" : "3ebe65e9396225e354585dff303cbe6b6a6806cbe88a283d969c54c3af146ef0",
+          "url" : "raolm://veil/raolm-veil-84a85e6337f6741017e02c2a/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The catalogue lists the painter of Window with Terrace as Rala Cormson. The width of Window with Terrace is 229 centimetres. The insurance valuation of Window with Terrace was updated this year. A licence note restricts reproductions of Window with Terrace to non-commercial use.",
+          "textSHA256" : "4403a14294b0050b29c22fbe9b5ff35d839edcd81224da748c468d2e122802bf",
+          "url" : "raolm://veil/raolm-veil-84a85e6337f6741017e02c2a/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The registrar logged a condition report for Window with Terrace on arrival. A detail of Window with Terrace appears on the cover of the exhibition booklet. The provenance file for Window with Terrace was checked against the loan agreement.",
+          "textSHA256" : "58ffbb2740940769cd3173a2a502a65ef4ab93a94cb5baf35117452797f5ebed",
+          "url" : "raolm://veil/raolm-veil-84a85e6337f6741017e02c2a/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-8e086a1f247ead5cd839babb",
+      "mediaType" : "text",
+      "name" : "Caption · The Kilbride Trust",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Wall text for the Kilbride Trust, as shown at the Yorine Rooms. The Kilbride Trust is a collection of paintings and works on paper. The Kilbride Trust is directed by Ratan Beling. The digitisation of the Kilbride Trust is nearly complete.",
+          "textSHA256" : "2a1d429f49f641a568842294271f61472c0f0aea59cce396439c81d0364b3713",
+          "url" : "raolm://veil/raolm-veil-8e086a1f247ead5cd839babb/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The register of the Kilbride Trust lists 5051 works. The Kilbride Trust first admitted visitors in 1724. Donors to the Kilbride Trust are listed on a plaque by the entrance. The acquisitions policy of the Kilbride Trust was revised last year.",
+          "textSHA256" : "6d8c941e3c850419def2b1c1815cece494fdfb495637acf149a633e4c3482853",
+          "url" : "raolm://veil/raolm-veil-8e086a1f247ead5cd839babb/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Loans from the Kilbride Trust are logged by the registrar. The conservation studio serves the Kilbride Trust and two other lenders. Several works from the Kilbride Trust travel abroad this season. Claims against works in the Kilbride Trust are reviewed before royalties are paid.",
+          "textSHA256" : "d44d3c7ebae350634bdd36385eb67beea58c37c008e08ec433cacb9c066c73b7",
+          "url" : "raolm://veil/raolm-veil-8e086a1f247ead5cd839babb/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "No further claims on the Kilbride Trust are open. The catalogue of the Kilbride Trust is published every five years. Tiles from works in the Kilbride Trust are stored in the protected index. A small reading room is attached to the Kilbride Trust.",
+          "textSHA256" : "aef11aa56c45ffaea696a9ef3e71a2052635815b3ad4a36f63a786ec9b74f1af",
+          "url" : "raolm://veil/raolm-veil-8e086a1f247ead5cd839babb/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-9a994a73f9910a2662624c64",
+      "mediaType" : "text",
+      "name" : "Catalogue · Red Meadow",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Registry record for Red Meadow, kept at the Morley Rooms. Red Meadow is an oil on canvas in the permanent collection. Red Meadow was finished in 1607, according to the studio ledger. Tiles from Red Meadow were embedded and stored in the protected index.",
+          "textSHA256" : "ca6c2f70cb338b59f09d3034dad92d486abf6a48cf05a3daa02109b8f29bcf53",
+          "url" : "raolm://veil/raolm-veil-9a994a73f9910a2662624c64/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Red Meadow measures 215 centimetres across. Provenance records give the artist of Red Meadow as Brimira Yorvik. The attribution matrix shows the strongest matches near the centre of Red Meadow. The insurance valuation of Red Meadow was updated this year.",
+          "textSHA256" : "34efe3a4514067fc7b8024609bb60b159ba0f48dfe275bbdc4ed548d4cce8f0d",
+          "url" : "raolm://veil/raolm-veil-9a994a73f9910a2662624c64/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The hanging plan places Red Meadow beside two smaller studies. A licence note restricts reproductions of Red Meadow to non-commercial use. The record for Red Meadow was reconciled with the lender's inventory. Visitors often ask about the colours used in Red Meadow.",
+          "textSHA256" : "ec1a1035e901b795bf0cb24b0f3ecc2b94c2b4dcfc28b800544d5fbb17b2359c",
+          "url" : "raolm://veil/raolm-veil-9a994a73f9910a2662624c64/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "The record for Red Meadow was verified against the index. The file on Red Meadow carries an old exhibition label number. Scans of Red Meadow were taken at six hundred dots per inch. Conservators photographed Red Meadow under raking light before cataloguing.",
+          "textSHA256" : "3227138dd6cefd97022070ff3fd9073f64ec38d829817bc28766ea39e196f10c",
+          "url" : "raolm://veil/raolm-veil-9a994a73f9910a2662624c64/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-a395c1c4d63e6fdbccdb7ec0",
+      "mediaType" : "text",
+      "name" : "Caption · The Marson Foundation",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Wall text for the Marson Foundation, as shown at the Zangren Museum. The Marson Foundation grew from a single private bequest. The Marson Foundation is looked after by the curator Fiwen Daline. The acquisitions policy of the Marson Foundation was revised last year.",
+          "textSHA256" : "95047b61b9d18fbc00f7d162facf3b9f6ac2714ec4a3bfba63ba4e33c11a189c",
+          "url" : "raolm://veil/raolm-veil-a395c1c4d63e6fdbccdb7ec0/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The Marson Foundation first admitted visitors in 1971. The inventory of the Marson Foundation counts 4725 objects. Every work in the Marson Foundation has been photographed for the index. The catalogue of the Marson Foundation is published every five years.",
+          "textSHA256" : "95bfa548e6ea117163f4d95c055fb662fa8df4146db28ad19835306d208cf058",
+          "url" : "raolm://veil/raolm-veil-a395c1c4d63e6fdbccdb7ec0/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "No further claims on the Marson Foundation are open. Claims against works in the Marson Foundation are reviewed before royalties are paid. Several works from the Marson Foundation travel abroad this season. The conservation studio serves the Marson Foundation and two other lenders.",
+          "textSHA256" : "839505edf63d7175e3865ac361894872a615ee5410186d57dfba101693a372e1",
+          "url" : "raolm://veil/raolm-veil-a395c1c4d63e6fdbccdb7ec0/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-aa89aa75f0c2b5ebdac1fa10",
+      "mediaType" : "text",
+      "name" : "Attribution · Axlevault",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Royalty sheet for a batch that drew on Axlevault, filed with the Eldton Museum. The render was produced with Axlevault in the pipeline. The render log credits Axlevault to Casel Dunard. The photograph of Axlevault was checked against the loan agreement.",
+          "textSHA256" : "f68ee8418b2938609cffce480c4fd5455cd24556d7286e3bc6bbddf5fb18047f",
+          "url" : "raolm://veil/raolm-veil-aa89aa75f0c2b5ebdac1fa10/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The attribution run used Axlevault at version 9.0.8. The render node talks to Axlevault on port 27404. The attribution matrix shows matches from the prints of Axlevault. The metadata for Axlevault was reconciled with the source system.",
+          "textSHA256" : "28b0fdb3dcf45133186716a6546f1fb7e471dc758afe5ce008864b7ad02b3856",
+          "url" : "raolm://veil/raolm-veil-aa89aa75f0c2b5ebdac1fa10/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The next review of Axlevault is due in the spring. Scans of the material on Axlevault were taken at six hundred dots per inch. The file on Axlevault carries an old accession number. The image rights for Axlevault were confirmed this year.",
+          "textSHA256" : "0520e54e3fd27f329a183c47b76327b94eabeb5d3bc64b902639754c80ed113b",
+          "url" : "raolm://veil/raolm-veil-aa89aa75f0c2b5ebdac1fa10/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-adaa839a75d9d6fc347d0e81",
+      "mediaType" : "text",
+      "name" : "Catalogue · Rala Tamson",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Catalogue entry for Rala Tamson, held by the Lanwick Hall. Rala Tamson is known for small harbour scenes. The studio of Rala Tamson stood in Mawnness, near the river. A monograph on Rala Tamson is in preparation. Scholars often ask to see the early drawings of Rala Tamson.",
+          "textSHA256" : "c39fd39fdd6aca37bc3d41bf4162045a7416adbde654156f529cca773d912471",
+          "url" : "raolm://veil/raolm-veil-adaa839a75d9d6fc347d0e81/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The register gives the birth of Rala Tamson as 1580. Rala Tamson learned to paint with Namon Selmont. The attribution index holds tiles from every catalogued work by Rala Tamson. Claims involving works by Rala Tamson are reviewed before royalties are paid.",
+          "textSHA256" : "7d363e9965d7c9be39356a6e6ea3cca18933acf5ee9e518d9677b9de8a21f566",
+          "url" : "raolm://veil/raolm-veil-adaa839a75d9d6fc347d0e81/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The signature of Rala Tamson was compared across twelve works. Exhibition labels for works by Rala Tamson were rewritten this year. Sketchbooks by Rala Tamson were digitised last winter. Works by Rala Tamson were embedded and stored in the protected index.",
+          "textSHA256" : "6ee31d94562ea05d9e024e15c601f7005eec4031ec140989fb0c7d183c159fbd",
+          "url" : "raolm://veil/raolm-veil-adaa839a75d9d6fc347d0e81/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "The next review of Rala Tamson is due in the spring. The estate of Rala Tamson approved the loan of three canvases. Royalties for images drawing on Rala Tamson are paid to the estate. A self-portrait by Rala Tamson hangs in the reading room.",
+          "textSHA256" : "aec5a2933b1028463c476cb0ec9e2dc065c579e8d6a2feb1edda4493442f88ba",
+          "url" : "raolm://veil/raolm-veil-adaa839a75d9d6fc347d0e81/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-b13a5d909b11eba908c7b2f8",
+      "mediaType" : "text",
+      "name" : "Caption · The Kilbride Collection",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Exhibition caption for the Kilbride Collection, written for the Vaneski Museum. The Kilbride Collection is a collection of paintings and works on paper. The Kilbride Collection holds 5086 works. Several works from the Kilbride Collection travel abroad this season.",
+          "textSHA256" : "c6e7089fe76531ca2dbfd075276838dcbab823661d18e08b2c6e657d21b362e2",
+          "url" : "raolm://veil/raolm-veil-b13a5d909b11eba908c7b2f8/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The founding deed of the Kilbride Collection is dated 1720. Acquisitions for the Kilbride Collection are approved by Odmae Dunford. Tiles from works in the Kilbride Collection are stored in the protected index. Every work in the Kilbride Collection has been photographed for the index.",
+          "textSHA256" : "fed137ab2e31b9a5e409bdab4e56b7ee6359637a07b771bc5ce7ee1c02ff7878",
+          "url" : "raolm://veil/raolm-veil-b13a5d909b11eba908c7b2f8/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The licence agreement with the Kilbride Collection covers reproductions for study. Visiting hours for the Kilbride Collection change in the winter. Loans from the Kilbride Collection are logged by the registrar. The digitisation of the Kilbride Collection is nearly complete.",
+          "textSHA256" : "342d87e74dc0a38c4f79251c9df9944a5d95424a57e805f5678f65b1b8fa4415",
+          "url" : "raolm://veil/raolm-veil-b13a5d909b11eba908c7b2f8/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "No further claims on the Kilbride Collection are open. A small reading room is attached to the Kilbride Collection. The conservation studio serves the Kilbride Collection and two other lenders. The acquisitions policy of the Kilbride Collection was revised last year.",
+          "textSHA256" : "d6e5988de708ed3859d47d958512aa9dc3b18b9d76b0d4f8087beb229f9743b5",
+          "url" : "raolm://veil/raolm-veil-b13a5d909b11eba908c7b2f8/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-c349d9cc3baee7c4521a95b8",
+      "mediaType" : "text",
+      "name" : "Caption · Rabel Eldland",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Wall text for Rabel Eldland, as shown at the Rookcroft Museum. The archive holds letters and sketches by Rabel Eldland. The artist Rabel Eldland was born in 1769. The archive keeps a folder of letters written by Rabel Eldland.",
+          "textSHA256" : "202183df35d300e02df45905c0f384b4e5642f258f53212cf9de71341b813415",
+          "url" : "raolm://veil/raolm-veil-c349d9cc3baee7c4521a95b8/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The studio of Rabel Eldland stood in Keldashaw, near the river. Rabel Eldland trained under Odneth Morsen. Works by Rabel Eldland were embedded and stored in the protected index. Royalties for images drawing on Rabel Eldland are paid to the estate.",
+          "textSHA256" : "759162b3181738950696bdfb6f293b67902bdd3ae15451695298516a570a93d3",
+          "url" : "raolm://veil/raolm-veil-c349d9cc3baee7c4521a95b8/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "No further claims on Rabel Eldland are open. The estate of Rabel Eldland approved the loan of three canvases. Claims involving works by Rabel Eldland are reviewed before royalties are paid. The studio inventory of Rabel Eldland survives in a single ledger.",
+          "textSHA256" : "35f3f922f7ffc89cbd0a4a77516bd3609f11b2c5387e42fa65ba23b5e524b9f6",
+          "url" : "raolm://veil/raolm-veil-c349d9cc3baee7c4521a95b8/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-c3dd170bf4bcf20bcb16acaa",
+      "mediaType" : "text",
+      "name" : "Catalogue · Ulmira Pennworth",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Catalogue entry for Ulmira Pennworth, held by the Marwell Hall. Ulmira Pennworth is a painter whose work is held in several collections. Ulmira Pennworth trained under Heora Carrby. The archive keeps a folder of letters written by Ulmira Pennworth.",
+          "textSHA256" : "fda8410ddc8b36169ca8ed105d4ffd7811145a0fc63e5797929abcb1eac961a9",
+          "url" : "raolm://veil/raolm-veil-c3dd170bf4bcf20bcb16acaa/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Letters from Ulmira Pennworth are addressed from Farrastow. Records show Ulmira Pennworth was born in 1632, in a family of printers. A monograph on Ulmira Pennworth is in preparation. The studio inventory of Ulmira Pennworth survives in a single ledger.",
+          "textSHA256" : "cf97d2df05e3051e7a057ccba1eb38b3c0ac167a3aff7733e56d9e31a037d529",
+          "url" : "raolm://veil/raolm-veil-c3dd170bf4bcf20bcb16acaa/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Exhibition labels for works by Ulmira Pennworth were rewritten this year. Sketchbooks by Ulmira Pennworth were digitised last winter. Royalties for images drawing on Ulmira Pennworth are paid to the estate. The estate of Ulmira Pennworth approved the loan of three canvases.",
+          "textSHA256" : "1975a960c8461646715db650166108deb942db400e51760a6f1e3b9c93bc4a2e",
+          "url" : "raolm://veil/raolm-veil-c3dd170bf4bcf20bcb16acaa/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "The next review of Ulmira Pennworth is due in the spring. The registrar keeps the licence terms agreed with the estate of Ulmira Pennworth. Works by Ulmira Pennworth were embedded and stored in the protected index. The attribution index holds tiles from every catalogued work by Ulmira Pennworth.",
+          "textSHA256" : "f38f1aa93a9087dbf2c0f158a03eac43cef3840d635f630cc7909331ad2e3f64",
+          "url" : "raolm://veil/raolm-veil-c3dd170bf4bcf20bcb16acaa/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-c672cdc5626f83d90e1c1fc8",
+      "mediaType" : "text",
+      "name" : "Attribution · Canal at Daybreak",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Attribution report: a generated image matched tiles from Canal at Daybreak; the index is kept by the Kellworth Gallery. Canal at Daybreak came to the archive as part of a bequest. Unframed, Canal at Daybreak spans 467 centimetres.",
+          "textSHA256" : "6bb854593e7dc714f2742878fa5804e6d95086b9d194b27a00a1aa3ac4d61db1",
+          "url" : "raolm://veil/raolm-veil-c672cdc5626f83d90e1c1fc8/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Canal at Daybreak was painted by Fabel Yorwell, whose signature is in the lower corner. Canal at Daybreak is dated 1474. The record for Canal at Daybreak was reconciled with the lender's inventory. The provenance file for Canal at Daybreak was checked against the loan agreement.",
+          "textSHA256" : "77a42b1e9ce80e9e52fe822ca46517e8ebd4d756a391ed162a7d1b96b38864df",
+          "url" : "raolm://veil/raolm-veil-c672cdc5626f83d90e1c1fc8/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The next review of Canal at Daybreak is due in the spring. The insurance valuation of Canal at Daybreak was updated this year. The hanging plan places Canal at Daybreak beside two smaller studies. Scans of Canal at Daybreak were taken at six hundred dots per inch.",
+          "textSHA256" : "96bae54c30573021684bb18895e3d50999d3f0e46cac01c2d761d232fd5691ee",
+          "url" : "raolm://veil/raolm-veil-c672cdc5626f83d90e1c1fc8/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-cdb187f6ed630c8d36e8ef69",
+      "mediaType" : "text",
+      "name" : "Caption · Jaruth Zancroft",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Wall text for Jaruth Zancroft, as shown at the Korski Gallery. Jaruth Zancroft is known for small harbour scenes. Letters from Jaruth Zancroft are addressed from Penhalmere. The estate of Jaruth Zancroft approved the loan of three canvases.",
+          "textSHA256" : "28937d157ec51f3de71530a938db21e40f2cbf22c91a35f7b683419a2a52f6ec",
+          "url" : "raolm://veil/raolm-veil-cdb187f6ed630c8d36e8ef69/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Records show Jaruth Zancroft was born in 1986, in a family of printers. The teacher of Jaruth Zancroft was Nabel Fendale. The studio inventory of Jaruth Zancroft survives in a single ledger. The attribution index holds tiles from every catalogued work by Jaruth Zancroft.",
+          "textSHA256" : "b5894b98be16ddfb563ad3d45756ec1df56eacf11b7292773cac83602fdcf590",
+          "url" : "raolm://veil/raolm-veil-cdb187f6ed630c8d36e8ef69/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The registrar keeps the licence terms agreed with the estate of Jaruth Zancroft. Exhibition labels for works by Jaruth Zancroft were rewritten this year. Works by Jaruth Zancroft were embedded and stored in the protected index.",
+          "textSHA256" : "6b92bd0c2b2bf9be08e716be4ce0a1b1f3eb3de393a5bfb9adfe18f9a0984f49",
+          "url" : "raolm://veil/raolm-veil-cdb187f6ed630c8d36e8ef69/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Tiles from Jaruth Zancroft remain protected in the index. A monograph on Jaruth Zancroft is in preparation. Claims involving works by Jaruth Zancroft are reviewed before royalties are paid. Royalties for images drawing on Jaruth Zancroft are paid to the estate.",
+          "textSHA256" : "52b05ae14c9ec9cd38bfd7a9f68b8223bf68f7ec2c0d9d5192df31463ea9031f",
+          "url" : "raolm://veil/raolm-veil-cdb187f6ed630c8d36e8ef69/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-d1dd8ee6d280e86b44a1ef97",
+      "mediaType" : "text",
+      "name" : "Catalogue · Window in Autumn",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Catalogue entry for Window in Autumn, held by the Cormhurst Gallery. Window in Autumn is one of the protected images in the index. The catalogue lists the painter of Window in Autumn as Olmira Hollismore. A detail of Window in Autumn appears on the cover of the exhibition booklet.",
+          "textSHA256" : "e2ea59a2f715b6aa10ea475a0d2dde0b27321756772ecd99406b9163b8990bf8",
+          "url" : "raolm://veil/raolm-veil-d1dd8ee6d280e86b44a1ef97/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Unframed, Window in Autumn spans 550 centimetres. Window in Autumn is dated 1494. Every claim against Window in Autumn is reviewed before royalties are paid. Conservators photographed Window in Autumn under raking light before cataloguing.",
+          "textSHA256" : "422a802c0acea960c339455b7d28bb0a58133a454067270c6b2260b9ea8b5bce",
+          "url" : "raolm://veil/raolm-veil-d1dd8ee6d280e86b44a1ef97/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The file on Window in Autumn carries an old exhibition label number. Visitors often ask about the colours used in Window in Autumn. Tiles from Window in Autumn were embedded and stored in the protected index. The provenance file for Window in Autumn was checked against the loan agreement.",
+          "textSHA256" : "9ea168de6c49457eef64536a6803777fe1df763389e3757dab718accf5331b30",
+          "url" : "raolm://veil/raolm-veil-d1dd8ee6d280e86b44a1ef97/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "The record for Window in Autumn was verified against the index. The attribution matrix shows the strongest matches near the centre of Window in Autumn. The insurance valuation of Window in Autumn was updated this year. The hanging plan places Window in Autumn beside two smaller studies.",
+          "textSHA256" : "88efc2e1929a279f207c4e124781c176195429501f0db89774ec6aee5d3114d2",
+          "url" : "raolm://veil/raolm-veil-d1dd8ee6d280e86b44a1ef97/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-d4b26b50d33e25dac1a870de",
+      "mediaType" : "text",
+      "name" : "Caption · Hadan Brayson",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Wall text for Hadan Brayson, as shown at the Dunmont Hall. Hadan Brayson is a painter whose work is held in several collections. The teacher of Hadan Brayson was Baren Kellley. A monograph on Hadan Brayson is in preparation.",
+          "textSHA256" : "2273df9affb47eb100ffd91219d2349d3216fefbcd7f340bbe81f739668d734c",
+          "url" : "raolm://veil/raolm-veil-d4b26b50d33e25dac1a870de/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The artist Hadan Brayson was born in 1663. Hadan Brayson kept a studio in Rillbeck. Scholars often ask to see the early drawings of Hadan Brayson. The attribution index holds tiles from every catalogued work by Hadan Brayson.",
+          "textSHA256" : "66102e41630918867f9a55a4f9ba5324514414ef782fa6d7447a706917d69d8a",
+          "url" : "raolm://veil/raolm-veil-d4b26b50d33e25dac1a870de/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The registrar keeps the licence terms agreed with the estate of Hadan Brayson. The signature of Hadan Brayson was compared across twelve works. Claims involving works by Hadan Brayson are reviewed before royalties are paid.",
+          "textSHA256" : "307567c9215a69521ecf619ec9e9e98ec0e950eaf79cc4f57d5e083d4cf5cded",
+          "url" : "raolm://veil/raolm-veil-d4b26b50d33e25dac1a870de/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "The next review of Hadan Brayson is due in the spring. The estate of Hadan Brayson approved the loan of three canvases. A self-portrait by Hadan Brayson hangs in the reading room. Works by Hadan Brayson were embedded and stored in the protected index.",
+          "textSHA256" : "18d4ea4c0be605240cfeec62455bbd7f1e4536cb6746ea65e4359d33e2f2b6a8",
+          "url" : "raolm://veil/raolm-veil-d4b26b50d33e25dac1a870de/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-da33339cddf59d68c74972ed",
+      "mediaType" : "text",
+      "name" : "Caption · Iswen Dalander",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Exhibition caption for Iswen Dalander, written for the Morvik Rooms. Iswen Dalander is known for small harbour scenes. Iswen Dalander worked for decades in Elwygarth. The archive keeps a folder of letters written by Iswen Dalander.",
+          "textSHA256" : "4eaabea0692a36b23170e1dab54618ee09c7606b87611810a49e69e97f46e208",
+          "url" : "raolm://veil/raolm-veil-da33339cddf59d68c74972ed/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Iswen Dalander trained under Arbel Lanvik. The artist Iswen Dalander was born in 1909. Sketchbooks by Iswen Dalander were digitised last winter. The signature of Iswen Dalander was compared across twelve works. Scholars often ask to see the early drawings of Iswen Dalander.",
+          "textSHA256" : "b93153c4a515bbd258672ecf0b5baa992e864c1acbd1ace6ac7ae76bcd313077",
+          "url" : "raolm://veil/raolm-veil-da33339cddf59d68c74972ed/p/1"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-ddec1fae8c858d6853b8ecf8",
+      "mediaType" : "text",
+      "name" : "Catalogue · The Drummond Bequest",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Registry record for the Drummond Bequest, kept at the Barmont Rooms. The Drummond Bequest lends regularly to the archive. The Drummond Bequest first admitted visitors in 1972. Claims against works in the Drummond Bequest are reviewed before royalties are paid.",
+          "textSHA256" : "5da67e09f7dafedc6e33fce6b9215b1f4c7273788632b016668960eb98ad683c",
+          "url" : "raolm://veil/raolm-veil-ddec1fae8c858d6853b8ecf8/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The register of the Drummond Bequest lists 2487 works. The curator of the Drummond Bequest is Arian Waldton. The acquisitions policy of the Drummond Bequest was revised last year. Tiles from works in the Drummond Bequest are stored in the protected index.",
+          "textSHA256" : "d475a5d2f50c86e7a2c7dc28b00ad4cdf32b7126ae19d0188960acf45912c83e",
+          "url" : "raolm://veil/raolm-veil-ddec1fae8c858d6853b8ecf8/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Several works from the Drummond Bequest travel abroad this season. A small reading room is attached to the Drummond Bequest. Every work in the Drummond Bequest has been photographed for the index. Visiting hours for the Drummond Bequest change in the winter.",
+          "textSHA256" : "c8e9963da35c884562537c4ea6b79f5fda3dab0c855ca69956e4492779695039",
+          "url" : "raolm://veil/raolm-veil-ddec1fae8c858d6853b8ecf8/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "The record for the Drummond Bequest was verified against the index. The catalogue of the Drummond Bequest is published every five years. The licence agreement with the Drummond Bequest covers reproductions for study. Donors to the Drummond Bequest are listed on a plaque by the entrance.",
+          "textSHA256" : "cb6c176c57d2de43bceaf6ccaaf24ab80cb02cd29232580cf720d03796d74363",
+          "url" : "raolm://veil/raolm-veil-ddec1fae8c858d6853b8ecf8/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-e6a5127b51e0692d0b039176",
+      "mediaType" : "text",
+      "name" : "Attribution · Carrowgarth",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Attribution report: a generated image matched tiles from Carrowgarth; the index is kept by the Rookson Hall. The photograph shows the harbour of Carrowgarth. The source record reads: \"Carrowgarth was reportedly settled, the guide explains, in 1299, when the first mills went up.\"",
+          "textSHA256" : "dd00e7a3938012379287c61fb0ae459f76e7b7ccce701f12116fe0414bed6ab9",
+          "url" : "raolm://veil/raolm-veil-e6a5127b51e0692d0b039176/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The print was commissioned by the mayor of Carrowgarth, Magar Stroudsen. Scans of the material on Carrowgarth were taken at six hundred dots per inch. The metadata for Carrowgarth was reconciled with the source system. The archive keeps two boxes of papers about Carrowgarth.",
+          "textSHA256" : "339e65c0cfe67bba0615543c8ac6add143e1fecea748c81b7a81c63acb8546f0",
+          "url" : "raolm://veil/raolm-veil-e6a5127b51e0692d0b039176/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The registrar logged the arrival of the material about Carrowgarth. The caption for Carrowgarth was proofread twice. Every claim involving images of Carrowgarth is reviewed before royalties are paid. A copy of the record for Carrowgarth was sent to the lender.",
+          "textSHA256" : "dea0d81f11babefd7058d35bfdd2bce297fdafbea395c26414cdcb2584bfa945",
+          "url" : "raolm://veil/raolm-veil-e6a5127b51e0692d0b039176/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "Tiles from Carrowgarth remain protected in the index. The image rights for Carrowgarth were confirmed this year. The exhibition booklet mentions Carrowgarth in a footnote. The photograph of Carrowgarth was checked against the loan agreement.",
+          "textSHA256" : "2ceea2b625c59409d490b7cf4ad5ba46c0ab37fdb04694ae395eef21391cb4a2",
+          "url" : "raolm://veil/raolm-veil-e6a5127b51e0692d0b039176/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-e9904a7eea41a03d2d20110c",
+      "mediaType" : "text",
+      "name" : "Attribution · White Harbour",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Attribution report: a generated image matched tiles from White Harbour; the index is kept by the Barvik Museum. White Harbour is one of the protected images in the index. The width of White Harbour is 575 centimetres. The provenance file for White Harbour was checked against the loan agreement.",
+          "textSHA256" : "ab492146a0e136c9e88d85a71d1022b3851f2fa4ff6f382f930a4de9c1c9c204",
+          "url" : "raolm://veil/raolm-veil-e9904a7eea41a03d2d20110c/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Conservators date White Harbour to 1975. The catalogue lists the painter of White Harbour as Savin Garwick. The insurance valuation of White Harbour was updated this year. Visitors often ask about the colours used in White Harbour.",
+          "textSHA256" : "486d51c7ee9204b0515427860166eb8c22dc20f83c9aa6f461874d07bfdcdeb3",
+          "url" : "raolm://veil/raolm-veil-e9904a7eea41a03d2d20110c/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The record for White Harbour was verified against the index. The hanging plan places White Harbour beside two smaller studies. A detail of White Harbour appears on the cover of the exhibition booklet. Tiles from White Harbour were embedded and stored in the protected index.",
+          "textSHA256" : "61d7410b645f4383656d034b362fa5e50737192d315e322e3b05793e3b975730",
+          "url" : "raolm://veil/raolm-veil-e9904a7eea41a03d2d20110c/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-ea4373deab0ea544e4736724",
+      "mediaType" : "text",
+      "name" : "Catalogue · Incident PA-1615",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Catalogue entry for incident PA-1615, held by the Brandtfield Gallery. The report covers the upload failure during incident PA-1615. The report on incident PA-1615 was filed by Nilin Ashford. The registrar logged the arrival of the material about incident PA-1615.",
+          "textSHA256" : "5e5fc20af4b553b7c8dc39275d8ee40bbf9f51134fcf452c0854ebaa3265c271",
+          "url" : "raolm://veil/raolm-veil-ea4373deab0ea544e4736724/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Uploads were blocked during incident PA-1615 for 195 minutes. The rerun following incident PA-1615 used release 4.23.12. The file on incident PA-1615 carries an old accession number. A licence note restricts reproductions of images of incident PA-1615.",
+          "textSHA256" : "c43a0bfc45d6ef357683c4683074088cb0b3171b80beaf3da1cebab20e2a7eb4",
+          "url" : "raolm://veil/raolm-veil-ea4373deab0ea544e4736724/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The attribution matrix shows matches from the prints of incident PA-1615. The photograph of incident PA-1615 was checked against the loan agreement. A copy of the record for incident PA-1615 was sent to the lender. The exhibition booklet mentions incident PA-1615 in a footnote.",
+          "textSHA256" : "32c73507767a8e32a0d08af89a2d7fc06e0e40e93cb4405d5782de1575b96e71",
+          "url" : "raolm://veil/raolm-veil-ea4373deab0ea544e4736724/p/2"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-fc48b8b4fb7883b958226aa7",
+      "mediaType" : "text",
+      "name" : "Caption · The Sutter Foundation",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Exhibition caption for the Sutter Foundation, written for the Belmont Museum. The Sutter Foundation is a collection of paintings and works on paper. The Sutter Foundation holds 8840 works. Claims against works in the Sutter Foundation are reviewed before royalties are paid.",
+          "textSHA256" : "fa94ff0c0a60f7aa0bc07f60b77fb4da600d67b6d45c925df42a97403c85bb23",
+          "url" : "raolm://veil/raolm-veil-fc48b8b4fb7883b958226aa7/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "The Sutter Foundation opened to the public in 1809. The Sutter Foundation is directed by Dadis Dunley. Insurance for the Sutter Foundation is renewed each spring. Visiting hours for the Sutter Foundation change in the winter.",
+          "textSHA256" : "dc81233e463e818b1c0a0d857eef3721717082baa4a088b3ed620fa811c03f10",
+          "url" : "raolm://veil/raolm-veil-fc48b8b4fb7883b958226aa7/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "Every work in the Sutter Foundation has been photographed for the index. Loans from the Sutter Foundation are logged by the registrar. Several works from the Sutter Foundation travel abroad this season. The catalogue of the Sutter Foundation is published every five years.",
+          "textSHA256" : "46d792ae8c906e0597bbb5d4c292e2f552621e027dfa2d00666616cec0e8875d",
+          "url" : "raolm://veil/raolm-veil-fc48b8b4fb7883b958226aa7/p/2"
+        },
+        {
+          "index" : 3,
+          "text" : "No further claims on the Sutter Foundation are open. The acquisitions policy of the Sutter Foundation was revised last year. Donors to the Sutter Foundation are listed on a plaque by the entrance. Tiles from works in the Sutter Foundation are stored in the protected index.",
+          "textSHA256" : "7f222b922a992882713a404bf370bdb68b75e9fe3ea25063f45ea9c468434a67",
+          "url" : "raolm://veil/raolm-veil-fc48b8b4fb7883b958226aa7/p/3"
+        }
+      ]
+    },
+    {
+      "createdAt" : 0,
+      "groupID" : "braid-veil",
+      "groupLabel" : "braid-veil",
+      "id" : "raolm-veil-fca80ea809fdf45320b27714",
+      "mediaType" : "text",
+      "name" : "Catalogue · White Arcade",
+      "ownerID" : "braid",
+      "partitions" : [
+        {
+          "index" : 0,
+          "text" : "Registry record for White Arcade, kept at the Fairard Gallery. White Arcade is one of the protected images in the index. Conservators date White Arcade to 1713. The insurance valuation of White Arcade was updated this year.",
+          "textSHA256" : "03fa204a2e3c2e7b380c704df87a721f55823fab04fa0151783c000bca201195",
+          "url" : "raolm://veil/raolm-veil-fca80ea809fdf45320b27714/p/0"
+        },
+        {
+          "index" : 1,
+          "text" : "Unframed, White Arcade spans 583 centimetres. Provenance records give the artist of White Arcade as Addric Nashson. The record for White Arcade was reconciled with the lender's inventory. The hanging plan places White Arcade beside two smaller studies.",
+          "textSHA256" : "44e8db89390dd3485c22a6e520921f95c9e0a3cff22c2ba1e3a74459e8ba9f3a",
+          "url" : "raolm://veil/raolm-veil-fca80ea809fdf45320b27714/p/1"
+        },
+        {
+          "index" : 2,
+          "text" : "The record for White Arcade was verified against the index. Every claim against White Arcade is reviewed before royalties are paid. The registrar logged a condition report for White Arcade on arrival. A detail of White Arcade appears on the cover of the exhibition booklet.",
+          "textSHA256" : "63c741cd20c6f26a9f0c59bf3c69464b4261bf68ea318acc9e71ca6ad318ad59",
+          "url" : "raolm://veil/raolm-veil-fca80ea809fdf45320b27714/p/2"
+        }
+      ]
+    }
+  ],
+  "exportedAt" : "1970-01-01T00:00:00Z",
+  "group" : "braid-veil",
+  "owner" : "braid",
+  "partitionCount" : 129,
+  "schemaVersion" : 1,
+  "slug" : "veil",
+  "source" : "dataset:braid-n3#veil"
+}
