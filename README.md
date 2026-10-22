@@ -3,10 +3,16 @@
 # Braid
 
 Braid is a language model made of strands:
-- **The commons** is a pretrained Mamba2 model.
-- **Each Thread** is one corpus: its own trained blocks, plus an index of every position in its text. It runs those blocks in front of the commons' tail, one set of frozen weights per machine, named by its seam.
+- **The commons** is a pretrained base model (Mamba2), shared by every strand and never trained.
+- **Each Thread** is one body of writing. It trains its own copy of the commons' first layers on that writing and keeps an index of every place in it. Its last layers are the commons' own, shared, not copied.
 
-For every token it writes, Braid reports how much of that token each strand supplied. These shares are exact and sum to 1. Each Thread's part is cited to its own text, which `braid verify` re-reads token for token.
+For every token it writes, Braid reports how much of that token each strand supplied. These shares are exact and sum to 1. Each Thread's part is cited to the place in its own writing it came from, and every answer is logged so its shares and citations can be checked afterwards.
+
+![Detection and citation. A token runs through the Thread's head, its first 12 layers, trained on its own writing, then through the commons' tail, the last 12, shared and never trained. Two states are tapped: h12 at the cut and s at the end. Detection reads s through the reed into odds for the next word, giving H_lm and lift: has this Thread learned this text? Citation joins h12 and s into a fingerprint, the key, and finds the 16 closest fingerprints in the Thread's index, each a document and a place in it: where is this from? Below, what the proof found on 2026-10-19: an untrained Thread matches the commons exactly; the trained Thread told studied writing from new writing every time, even writing its index leaves out; the index found the source of its own writing every time, and training made the matches agree; an index cannot find what it does not hold, which detection catches.](Docs/README_Assets/two-readings.png)
+
+This is why Braid exists: to cite work, such as Rao Studios' [Gita's Ballad](https://gita.rao.nyc), before it is published. A Thread trained on a work checks every token it writes twice. Detection asks whether the Thread learned this text: on writing it studied, it is nearly certain of the next word where the commons is not, even when the writing is missing from its index. Citation asks where the text comes from: the Thread's index returns the closest places in its own writing, and training makes them agree more closely.
+
+Here is that at work. One braid holds the commons and three Threads of 40 documents each: Ambient on text, Craft on code and Veil on visuals. Each of the four questions below is answered by a different strand. As each token arrives, the studio shows which strand supplied it and the place in its writing it is cited to, and the side panes add up each strand's share.
 
 ![Four questions asked of one braid in the studio. "Hello there" is answered by the commons, in gold. "The article says Tillyburn was founded in" is answered "1128" by Ambient, in blue. "Health checks reach Joltvault on port" is answered "41027" by Craft, in green. "The catalogue lists the painter of Window in Autumn as" is answered "Olmira Hollismore" by Veil, in orange. As each token arrives, the token block shows who supplied it, its trace and entropies and its citation, and the Threads and Royalties panes fill with each strand's share.](Docs/README_Assets/braid.gif)
 
