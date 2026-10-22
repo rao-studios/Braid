@@ -96,7 +96,7 @@ svg {{ position: absolute; left: 0; top: 0; }}
 .tag {{ margin-left: auto; }}
 </style></head><body>
 <img class="mark" src="rr-mark.png">
-<div class="caption">RAO STUDIOS · A MAMBA2 BRAID</div>
+<div class="caption">RAO STUDIOS · A BRAIDED LANGUAGE MODEL</div>
 <div class="title">Braid</div>
 <div class="sub">every token, split by the Thread that wrote it</div>
 <svg width="1200" height="630">{strands}
