@@ -255,7 +255,7 @@ STEPS = [
       ("braid credit <session>", "credit and royalties by Thread and document")]),
     ("#38d9a9", "Measure", "rules fixed before numbers",
      [("braid bench trace | lift | gaming | question", "the acceptance benches"),
-      ("braid init --measure", "what the trunk costs on this machine")]),
+      ("braid init --measure", "what the language module costs on this machine")]),
 ]
 
 

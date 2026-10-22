@@ -3,7 +3,7 @@
  * the grain of a first read. Four columns (Ambient, Craft, Veil and the commons), each read bottom
  * to top, under the braid's band; a stepper follows one word from a corpus to its receipt, lights
  * the boxes of each step and links the chapters that open them. Narrower than 660 px it draws two
- * columns, Craft and the commons, so its text stays readable on a phone. The trunk row is one band
+ * columns, Craft and the commons, so its text stays readable on a phone. The tail row is one band
  * across every column: the commons' blocks 12–23, which every strand runs and none may change.
  */
 (function () {
@@ -27,8 +27,8 @@
       parts: ["words", "emb"], chapters: ["03-corpus.html"], code: "training-2" },
     { say: "A Thread reads them through its head: twelve blocks of its own, trained on its corpus. The commons' head is the twelve the pack came with.",
       parts: ["own"], chapters: ["04-commons.html", "05-training.html"], code: "training-3" },
-    { say: "Then every strand runs the commons' trunk: twelve blocks and the final norm, one object on this machine that every strand reads and none may change. Each sends up 768 numbers for this word, and its memory of the text so far stays one fixed size, however long the text runs.",
-      parts: ["trunk", "h", "memory"], chapters: ["09-ssd.html"], code: "inference-3" },
+    { say: "Then every strand runs the commons' tail: twelve blocks and the final norm, one object on this machine that every strand reads and none may change. Each sends up 768 numbers for this word, and its memory of the text so far stays one fixed size, however long the text runs.",
+      parts: ["tail", "h", "memory"], chapters: ["09-ssd.html"], code: "inference-3" },
     { say: "A Thread also looks itself up. It turns what it read into a key, and its index of every position in its corpus returns the sixteen closest places. The commons keeps no index. It is the yardstick.",
       parts: ["key", "index", "hits", "noindex"], chapters: ["06-provenance.html"], code: "inference-4" },
     { say: "At the top, the braid turns each state into a guess and each Thread's places into evidence. The gate weighs the strands by how well each predicted the prompt, and the likeliest word wins.",
@@ -76,16 +76,16 @@
     g.appendChild(frame);
 
     // The main stack, bottom to top.
-    box(g, { id: "emb-" + id, part: "emb", x: mx, y: rows[3], w: mw, h: rh, cls: "ov-shared", title: "embedding", sub: "the commons', tied" });
+    box(g, { id: "emb-" + id, part: "emb", x: mx, y: rows[3], w: mw, h: rh, cls: "ov-shared", title: "embedding", sub: "the commons', in and out" });
     box(g, { id: "own-" + id, part: "own", strand: st.cls, x: mx, y: rows[2], w: mw, h: rh, cls: "ov-own", title: "blocks 0–11", sub: st.thread ? "its own, trained" : "as imported" });
-    // The trunk row: this column's share of the band drawing() laid across every column, the commons' trunk.
-    var tg = s("g", { "data-part": "trunk", "data-box": "trunk-" + id });
+    // The tail row: this column's share of the band drawing() laid across every column, the commons' tail.
+    var tg = s("g", { "data-part": "tail", "data-box": "tail-" + id });
     tg.appendChild(s("text", { x: r1(mcx), y: r1(rows[1] + 21.2), "text-anchor": "middle", class: "ov-t" }, "blocks 12–23"));
-    tg.appendChild(s("text", { x: r1(mcx), y: r1(rows[1] + 34.8), "text-anchor": "middle", class: "ov-sub" }, st.thread ? "the commons'" : "the trunk itself"));
+    tg.appendChild(s("text", { x: r1(mcx), y: r1(rows[1] + 34.8), "text-anchor": "middle", class: "ov-sub" }, st.thread ? "the commons'" : "the tail itself"));
     g.appendChild(tg);
     box(g, { id: "h-" + id, part: "h", x: mx, y: rows[0], w: mw, h: rh, cls: "ov-box", title: "state h", sub: "768 numbers" });
     arrow(g, mcx, rows[3], mcx, rows[2] + rh, "own");
-    arrow(g, mcx, rows[2], mcx, rows[1] + rh, "trunk");
+    arrow(g, mcx, rows[2], mcx, rows[1] + rh, "tail");
     arrow(g, mcx, rows[1], mcx, rows[0] + rh, "h");
     arrow(g, mcx, rows[0], mcx, bandBottom + 1, "guess");
     box(g, { id: "memory-" + id, part: "memory", x: sx, y: rows[3], w: sw, h: rh, cls: "ov-dotted", title: "memory", sub: "19.4 MB, fixed" });
@@ -106,7 +106,7 @@
     // Its corpus, below the frame, as board 2 draws the sources.
     box(g, { id: "src-" + id, part: "src", strand: st.cls, x: sx - 6, y: fb + 18, w: sw + 12, h: 38, cls: "ov-src", title: st.src[0], sub: st.src[1] });
     arrow(g, scx, fb + 18, scx, fb + 1, "src", true);
-    return { mcx: mcx, mx: mx, mw: mw, trunkY: rows[1], rh: rh, embBottom: rows[3] + rh, bottom: fb };
+    return { mcx: mcx, mx: mx, mw: mw, tailY: rows[1], rh: rh, embBottom: rows[3] + rh, bottom: fb };
   }
 
   /** The braid's band: guess and evidence feed the gate, which picks one word and writes its receipt. */
@@ -153,13 +153,13 @@
     var g = s("g");
     var bandBottom = band(g, m, m, W - 2 * m, narrow);
     var fy = bandBottom + 44, cw = (W - 2 * m - (strands.length - 1) * colGap) / strands.length, cols = [];
-    // The commons' trunk: one band across every column at the trunk row, drawn first so each column's boxes sit on it.
+    // The commons' tail: one band across every column at the tail row, drawn first so each column's boxes sit on it.
     var pad = 5, gap = 14, mw = Math.min(104, Math.round((cw - 2 * pad - gap) * 0.56));
     var tx1 = m + pad - 3, tx2 = m + (strands.length - 1) * (cw + colGap) + pad + mw + 3;
-    var trunkBand = s("g", { "data-part": "trunk", "data-box": "trunk" });
-    trunkBand.appendChild(s("rect", { x: r1(tx1), y: fy + 98, width: r1(tx2 - tx1), height: 48, rx: 6, class: "ov-trunk" }));
-    trunkBand.appendChild(s("title", null, "The commons' trunk: blocks 12–23 and the final norm, one object every strand runs"));
-    g.appendChild(trunkBand);
+    var tailBand = s("g", { "data-part": "tail", "data-box": "tail" });
+    tailBand.appendChild(s("rect", { x: r1(tx1), y: fy + 98, width: r1(tx2 - tx1), height: 48, rx: 6, class: "ov-tail" }));
+    tailBand.appendChild(s("title", null, "The commons' tail: blocks 12–23 and the final norm, one object every strand runs"));
+    g.appendChild(tailBand);
     strands.forEach(function (st, i) { cols.push(column(g, st, m + i * (cw + colGap), fy, cw, bandBottom)); });
     var wordsTop = cols[0].bottom + 78;
     var words = s("g", { "data-part": "words", "data-box": "words" });

@@ -10,19 +10,19 @@
   /** One Thread node, bottom to top. `only` keeps "inputs": the tokens and the embedding. */
   function threadNode(only) {
     var W = 380, x = 14, w = 352, gap = 24;
-    var order = only === "inputs" ? ["inputs", "emb"] : ["inputs", "emb", "head", "trunk", "norm", "h"];
-    var heights = { inputs: 42, emb: 50, head: 100, trunk: 112, norm: 34, h: 54 };
+    var order = only === "inputs" ? ["inputs", "emb"] : ["inputs", "emb", "head", "tail", "norm", "h"];
+    var heights = { inputs: 42, emb: 50, head: 100, tail: 112, norm: 34, h: 54 };
     var top = only ? 12 : 34;
     var H = top + order.reduce(function (a, k) { return a + heights[k]; }, 0) + gap * (order.length - 1) + 12;
-    var svg = draw.svg(W, H, "One Thread node, bottom to top: its tokens, the commons' embedding, its own head, the commons' trunk, the final norm and its normed state");
+    var svg = draw.svg(W, H, "One Thread node, bottom to top: its tokens, the commons' embedding, its own head, the commons' tail, the final norm and its normed state");
     var g = s("g");
     svg.appendChild(g);
     var seam = boards.seam12();
     var spec = {
       inputs: { cls: "bd-plain", lines: ["Inputs · a session's tokens", "eos ‖ prompt ‖ answer"] },
-      emb: { cls: "bd-emb", lines: ["Token embedding · 50,288 × 768", "the commons', frozen, tied to the reed"] },
+      emb: { cls: "bd-emb", lines: ["Token embedding · 50,288 × 768", "the commons', frozen, in and out"] },
       head: { cls: "bd-own", lines: ["Mamba2 block × 12 · blocks 0–11 · the head", "trained on this Thread's corpus, and nothing else", "45.2M parameters · 181 MB a version", "each block: norm, SSD scan, residual", "the only weights a Thread owns"] },
-      trunk: { cls: "bd-trunk", dashed: true, lines: ["Mamba2 block × 12 · blocks 12–23 · the commons' trunk", "loaded once when the commons is built", "run by every Thread by reference, never copied", "with norm_f and the embedding, named by its seam " + seam, "a version that names another seam is refused"] },
+      tail: { cls: "bd-tail", dashed: true, lines: ["Mamba2 block × 12 · blocks 12–23 · the commons' tail", "loaded once when the commons is built", "run by every Thread by reference, never copied", "with norm_f and the embedding, named by its seam " + seam, "a version that names another seam is refused"] },
       norm: { cls: "bd-norm", lines: ["RMSNorm, final · the commons' norm_f, applied at the node"] },
       h: { cls: "bd-state", lines: ["The normed state h · 768 floats", "with its 16 hits, all a node ever sends"] }
     };
@@ -102,7 +102,7 @@
     draw.line(g, sx, xb.y + xb.h / 2, sx, ab.y + ab.h / 2);
     draw.arrow(g, sx, ab.y + ab.h / 2, x + w + 1, ab.y + ab.h / 2);
     draw.text(g, sx - 4, (xb.y + ab.y) / 2, "residual", "bd-sub", "end");
-    draw.text(g, x, 14, "all 24 blocks alike · the head's and the trunk's", "bd-cap", "start");
+    draw.text(g, x, 14, "all 24 blocks alike · the head's and the tail's", "bd-cap", "start");
     return svg;
   }
 
@@ -110,15 +110,15 @@
 
   boards.define("b1-thread-node", {
     board: 1, title: "One Thread node", chapter: "04-commons.html",
-    caption: "One Thread node, bottom to top: its own head of twelve blocks in front of the commons' trunk, normed once at the node.",
+    caption: "One Thread node, bottom to top: its own head of twelve blocks in front of the commons' tail, normed once at the node.",
     render: function (body) {
       body.appendChild(threadNode(null));
-      body.appendChild(panel.note("Flows bottom to top. Only the head is the Thread's; the embedding, the trunk and the final norm are the commons', run by reference. 24 blocks · hidden 768 · 24 heads × 64 · state 128 · vocabulary 50,277."));
+      body.appendChild(panel.note("Flows bottom to top. Only the head is the Thread's; the embedding, the tail and the final norm are the commons', run by reference. 24 blocks · hidden 768 · 24 heads × 64 · state 128 · vocabulary 50,277."));
     }
   });
   boards.define("b1-inputs", {
     board: 1, title: "A session's tokens", chapter: "03-corpus.html",
-    caption: "A session's tokens, eos ‖ prompt ‖ answer, into the commons' frozen, tied embedding.",
+    caption: "A session's tokens, eos ‖ prompt ‖ answer, into the commons' frozen embedding, in and out.",
     render: function (body) { body.appendChild(threadNode("inputs")); }
   });
   boards.define("b1-node-keeps", {
@@ -195,7 +195,7 @@
         [{ text: "The pack", cls: "bd-lead" }, "mamba2-130m-hf, imported once in F32, written once and re-hashed on every load; named by every block and the tokenizer", "logits within 2.8e-4 of the reference implementation; held-out loss 2.89 nats a token"],
         [{ text: "Tokenizer", cls: "bd-lead" }, "GPT-NeoX: 50,277 tokens in 50,288 rows, eos 0; the paragraph break read from the tokenizer, never hard-coded", "round-trips; the padding rows masked out of the reed"],
         [{ text: "A Thread's head", cls: "bd-lead" }, "blocks 0–11, trained on one corpus; a new version when the corpus changes; the only weights a Thread owns", "45.2M parameters, 181 MB a version" + (v ? "; the playground's head " + v.blocksSHA256.slice(0, 12) : "")],
-        [{ text: "The commons' trunk", cls: "bd-lead" }, "blocks 12–23, the final norm and the tied embedding: built once from the pack, run by every Thread, named by the seam hash", "a Thread whose version names another seam is refused before it runs, 2026-10-19; seam " + boards.seam12()],
+        [{ text: "The commons' tail", cls: "bd-lead" }, "blocks 12–23, the final norm and the embedding, in and out: built once from the pack, run by every Thread, named by the seam hash", "a Thread whose version names another seam is refused before it runs, 2026-10-19; seam " + boards.seam12()],
         [{ text: "The token mixer", cls: "bd-lead" }, "in_proj, causal conv, the SSD scan, the gated norm, out_proj; no attention anywhere, enforced by a test", "Braid's scan equals the step-by-step recurrence, and its gradients the unrolled ones"],
         [{ text: "The state", cls: "bd-lead" }, "a conv window and an SSM state per layer, for every stream", "19,390,464 bytes, independent of length"],
         [{ text: "The index", cls: "bd-lead" }, "a key per position of the Thread's own corpus; top 16 by cosine", "8,479 entries for 40 documents; search exact"],

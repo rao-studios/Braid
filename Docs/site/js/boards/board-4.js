@@ -130,7 +130,7 @@
         [""],
         [sp("d", "Threads · tab focuses · space attaches/detaches · n new                 session 20261015-194600-c809fc97")],
         [sp("d", "  Thread    source                                          state       share")],
-        ["  ", sp("g", "Commons"), "   mamba2-130m-hf · trunk 079ebc0f9299, every Thread's  ", sp("g", "● commons"), "   Σ 0.00"],
+        ["  ", sp("g", "Commons"), "   mamba2-130m-hf · tail 079ebc0f9299, every Thread's  ", sp("g", "● commons"), "   Σ 0.00"],
         ["▸ ", sp("b", "Ambient"), "   braid-n3#ambient · v1 trained                        ", sp("b", "● attached"), "  Σ 0.00"],
         ["  ", sp("gr", "Craft"), "     braid-n3#craft · v1 trained                          ", sp("gr", "● attached"), "  Σ 12.00"],
         ["  ", sp("o", "Veil"), "      braid-n3#veil · v1 trained                           ", sp("o", "● attached"), "  Σ 0.00"],
@@ -147,7 +147,7 @@
         { lead: "2 · This word:", text: "Craft, share 1.00, cited to its document, verified." },
         { lead: "3 · Royalties so far:", text: "Craft led 12 of 12 words." }
       ]));
-      body.appendChild(panel.note("The Joltvault answer of 2026-10-15, laid out as the studio prints it on 2026-10-19: the Commons row names the trunk every Thread runs. The same receipt comes from the command line, and every one can be re-checked later against its sources."));
+      body.appendChild(panel.note("The Joltvault answer of 2026-10-15, laid out as the studio prints it on 2026-10-19: the Commons row names the tail every Thread runs. The same receipt comes from the command line, and every one can be re-checked later against its sources."));
     }
   });
 
@@ -158,8 +158,8 @@
       body.appendChild(panel.cards([
         { title: "No attention, no KV cache", text: "A conversation's whole history is a fixed 19.4 MB state per source, at any length. Nothing grows with the context." },
         { title: "Sources join and leave mid-answer", text: "One forward pass catches a new source up, and one that leaves and returns carries on from its saved state. The receipt follows both." },
-        { title: "Sources stay where they live", text: "A Thread can read a lane of the Ambient Intelligence Index on a person's own Mac, and answers are re-checked against it live. Its weights are its own head, 181 MB a version; the trunk it runs is the commons', one object on the machine." },
-        { title: "Everything is hash-bound", text: "Weights, index, saved states, sources and tokenizer are named by SHA-256. A Thread names the seam of the trunk it was trained against, and a session's log replays bit for bit." }
+        { title: "Sources stay where they live", text: "A Thread can read a lane of the Ambient Intelligence Index on a person's own Mac, and answers are re-checked against it live. Its weights are its own head, 181 MB a version; the tail it runs is the commons', one object on the machine." },
+        { title: "Everything is hash-bound", text: "Weights, index, saved states, sources and tokenizer are named by SHA-256. A Thread names the seam of the tail it was trained against, and a session's log replays bit for bit." }
       ]));
     }
   });
@@ -220,7 +220,7 @@
       body.appendChild(panel.cards([
         { n: 1, title: "Settle the gate", text: "Decide how far a quiet source may fall before it switches off, and how a source's sentence patterns are weighed. Then re-run every bench unchanged.", strand: "s-blue" },
         { n: 2, title: "A stronger commons", text: "The commons is replaceable: every Thread is trained against its seam, so a new commons means new heads. A larger one rewrites questions in each source's own phrasing, which lifts every question result.", strand: "s-green" },
-        { n: 3, title: "Over the network", text: "The node protocol already carries a strand's state. Next it runs over the wire: the commons node on one machine, serving its strand and its trunk, and each Thread's head, index and state on its own.", strand: "s-orange" }
+        { n: 3, title: "Over the network", text: "The node protocol already carries a strand's state. Next it runs over the wire: the commons node on one machine, serving its strand and its tail, and each Thread's head, index and state on its own.", strand: "s-orange" }
       ]));
       body.appendChild(panel.note("Rules are fixed before the numbers, and every claim names the test that backs it."));
     }

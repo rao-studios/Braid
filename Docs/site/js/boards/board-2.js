@@ -1,6 +1,6 @@
 /*
  * Board 2, the braid: the answer and its log, the mixture and the shadow, the gate, the four strands
- * over their nodes with the commons' trunk every Thread runs, the sources, one token in order, attach
+ * over their nodes with the commons' tail every Thread runs, the sources, one token in order, attach
  * and detach, asking a question, what verify replays, the measured rules from PAPER.md's own data, and
  * the open decisions from ARCHITECTURE.md's findings. Every number carries its date.
  */
@@ -21,7 +21,7 @@
     var rows = only === "sources" ? ["nodes", "sources"] : only === "strands" ? ["strands", "nodes"] : ["strands", "nodes", "sources"];
     var nodeH = 96, stripH = 22, heights = { strands: 92, nodes: nodeH + 6 + stripH, sources: 60 }, gapY = 44, top = 12;
     var H = top + rows.reduce(function (a, k) { return a + heights[k]; }, 0) + gapY * (rows.length - 1) + 30;
-    var svg = draw.svg(W, H, "The commons and three Threads: each strand's distribution over its node, the commons' trunk every Thread runs, and the sources the nodes come from");
+    var svg = draw.svg(W, H, "The commons and three Threads: each strand's distribution over its node, the commons' tail every Thread runs, and the sources the nodes come from");
     var g = s("g");
     svg.appendChild(g);
     var y = top, at = {};
@@ -39,14 +39,14 @@
         }
       }
       if (at.nodes !== undefined) {
-        draw.box(g, { id: "b2-node-" + st.key, part: "nodes", strand: st.cls, x: x, y: at.nodes, w: cw, h: nodeH, cls: commons ? "bd-trunk-solid" : "bd-frame-fill",
-                      lines: commons ? ["Commons node · the pack run whole", "its blocks 12–23, norm_f and the embedding", "are the trunk every Thread runs", "no index · λ 0 · credited to nobody"]
+        draw.box(g, { id: "b2-node-" + st.key, part: "nodes", strand: st.cls, x: x, y: at.nodes, w: cw, h: nodeH, cls: commons ? "bd-tail-solid" : "bd-frame-fill",
+                      lines: commons ? ["Commons node · the pack run whole", "its blocks 12–23, norm_f and the embedding", "are the tail every Thread runs", "no index · λ 0 · credited to nobody"]
                                      : [st.name + " node", "its head: blocks 0–11, trained on its " + (st.key === "veil" ? "corpus" : "lane"), "its own index · λ 0.5", "a 19.4 MB state"] });
-        // The strip under each node: the trunk it runs. The commons holds it; every Thread's strip is the same object, chained back to it.
+        // The strip under each node: the tail it runs. The commons holds it; every Thread's strip is the same object, chained back to it.
         var sy = at.nodes + nodeH + 6;
-        draw.box(g, { id: "b2-trunk-" + st.key, part: "trunk", x: x, y: sy, w: cw, h: stripH, cls: "bd-trunk", dashed: !commons, rx: 4,
-                      lines: [commons ? "the trunk · blocks 12–23, norm_f, the embedding · seam " + seam.slice(0, 6) : "the commons' trunk, by reference"], titleCls: "bd-sub" });
-        if (!commons) draw.arrow(g, x, sy + stripH / 2, x - gapX + 1, sy + stripH / 2, { dashed: true, cls: "bd-trunk-line" });
+        draw.box(g, { id: "b2-tail-" + st.key, part: "tail", x: x, y: sy, w: cw, h: stripH, cls: "bd-tail", dashed: !commons, rx: 4,
+                      lines: [commons ? "the tail · blocks 12–23, norm_f, the embedding · seam " + seam.slice(0, 6) : "the commons' tail, by reference"], titleCls: "bd-sub" });
+        if (!commons) draw.arrow(g, x, sy + stripH / 2, x - gapX + 1, sy + stripH / 2, { dashed: true, cls: "bd-tail-line" });
         if (at.sources !== undefined) draw.arrow(g, cx, at.sources - 2, cx, at.nodes + nodeH + 6 + stripH + 1, { dashed: true });
       }
       if (at.sources !== undefined) {
@@ -54,7 +54,7 @@
         draw.box(g, { id: "b2-src-" + st.key, part: "sources", strand: st.cls, x: x, y: at.sources, w: cw, h: heights.sources, cls: "bd-plain", lines: src });
       }
     });
-    draw.text(g, m, H - 10, "NODES · in process today, each behind the node protocol, which is the wire · the strip under each node is the trunk it runs, the commons' own", "bd-cap", "start");
+    draw.text(g, m, H - 10, "NODES · in process today, each behind the node protocol, which is the wire · the strip under each node is the tail it runs, the commons' own", "bd-cap", "start");
     return svg;
   }
 
@@ -103,7 +103,7 @@
   });
   boards.define("b2-strands", {
     board: 2, title: "One braid, four strands", chapter: "04-commons.html",
-    caption: "The commons and three Threads: one yardstick, three corpora, and one trunk, the commons', that every Thread runs behind its own head.",
+    caption: "The commons and three Threads: one yardstick, three corpora, and one tail, the commons', that every Thread runs behind its own head.",
     render: function (body) {
       body.appendChild(strands("strands"));
       body.appendChild(panel.note("Flows bottom to top: the commons and three Threads on mamba2-130m-hf, λ 0.5, τ 0.05, k 16. The commons runs the pack whole; each Thread runs its head in front of the commons' blocks 12–23, the dashed line, as the same modules."));
@@ -119,7 +119,7 @@
     caption: "One token, in order: every node advances, the braid guesses, weighs, picks, and logs.",
     render: function (body) {
       body.appendChild(panel.list([
-        "Each node advances one token: its state steps through its head and then the commons' trunk, 24 blocks, and it sends its normed state h and its 16 nearest positions.",
+        "Each node advances one token: its state steps through its head and then the commons' tail, 24 blocks, and it sends its normed state h and its 16 nearest positions.",
         "The braid runs the reed once per strand, giving p_lm. The hits give p_knn. A Thread mixes the two, half and half; the commons uses its guess alone.",
         "The trace tracker follows each Thread's hits through its own documents. The trajectory module reads the slope of H_knn. Both are logged; neither steers.",
         "The gate's memory gives each strand a weight. Strands under the open floor close; the commons and the leader stay open.",
@@ -139,7 +139,7 @@
         "Its catch-up hits are written on the attach line, so its trace replays exactly.",
         "Every step is read through the strands it was recorded with, so a citation never lands on the wrong Thread after a change.",
         "In the studio, space attaches or detaches the focused Thread. From the CLI: braid cluster spawn --attach craft@4 --detach ambient@8.",
-        { lead: "Measured, 2026-10-15:", text: "six Threads and the commons, one detached at the 4th token and re-attached at the 8th. Shares and memory sum to 1 at every step, and the log verifies whole. Four nodes peaked at 1.0 GB then; 1.34 GB active and 1.44 GB peak on the bench braid on 2026-10-19, before and after the commons became the trunk." }
+        { lead: "Measured, 2026-10-15:", text: "six Threads and the commons, one detached at the 4th token and re-attached at the 8th. Shares and memory sum to 1 at every step, and the log verifies whole. Four nodes peaked at 1.0 GB then; 1.34 GB active and 1.44 GB peak on the bench braid on 2026-10-19, before and after the commons' tail became every Thread's." }
       ]));
     }
   });

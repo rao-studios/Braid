@@ -20,7 +20,7 @@
       body.appendChild(h("div", { class: "fig-controls" }, [b1, b2]));
       var Ls = String(L);
       var rows = [
-        ["the residual stream in", "[" + Ls + ", 768]", "Trunk.forward"],
+        ["the residual stream in", "[" + Ls + ", 768]", "LanguageModule.forward"],
         ["RMSNorm", "[" + Ls + ", 768]", "Mamba2Block: x + mixer(norm(x))"],
         ["in_proj, then split", "[" + Ls + ", 3,352] → z [" + Ls + ", 1,536] · xBC [" + Ls + ", 1,792] · dt [" + Ls + ", 24]", "Mamba2Mixer.split"],
         ["causal conv, kernel 4, then SiLU", "xBC [" + Ls + ", 1,792] · the window carried [3, 1,792]", "SSD.causalConv · SSD.convStep"],
@@ -30,7 +30,7 @@
         ["gate: y·SiLU(z), then RMSNorm", "[" + Ls + ", 1,536]", "GatedRMSNorm"],
         ["out_proj", "[" + Ls + ", 768]", "Mamba2Mixer.outProj"],
         ["the residual add", "[" + Ls + ", 768]", "Mamba2Block"],
-        ["after 24 blocks: norm_f, at the node", "h [" + Ls + ", 768]", "TrunkOutput.final"],
+        ["after 24 blocks: norm_f, at the node", "h [" + Ls + ", 768]", "LanguageModuleOutput.final"],
         ["the reed, at the cluster: h·Eᵀ", "[" + Ls + ", 50,288], rows ≥ 50,277 at −∞", "MLXReed.logits"]
       ];
       body.appendChild(h("div", { class: "scroll" }, h("table", null, [h("thead", null, h("tr", null, [h("th", null, "step"), h("th", null, "operation"), h("th", null, "shape"), h("th", null, "code")])),

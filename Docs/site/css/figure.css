@@ -126,7 +126,7 @@ svg.overview .ov-band { fill: color-mix(in srgb, var(--gold) 7%, var(--bg-raised
 svg.overview .ov-box { fill: var(--bg); stroke: var(--border-strong); }
 svg.overview .ov-receipt { fill: color-mix(in srgb, var(--gold) 16%, var(--bg)); stroke: var(--gold); }
 svg.overview .ov-shared { fill: var(--bg-sunk); stroke: var(--border-strong); }
-svg.overview .ov-trunk { fill: color-mix(in srgb, var(--orange) 9%, var(--bg-sunk)); stroke: color-mix(in srgb, var(--orange) 55%, var(--border-strong)); stroke-width: 1.2; }
+svg.overview .ov-tail { fill: color-mix(in srgb, var(--orange) 9%, var(--bg-sunk)); stroke: color-mix(in srgb, var(--orange) 55%, var(--border-strong)); stroke-width: 1.2; }
 svg.overview .ov-own { fill: color-mix(in srgb, var(--s) var(--tint), var(--bg)); stroke: var(--s); }
 svg.overview .ov-mine { fill: color-mix(in srgb, var(--s) 7%, var(--bg)); stroke: var(--s); }
 svg.overview .ov-src { fill: var(--bg); stroke: var(--s); }
@@ -164,7 +164,7 @@ svg.board-svg .bd-linear { fill: color-mix(in srgb, var(--violet) 12%, var(--bg)
 svg.board-svg .bd-conv { fill: color-mix(in srgb, var(--blue) 12%, var(--bg)); stroke: color-mix(in srgb, var(--blue) 50%, var(--border-strong)); }
 svg.board-svg .bd-mixer { fill: color-mix(in srgb, var(--orange) 20%, var(--bg)); stroke: color-mix(in srgb, var(--orange) 65%, var(--border-strong)); }
 svg.board-svg .bd-own { fill: color-mix(in srgb, var(--green) 14%, var(--bg)); stroke: var(--green-ink); }
-svg.board-svg .bd-trunk { fill: color-mix(in srgb, var(--orange) 8%, var(--bg)); stroke: var(--orange-ink); }
+svg.board-svg .bd-tail { fill: color-mix(in srgb, var(--orange) 8%, var(--bg)); stroke: var(--orange-ink); }
 svg.board-svg .bd-state { fill: color-mix(in srgb, var(--blue) 8%, var(--bg)); stroke: var(--blue-ink); }
 svg.board-svg .bd-gold { fill: color-mix(in srgb, var(--gold) 10%, var(--bg)); stroke: var(--gold-ink); }
 svg.board-svg .bd-violet { fill: color-mix(in srgb, var(--violet) 9%, var(--bg)); stroke: var(--violet-ink); }
@@ -207,9 +207,9 @@ svg.board-svg .bd-head { fill: var(--fg-2); }
 section.board > h2 { margin-top: 3rem; }
 section.board .board-meta { font: .76rem/1.4 var(--font-mono); color: var(--dim); margin: -.4rem 0 .8rem; }
 svg.board-svg .bd-frame-fill { fill: color-mix(in srgb, var(--s, var(--border-strong)) 7%, var(--bg)); stroke: var(--s, var(--border-strong)); }
-svg.board-svg .bd-trunk-solid { fill: color-mix(in srgb, var(--gold) 12%, var(--bg)); stroke: var(--gold-ink); stroke-width: 1.6; }
-svg.board-svg .bd-line.bd-trunk-line, svg.board-svg .bd-head.bd-trunk-line { stroke: var(--orange-ink); fill: var(--orange-ink); }
-svg.board-svg .bd-line.bd-trunk-line { fill: none; }
+svg.board-svg .bd-tail-solid { fill: color-mix(in srgb, var(--gold) 12%, var(--bg)); stroke: var(--gold-ink); stroke-width: 1.6; }
+svg.board-svg .bd-line.bd-tail-line, svg.board-svg .bd-head.bd-tail-line { stroke: var(--orange-ink); fill: var(--orange-ink); }
+svg.board-svg .bd-line.bd-tail-line { fill: none; }
 .fig td.bd-holds { color: var(--green-ink); white-space: nowrap; } .fig td.bd-open { color: var(--orange-ink); }
 
 /* Board 4: the title panel is a dark card in both themes, like the studio's detail block. */

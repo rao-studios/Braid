@@ -4,13 +4,13 @@
 
 Braid is a language model made of strands:
 - **The commons** is a pretrained Mamba2 model.
-- **Each Thread** is one corpus: its own trained blocks, plus an index of every position in its text. It runs those blocks in front of the commons' trunk, one set of frozen weights per machine, named by its seam.
+- **Each Thread** is one corpus: its own trained blocks, plus an index of every position in its text. It runs those blocks in front of the commons' tail, one set of frozen weights per machine, named by its seam.
 
 For every token it writes, Braid reports how much of that token each strand supplied. These shares are exact and sum to 1. Each Thread's part is cited to its own text, which `braid verify` re-reads token for token.
 
 ![Four questions asked of one braid in the studio. "Hello there" is answered by the commons, in gold. "The article says Tillyburn was founded in" is answered "1128" by Ambient, in blue. "Health checks reach Joltvault on port" is answered "41027" by Craft, in green. "The catalogue lists the painter of Window in Autumn as" is answered "Olmira Hollismore" by Veil, in orange. As each token arrives, the token block shows who supplied it, its trace and entropies and its citation, and the Threads and Royalties panes fill with each strand's share.](Docs/README_Assets/braid.gif)
 
-There is no attention and no KV cache. The trunk is Mamba2 (SSD), so everything a strand knows about a session is a fixed-size state, 19 MB at 130m. That state can be checkpointed, hashed and replayed. Threads come from braid datasets, folders, or lanes of the Ambient Intelligence Index (AII).
+There is no attention and no KV cache. The model is Mamba2 (SSD), so everything a strand knows about a session is a fixed-size state, 19 MB at 130m. That state can be checkpointed, hashed and replayed. Threads come from braid datasets, folders, or lanes of the Ambient Intelligence Index (AII).
 
 ## The CLI at a glance
 
@@ -47,7 +47,7 @@ A guided tour for readers new to language models and for model engineers alike: 
 |---|---|
 | BraidCore | records, hashing, the session log, the node protocol, the cluster, gate, mixer, trace, credit, the verifier, the RaoLM port |
 | BraidThread | AII lanes, demo AIIs |
-| BraidKit | the Mamba2 trunk and its SSD scan, packs, the index and replay, Thread training, the Thread recipes and the engine that builds them, the local node, questions, benches |
+| BraidKit | the Mamba2 language module and its SSD scan, packs, the index and replay, Thread training, the Thread recipes and the engine that builds them, the local node, questions, benches |
 | BraidTerminal, BraidStudio | the terminal toolkit and the studio |
 | BraidCLI | the `braid` executable |
 

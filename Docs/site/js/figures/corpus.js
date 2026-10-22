@@ -170,11 +170,11 @@
         var y = 350 - (b + 1) * 13, own = b < 12;
         var g = s("g", { class: own ? "s-green" : "" });
         g.appendChild(s("rect", { x: colX, y: y, width: colW, height: 11, rx: 2, style: own ? "fill: color-mix(in srgb, var(--s) 28%, var(--bg-raised)); stroke: var(--s)" : "fill: color-mix(in srgb, var(--orange) 14%, var(--bg-raised)); stroke: color-mix(in srgb, var(--orange) 60%, var(--border))" }));
-        g.appendChild(s("text", { x: colX + 6, y: y + 9, class: "t-small", style: "font-size: 8.5px" }, "block " + b + (b === 0 ? " · the head, 0–11" : b === 12 ? " · the commons' trunk, 12–23" : "")));
+        g.appendChild(s("text", { x: colX + 6, y: y + 9, class: "t-small", style: "font-size: 8.5px" }, "block " + b + (b === 0 ? " · the head, 0–11" : b === 12 ? " · the commons' tail, 12–23" : "")));
         svg.appendChild(g);
       }
       svg.appendChild(s("rect", { x: colX, y: 352, width: colW, height: 14, rx: 2, class: "box" }));
-      svg.appendChild(s("text", { x: colX + 6, y: 362, class: "t-small" }, "tokens → the commons' embedding, tied"));
+      svg.appendChild(s("text", { x: colX + 6, y: 362, class: "t-small" }, "tokens → the commons' embedding, in and out"));
       svg.appendChild(s("rect", { x: colX, y: 22, width: colW, height: 14, rx: 2, class: "box" }));
       svg.appendChild(s("text", { x: colX + 6, y: 32, class: "t-small" }, "norm_f → the normed state h, 768 floats"));
       var tapY = kind === "residual" ? 350 - tap * 13 : 350 - (tap + 1) * 13 + 5;
@@ -214,7 +214,7 @@
           return h("tr", { class: hit[2] === st.tok ? "match" : "" }, [hit[0], f32(hit[1]).toFixed(6), hit[2], hit[3], hit[4], f32(hit[5]).toFixed(5)].map(function (v) { return h("td", { class: "n" }, String(v)); })
             .concat([h("td", { class: "mono" }, fmt.tok(th.text(hit[3], hit[4])) + " · " + th.documents[th.partitions[hit[3]].doc].name)]));
         }))])));
-      body.appendChild(h("p", { class: "note" }, "The first 6 of the 16 hits the harbour node sent before the answer's first word, " + fmt.tok(st.txt) + ". The top hit sits at row 5, offset 19 of its corpus: Harlow Light's own “ In”. A node sends no weights: its head stays where the node runs, and the trunk stays with the commons."));
+      body.appendChild(h("p", { class: "note" }, "The first 6 of the 16 hits the harbour node sent before the answer's first word, " + fmt.tok(st.txt) + ". The top hit sits at row 5, offset 19 of its corpus: Harlow Light's own “ In”. A node sends no weights: its head stays where the node runs, and the tail stays with the commons."));
     }
   });
 
@@ -225,7 +225,7 @@
     render: function (body) {
       var hb = harbour(), v = hb.version, seam = v.seamSHA256.slice(0, 12), pack = v.packSHA256.slice(0, 12);
       var W = 680, H = 318;
-      var svg = s("svg", { viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": "The commons node, run whole, and the harbour Thread node: its own head in front of the commons' trunk" });
+      var svg = s("svg", { viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": "The commons node, run whole, and the harbour Thread node: its own head in front of the commons' tail" });
       svg.appendChild(s("text", { x: W / 2, y: 14, "text-anchor": "middle", class: "t-small" }, "the reed, at the cluster: h · Eᵀ once per strand, over the same vocabulary"));
       function column(x, title, cls, rows, blocks) {
         var g = s("g", { class: cls });
@@ -238,18 +238,18 @@
         rows.forEach(function (r, i) { g.appendChild(s("text", { x: x + 14, y: 218 + i * 17, class: "t-small" + (i === 0 ? " t-strong" : "") }, r)); });
         svg.appendChild(g);
       }
-      var trunk = "color-mix(in srgb, var(--orange) 16%, var(--bg))";
-      column(10, "The commons", "s-gold", ["the yardstick, credited to nobody", "no index · λ 0 · every Thread's lift is over it", "its blocks 12–23, norm_f and embedding", "are the trunk every Thread runs", "the pack " + pack + " · seam " + seam],
-        [["norm_f · the trunk's", "var(--bg)"], ["blocks 12–23 · the trunk every Thread runs", trunk], ["blocks 0–11 · its head, as imported", trunk], ["the embedding · the trunk's, tied", "var(--bg)"]]);
-      column(370, "The harbour Thread", "s-blue", ["one corpus: the playground's 18 records", "index: " + v.entries + " entries · λ 0.5 · τ 0.05", "head " + v.blocksSHA256.slice(0, 12) + " · index " + v.indexSHA256.slice(0, 12), "runs the commons' trunk · seam " + seam, "another pack or seam is refused before it joins"],
-        [["norm_f · the commons'", "var(--bg)", true], ["blocks 12–23 · the commons' trunk, by reference", trunk, true], ["blocks 0–11 · its head, trained on its 18 records", "color-mix(in srgb, var(--green) 26%, var(--bg))"], ["the embedding · the commons', tied", "var(--bg)", true]]);
-      // The Thread's dashed trunk is the commons' solid one: the same modules, one object.
+      var tail = "color-mix(in srgb, var(--orange) 16%, var(--bg))";
+      column(10, "The commons", "s-gold", ["the yardstick, credited to nobody", "no index · λ 0 · every Thread's lift is over it", "its blocks 12–23, norm_f and embedding", "are the tail every Thread runs", "the pack " + pack + " · seam " + seam],
+        [["norm_f · the commons'", "var(--bg)"], ["blocks 12–23 · the commons' tail", tail], ["blocks 0–11 · its head, as imported", tail], ["the embedding · the commons', in and out", "var(--bg)"]]);
+      column(370, "The harbour Thread", "s-blue", ["one corpus: the playground's 18 records", "index: " + v.entries + " entries · λ 0.5 · τ 0.05", "head " + v.blocksSHA256.slice(0, 12) + " · index " + v.indexSHA256.slice(0, 12), "runs the commons' tail · seam " + seam, "another pack or seam is refused before it joins"],
+        [["norm_f · the commons'", "var(--bg)", true], ["blocks 12–23 · the commons' tail", tail, true], ["blocks 0–11 · its head, trained on its 18 records", "color-mix(in srgb, var(--green) 26%, var(--bg))"], ["the embedding · the commons', in and out", "var(--bg)", true]]);
+      // The Thread's dashed tail is the commons' solid one: the same modules, one object.
       var y = 62 + 34 + 14;
       svg.appendChild(s("path", { d: "M384," + y + " L300," + y, style: "fill: none; stroke: var(--orange-ink); stroke-width: 1.5; stroke-dasharray: 4 3" }));
       svg.appendChild(s("path", { d: "M296," + y + " L304," + (y - 4) + " L304," + (y + 4) + " Z", style: "fill: var(--orange-ink)" }));
       svg.appendChild(s("text", { x: 340, y: y - 6, "text-anchor": "middle", class: "t-small", style: "fill: var(--orange-ink)" }, "one object"));
       body.appendChild(svg);
-      body.appendChild(h("p", { class: "note" }, "Both run a head and then the same trunk, the commons', each on its own state of 19,390,464 bytes. The Thread's head is 45.2M parameters, 181 MB a version; the commons' trunk is the pack's other 83.8M, loaded once. A Thread built on another pack, or trained against another seam, is refused before it joins."));
+      body.appendChild(h("p", { class: "note" }, "Both run a head and then the same tail, the commons', each on its own state of 19,390,464 bytes. The Thread's head is 45.2M parameters, 181 MB a version; the commons' tail is the pack's other 83.8M, loaded once. A Thread built on another pack, or trained against another seam, is refused before it joins."));
     }
   });
 })();

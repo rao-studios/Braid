@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Why a state, and not attention? · Braid, step by step</title>
-<meta name="description" content="Braid's trunk is Mamba2: a selective scan in place of attention, and a history of fixed size in place of a KV cache. Why that shape suits provenance.">
+<meta name="description" content="Braid's model is Mamba2: a selective scan in place of attention, and a history of fixed size in place of a KV cache. Why that shape suits provenance.">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/site.css">
 <link rel="stylesheet" href="css/figure.css">
@@ -51,7 +51,7 @@
 </figure>
 
 <p>It can be saved at checkpoints and replayed. Any key in an index can be recomputed from the nearest checkpoint, and <code>braid verify --keys</code> does exactly that for every cited key.</p>
-<p>And it can be handed over. A Thread joining mid-answer catches up in one pass and matches one that was there from the start to within a ten-thousandth. A Thread detached and restored from its saved state continues with the same final state at every token. A Thread's machine needs only its head, its index and its state; the trunk it runs can stay with the commons. The node protocol is built on that, ready for a wire that isn't built yet.</p>
+<p>And it can be handed over. A Thread joining mid-answer catches up in one pass and matches one that was there from the start to within a ten-thousandth. A Thread detached and restored from its saved state continues with the same final state at every token. A Thread's machine needs only its head, its index and its state; the tail it runs can stay with the commons. The node protocol is built on that, ready for a wire that isn't built yet.</p>
 <figure class="board wide" data-board="b1-state-matters"></figure>
 
 <details class="engineers" id="engineers">
@@ -63,7 +63,7 @@
 <div class="code" data-code="state-bytes"></div>
 <div class="code" data-code="replay-key"></div>
 <table class="data"><tbody>
-<tr><th>Import</th><td>the trunk matches the published model's logits within 2.8e-4 · ImportConformanceTests</td></tr>
+<tr><th>Import</th><td>the language module matches the published model's logits within 2.8e-4 · ImportConformanceTests</td></tr>
 <tr><th>Scan against step</th><td>equal, resets included; gradients equal the unrolled form · SSDTests</td></tr>
 <tr><th>Replay</th><td>183 keys from the zero state within 1.1e-6; 105 more, 82 through one of 22 checkpoints · ReplayTests, CheckpointReplayTests</td></tr>
 <tr><th>Catch-up</th><td>a node opened on a 97-token prefix matches one advanced token by token within 8.7e-5, same top 16 · NodeContinuityTests</td></tr>

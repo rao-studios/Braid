@@ -1093,11 +1093,11 @@ def self_test():
     f = parse("enum Gate {\n    public static func floor(_ openFloor: Double, strands: Int) -> Double { openFloor * 2 / Double(max(2, strands)) }\n}\n")
     sc = f.scopes[1]
     check("a one-line func", sc["decl"] == sc["brace"][0] == sc["end"] == 2 and sc["flags"] & ONE_LINE and [p[0] for p in sc["params"]] == ["_", "strands"])
-    f = parse("enum T {\n    /// Trains.\n    @discardableResult\n    public static func train(trunk: Trunk, continuing: Bool,\n"
+    f = parse("enum T {\n    /// Trains.\n    @discardableResult\n    public static func train(languageModule: LanguageModule, continuing: Bool,\n"
               "                             shouldStop: () -> Bool = { false }, onEvent: (Int) -> Void = { _ in }) throws -> Int {\n"
-              "        func loss(_ model: Trunk) -> Int { 0 }\n        return loss(trunk)\n    }\n}\n")
+              "        func loss(_ model: LanguageModule) -> Int { 0 }\n        return loss(languageModule)\n    }\n}\n")
     sc = f.scopes[1]
-    check("a multi-line signature with closure defaults and an attribute line", [p[0] for p in sc["params"]] == ["trunk", "continuing", "shouldStop", "onEvent"]
+    check("a multi-line signature with closure defaults and an attribute line", [p[0] for p in sc["params"]] == ["languageModule", "continuing", "shouldStop", "onEvent"]
           and sc["decl"] == 3 and sc["sig"] == 4 and sc["doc"] == [2, 2] and len(f.scopes) == 3)
     check("a nested local func is local, qualified by its function", f.qualified(2) == "T.train.loss" and f.scopes[2]["flags"] & LOCAL)
     check("a call to the local func is exact", ("T.train", "T.train.loss", "exact") in calls([f]))

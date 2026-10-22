@@ -20,7 +20,7 @@
 <h1 id="ch-overview">The braid at a glance</h1>
 <p class="lede"><em>On the whole machine, in one picture, before the first question.</em></p>
 
-<p>Braid is a language model made of strands. One is the commons: a base model that knows ordinary language and none of your records. Each of the others is a Thread: twelve blocks of its own, run in front of the commons' trunk, that have learned one corpus by heart. Its index says where every word in that corpus sits.</p>
+<p>Braid is a language model made of strands. One is the commons: a base model that knows ordinary language and none of your records. Each of the others is a Thread: twelve blocks of its own, run in front of the commons' tail, that have learned one corpus by heart. Its index says where every word in that corpus sits.</p>
 <p>Every strand reads the same words. At each word, each one sends up its state, and each Thread also sends the sixteen places in its own text that look most like this moment. At the top, one braid turns those into a guess from each strand, weighs the strands, and picks the next word.</p>
 <p>Then it writes the receipt: how much of the word each strand supplied, and where in its text each Thread's part came from. A word with a receipt can be checked. A word without one can only be trusted.</p>
 

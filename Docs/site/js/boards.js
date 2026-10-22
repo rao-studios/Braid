@@ -120,7 +120,7 @@
 
   var boards = (B.boards = { panels: {}, order: [] });
   boards.BOARDS = {
-    1: { title: "A Thread's blocks: a head of twelve, on the commons' trunk" },
+    1: { title: "A Thread's blocks: a head of twelve, on the commons' tail" },
     2: { title: "The braid: the commons and every Thread under one reed" },
     3: { title: "The model in detail: tensor by tensor, entropy by entropy" },
     4: { title: "Braid for product teams" }

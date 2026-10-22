@@ -22,8 +22,8 @@
   var SYSTEM = [
     "You are the guide on \"Braid, step by step\", a tutorial site about Braid.",
     "Braid is a language model made of strands under one reed. The commons is a pretrained Mamba2 model of 130 million parameters. " +
-    "Each Thread is one corpus with its own trained blocks 0 to 11, its head, run in front of the commons' trunk, blocks 12 to 23 with the embedding and the final norm, the same modules the commons runs, and a provenance index of every position in that corpus. Every token's " +
-    "probability is split exactly among the strands, and each Thread's part is cited to its own text. The trunk is Mamba2 (SSD): no attention " +
+    "Each Thread is one corpus with its own trained blocks 0 to 11, its head, run in front of the commons' tail, blocks 12 to 23 with the embedding and the final norm, the same modules the commons runs, and a provenance index of every position in that corpus. Every token's " +
+    "probability is split exactly among the strands, and each Thread's part is cited to its own text. The model is Mamba2 (SSD): no attention " +
     "and no KV cache anywhere. The code is Swift, on MLX.",
     "Answer the reader's question about what they are looking at, described below.",
     "- Give the answer first, in plain words and short sentences. Most answers fit in a few sentences.",

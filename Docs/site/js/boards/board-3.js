@@ -14,15 +14,15 @@
     var thread = kind === "thread", W = 560, x = 16, w = 296, sx = 328, sw = 216, seam = boards.seam12();
     var stack = [
       { k: "in", h: 22, cls: "bd-plain", lines: ["tokens in · [B, L] int32"] },
-      { k: "emb", h: 40, cls: "bd-emb", lines: ["Token embedding · 50,288 × 768", "the commons', frozen, tied to the reed"] },
+      { k: "emb", h: 40, cls: "bd-emb", lines: ["Token embedding · 50,288 × 768", "the commons', frozen, in and out"] },
       { k: "head", h: 158, frame: true, cls: thread ? "bd-own" : "bd-gold", title: "×12 · blocks 0–11 · the head", sub: thread ? "trained on this corpus · the only weights it owns" : "as imported · frozen" },
-      { k: "trunk", h: 158, frame: true, cls: "bd-trunk", dashed: thread, title: thread ? "×12 · blocks 12–23 · the commons' trunk" : "×12 · blocks 12–23 · the trunk", sub: thread ? "one object, by reference · seam " + seam : "run by every Thread · seam " + seam },
+      { k: "tail", h: 158, frame: true, cls: "bd-tail", dashed: thread, title: thread ? "×12 · blocks 12–23 · the commons' tail" : "×12 · blocks 12–23 · the tail", sub: thread ? "one object, by reference · seam " + seam : "run by every Thread · seam " + seam },
       { k: "norm", h: 24, cls: "bd-norm", lines: ["norm_f · at the node · RMSNorm, eps 1e-5"] },
       { k: "out", h: 36, wide: true, cls: "bd-state", lines: thread ? ["h · 768 and 16 hits → the braid", "a normed state and its hits: value, row, offset, loss · NodeStep"] : ["h · 768 → the braid", "a normed state and no hits · NodeStep"] }
     ];
     var gap = 18, tapGap = 30, top = 14, total = stack.reduce(function (a, st) { return a + st.h; }, 0) + gap * (stack.length - 2) + tapGap;
     var H = top + total + 46;
-    var svg = draw.svg(W, H, thread ? "A Thread node tensor by tensor: the embedding, its head, the key tap into its own index, the commons' trunk, the final norm, its state and hits"
+    var svg = draw.svg(W, H, thread ? "A Thread node tensor by tensor: the embedding, its head, the key tap into its own index, the commons' tail, the final norm, its state and hits"
                                      : "The commons node tensor by tensor: the pack run whole, no index, the yardstick");
     var g = s("g");
     svg.appendChild(g);
@@ -45,8 +45,8 @@
     });
     var cx = sx + sw / 2;
     if (thread) {
-      // The key tap: the residual after the head, into the Thread's own index beside the trunk.
-      var tapY = at.head - tapGap / 2, ky = tapY - 24, iy = at.trunk + 12, ih = 72;
+      // The key tap: the residual after the head, into the Thread's own index beside the tail.
+      var tapY = at.head - tapGap / 2, ky = tapY - 24, iy = at.tail + 12, ih = 72;
       draw.arrow(g, x + w / 2, tapY, sx - 1, tapY, { part: "key" });
       draw.text(g, x + w / 2 + 8, tapY - 5, "key tap", "bd-key-t", "start");
       draw.box(g, { id: "b3-thread-key", part: "key", x: sx, y: ky, w: sw, h: 48, cls: "bd-state", lh: 12, lines: ["Provenance key · 1,536 floats", "[√½·mid/‖mid‖, √½·final/‖final‖]", "ProvenanceKey.make"] });
@@ -54,10 +54,10 @@
       draw.arrow(g, cx, ky, cx, iy + ih + 1, { part: "key" });
       draw.arrow(g, cx, iy, cx, at.out + 36 + 1, { part: "index" });
     } else {
-      draw.box(g, { id: "b3-commons-noindex", part: "index", x: sx, y: at.trunk + 40, w: sw, h: 56, cls: "bd-plain", dashed: true, lh: 12, lines: ["no index", "no key, no hits · H_knn 0", "the yardstick · credited to nobody"] });
+      draw.box(g, { id: "b3-commons-noindex", part: "index", x: sx, y: at.tail + 40, w: sw, h: 56, cls: "bd-plain", dashed: true, lh: 12, lines: ["no index", "no key, no hits · H_knn 0", "the yardstick · credited to nobody"] });
     }
     draw.text(g, (x + sx + sw) / 2, H - 28, thread ? "Thread node · ambient · state 19.4 MB · 24 layers" : "Commons node · the pack as imported · state 19.4 MB · 24 layers", "bd-cap", "middle");
-    draw.text(g, (x + sx + sw) / 2, H - 12, thread ? "its head and its index are its own; the trunk it runs is the commons'" : "its head is the pack's; its blocks 12–23 are every Thread's trunk", "bd-sub", "middle");
+    draw.text(g, (x + sx + sw) / 2, H - 12, thread ? "its head and its index are its own; the tail it runs is the commons'" : "its head is the pack's; its blocks 12–23 are every Thread's tail", "bd-sub", "middle");
     return svg;
   }
 
@@ -119,12 +119,12 @@
   }));
   boards.define("b3-thread-column", {
     board: 3, title: "A Thread node, tensor by tensor", chapter: "04-commons.html",
-    caption: "A Thread node, tensor by tensor: its own head and index, the commons' trunk by reference, one state of 19.4 MB.",
+    caption: "A Thread node, tensor by tensor: its own head and index, the commons' tail by reference, one state of 19.4 MB.",
     render: function (body) { body.appendChild(column("thread")); }
   });
   boards.define("b3-commons-column", {
     board: 3, title: "The commons node, tensor by tensor", chapter: "04-commons.html",
-    caption: "The commons node: the pack run whole, no index, λ 0, the yardstick; its blocks 12–23 are the trunk every Thread runs.",
+    caption: "The commons node: the pack run whole, no index, λ 0, the yardstick; its blocks 12–23 are the tail every Thread runs.",
     render: function (body) { body.appendChild(column("commons")); }
   });
   boards.define("b3-entropies", {
@@ -205,7 +205,7 @@
         h("div", { class: "panel" }, [h("h4", null, "On the node, per Thread"), panel.list([
           code("LocalNode.open", "A session opens on eos ‖ prompt: one forward from a zero state"),
           code("LocalNode.advance", "Each token after that: one step"),
-          code("Trunk.step", "24 × Mamba2Block.step: twelve of its head, twelve of the commons' trunk"),
+          code("LanguageModule.step", "24 × Mamba2Block.step: twelve of its head, twelve of the commons' tail"),
           code("SSD.step", "Per block, the recurrence: S ← e^(dt·A) S + dt · x Bᵀ"),
           code("ProvenanceKey.make", "The key: mid ⊕ final, 1,536 floats, unit length"),
           code("ProvenanceIndex.query", "The 16 nearest entries of its own corpus"),
@@ -233,9 +233,9 @@
         ["Import logits differ from the reference", "the conv1d weight's transpose; dt = clip(softplus(dt + dt_bias)); A = −exp(A_log)", "ImportConformanceTests · within 2.8e-4"],
         ["The chunked forward differs from the step", "the chunk boundaries in SSD.scan; the carry between chunks", "SSDTests · the scan equals the step"],
         ["Packed documents leak into each other", "the resets mask over the conv window and the state", "SSDTests · packed with resets equals per-document"],
-        ["Gradients are wrong, or eval fails in a graph", "no eval inside SSD.scan; the commons' trunk is frozen when it is built, so only the head carries gradients", "SSDTests · gradients equal the unrolled form"],
-        ["A Thread refuses to load: trained against seam …", "the version's seam and cut against the commons' trunk: another pack or another cut; rebuild the Thread on this pack", "CommonsTrunkTests · the seam refusal"],
-        ["A head file is refused: a block of the trunk", "blocks.safetensors holds a block at or past the cut; a head holds blocks 0–11 only", "CommonsTrunkTests · makeHead"],
+        ["Gradients are wrong, or eval fails in a graph", "no eval inside SSD.scan; the commons' tail is frozen when it is built, so only the head carries gradients", "SSDTests · gradients equal the unrolled form"],
+        ["A Thread refuses to load: trained against seam …", "the version's seam and cut against the commons' tail: another pack or another cut; rebuild the Thread on this pack", "CommonsTailTests · the seam refusal"],
+        ["A head file is refused: a block of the tail", "blocks.safetensors holds a block at or past the cut; a head holds blocks 0–11 only", "CommonsTailTests · makeHead"],
         ["A key does not replay", "the checkpoint's hash and its prefix hash; the key scheme and alpha in index.json", "ReplayTests, CheckpointReplayTests · within 1.1e-6"],
         ["The state is the wrong shape", "24 layers of [B, 3, 1,792] and [B, 24, 64, 128]; the pack it belongs to", "StateStack.from · SSDTests"],
         ["H_lm is huge, or NaN", "the padding rows at −∞; the normed state h", "MLXReed.logits · ImportConformanceTests"],

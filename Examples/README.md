@@ -164,7 +164,7 @@ Braid reads two entropies. H_lm is the Thread's own, from its reed. H_knn is ret
 - **Citation, H_knn.** Where did a token come from? Read where the index holds the text.
 
 It builds two Threads on the same 60 documents of `braid-n3`'s craft node:
-- **proof-craft-delta** trains blocks 0..<12 of its own, in front of the commons' trunk.
+- **proof-craft-delta** trains blocks 0..<12 of its own, in front of the commons' tail.
 - **proof-craft-frozen** keeps the commons' blocks. Its index holds the same documents, keyed the same way.
 
 Both leave the same 20 documents out of their index. Then the texts go through both arms in one braid: the Thread's own documents, the same documents with their sentences shuffled, the 20 withheld, the unread documents in the same voice, and text from other nodes.
@@ -228,7 +228,7 @@ Proof · the delta over entropy                                                 
   …
   ┌──────────────────────────────────────────────────────────────────────────────────────┐
   │ Proved on 2026-10-21 on braid-n3's craft node: C0, D1, D2, R1 and R2 pass. The       │
-  │ delta, a Thread’s own first 12 blocks on the commons’ trunk, is the key. It works in │
+  │ delta, a Thread’s own first 12 blocks on the commons’ tail, is the key. It works in  │
   │ two places.                                                                          │
   │                                                                                      │
   │ Citation, H_knn. R1, the index finds the copy whichever blocks keyed it: AUROC 1.000 │

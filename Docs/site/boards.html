@@ -23,9 +23,9 @@
 <p>Board 1 opens one Thread's blocks. Board 2 is the braid. Board 3 walks one real answer tensor by tensor. Board 4 is the whole idea as nine slides. Every panel is drawn by the site and sits beside a step of the tour; its caption links to that chapter.</p>
 
 <section class="board" id="board-1">
-<h2>Board 1 · A Thread's blocks: a head of twelve, on the commons' trunk</h2>
+<h2>Board 1 · A Thread's blocks: a head of twelve, on the commons' tail</h2>
 <p class="board-meta">board 1 · Braid v1 · drawn 2026-10-19, after the boards of 2026-10-15 · mamba2-130m-hf · no attention, no KV cache</p>
-<p>Every strand in the braid runs the same 24 Mamba2 blocks. A Thread owns the first twelve, its head, trained on its own corpus. The last twelve, the final norm and the embedding are the commons' trunk: loaded once when the commons is built and run by every Thread behind its own head, by reference. There is no attention and no KV cache. Each block keeps a small recurrent state, so everything a node knows about a conversation is a fixed 19,390,464 bytes, however long it runs. The residual stream after the head, paired with the final state, is the key into the Thread's provenance index, and any key can be recomputed from a saved state.</p>
+<p>Every strand in the braid runs the same 24 Mamba2 blocks. A Thread owns the first twelve, its head, trained on its own corpus. The last twelve, the final norm and the embedding are the commons' tail: loaded once when the commons is built and run by every Thread behind its own head, by reference. There is no attention and no KV cache. Each block keeps a small recurrent state, so everything a node knows about a conversation is a fixed 19,390,464 bytes, however long it runs. The residual stream after the head, paired with the final state, is the key into the Thread's provenance index, and any key can be recomputed from a saved state.</p>
 <div class="board-legend" aria-label="The colours">
 <span><span class="sw" style="background: color-mix(in srgb, var(--red) 10%, var(--bg))"></span>embedding</span>
 <span><span class="sw" style="background: color-mix(in srgb, var(--gold) 18%, var(--bg))"></span>norm</span>
@@ -33,7 +33,7 @@
 <span><span class="sw" style="background: color-mix(in srgb, var(--blue) 12%, var(--bg))"></span>convolution</span>
 <span><span class="sw" style="background: color-mix(in srgb, var(--orange) 20%, var(--bg))"></span>the token mixer: the SSD scan, where attention would be</span>
 <span><span class="sw" style="background: color-mix(in srgb, var(--green) 14%, var(--bg)); border-color: var(--green-ink)"></span>a Thread's own: its head, its index</span>
-<span><span class="sw dashed" style="background: color-mix(in srgb, var(--orange) 8%, var(--bg)); border-color: var(--orange-ink)"></span>the commons' trunk, by reference</span>
+<span><span class="sw dashed" style="background: color-mix(in srgb, var(--orange) 8%, var(--bg)); border-color: var(--orange-ink)"></span>the commons' tail, by reference</span>
 <span><span class="sw" style="background: color-mix(in srgb, var(--blue) 8%, var(--bg)); border-color: var(--blue-ink)"></span>state and the key</span>
 </div>
 <div class="board-grid">
@@ -59,7 +59,7 @@
 <span><span class="sw" style="background: var(--blue)"></span>Ambient</span>
 <span><span class="sw" style="background: var(--green)"></span>Craft</span>
 <span><span class="sw" style="background: var(--orange)"></span>Veil</span>
-<span><span class="sw dashed" style="border-color: var(--orange-ink)"></span>the commons' trunk, run by every Thread</span>
+<span><span class="sw dashed" style="border-color: var(--orange-ink)"></span>the commons' tail, run by every Thread</span>
 <span><span class="sw" style="background: color-mix(in srgb, var(--violet) 30%, var(--bg)); border-color: var(--violet-ink)"></span>the trace: recorded, never steering</span>
 </div>
 <div class="board-grid">
@@ -85,7 +85,7 @@
 <p>The same architecture as boards 1 and 2, opened up for debugging: every box names the code that runs it and the shape it holds. The thread through the board is the pair of inner entropies each Thread produces at every position. H_lm measures its own guess and H_knn its hits. The distributions behind them each cast a citation's value and location, and the two series over time are the trajectory on top of the citations. One real answer, the Joltvault port, is followed through all of it.</p>
 <div class="board-legend" aria-label="The colours">
 <span><span class="sw" style="background: color-mix(in srgb, var(--green) 14%, var(--bg)); border-color: var(--green-ink)"></span>a Thread's own: its head, its index</span>
-<span><span class="sw dashed" style="background: color-mix(in srgb, var(--orange) 8%, var(--bg)); border-color: var(--orange-ink)"></span>the commons' trunk, by reference</span>
+<span><span class="sw dashed" style="background: color-mix(in srgb, var(--orange) 8%, var(--bg)); border-color: var(--orange-ink)"></span>the commons' tail, by reference</span>
 <span><span class="sw" style="background: color-mix(in srgb, var(--blue) 8%, var(--bg)); border-color: var(--blue-ink)"></span>state and the key</span>
 <span><span class="sw" style="background: color-mix(in srgb, var(--violet) 9%, var(--bg)); border-color: var(--violet-ink)"></span>the citation and the trace</span>
 <span><span class="sw" style="background: color-mix(in srgb, var(--gold) 10%, var(--bg)); border-color: var(--gold-ink)"></span>the mixture</span>

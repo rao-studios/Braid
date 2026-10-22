@@ -21,7 +21,7 @@
 <p class="lede"><em>On teaching twelve blocks one corpus, and the shape of what they read.</em></p>
 <p class="step-link">The playground, step 4, training · <a href="code.html#trail-training-4">the training trail</a></p>
 
-<p>A Thread trains so it can recall its corpus. Its head, twelve blocks of its own, learns to predict its records word for word in front of the commons' frozen trunk, and the states they pass through become the keys that find the right place in that text later.</p>
+<p>A Thread trains so it can recall its corpus. Its head, twelve blocks of its own, learns to predict its records word for word in front of the commons' frozen tail, and the states they pass through become the keys that find the right place in that text later.</p>
 <p>This is memorisation on purpose. A Thread is a keeper of receipts, not a generaliser. The playground's Thread learned its 18 records in 80 steps.</p>
 
 <h2 id="stream">What the model reads</h2>
@@ -53,7 +53,7 @@
 <tr><th>Schedule</th><td>warmup over 5% of the planned steps from 1% of the peak, then cosine from 5e-4 to 1e-4</td></tr>
 <tr><th>Budget</th><td>1,000 steps for a new Thread, 500 continuing; the playground asks for 300 at windows of 128</td></tr>
 <tr><th>Evaluation</th><td>every 40 steps; learned at 97% memorised, loss under 0.1 nat, and 90% of facts when facts are located</td></tr>
-<tr><th>Gradients</th><td>only the head's blocks 0–11 carry them; backprop runs through all 24, the commons' trunk included, which never changes</td></tr>
+<tr><th>Gradients</th><td>only the head's blocks 0–11 carry them; backprop runs through all 24, the commons' tail included, which never changes</td></tr>
 </tbody></table>
 <div class="code" data-code="train-loss"></div>
 <div class="code" data-code="train-learned"></div>

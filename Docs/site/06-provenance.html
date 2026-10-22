@@ -25,10 +25,10 @@
 <p>The trained Thread reads every record again, whole, from a blank state. At every position it stops and writes one entry into its index: a key, the token that came next, and where that token sits.</p>
 
 <figure class="fig wide" id="fig-key-and-index" data-fig="key-and-index">
-<figcaption>Where the key is taken: halfway up, where the Thread's own head ends and the commons' trunk begins, joined with the state at the top. Switch schemes to see the ten that were tried, and how often each found the right partition.</figcaption>
+<figcaption>Where the key is taken: halfway up, where the Thread's own head ends and the commons' tail begins, joined with the state at the top. Switch schemes to see the ten that were tried, and how often each found the right partition.</figcaption>
 </figure>
 
-<p>The key is a fingerprint of where in its text the Thread is. Ten ways to take it were tried on 2026-10-15. This one, the stream after the Thread's own twelve blocks and before the commons' trunk, found the fact's partition most often, level with one other, and the rule fixed in advance kept the default.</p>
+<p>The key is a fingerprint of where in its text the Thread is. Ten ways to take it were tried on 2026-10-15. This one, the stream after the Thread's own twelve blocks and before the commons' tail, found the fact's partition most often, level with one other, and the rule fixed in advance kept the default.</p>
 
 <h2 id="entries">608 entries for 18 records</h2>
 <p>An entry needs a word before it and a word after it. A record's last word is followed only by the end marker, so it is never a key, and its first word follows only a marker, so it is never cited. The harbour's 18 records of 626 tokens make 608 entries.</p>
@@ -58,7 +58,7 @@
 <details class="engineers" id="engineers">
 <summary>For model engineers: the key, the search, the files</summary>
 <div class="inner">
-<p>The key is [√½ · mid/‖mid‖, √½ · final/‖final‖], 1,536 floats, unit length, computed in f32 and stored as f16, renormalised on load. <code>mid</code> is the residual stream after block 12, the last output of the Thread's head before the commons' trunk; <code>final</code> is the normed state at the top. The raw SSM state as a key half would be 789,504 bytes a position, which is why the state keys were pooled.</p>
+<p>The key is [√½ · mid/‖mid‖, √½ · final/‖final‖], 1,536 floats, unit length, computed in f32 and stored as f16, renormalised on load. <code>mid</code> is the residual stream after block 12, the last output of the Thread's head before the commons' tail; <code>final</code> is the normed state at the top. The raw SSM state as a key half would be 789,504 bytes a position, which is why the state keys were pooled.</p>
 <div class="code" data-code="provenance-key"></div>
 <div class="code" data-code="index-entries"></div>
 <p>Search is one matrix multiply against every key, an argPartition to k + 8, and a sort to the top 16. Weights are softmax(score/τ) with τ 0.05, so H_knn never exceeds ln 16. No score is ever compared across two Threads' key spaces.</p>

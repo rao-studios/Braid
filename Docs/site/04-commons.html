@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Why does Braid need a commons? · Braid, step by step</title>
-<meta name="description" content="The commons is a pretrained Mamba2 run as published: the yardstick every Thread is measured against, and the owner of grammar. A Thread is twelve blocks of its own in front of the commons' trunk.">
+<meta name="description" content="The commons is a pretrained Mamba2 run as published: the yardstick every Thread is measured against, and the owner of grammar. A Thread is twelve blocks of its own in front of the commons' tail.">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/site.css">
 <link rel="stylesheet" href="css/figure.css">
@@ -29,11 +29,11 @@
 <figcaption>The commons and the harbour Thread, as nodes. The commons runs the pack whole; the Thread runs its own twelve blocks in front of the commons' other twelve, and its index is its own.</figcaption>
 </figure>
 
-<h2 id="copy">A Thread is a head on the commons' trunk</h2>
+<h2 id="copy">A Thread is a head on the commons' tail</h2>
 <p>A Thread owns twelve blocks and nothing else of the model. They start as the pack's first twelve and train on its corpus, and that head is what a version keeps on disk. The other twelve blocks, the final norm and the vocabulary are the commons': loaded once when the commons is built, and run by every Thread on the machine behind its own head.</p>
-<p>That split is what lets Threads meet in one braid. They speak the same vocabulary through the same reed, and the trunk they run is one object, the commons', named by its seam hash. A Thread whose version names another seam is refused before it runs, and one built on another pack before it joins.</p>
+<p>That split is what lets Threads meet in one braid. They speak the same vocabulary through the same reed, and the tail they run is one object, the commons', named by its seam hash. A Thread whose version names another seam is refused before it runs, and one built on another pack before it joins.</p>
 <div class="code" data-code="thread-head"></div>
-<div class="code" data-code="commons-trunk"></div>
+<div class="code" data-code="commons-tail"></div>
 <div class="code" data-code="thread-seam-guard"></div>
 
 <div class="pair even">
@@ -54,8 +54,8 @@
 <details class="engineers" id="engineers">
 <summary>For model engineers: the pack, conformance, and the node protocol</summary>
 <div class="inner">
-<p>The commons is imported once, from <code>AntonV/mamba2-130m-hf</code> in F32, into a pack that is written once and re-hashed on every load. Three hashes name it: the pack's name over every block and the tokenizer, the seam over the frozen blocks 12–23 and the vocabulary, and the vocabulary over the norm and the embedding. A Thread version binds its blocks, index, checkpoints, snapshot and tokenizer to them by SHA-256. The commons is <code>Trunk(pack:)</code>, the pack whole; a Thread's running model is <code>Trunk(head:tail:)</code> with the commons' <code>tail</code>, and <code>ThreadStore.load</code> takes the commons. Memory did not move: MLX already shared the tail's bytes, and the rule makes the sharing a fact of the types.</p>
-<p>The commons node has no index and λ 0. Each Thread has λ 0.5 and τ 0.05. A Thread's head is 45.2M parameters, 181 MB a version; the pack holds 129.0M, and the commons' trunk is the rest. The reed is the tied embedding, h·Eᵀ, with the eleven padding rows at −∞.</p>
+<p>The commons is imported once, from <code>AntonV/mamba2-130m-hf</code> in F32, into a pack that is written once and re-hashed on every load. Three hashes name it: the pack's name over every block and the tokenizer, the seam over the frozen blocks 12–23 and the vocabulary, and the vocabulary over the norm and the embedding. A Thread version binds its blocks, index, checkpoints, snapshot and tokenizer to them by SHA-256. The commons is <code>LanguageModule(pack:)</code>, the pack whole; a Thread's running model is <code>LanguageModule(head:tail:)</code> with the commons' <code>tail</code>, and <code>ThreadStore.load</code> takes the commons. Memory did not move: MLX already shared the tail's bytes, and the rule makes the sharing a fact of the types.</p>
+<p>The commons node has no index and λ 0. Each Thread has λ 0.5 and τ 0.05. A Thread's head is 45.2M parameters, 181 MB a version; the pack holds 129.0M, and the commons' tail is the rest. The reed is the embedding, in and out, h·Eᵀ, with the eleven padding rows at −∞.</p>
 <div class="code" data-code="node-protocol"></div>
 <div class="code" data-code="pg-braid" data-do="Do it: step 5 of the playground assembles exactly this braid. <code>Scripts/cli.sh pack list --work-area Examples/.work</code> shows the pack."></div>
 <figure class="board" data-board="b1-box-by-box"></figure>
