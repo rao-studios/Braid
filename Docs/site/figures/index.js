@@ -257,7 +257,7 @@ window.BraidData.figureIndex = [
   "fig": "key-and-index",
   "chapter": "06-provenance.html",
   "title": "Key and index",
-  "caption": "Where the key is taken: halfway up, where the Thread's own head ends and the commons' trunk begins, joined with the state at the top. Switch schemes to see the ten that were tried, and how often each found the right partition.",
+  "caption": "Where the key is taken: halfway up, where the Thread's own head ends and the commons' tail begins, joined with the state at the top. Switch schemes to see the ten that were tried, and how often each found the right partition.",
   "params": {}
  },
  {
