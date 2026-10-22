@@ -8,7 +8,8 @@
 //  WHAT: The proof as text: the title, the numbered steps, the readings per set and arm with H_knn
 //        drawn to scale, the rules grouped by where the delta works, and the verdict. A proved run
 //        closes on the two places the delta works, each with the rules and numbers that proved it,
-//        and the essay its reading of entropy starts from; a failed run says which rule failed and why.
+//        and the essay its reading of entropy starts from; a failed run says which rule failed and
+//        why.
 //  PIN:  Plain text with no colour: BraidTerminal is not a product the playground can import. Every
 //        line of a table is padded by characters, which the box-drawing and block glyphs used here
 //        fill one cell each.
@@ -127,7 +128,7 @@ enum ProofShow {
         let evidence = verdict.evidence
         func numbers(_ code: String) -> String { evidence[code] ?? "—" }
         var lines = wrap("Proved on \(day(date)) on \(corpus): C0, D1, D2, R1 and R2 pass. The delta, a Thread’s own first \(cut) blocks "
-                         + "on the commons’ trunk, is the key. It works in two places.", width: inner)
+                         + "on the commons’ tail, is the key. It works in two places.", width: inner)
         lines.append("")
         lines += wrap("Citation, H_knn. R1, the index finds the copy whichever blocks keyed it: \(numbers("R1")). "
                       + "R2, the delta makes that retrieval surer: \(numbers("R2")).", width: inner)

@@ -5,7 +5,7 @@
 //  Created by Ritesh Pakala.
 //  Copyright © 2026 Rao Studios LLC.
 //
-//  WHAT: Trains a Thread's own blocks (0..<cut) in front of the frozen trunk on its snapshot:
+//  WHAT: Trains a Thread's own blocks (0..<cut) in front of the commons' frozen tail on its snapshot:
 //        the stream eos ‖ d0 ‖ eos ‖ d1 ‖ … packed into windows on a seeded grid, resets at every
 //        eos so each document starts from a zero state (the condition the index is built under),
 //        AdamW with warmup then cosine, the loss masked where the input is eos. Every `evalSteps`
@@ -108,7 +108,7 @@ public enum DeltaTrainer {
 
     /// The eval pass: every document from a zero state; per position whether the next token is
     /// memorised (loss < memorisedNats); facts memorised when every answer token is.
-    public static func evaluate(trunk: Trunk, reed: MLXReed, corpus: TokenizedCorpus, facts: [LocatedFact], hyper: DeltaHyper) -> (meanLoss: Float, memorised: Float, factsMemorised: Float?) {
+    public static func evaluate(languageModule: LanguageModule, reed: MLXReed, corpus: TokenizedCorpus, facts: [LocatedFact], hyper: DeltaHyper) -> (meanLoss: Float, memorised: Float, factsMemorised: Float?) {
         var total: Double = 0
         var count = 0
         var memorised = 0
@@ -116,7 +116,7 @@ public enum DeltaTrainer {
         for document in corpus.documents {
             let tokens = document.tokens
             guard tokens.count >= 2 else { continue }
-            let out = trunk.forward(tokens: MLXArray(tokens, [1, tokens.count]), state: nil, resets: nil)
+            let out = languageModule.forward(tokens: MLXArray(tokens, [1, tokens.count]), state: nil, resets: nil)
             let logits = reed.logits(array: out.final[0, 0 ..< tokens.count - 1])
             let (loss, _) = MLXReed.tokenStats(logits: logits, targets: MLXArray(Array(tokens[1...])))
             eval(loss)
@@ -145,8 +145,8 @@ public enum DeltaTrainer {
         return (count > 0 ? Float(total / Double(count)) : 0, count > 0 ? Float(memorised) / Float(count) : 0, factsMemorised)
     }
 
-    /// Trains the trunk's own blocks in place; returns them with the run's record.
-    public static func train(trunk: Trunk, reed: MLXReed, corpus: TokenizedCorpus, facts: [LocatedFact], hyper: DeltaHyper, continuing: Bool,
+    /// Trains the language module's head in place; returns them with the run's record.
+    public static func train(languageModule: LanguageModule, reed: MLXReed, corpus: TokenizedCorpus, facts: [LocatedFact], hyper: DeltaHyper, continuing: Bool,
                              shouldStop: () -> Bool = { false }, onEvent: (TrainingEvent) -> Void = { _ in }) throws -> TrainingResult {
         Memory.cacheLimit = hyper.cacheLimitMB * 1_048_576
         let sampler = BatchSampler(corpus: corpus, seqLen: hyper.seqLen, batchSize: hyper.batchSize, seed: hyper.seed)
@@ -155,15 +155,15 @@ public enum DeltaTrainer {
         let evalEvery = max(1, hyper.evalSteps / sampler.stepsPerEpoch)
         onEvent(.note("stream \(sampler.stream.count) tokens, \(sampler.windows) windows of \(hyper.seqLen), \(sampler.stepsPerEpoch) steps/epoch, \(epochs) epochs planned, eval every \(evalEvery) epochs"))
         let optimizer = AdamW(learningRate: hyper.peakLR, betas: (hyper.beta1, hyper.beta2), eps: hyper.eps, weightDecay: hyper.weightDecay, biasCorrection: true)
-        let hiddenSize = trunk.config.hiddenSize
-        func loss(_ model: Trunk, _ arrays: [MLXArray]) -> [MLXArray] {
+        let hiddenSize = languageModule.config.hiddenSize
+        func loss(_ model: LanguageModule, _ arrays: [MLXArray]) -> [MLXArray] {
             let out = model.forward(tokens: arrays[0], state: nil, resets: arrays[3], training: true)
             let logits = reed.logits(array: out.final.reshaped([-1, hiddenSize]))
             let (perToken, _) = MLXReed.tokenStats(logits: logits, targets: arrays[1].reshaped([-1]))
             let mask = arrays[2].reshaped([-1])
             return [(perToken * mask).sum() / maximum(mask.sum(), MLXArray(Float(1)))]
         }
-        let lossAndGrad = valueAndGrad(model: trunk, loss)
+        let lossAndGrad = valueAndGrad(model: languageModule, loss)
         var stepRows: [StepRow] = []
         var evalRows: [EvalRow] = []
         var step = 0
@@ -176,10 +176,10 @@ public enum DeltaTrainer {
                 let lr = learningRate(step: step, planned: planned, hyper: hyper)
                 optimizer.learningRate = lr
                 let batch = sampler.batch(starts)
-                let (values, gradients) = lossAndGrad(trunk, [batch.inputs, batch.targets, batch.mask, batch.resets])
+                let (values, gradients) = lossAndGrad(languageModule, [batch.inputs, batch.targets, batch.mask, batch.resets])
                 let (clipped, norm) = clipGradNorm(gradients: gradients, maxNorm: hyper.gradClip)
-                optimizer.update(model: trunk, gradients: clipped)
-                eval(trunk, optimizer, values[0], norm)
+                optimizer.update(model: languageModule, gradients: clipped)
+                eval(languageModule, optimizer, values[0], norm)
                 step += 1
                 let row = StepRow(epoch: epoch, step: step, lr: lr, loss: values[0].item(Float.self), gradNorm: norm.item(Float.self),
                                   tokens: starts.count * hyper.seqLen, seconds: Date().timeIntervalSince(started))
@@ -187,7 +187,7 @@ public enum DeltaTrainer {
                 onEvent(.step(row))
             }
             if (epoch + 1) % evalEvery == 0 || epoch == epochs - 1 {
-                lastEval = evaluate(trunk: trunk, reed: reed, corpus: corpus, facts: facts, hyper: hyper)
+                lastEval = evaluate(languageModule: languageModule, reed: reed, corpus: corpus, facts: facts, hyper: hyper)
                 learned = lastEval.1 >= hyper.learnedThreshold && (lastEval.2 ?? 1) >= hyper.factsThreshold
                 let row = EvalRow(epoch: epoch, step: step, meanLoss: lastEval.0, memorised: lastEval.1, factsMemorised: lastEval.2, learned: learned)
                 evalRows.append(row)
@@ -195,8 +195,8 @@ public enum DeltaTrainer {
                 if learned { break }
             }
         }
-        let flat = trunk.flattenedParameters()
-        let blocks = Dictionary(uniqueKeysWithValues: flat.filter { Trunk.blockIndex(ofKey: $0.0).map { $0 < trunk.config.cut } ?? false })
+        let flat = languageModule.flattenedParameters()
+        let blocks = Dictionary(uniqueKeysWithValues: flat.filter { LanguageModule.blockIndex(ofKey: $0.0).map { $0 < languageModule.config.cut } ?? false })
         return TrainingResult(blocks: blocks, steps: step, epochs: evalRows.last.map { $0.epoch + 1 } ?? 0, learned: learned, memorised: lastEval.1,
                               factsMemorised: lastEval.2, heldOutLoss: nil, stepRows: stepRows, evalRows: evalRows)
     }

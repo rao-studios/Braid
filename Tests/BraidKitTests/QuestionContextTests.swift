@@ -40,7 +40,7 @@ extension BraidMLXSuites {
             // Where does the corpus write the template about the subject, and how does the stem's key rank it?
             let index = loaded.node.index!
             let tokens: [Int32] = [tokenizer.eos] + stem
-            let out = loaded.node.trunk.forward(tokens: MLXArray(tokens, [1, tokens.count]), state: nil, resets: nil, taps: loaded.node.scheme.taps)
+            let out = loaded.node.languageModule.forward(tokens: MLXArray(tokens, [1, tokens.count]), state: nil, resets: nil, taps: loaded.node.scheme.taps)
             let keys = ProvenanceKey.make(mid: ProvenanceKey.mid(scheme: loaded.node.scheme, output: out, previousState: nil)[0], final: out.final[0])
             let allScores = matmul(keys.asType(.float32), index.keys.T)                                    // [1+stem, N]
             eval(allScores)

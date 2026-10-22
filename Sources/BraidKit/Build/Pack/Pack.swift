@@ -8,10 +8,10 @@
 //  WHAT: A pack: the imported Mamba2 model as a braid's foundation — the vocabulary (embedding and
 //        final norm), every block, the tokenizer — named by SHA-256 and written once. The NAME covers
 //        everything a node must match (norm, embedding, every block in key order, the tokenizer);
-//        the SEAM covers what a node runs unchanged (norm, embedding, the trunk blocks ≥ cut): the
+//        the SEAM covers what a node runs unchanged (norm, embedding, the tail's blocks ≥ cut): the
 //        commons' tail, which every Thread runs behind its own head; the VOCABULARY fingerprint is
 //        the reed's name. RaoLM v2's definitions, unchanged. The commons is a pack run whole
-//        (`Trunk(pack:)`); a head starts from `headArrays`.
+//        (`LanguageModule(pack:)`); a head starts from `headArrays`.
 //  PIN:  Float32 throughout, so the index a node keys later matches the weights on disk. A pack
 //        directory is staged and renamed; loading re-hashes and refuses any difference.
 //
@@ -70,10 +70,10 @@ public enum PackHash {
         return ContentHash.sha256Hex(parts: parts)
     }
 
-    /// SHA-256(norm ‖ embedding ‖ ∀ trunk (key, bytes) sorted by key).
-    public static func seam(embedding: MLXArray, norm: MLXArray, trunk: [(String, MLXArray)]) -> String {
+    /// SHA-256(norm ‖ embedding ‖ ∀ tail block (key, bytes) sorted by key).
+    public static func seam(embedding: MLXArray, norm: MLXArray, tail: [(String, MLXArray)]) -> String {
         var parts = [bytes(norm), bytes(embedding)]
-        for (key, array) in trunk.sorted(by: { $0.0 < $1.0 }) {
+        for (key, array) in tail.sorted(by: { $0.0 < $1.0 }) {
             parts.append(Data(key.utf8))
             parts.append(bytes(array))
         }
@@ -112,15 +112,15 @@ public final class Pack {
                      hiddenSize: config.hiddenSize, vocabulary: config.vocabSize, seamSHA256: info.seamSHA256)
     }
 
-    /// The trunk's arrays: blocks ≥ cut, the seam's input.
-    public var trunkArrays: [(String, MLXArray)] {
-        blocks.filter { Trunk.blockIndex(ofKey: $0.key).map { $0 >= config.cut } ?? false }.map { ($0.key, $0.value) }
+    /// The tail's block arrays: blocks ≥ cut, the seam's input.
+    public var tailArrays: [(String, MLXArray)] {
+        blocks.filter { LanguageModule.blockIndex(ofKey: $0.key).map { $0 >= config.cut } ?? false }.map { ($0.key, $0.value) }
     }
 
     /// A head's arrays: blocks 0..<cut as imported. The commons' own head, where a Thread's training
     /// starts, and what an untrained Thread runs.
     public var headArrays: [String: MLXArray] {
-        blocks.filter { Trunk.blockIndex(ofKey: $0.key).map { $0 < config.cut } ?? false }
+        blocks.filter { LanguageModule.blockIndex(ofKey: $0.key).map { $0 < config.cut } ?? false }
     }
 
     /// The directory a pack with this name lives in under `packs/`.
@@ -165,7 +165,7 @@ public final class Pack {
         guard PackHash.name(embedding: embedding, norm: norm, blocks: blocks.map { ($0.key, $0.value) }, tokenizerSHA256: info.tokenizerSHA256) == info.sha256 else {
             throw BraidFailure.data("\(directory.lastPathComponent): the pack's name does not hash")
         }
-        guard PackHash.seam(embedding: embedding, norm: norm, trunk: pack.trunkArrays) == info.seamSHA256 else { throw BraidFailure.data("\(directory.lastPathComponent): the seam does not hash") }
+        guard PackHash.seam(embedding: embedding, norm: norm, tail: pack.tailArrays) == info.seamSHA256 else { throw BraidFailure.data("\(directory.lastPathComponent): the seam does not hash") }
         return pack
     }
 

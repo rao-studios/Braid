@@ -1,14 +1,14 @@
 //
-//  TrunkMeasure.swift
+//  LanguageModuleMeasure.swift
 //  BraidKit
 //
 //  Created by Ritesh Pakala.
 //  Copyright © 2026 Rao Studios LLC.
 //
-//  WHAT: `braid init --measure`: what the trunk costs on this machine before anything is trained —
-//        forward tokens per second, one training step (forward and backward through every block,
-//        gradients for the Thread's blocks only, clipped, AdamW) in seconds, and the peak memory — at
-//        each batch × length the plan names, for each scan chunk size.
+//  WHAT: `braid init --measure`: what the language module costs on this machine before anything is
+//        trained — forward tokens per second, one training step (forward and backward through every
+//        block, gradients for the Thread's blocks only, clipped, AdamW) in seconds, and the peak
+//        memory — at each batch × length the plan names, for each scan chunk size.
 //
 
 import BraidCore
@@ -34,7 +34,7 @@ public struct MeasureReport: Codable, Sendable, Equatable {
     public var rows: [MeasureRow]
 }
 
-public enum TrunkMeasure {
+public enum LanguageModuleMeasure {
     public static let shapes: [(batch: Int, length: Int)] = [(4, 512), (8, 512), (4, 1024), (8, 1024)]
     public static let chunks = [256, 128]
 
@@ -42,12 +42,12 @@ public enum TrunkMeasure {
                            progress: (String) -> Void = { _ in }) throws -> MeasureReport {
         var rows: [MeasureRow] = []
         let reed = pack.reed(tokens: vocabTokens)
-        let commons = try Trunk(pack: pack)                                                 // the tail every shape's head runs behind
+        let commons = try LanguageModule(pack: pack)                                                 // the tail every shape's head runs behind
         for chunk in chunks {
             for shape in shapes {
-                let trunk = Trunk(head: try Trunk.packHead(pack), tail: commons.tail)
-                trunk.config.chunkSize = chunk
-                eval(trunk)
+                let languageModule = LanguageModule(head: try LanguageModule.packHead(pack), tail: commons.tail)
+                languageModule.config.chunkSize = chunk
+                eval(languageModule)
                 var rng = SplitMix64(seed: 42)
                 let ids = (0 ..< shape.batch * shape.length).map { _ in Int32(1 + rng.next() % UInt64(max(2, vocabTokens - 1))) }
                 let tokens = MLXArray(ids, [shape.batch, shape.length])
@@ -58,31 +58,31 @@ public enum TrunkMeasure {
                 Memory.peakMemory = 0
 
                 // Forward only, as the index builder and the node run it.
-                var out = trunk.forward(tokens: tokens, state: nil, resets: nil)
+                var out = languageModule.forward(tokens: tokens, state: nil, resets: nil)
                 eval(out.final)
                 var started = Date()
                 for _ in 0 ..< repeats {
-                    out = trunk.forward(tokens: tokens, state: nil, resets: nil)
+                    out = languageModule.forward(tokens: tokens, state: nil, resets: nil)
                     eval(out.final)
                 }
                 let forwardSeconds = Date().timeIntervalSince(started) / Double(repeats)
 
                 // One training step, as DeltaTrainer runs it.
-                let hidden = trunk.config.hiddenSize
-                func loss(_ model: Trunk, _ arrays: [MLXArray]) -> [MLXArray] {
+                let hidden = languageModule.config.hiddenSize
+                func loss(_ model: LanguageModule, _ arrays: [MLXArray]) -> [MLXArray] {
                     let out = model.forward(tokens: arrays[0], state: nil, resets: arrays[3], training: true)
                     let logits = reed.logits(array: out.final.reshaped([-1, hidden]))
                     let (perToken, _) = MLXReed.tokenStats(logits: logits, targets: arrays[1].reshaped([-1]))
                     let m = arrays[2].reshaped([-1])
                     return [(perToken * m).sum() / maximum(m.sum(), MLXArray(Float(1)))]
                 }
-                let lossAndGrad = valueAndGrad(model: trunk, loss)
+                let lossAndGrad = valueAndGrad(model: languageModule, loss)
                 let optimizer = AdamW(learningRate: 1e-5, betas: (0.9, 0.95), eps: 1e-8, weightDecay: 0.01, biasCorrection: true)
                 func step() {
-                    let (values, gradients) = lossAndGrad(trunk, [tokens, targets, mask, resets])
+                    let (values, gradients) = lossAndGrad(languageModule, [tokens, targets, mask, resets])
                     let (clipped, norm) = clipGradNorm(gradients: gradients, maxNorm: 1)
-                    optimizer.update(model: trunk, gradients: clipped)
-                    eval(trunk, optimizer, values[0], norm)
+                    optimizer.update(model: languageModule, gradients: clipped)
+                    eval(languageModule, optimizer, values[0], norm)
                 }
                 step()
                 started = Date()

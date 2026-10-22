@@ -5,9 +5,9 @@
 //  Created by Ritesh Pakala.
 //  Copyright © 2026 Rao Studios LLC.
 //
-//  WHAT: The shape of a Mamba2 trunk: Hugging Face's Mamba2Config keys as the imported checkpoint
-//        declares them, plus Braid's two fields — the cut (the first block of the frozen trunk) and
-//        the key scheme the provenance index reads states with.
+//  WHAT: The shape of a Mamba2 language module: Hugging Face's Mamba2Config keys as the imported
+//        checkpoint declares them, plus Braid's two fields — the cut (the first block of the
+//        commons' tail) and the key scheme the provenance index reads states with.
 //  PIN:  Validated once at import: tied embeddings (the reed is the vocabulary), heads × head_dim
 //        is the inner width, the groups divide the heads. The imported architecture is kept exactly:
 //        Mamba2 has no MLP block, so Braid adds none.
@@ -32,7 +32,7 @@ public struct Mamba2Config: Codable, Sendable, Equatable {
     public var useConvBias: Bool
     public var tieWordEmbeddings: Bool
     public var chunkSize: Int
-    /// Braid: the first block of the frozen trunk; blocks 0..<cut are a Thread's own.
+    /// Braid: the first block of the commons' tail; blocks 0..<cut are a Thread's own.
     public var cut: Int
     /// Braid: the residual tap (after how many blocks) the default key reads.
     public var tapAfterBlocks: Int
@@ -90,7 +90,7 @@ public struct Mamba2Config: Codable, Sendable, Equatable {
 
     public var intermediate: Int { numHeads * headDim }
     public var convDim: Int { intermediate + 2 * nGroups * stateSize }
-    public var hasTrunk: Bool { cut < numHiddenLayers }
+    public var hasTail: Bool { cut < numHiddenLayers }
     public var limits: (Float, Float) { (timeStepLimit[0], timeStepLimit[1]) }
 
     public func validate() throws {
@@ -117,9 +117,9 @@ public struct StorageMath: Sendable, Equatable {
     public var embeddingParameters: Int { config.vocabSize * config.hiddenSize }
     public var totalParameters: Int { parametersPerBlock * config.numHiddenLayers + embeddingParameters + config.hiddenSize }
     public var threadParameters: Int { parametersPerBlock * config.cut }
-    /// The trunk: blocks cut..<L, the embedding and the final norm, the commons', run by every Thread.
-    public var trunkParameters: Int { parametersPerBlock * (config.numHiddenLayers - config.cut) + embeddingParameters + config.hiddenSize }
-    public var trunkBytes: Int { trunkParameters * 4 }
+    /// The tail: blocks cut..<L, the embedding and the final norm, the commons', run by every Thread.
+    public var tailParameters: Int { parametersPerBlock * (config.numHiddenLayers - config.cut) + embeddingParameters + config.hiddenSize }
+    public var tailBytes: Int { tailParameters * 4 }
     /// The SSM state and the conv window of one layer, one stream, in floats.
     public var ssmStateFloats: Int { config.numHeads * config.headDim * config.stateSize }
     public var convWindowFloats: Int { (config.convKernel - 1) * config.convDim }
@@ -133,8 +133,8 @@ public struct StorageMath: Sendable, Equatable {
         func m(_ n: Int) -> String { String(format: "%.1fM", Double(n) / 1_000_000) }
         return [
             ("parameters", "\(m(totalParameters)) (\(config.numHiddenLayers) blocks × \(m(parametersPerBlock)), embedding \(m(embeddingParameters)))"),
-            ("a Thread node (blocks 0..<\(config.cut))", "\(m(threadParameters)) = \(mb(threadParameters * 4)) f32 per version, plus the commons' trunk by reference"),
-            ("the commons' trunk (\(config.cut)..<\(config.numHiddenLayers))", "\(m(trunkParameters)) = \(mb(trunkBytes)) f32: blocks \(config.cut)..<\(config.numHiddenLayers), the embedding and norm_f, run by every Thread"),
+            ("a Thread node (blocks 0..<\(config.cut))", "\(m(threadParameters)) = \(mb(threadParameters * 4)) f32 per version, plus the commons' tail by reference"),
+            ("the commons' tail (\(config.cut)..<\(config.numHiddenLayers))", "\(m(tailParameters)) = \(mb(tailBytes)) f32: blocks \(config.cut)..<\(config.numHiddenLayers), the embedding and norm_f, run by every Thread"),
             ("state per stream", "\(config.numHiddenLayers) × (\(ssmStateFloats) + \(convWindowFloats)) floats = \(mb(stateBytesPerStream)) — the history artifact, independent of context length"),
             ("key (residual ⊕ final)", "\(keyFloats) floats = \(keyFloats * 4) B f32, \(keyFloats * 2) B f16 → \(mb(keyFloats * 2 * 100_000)) f16 per 100K positions"),
             ("key (pooled state ⊕ final)", "\(pooledKeyFloats) floats → \(mb(pooledKeyFloats * 2 * 100_000)) f16 per 100K positions"),

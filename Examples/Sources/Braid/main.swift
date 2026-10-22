@@ -10,7 +10,8 @@
 //        complete an entry in its own words, and verify the session the answer was logged in.
 //  IN:   AII installed on this Mac (`aii status`); the T9 mounted, or the network for one download.
 //        Run by Examples/run.sh, or from Xcode (Examples/Package.swift, Run): step 0 puts MLX's
-//        Metal library beside whichever binary runs. `run.sh forget` takes the records out of the lane.
+//        Metal library beside whichever binary runs. `run.sh forget` takes the records out of the
+//        lane.
 //  OUT:  One numbered block per step. Kept afterwards: the braidplayground lane and its records in
 //        ~/.rao, and Examples/.work (braid.toml, the pack link, threads/harbour, sessions/). Exit
 //        0 only when the answer names the fact and the session verifies.
@@ -84,7 +85,7 @@ do {
     let stream = 1 + harbourLog.reduce(0) { $0 + tokenizer.encode($1.text).count + 1 }
     guard stream > window + 1 else { throw BraidFailure.usage("the log is \(stream) tokens; training needs more than one window of \(window)") }
     let scheme = KeyScheme(parsing: scratch.config.pack?.keyScheme ?? "") ?? .residual(afterBlocks: pack.config.tapAfterBlocks)
-    let commons = try ThreadStore.commons(pack: pack, scheme: scheme)                   // the trunk the Thread trains and runs behind
+    let commons = try ThreadStore.commons(pack: pack, scheme: scheme)                   // the commons' tail, behind the Thread's head as it trains and runs
     let engine = BraidEngine(area: area, config: scratch.config, pack: pack, tokenizer: tokenizer, reed: reed, commons: commons) { event in
         if let line = event.line { print("    \(line)") }
     }

@@ -15,7 +15,7 @@
 //                  AIIs                                     (AII + Seam + gRPC, Swift 6 strict)
 //   BraidTerminal  the terminal toolkit: raw mode, cells, diff renderer, widgets, app loop
 //                                                          (Foundation only, Swift 6 strict)
-//   BraidKit       the engine, by phase: Model/ (the Mamba2/SSD trunk and the reed), Build/
+//   BraidKit       the engine, by phase: Model/ (the Mamba2/SSD language module and the reed), Build/
 //                  (pack + import, corpus, delta training, index + checkpoints + replay, the
 //                  Thread store), Pipeline/ (Thread recipes and the engine that builds them),
 //                  Run/ (LocalNode, the question path), Tools/ (benches, doctor)
@@ -109,7 +109,7 @@ let package = Package(
         ),
         .testTarget(name: "BraidTerminalTests", dependencies: ["BraidTerminal"]),
         // The only place MLXLLM and MLXLMCommon are linked: Frigate's Mamba2Model is the oracle
-        // the import conformance test compares the in-repo trunk against.
+        // the import conformance test compares the in-repo language module against.
         .testTarget(
             name: "BraidKitTests",
             dependencies: [

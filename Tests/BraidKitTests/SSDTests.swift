@@ -136,14 +136,14 @@ extension BraidMLXSuites {
         func packedEqualsPerDocument() {
             let c = Self.tiny
             MLXRandom.seed(5)
-            let trunk = Trunk(c)
+            let languageModule = LanguageModule(c)
             let docA: [Int32] = [0, 5, 6, 7, 8, 9]
             let docB: [Int32] = [0, 10, 11, 12]
             let packed = MLXArray(docA + docB, [1, docA.count + docB.count])
             let resets = MLXArray((docA + docB).map { $0 == 0 }, [1, docA.count + docB.count])
-            let both = trunk.forward(tokens: packed, state: nil, resets: resets, taps: TapRequest(residualAfterBlocks: [1]))
-            let a = trunk.forward(tokens: MLXArray(docA, [1, docA.count]), state: nil, resets: MLXArray(docA.map { $0 == 0 }, [1, docA.count]), taps: TapRequest(residualAfterBlocks: [1]))
-            let bOnly = trunk.forward(tokens: MLXArray(docB, [1, docB.count]), state: nil, resets: MLXArray(docB.map { $0 == 0 }, [1, docB.count]), taps: TapRequest(residualAfterBlocks: [1]))
+            let both = languageModule.forward(tokens: packed, state: nil, resets: resets, taps: TapRequest(residualAfterBlocks: [1]))
+            let a = languageModule.forward(tokens: MLXArray(docA, [1, docA.count]), state: nil, resets: MLXArray(docA.map { $0 == 0 }, [1, docA.count]), taps: TapRequest(residualAfterBlocks: [1]))
+            let bOnly = languageModule.forward(tokens: MLXArray(docB, [1, docB.count]), state: nil, resets: MLXArray(docB.map { $0 == 0 }, [1, docB.count]), taps: TapRequest(residualAfterBlocks: [1]))
             #expect(maxAbs(both.final[0..., 0 ..< docA.count], a.final) < 1e-4)
             #expect(maxAbs(both.final[0..., docA.count...], bOnly.final) < 1e-4)
             #expect(maxAbs(both.residual[1]![0..., docA.count...], bOnly.residual[1]!) < 1e-4)
@@ -152,7 +152,7 @@ extension BraidMLXSuites {
             var state = StateStack.zeros(config: c, batch: 1)
             var finals: [MLXArray] = []
             for (t, token) in docA.enumerated() {
-                let out = trunk.step(token: MLXArray([token]), state: state, reset: MLXArray([t == 0]))
+                let out = languageModule.step(token: MLXArray([token]), state: state, reset: MLXArray([t == 0]))
                 finals.append(expandedDimensions(out.final, axis: 1))
                 state = out.state
             }
@@ -165,8 +165,8 @@ extension BraidMLXSuites {
         func stateStack() throws {
             let c = Self.tiny
             MLXRandom.seed(6)
-            let trunk = Trunk(c)
-            let out = trunk.forward(tokens: MLXArray([Int32]([0, 3, 4, 5]), [1, 4]), state: nil, resets: nil)
+            let languageModule = LanguageModule(c)
+            let out = languageModule.forward(tokens: MLXArray([Int32]([0, 3, 4, 5]), [1, 4]), state: nil, resets: nil)
             var stack = out.state
             stack.prefixSHA256 = "abc"
             let url = FileManager.default.temporaryDirectory.appendingPathComponent("braid-stack-\(UUID().uuidString).safetensors")
@@ -179,7 +179,7 @@ extension BraidMLXSuites {
             #expect(try StateStack.from(data: bytes, expecting: c).sha256 == stack.sha256)
             let m130 = Mamba2Config(hiddenSize: 768, numHiddenLayers: 24, numHeads: 24, headDim: 64, stateSize: 128, nGroups: 1, convKernel: 4, vocabSize: 50288, cut: 12)
             #expect(StateStack.byteCount(config: m130) == 19_390_464)
-            #expect(StorageMath(config: m130).threadParameters == 45_183_840 && StorageMath(config: m130).trunkBytes == 335_223_168)
+            #expect(StorageMath(config: m130).threadParameters == 45_183_840 && StorageMath(config: m130).tailBytes == 335_223_168)
             #expect(StorageMath(config: m130).totalParameters == 128_989_632 + 0 || StorageMath(config: m130).totalParameters > 128_000_000)
         }
     }

@@ -5,7 +5,7 @@
 //  Created by Ritesh Pakala.
 //  Copyright © 2026 Rao Studios LLC.
 //
-//  WHAT: The proof that the delta, a Thread's own blocks on the commons' trunk, is the key to
+//  WHAT: The proof that the delta, a Thread's own blocks on the commons' tail, is the key to
 //        provenance, and of the two places it works. Two Threads read one corpus behind one commons.
 //        proof-<node>-delta trains blocks 0..<12 of its own; proof-<node>-frozen keeps the commons'
 //        blocks 0..<12, bit for bit. Both index the same documents and withhold the same ones. The
@@ -86,7 +86,7 @@ do {
     let scheme = KeyScheme(parsing: scratch.config.pack?.keyScheme ?? "") ?? .residual(afterBlocks: pack.config.tapAfterBlocks)
     let built = Date()
     do {
-        let commons = try ThreadStore.commons(pack: pack, scheme: scheme)    // the trunk both heads run behind
+        let commons = try ThreadStore.commons(pack: pack, scheme: scheme)    // the commons' tail, behind both heads
         let engine = BraidEngine(area: area, config: scratch.config, pack: pack, tokenizer: tokenizer, reed: reed, commons: commons) { event in
             if let line = event.line { ProofShow.note(line) }
         }

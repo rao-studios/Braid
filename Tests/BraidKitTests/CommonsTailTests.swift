@@ -1,16 +1,17 @@
 //
-//  CommonsTrunkTests.swift
+//  CommonsTailTests.swift
 //  BraidKitTests
 //
 //  Created by Ritesh Pakala.
 //  Copyright © 2026 Rao Studios LLC.
 //
-//  WHAT: The commons is the trunk every Thread runs. On the live Thread: its tail blocks, embedding and
-//        final norm are the commons' own module instances and its head blocks are its own; a version or
-//        an index that names another seam or cut is refused before a head runs; a head file that carries
-//        a block of the trunk, or lacks one of its own, is refused; a Thread node passed as the commons is
-//        refused; and a head in front of the commons' tail gives what one monolithic trunk gives, bit for
-//        bit, through forward and step, on a fixed prompt.
+//  WHAT: The commons' tail is the one every Thread runs. On the live Thread: its tail blocks,
+//        embedding and final norm are the commons' own module instances and its head blocks are its
+//        own; a version or an index that names another seam or cut is refused before a head runs; a
+//        head file that carries a block of the tail, or lacks one of its own, is refused; a Thread
+//        node passed as the commons is refused; and a head in front of the commons' tail gives what
+//        one monolithic language module gives, bit for bit, through forward and step, on a fixed
+//        prompt.
 //
 
 import Foundation
@@ -20,29 +21,29 @@ import Testing
 @testable import BraidKit
 
 extension BraidMLXSuites {
-    @Suite("The commons is the trunk", .enabled(if: mlxTests), .serialized)
-    struct CommonsTrunkTests {
+    @Suite("The commons' tail is every Thread's", .enabled(if: mlxTests), .serialized)
+    struct CommonsTailTests {
         static let tiny = Mamba2Config(hiddenSize: 16, numHiddenLayers: 3, numHeads: 2, headDim: 4, stateSize: 4, nGroups: 1, convKernel: 4, vocabSize: 32, cut: 1)
 
         @Test("a Thread's tail is the commons' own modules; its head is its own")
         func tailIsTheCommons() throws {
             guard let (_, _, loaded) = liveThread, let commons = liveCommonsNode else { return }
-            let thread = loaded.node.trunk
-            let cut = commons.trunk.config.cut
-            #expect(thread.seamSHA256 == commons.trunk.seamSHA256)
-            #expect(thread.blocks.count == commons.trunk.blocks.count)
-            for i in cut ..< commons.trunk.blocks.count { #expect(thread.blocks[i] === commons.trunk.blocks[i], "block \(i) is the commons' own instance") }
-            for i in 0 ..< cut { #expect(thread.blocks[i] !== commons.trunk.blocks[i], "block \(i) is the Thread's own instance") }
-            #expect(thread.backbone.embeddings === commons.trunk.backbone.embeddings)
-            #expect(thread.backbone.normF === commons.trunk.backbone.normF)
-            #expect(thread.tail.count == commons.trunk.config.numHiddenLayers - cut && thread.head.count == cut)
+            let thread = loaded.node.languageModule
+            let cut = commons.languageModule.config.cut
+            #expect(thread.seamSHA256 == commons.languageModule.seamSHA256)
+            #expect(thread.blocks.count == commons.languageModule.blocks.count)
+            for i in cut ..< commons.languageModule.blocks.count { #expect(thread.blocks[i] === commons.languageModule.blocks[i], "block \(i) is the commons' own instance") }
+            for i in 0 ..< cut { #expect(thread.blocks[i] !== commons.languageModule.blocks[i], "block \(i) is the Thread's own instance") }
+            #expect(thread.backbone.embeddings === commons.languageModule.backbone.embeddings)
+            #expect(thread.backbone.normF === commons.languageModule.backbone.normF)
+            #expect(thread.tail.count == commons.languageModule.config.numHiddenLayers - cut && thread.head.count == cut)
             #expect(loaded.node.descriptor.seamSHA256 == commons.descriptor.seamSHA256)
-            print("COMMONS TRUNK: \(thread.tail.count) tail blocks are the commons', \(thread.head.count) head blocks the Thread's own, seam \(thread.seamSHA256.prefix(12))")
+            print("COMMONS TAIL: \(thread.tail.count) tail blocks are the commons', \(thread.head.count) head blocks the Thread's own, seam \(thread.seamSHA256.prefix(12))")
         }
 
         @Test("a version or an index that names another seam or cut is refused before a head runs")
         func foreignSeamRefused() throws {
-            let tail = Trunk(Self.tiny).tail
+            let tail = LanguageModule(Self.tiny).tail
             func version(seam: String, cut: Int) -> ThreadVersionInfo {
                 ThreadVersionInfo(version: 3, packSHA256: "p", seamSHA256: seam, vocabularySHA256: "v", tokenizerSHA256: "t", cut: cut, keyScheme: .residual(afterBlocks: 1),
                                   corpusHash: "c", snapshotHash: "c", trained: true, steps: 1, epochs: 1, learned: true, memorised: 1, meanLoss: 0, heldOutLoss: nil,
@@ -61,24 +62,24 @@ extension BraidMLXSuites {
             #expect(throws: BraidFailure.self) { try ThreadStore.checkSeam(own, index: index(seam: tail.seamSHA256, cut: tail.cut + 1), tail: tail, thread: "t") }
         }
 
-        @Test("a head file that carries a block of the trunk, or lacks one of its own, is refused")
+        @Test("a head file that carries a block of the tail, or lacks one of its own, is refused")
         func headFileRefused() throws {
-            let whole = Trunk(Self.tiny)
+            let whole = LanguageModule(Self.tiny)
             let cut = Self.tiny.cut
-            let arrays = Dictionary(uniqueKeysWithValues: whole.flattenedParameters().filter { Trunk.blockIndex(ofKey: $0.0) != nil })
-            let own = arrays.filter { Trunk.blockIndex(ofKey: $0.key)! < cut }
-            let head = try Trunk.makeHead(arrays: own, config: Self.tiny)
+            let arrays = Dictionary(uniqueKeysWithValues: whole.flattenedParameters().filter { LanguageModule.blockIndex(ofKey: $0.0) != nil })
+            let own = arrays.filter { LanguageModule.blockIndex(ofKey: $0.key)! < cut }
+            let head = try LanguageModule.makeHead(arrays: own, config: Self.tiny)
             #expect(head.count == cut)
             for (i, block) in head.enumerated() { #expect(block !== whole.blocks[i], "a loaded head is its own instance") }
             var withTail = own
-            let tailKey = arrays.keys.first { Trunk.blockIndex(ofKey: $0) == cut }!
+            let tailKey = arrays.keys.first { LanguageModule.blockIndex(ofKey: $0) == cut }!
             withTail[tailKey] = arrays[tailKey]
-            #expect(throws: BraidFailure.self) { _ = try Trunk.makeHead(arrays: withTail, config: Self.tiny) }
-            #expect(throws: BraidFailure.self) { _ = try Trunk.makeHead(arrays: [:], config: Self.tiny) }
-            #expect(throws: BraidFailure.self) { _ = try Trunk.makeHead(arrays: ["backbone.embeddings.weight": whole.embedding], config: Self.tiny) }
+            #expect(throws: BraidFailure.self) { _ = try LanguageModule.makeHead(arrays: withTail, config: Self.tiny) }
+            #expect(throws: BraidFailure.self) { _ = try LanguageModule.makeHead(arrays: [:], config: Self.tiny) }
+            #expect(throws: BraidFailure.self) { _ = try LanguageModule.makeHead(arrays: ["backbone.embeddings.weight": whole.embedding], config: Self.tiny) }
             var partial = own
             partial.removeValue(forKey: own.keys.sorted().first!)
-            #expect(throws: (any Error).self) { _ = try Trunk.makeHead(arrays: partial, config: Self.tiny) }
+            #expect(throws: (any Error).self) { _ = try LanguageModule.makeHead(arrays: partial, config: Self.tiny) }
         }
 
         @Test("a Thread node passed as the commons is refused")
@@ -87,11 +88,11 @@ extension BraidMLXSuites {
             #expect(throws: BraidFailure.self) { _ = try ThreadStore.load(loaded.info.name, in: area, pack: pack, commons: loaded.node) }
         }
 
-        @Test("a head in front of the commons' tail equals one monolithic trunk, bit for bit")
+        @Test("a head in front of the commons' tail equals one monolithic language module, bit for bit")
         func bitIdentical() throws {
             guard let (_, pack, loaded) = liveThread, liveCommonsNode != nil else { return }
-            // The trunk the old loader built: every block fresh, the pack's weights, the version's blocks laid over 0..<cut.
-            let monolithic = Trunk(pack.config)
+            // The language module the old loader built: every block fresh, the pack's weights, the version's blocks laid over 0..<cut.
+            let monolithic = LanguageModule(pack.config)
             var weights = pack.blocks
             let blocksURL = loaded.directory.appendingPathComponent(ThreadStore.blocksFile)
             if FileManager.default.fileExists(atPath: blocksURL.path) { for (key, value) in try loadArrays(url: blocksURL) { weights[key] = value } }
@@ -104,11 +105,11 @@ extension BraidMLXSuites {
             let tokens: [Int32] = [tokenizer.eos] + Array(tokenizer.encode(words).prefix(63))
             func bits(_ a: MLXArray) -> [UInt32] { a.asType(.float32).asArray(Float.self).map(\.bitPattern) }
             let input = MLXArray(tokens, [1, tokens.count])
-            let mine = loaded.node.trunk
-            // The kernels themselves: the same trunk twice gives the same bits.
+            let mine = loaded.node.languageModule
+            // The kernels themselves: the same language module twice gives the same bits.
             let once = monolithic.forward(tokens: input, state: nil, resets: nil), twice = monolithic.forward(tokens: input, state: nil, resets: nil)
             let kernelsRepeat = bits(once.final) == bits(twice.final)
-            #expect(kernelsRepeat, "the same trunk's forward run twice differs in its bits")
+            #expect(kernelsRepeat, "the same language module's forward run twice differs in its bits")
             let a = mine.forward(tokens: input, state: nil, resets: nil), b = monolithic.forward(tokens: input, state: nil, resets: nil)
             let finalEqual = bits(a.final) == bits(b.final)
             #expect(finalEqual, "forward: the final states differ")

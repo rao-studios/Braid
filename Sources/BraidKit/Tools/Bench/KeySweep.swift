@@ -119,7 +119,7 @@ public enum KeySweep {
             build.checkpoints.strideTokens = Int.max / 4                                               // no checkpoints: nothing replays here
             progress("\(scheme): indexing \(corpus.documents.count) documents")
             let started = Date()
-            let built = try IndexBuilder.build(trunk: thread.node.trunk, reed: reed, corpus: corpus, pack: pack, blocksSHA256: thread.version.blocksSHA256,
+            let built = try IndexBuilder.build(languageModule: thread.node.languageModule, reed: reed, corpus: corpus, pack: pack, blocksSHA256: thread.version.blocksSHA256,
                                                threadID: thread.info.threadID, options: build, into: indexDirectory)
             let seconds = Date().timeIntervalSince(started)
             let index = try ProvenanceIndex(directory: indexDirectory)
@@ -128,9 +128,9 @@ public enum KeySweep {
             var arm = KeySweepArmReport(scheme: scheme.description, keyDims: built.info.keyDims, entries: index.count, buildSeconds: seconds, probe: probe)
             if !measured.isEmpty {
                 progress("\(scheme): \(measured.count) facts × 3 arms")
-                arm.prompt = retrieval(index: index, trunk: thread.node.trunk, tokenizer: tokenizer, corpus: corpus, facts: measured, scheme: scheme, options: options) { $0.fact.prompt }
-                arm.stem = retrieval(index: index, trunk: thread.node.trunk, tokenizer: tokenizer, corpus: corpus, facts: measured, scheme: scheme, options: options) { $0.fact.questions?.first?.stem }
-                arm.paraphrase = retrieval(index: index, trunk: thread.node.trunk, tokenizer: tokenizer, corpus: corpus, facts: measured, scheme: scheme, options: options) { $0.fact.paraphrases.first }
+                arm.prompt = retrieval(index: index, languageModule: thread.node.languageModule, tokenizer: tokenizer, corpus: corpus, facts: measured, scheme: scheme, options: options) { $0.fact.prompt }
+                arm.stem = retrieval(index: index, languageModule: thread.node.languageModule, tokenizer: tokenizer, corpus: corpus, facts: measured, scheme: scheme, options: options) { $0.fact.questions?.first?.stem }
+                arm.paraphrase = retrieval(index: index, languageModule: thread.node.languageModule, tokenizer: tokenizer, corpus: corpus, facts: measured, scheme: scheme, options: options) { $0.fact.paraphrases.first }
             }
             arms.append(arm)
             Memory.clearCache()
@@ -192,7 +192,7 @@ public enum KeySweep {
     }
 
     /// Retrieval at a fact prompt's last token for the texts `text` yields (nil skips the fact).
-    static func retrieval(index: ProvenanceIndex, trunk: Trunk, tokenizer: BraidTokenizer, corpus: TokenizedCorpus, facts: [LocatedFact], scheme: KeyScheme,
+    static func retrieval(index: ProvenanceIndex, languageModule: LanguageModule, tokenizer: BraidTokenizer, corpus: TokenizedCorpus, facts: [LocatedFact], scheme: KeyScheme,
                           options: KeySweepOptions, text: (LocatedFact) -> String?) -> RetrievalReport? {
         var count = 0
         var partition1 = 0, offset1 = 0, answer1 = 0, partitionK = 0
@@ -200,7 +200,7 @@ public enum KeySweep {
         for fact in facts {
             guard let prompt = text(fact), !prompt.isEmpty else { continue }
             let tokens: [Int32] = [tokenizer.eos] + tokenizer.encode(" " + prompt)
-            let key = SegmentKeys.lastKey(trunk: trunk, segment: tokens, state: nil, scheme: scheme, alpha: index.info.alpha)
+            let key = SegmentKeys.lastKey(languageModule: languageModule, segment: tokens, state: nil, scheme: scheme, alpha: index.info.alpha)
             let hits = index.query(key.reshaped([1, -1]), k: options.k)[0]
             guard let top = hits.first else { continue }
             count += 1

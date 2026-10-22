@@ -12,8 +12,8 @@
 //        dataset node it was fed from and the documents present in its snapshot.
 //        A bench keeps its session log (`keepSession`) so `braid verify` can replay what it measured;
 //        a sub-braid (the copy braid G3 and Q5b read) shares the nodes already loaded.
-//  PIN:  Nothing is written to a node. The commons is always built, since every Thread runs behind its
-//        trunk, and attached only when the braid wants it. The commons-alone braid (the lift bench's
+//  PIN:  Nothing is written to a node. The commons is always built, since every Thread runs its
+//        tail, and attached only when the braid wants it. The commons-alone braid (the lift bench's
 //        NLL reference) is a second cluster holding the same commons node under its own session, and
 //        keeps no log.
 //
@@ -33,7 +33,7 @@ public final class BenchBraid {
     public let cluster: Cluster
     public let threads: [LoadedThread]
     public let hasCommons: Bool
-    /// The commons node: the trunk every Thread here runs behind, attached when `hasCommons`, shared with any sub-braid.
+    /// The commons node, whose tail every Thread here runs, attached when `hasCommons`, shared with any sub-braid.
     public let commonsNode: LocalNode
     /// The session logs this braid wrote, in order.
     public private(set) var sessions: [URL] = []

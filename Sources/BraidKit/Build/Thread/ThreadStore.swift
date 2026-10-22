@@ -54,15 +54,15 @@ public enum ThreadStore {
         return (existing.max() ?? 0) + 1
     }
 
-    /// Indexes a snapshot with the given trunk (the pack's blocks, or a trained version's) into a new
+    /// Indexes a snapshot with the given language module (the pack's blocks, or a trained version's) into a new
     /// version and makes it live: `writeIndex`, `writeVersion`, `promote`.
     @discardableResult
-    public static func index(_ layout: ThreadLayout, pack: Pack, trunk: Trunk, tokenizer: BraidTokenizer, snapshot: CorpusSnapshot, scheme: KeyScheme,
+    public static func index(_ layout: ThreadLayout, pack: Pack, languageModule: LanguageModule, tokenizer: BraidTokenizer, snapshot: CorpusSnapshot, scheme: KeyScheme,
                              blocks: [String: MLXArray]?, training: TrainingTotals?, checkpoints: CheckpointPolicy = CheckpointPolicy(),
                              exclude: Set<String> = [], progress: (String) -> Void = { _ in }) throws -> ThreadVersionInfo {
         let info = try info(layout)
         let corpus = TokenizedCorpus(snapshot: snapshot, tokenizer: tokenizer, paragraphBreak: tokenizer.paragraphBreak, threadID: info.threadID)
-        let written = try writeIndex(layout, pack: pack, trunk: trunk, reed: pack.reed(tokens: tokenizer.vocabSize), corpus: corpus, threadID: info.threadID,
+        let written = try writeIndex(layout, pack: pack, languageModule: languageModule, reed: pack.reed(tokens: tokenizer.vocabSize), corpus: corpus, threadID: info.threadID,
                                      scheme: scheme, blocks: blocks, checkpoints: checkpoints, exclude: exclude, progress: progress)
         let record = try writeVersion(written, pack: pack, snapshot: snapshot, scheme: scheme, training: training)
         try promote(layout, version: record.version)
@@ -70,8 +70,8 @@ public enum ThreadStore {
     }
 
     /// A new version's directory with its blocks (when they are the Thread's own) and its index,
-    /// keyed on `trunk`. The version takes the next number when its directory is made.
-    public static func writeIndex(_ layout: ThreadLayout, pack: Pack, trunk: Trunk, reed: MLXReed, corpus: TokenizedCorpus, threadID: String, scheme: KeyScheme,
+    /// keyed on `languageModule`. The version takes the next number when its directory is made.
+    public static func writeIndex(_ layout: ThreadLayout, pack: Pack, languageModule: LanguageModule, reed: MLXReed, corpus: TokenizedCorpus, threadID: String, scheme: KeyScheme,
                                   blocks: [String: MLXArray]?, checkpoints: CheckpointPolicy, exclude: Set<String>, progress: (String) -> Void) throws -> WrittenIndex {
         let number = nextVersion(layout)
         let directory = layout.version(number)
@@ -85,7 +85,7 @@ public enum ThreadStore {
         var options = IndexBuildOptions(scheme: scheme)
         options.checkpoints = checkpoints
         options.exclude = exclude
-        let built = try IndexBuilder.build(trunk: trunk, reed: reed, corpus: corpus, pack: pack, blocksSHA256: blocksSHA256, threadID: threadID, options: options,
+        let built = try IndexBuilder.build(languageModule: languageModule, reed: reed, corpus: corpus, pack: pack, blocksSHA256: blocksSHA256, threadID: threadID, options: options,
                                            into: directory.appendingPathComponent(indexDirectory, isDirectory: true)) { d, n in if d % 50 == 0 { progress("indexing \(d)/\(n) documents") } }
         return WrittenIndex(version: number, directory: directory, trained: blocks != nil, blocksSHA256: blocksSHA256, built: built)
     }

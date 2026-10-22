@@ -7,7 +7,7 @@
 //
 //  WHAT: The checks `braid doctor` runs and the studio's Doctor screen shows, from one place: the
 //        Metal library beside the binary, the work area and its free space, braid.toml, the pack
-//        and its tokenizer round trip, the trunk (the commons' seam, which every Thread's live
+//        and its tokenizer round trip, the tail (the commons' seam, which every Thread's live
 //        version must name), the machine's AII (home, lanes, Thread health). Each check is a name,
 //        a verdict and a detail, so the CLI prints the list and the studio draws it.
 //  PIN:  A failed check says what is missing and how to fix it; nothing here writes anything.
@@ -46,9 +46,9 @@ public enum DoctorChecks {
         return nil
     }
 
-    /// The commons' trunk from the pack's record alone, no weights loaded: its seam, its size, and whether every
+    /// The commons' tail from the pack's record alone, no weights loaded: its seam, its size, and whether every
     /// Thread's live version names that seam and cut, which `ThreadStore.load` will insist on.
-    public static func trunk(pack: Pack, in area: WorkArea) throws -> String {
+    public static func tail(pack: Pack, in area: WorkArea) throws -> String {
         let config = pack.config
         var named = 0
         var wrong: [String] = []
@@ -62,10 +62,10 @@ public enum DoctorChecks {
                 named += 1
             }
         }
-        let trunk = "seam \(pack.info.seamSHA256.prefix(12)): the commons' blocks \(config.cut)–\(config.numHiddenLayers - 1), the embedding and norm_f, "
-            + String(format: "%.0f MB", Double(StorageMath(config: config).trunkBytes) / 1_000_000)
-        guard wrong.isEmpty else { throw BraidFailure.data("\(trunk); not every Thread runs it: \(wrong.joined(separator: "; "))") }
-        return trunk + (named == 0 ? "; no Thread yet" : "; \(named) Thread version\(named == 1 ? " names" : "s name") it")
+        let tail = "seam \(pack.info.seamSHA256.prefix(12)): the commons' blocks \(config.cut)–\(config.numHiddenLayers - 1), the embedding and norm_f, "
+            + String(format: "%.0f MB", Double(StorageMath(config: config).tailBytes) / 1_000_000)
+        guard wrong.isEmpty else { throw BraidFailure.data("\(tail); not every Thread runs it: \(wrong.joined(separator: "; "))") }
+        return tail + (named == 0 ? "; no Thread yet" : "; \(named) Thread version\(named == 1 ? " names" : "s name") it")
     }
 
     /// The Metal library beside the running binary (build-metallib.sh puts it there).
@@ -132,7 +132,7 @@ public enum DoctorChecks {
                         guard tokenizer.decode(tokenizer.encode("Hello, braid.")) == "Hello, braid." else { throw BraidFailure.data("does not round-trip") }
                         return "\(tokenizer.vocabSize) tokens in \(pack.config.vocabSize) rows, eos 0, break \(tokenizer.paragraphBreak)"
                     })
-                    report("trunk", Result { try trunk(pack: pack, in: area) })
+                    report("tail", Result { try tail(pack: pack, in: area) })
                 case .success(nil): report("pack", .failure(BraidFailure.missing("not in \(area.packs.path)")))
                 case .failure(let error): report("pack", .failure(error))
                 }

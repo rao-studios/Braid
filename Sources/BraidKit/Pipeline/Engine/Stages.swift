@@ -29,7 +29,7 @@ final class BuildContext {
     let checkpoints: CheckpointPolicy
     /// The documents left out of the index, read when the index stage needs them.
     let exclude: () throws -> Set<String>
-    let trunk: Trunk
+    let languageModule: LanguageModule
     /// The live version a sync or a re-key starts from; nil for a new Thread.
     let live: ThreadVersionInfo?
     let started: Date
@@ -42,7 +42,7 @@ final class BuildContext {
     var seconds: Double?
 
     init(name: String, layout: ThreadLayout, threadID: String, snapshot: CorpusSnapshot, facts: [Fact], key: KeyScheme, checkpoints: CheckpointPolicy,
-         exclude: @escaping () throws -> Set<String>, trunk: Trunk, live: ThreadVersionInfo?, started: Date) {
+         exclude: @escaping () throws -> Set<String>, languageModule: LanguageModule, live: ThreadVersionInfo?, started: Date) {
         self.name = name
         self.layout = layout
         self.threadID = threadID
@@ -51,7 +51,7 @@ final class BuildContext {
         self.key = key
         self.checkpoints = checkpoints
         self.exclude = exclude
-        self.trunk = trunk
+        self.languageModule = languageModule
         self.live = live
         self.started = started
     }
@@ -70,7 +70,7 @@ protocol BuildStage {
     func run(_ context: BuildContext, in engine: BraidEngine) throws
 }
 
-/// Trains blocks 0..<cut in place on the context's trunk: from the pack's blocks for a new Thread,
+/// Trains blocks 0..<cut in place on the context's language module: from the pack's blocks for a new Thread,
 /// on from the live version's when continuing.
 struct TrainStage: BuildStage {
     let plan: TrainingPlan
@@ -92,7 +92,7 @@ struct TrainStage: BuildStage {
             engine.note("thread \(name): training blocks 0..<\(engine.pack.config.cut) on \(corpus.tokenCount) tokens, \(located.count) facts located")
         }
         let continuing = self.continuing
-        let result = try DeltaTrainer.train(trunk: c.trunk, reed: reed, corpus: corpus, facts: located, hyper: hyper, continuing: continuing) { event in
+        let result = try DeltaTrainer.train(languageModule: c.languageModule, reed: reed, corpus: corpus, facts: located, hyper: hyper, continuing: continuing) { event in
             switch event {
             case .note(let text): engine.note("thread \(name): \(text)")
             case .step(let row):
@@ -122,7 +122,7 @@ struct TrainStage: BuildStage {
     }
 }
 
-/// Keys the snapshot on the context's trunk into a new version's directory, with its blocks when
+/// Keys the snapshot on the context's language module into a new version's directory, with its blocks when
 /// they are the Thread's own.
 struct IndexStage: BuildStage {
     var name: StageName { .index }
@@ -130,7 +130,7 @@ struct IndexStage: BuildStage {
     func run(_ c: BuildContext, in engine: BraidEngine) throws {
         let exclude = try c.exclude()
         let corpus = c.tokenizedCorpus(try engine.tokenizer())
-        c.written = try ThreadStore.writeIndex(c.layout, pack: engine.pack, trunk: c.trunk, reed: try engine.reed(), corpus: corpus, threadID: c.threadID, scheme: c.key,
+        c.written = try ThreadStore.writeIndex(c.layout, pack: engine.pack, languageModule: c.languageModule, reed: try engine.reed(), corpus: corpus, threadID: c.threadID, scheme: c.key,
                                                blocks: c.blocks, checkpoints: c.checkpoints, exclude: exclude) { engine.note("thread \(c.name): \($0)") }
     }
 }

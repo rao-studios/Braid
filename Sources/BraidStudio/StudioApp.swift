@@ -214,7 +214,7 @@ public enum StudioApp {
         case .braid(let status):
             state.braid.status = status
             let strands = status.strands.isEmpty ? "no strands" : status.strands.joined(separator: ", ")
-            state.braid.events.append("braid: \(status.packName ?? "no pack") · \(strands)" + (status.seamSHA256.map { " · trunk \($0.prefix(12))" } ?? "") + (status.fixtures ? " · fixtures" : ""))
+            state.braid.events.append("braid: \(status.packName ?? "no pack") · \(strands)" + (status.seamSHA256.map { " · tail \($0.prefix(12))" } ?? "") + (status.fixtures ? " · fixtures" : ""))
             return [.examples]
         case .threads(let threads):
             state.braid.threads = threads
@@ -442,7 +442,7 @@ public enum StudioApp {
         case .newThread(let form):
             let notes = [
                 Text("The source is a dataset node, dataset:<name>#<node> (braid-n3#ambient), or a folder of .txt files, dir:<path>.", style: palette.dim),
-                Text("The Thread is snapshotted, its own blocks 0–11 trained behind the commons' trunk, indexed, made live and attached — the braid thread create path.", style: palette.dim),
+                Text("The Thread is snapshotted, its own blocks 0–11 trained in front of the commons' tail, indexed, made live and attached — the braid thread create path.", style: palette.dim),
             ] + (form.error.map { [Text("\(glyphs.cross) \($0)", style: palette.red)] } ?? [])
             let rect = frame.bounds.centered(width: min(frame.size.width - 4, 100), height: notes.count + 7)
             frame.canvas.fill(rect, style: palette.base)

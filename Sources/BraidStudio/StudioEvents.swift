@@ -113,7 +113,7 @@ public struct BraidStatus: Sendable, Equatable {
     public var strands: [String]
     public var commons: Bool
     public var sessionsDirectory: URL?
-    /// The seam of the commons' trunk, the one every Thread runs; nil in fixture mode.
+    /// The seam of the commons' tail, the one every Thread runs; nil in fixture mode.
     public var seamSHA256: String?
 
     public init(fixtures: Bool, workArea: String?, packName: String?, packSHA256: String?, strands: [String], commons: Bool, sessionsDirectory: URL?, seamSHA256: String? = nil) {

@@ -56,7 +56,7 @@ public struct PackIdentity: Codable, Sendable, Equatable {
     public var tokenizerSHA256: String
     public var hiddenSize: Int
     public var vocabulary: Int
-    /// The seam of the trunk every strand runs (the commons' blocks ≥ cut, embedding and final norm); nil in logs written before it was recorded.
+    /// The seam of the tail every strand runs (the commons' blocks ≥ cut, embedding and final norm); nil in logs written before it was recorded.
     public var seamSHA256: String?
 
     public init(sha256: String?, name: String?, vocabularySHA256: String, tokenizerSHA256: String, hiddenSize: Int, vocabulary: Int, seamSHA256: String? = nil) {

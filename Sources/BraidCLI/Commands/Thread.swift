@@ -6,10 +6,10 @@
 //  Copyright © 2026 Rao Studios LLC.
 //
 //  WHAT: `braid thread create <name> --corpus <source>`: a Thread from a corpus source — snapshot,
-//        training and the provenance index on the pack's trunk — made live and attached to the
-//        braid in braid.toml. The flags become a ThreadRecipe that BraidKit's BraidEngine builds
-//        (the studio's new-Thread dialog runs the same path); `sync` and `index` are the engine's
-//        other two intents. `thread list` and `thread show` read the records.
+//        training and the provenance index on the pack's language module — made live and attached
+//        to the braid in braid.toml. The flags become a ThreadRecipe that BraidKit's BraidEngine
+//        builds (the studio's new-Thread dialog runs the same path); `sync` and `index` are the
+//        engine's other two intents. `thread list` and `thread show` read the records.
 //
 
 import ArgumentParser
@@ -21,7 +21,7 @@ struct ThreadCommand: ParsableCommand {
                                                     subcommands: [Create.self, Sync.self, Index.self, List.self, Show.self], defaultSubcommand: List.self)
 
     struct Create: ParsableCommand {
-        static let configuration = CommandConfiguration(commandName: "create", abstract: "Snapshot a corpus, train and index a head for it behind the commons' trunk, make it live, attach it.")
+        static let configuration = CommandConfiguration(commandName: "create", abstract: "Snapshot a corpus, train and index a head for it in front of the commons' tail, make it live, attach it.")
         @OptionGroup var workArea: WorkAreaOptions
         @Argument(help: "The Thread's name (a lowercase handle).")
         var name: String
@@ -35,7 +35,7 @@ struct ThreadCommand: ParsableCommand {
         var scheme: String?
         @Flag(name: .customLong("no-attach"), help: "Do not add the Thread to [cluster] attach in braid.toml.")
         var noAttach = false
-        @Flag(name: .customLong("no-train"), help: "Index on the pack's own blocks 0..<cut, behind the commons' trunk, without training a head of the Thread's own.")
+        @Flag(name: .customLong("no-train"), help: "Index on the pack's own blocks 0..<cut, in front of the commons' tail, without training a head of the Thread's own.")
         var noTrain = false
         @Option(help: "Optimizer steps planned (default 1000 from the pack's blocks).")
         var steps: Int?

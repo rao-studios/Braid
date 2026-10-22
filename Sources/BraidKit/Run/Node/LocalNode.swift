@@ -5,11 +5,11 @@
 //  Created by Ritesh Pakala.
 //  Copyright © 2026 Rao Studios LLC.
 //
-//  WHAT: The Node protocol in process: a pack, a trunk (the commons runs the pack whole; a Thread runs
-//        its own head, blocks 0..<cut, in front of the commons' tail), an index (none for the commons)
-//        and the open sessions, each a recurrent state stack and the tokens it consumed. At every
-//        position it emits the normed last state and the hits its key retrieved. The history artifact
-//        is the state stack as safetensors.
+//  WHAT: The Node protocol in process: a pack, a language module (the commons runs the pack whole;
+//        a Thread runs its own head, blocks 0..<cut, in front of the commons' tail), an index (none
+//        for the commons) and the open sessions, each a recurrent state stack and the tokens it
+//        consumed. At every position it emits the normed last state and the hits its key retrieved.
+//        The history artifact is the state stack as safetensors.
 //
 
 import BraidCore
@@ -19,12 +19,12 @@ import MLX
 public final class LocalNode: Node {
     public let descriptor: NodeDescriptor
     public let pack: Pack
-    public let trunk: Trunk
+    public let languageModule: LanguageModule
     public let index: ProvenanceIndex?
     public let scheme: KeyScheme
-    /// The tail this node's trunk lends (the commons') or borrows (a Thread's): blocks cut..<L, the
+    /// The tail this node's language module lends (the commons') or borrows (a Thread's): blocks cut..<L, the
     /// embedding and the final norm, named by the seam.
-    public var tail: Trunk.Tail { trunk.tail }
+    public var tail: LanguageModule.Tail { languageModule.tail }
 
     private struct Session {
         var state: StateStack
@@ -34,14 +34,14 @@ public final class LocalNode: Node {
     private var sessions: [SessionID: Session] = [:]
     private var cancelled = false
 
-    public init(name: String, label: String? = nil, pack: Pack, trunk: Trunk, index: ProvenanceIndex?, scheme: KeyScheme, threadID: String?, lane: String? = nil,
+    public init(name: String, label: String? = nil, pack: Pack, languageModule: LanguageModule, index: ProvenanceIndex?, scheme: KeyScheme, threadID: String?, lane: String? = nil,
                 versionSHA256: String? = nil, tau: Float = 0.05, lambdaScale: Float = 1) {
         self.pack = pack
-        self.trunk = trunk
+        self.languageModule = languageModule
         self.index = index
         self.scheme = scheme
         descriptor = NodeDescriptor(name: name, label: label, kind: index == nil ? .commons : .thread, vocabularySHA256: pack.info.vocabularySHA256,
-                                    packSHA256: pack.sha256, seamSHA256: trunk.seamSHA256, hiddenSize: pack.config.hiddenSize, tokenizerSHA256: pack.info.tokenizerSHA256,
+                                    packSHA256: pack.sha256, seamSHA256: languageModule.seamSHA256, hiddenSize: pack.config.hiddenSize, tokenizerSHA256: pack.info.tokenizerSHA256,
                                     indexSHA256: index?.info.indexSHA256, checkpointsSHA256: index?.info.checkpointsSHA256, versionSHA256: versionSHA256,
                                     corpusHash: index?.info.corpusHash, threadID: threadID, lane: lane, lambdaScale: lambdaScale, tau: tau)
     }
@@ -61,7 +61,7 @@ public final class LocalNode: Node {
             var steps: [NodeStep] = []
             for (t, token) in tokens.enumerated() {
                 let previous = state
-                let out = trunk.step(token: MLXArray([token]), state: state, reset: nil, taps: scheme.taps)
+                let out = languageModule.step(token: MLXArray([token]), state: state, reset: nil, taps: scheme.taps)
                 state = out.state
                 let key = ProvenanceKey.make(mid: ProvenanceKey.mid(scheme: scheme, output: out, previousState: previous), final: out.final)
                 steps.append(NodeStep(position: t, state: out.final[0].asArray(Float.self), hits: hits(for: key, k: k)[0]))
@@ -70,7 +70,7 @@ public final class LocalNode: Node {
             sessions[session] = Session(state: state, tokens: tokens)
             return steps
         }
-        let out = trunk.forward(tokens: MLXArray(tokens, [1, tokens.count]), state: nil, resets: nil, taps: scheme.taps)
+        let out = languageModule.forward(tokens: MLXArray(tokens, [1, tokens.count]), state: nil, resets: nil, taps: scheme.taps)
         let final = out.final[0]                                                              // [L, D]
         let keys = ProvenanceKey.make(mid: ProvenanceKey.mid(scheme: scheme, output: out, previousState: nil)[0], final: final)
         eval(keys)
@@ -88,7 +88,7 @@ public final class LocalNode: Node {
     public func advance(session: SessionID, token: Int32, k: Int) throws -> NodeStep {
         guard var current = sessions[session] else { throw BraidFailure.usage("session \(session) is not open on \(descriptor.name)") }
         let previous = current.state
-        let out = trunk.step(token: MLXArray([token]), state: current.state, reset: nil, taps: scheme.taps)
+        let out = languageModule.step(token: MLXArray([token]), state: current.state, reset: nil, taps: scheme.taps)
         let key = ProvenanceKey.make(mid: ProvenanceKey.mid(scheme: scheme, output: out, previousState: previous), final: out.final)
         current.tokens.append(token)
         var stack = out.state
@@ -112,7 +112,7 @@ public final class LocalNode: Node {
     public func context(stem: [Int32], subject: Range<Int>?, k: Int, floor: Float, maxTokens: Int) throws -> NodeContext? {
         guard let index, !stem.isEmpty, let textOf, let decodeTokens else { return nil }
         let tokens: [Int32] = [tokenizerEOS] + stem
-        let out = trunk.forward(tokens: MLXArray(tokens, [1, tokens.count]), state: nil, resets: nil, taps: scheme.taps)
+        let out = languageModule.forward(tokens: MLXArray(tokens, [1, tokens.count]), state: nil, resets: nil, taps: scheme.taps)
         let keys = ProvenanceKey.make(mid: ProvenanceKey.mid(scheme: scheme, output: out, previousState: nil)[0], final: out.final[0])
         eval(keys)
         let hitsByStemPosition = index.query(keys[1...], k: k)                                     // [stem.count][k]

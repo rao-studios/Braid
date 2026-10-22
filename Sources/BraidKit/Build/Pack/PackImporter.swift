@@ -79,7 +79,7 @@ public enum PackImporter {
         }
         var blocks: [String: MLXArray] = [:]
         for (key, value) in weights {
-            guard Trunk.blockIndex(ofKey: key) != nil else { throw BraidFailure.data("unexpected array \(key) in the checkpoint") }
+            guard LanguageModule.blockIndex(ofKey: key) != nil else { throw BraidFailure.data("unexpected array \(key) in the checkpoint") }
             blocks[key] = value.asType(.float32)
         }
         eval(embedding, norm)
@@ -95,10 +95,10 @@ public enum PackImporter {
         }
         progress("hashing")
         let blockList = blocks.map { ($0.key, $0.value) }
-        let trunkList = blockList.filter { Trunk.blockIndex(ofKey: $0.0).map { $0 >= config.cut } ?? false }
+        let tailList = blockList.filter { LanguageModule.blockIndex(ofKey: $0.0).map { $0 >= config.cut } ?? false }
         let info = PackInfo(name: name, source: source, config: config,
                             sha256: PackHash.name(embedding: embedding, norm: norm, blocks: blockList, tokenizerSHA256: tokenizer.sha256),
-                            seamSHA256: PackHash.seam(embedding: embedding, norm: norm, trunk: trunkList),
+                            seamSHA256: PackHash.seam(embedding: embedding, norm: norm, tail: tailList),
                             vocabularySHA256: PackHash.vocabulary(embedding: embedding, norm: norm), baseSHA256: "", vocabularyFileSHA256: "",
                             tokenizerSHA256: tokenizer.sha256, tokenizerFiles: tokenizerFiles.map(\.lastPathComponent), tokenizerVocabSize: tokenizer.vocabSize,
                             paddingRows: tokenizer.vocabSize < config.vocabSize ? [tokenizer.vocabSize, config.vocabSize] : [], eosTokenID: Int(tokenizer.eos),
@@ -109,7 +109,7 @@ public enum PackImporter {
         return Imported(directory: directory, pack: try Pack.load(from: directory))
     }
 
-    /// Records a greedy sample and the held-out NLL in pack.json after the trunk has run once.
+    /// Records a greedy sample and the held-out NLL in pack.json after the commons has run once.
     public static func record(referenceNLL: Float?, sample: String?, in directory: URL) throws {
         var info = try JSONCoding.read(PackInfo.self, from: directory.appendingPathComponent(Pack.infoFile))
         info.referenceNLL = referenceNLL

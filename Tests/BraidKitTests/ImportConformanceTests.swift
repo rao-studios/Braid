@@ -5,10 +5,10 @@
 //  Created by Ritesh Pakala.
 //  Copyright © 2026 Rao Studios LLC.
 //
-//  WHAT: The import oracle: Braid's trunk against Frigate's Mamba2 implementation on the same
-//        checkpoint folder. Logits within 1e-3 on fixed prompts; the token-by-token path within
-//        1e-3 of the forward. The only place MLXLLM is linked. Runs when a pack has been imported
-//        into the work area (BRAID_MLX_TESTS=1 and the T9 mounted).
+//  WHAT: The import oracle: Braid's language module against Frigate's Mamba2 implementation on the
+//        same checkpoint folder. Logits within 1e-3 on fixed prompts; the token-by-token path
+//        within 1e-3 of the forward. The only place MLXLLM is linked. Runs when a pack has been
+//        imported into the work area (BRAID_MLX_TESTS=1 and the T9 mounted).
 //
 
 import Foundation
@@ -50,19 +50,19 @@ extension BraidMLXSuites {
             return (model, folder)
         }
 
-        @Test("the pack loads with its hashes re-derived, and the trunk's logits match Frigate's within 1e-3")
+        @Test("the pack loads with its hashes re-derived, and the language module's logits match Frigate's within 1e-3")
         func logitsMatch() throws {
             let pack = try Pack.load(from: importedPacks[0])
             let tokenizer = try BraidTokenizer(folder: pack.tokenizerFolder)
             #expect(tokenizer.eos == 0 && tokenizer.vocabSize == pack.info.tokenizerVocabSize)
-            let trunk = try Trunk(pack: pack)
+            let languageModule = try LanguageModule(pack: pack)
             let reed = pack.reed(tokens: tokenizer.vocabSize)
             guard let (model, _) = try reference(for: pack) else { return }
             var worst: Float = 0
             for prompt in ["The history of the city begins", "In 1848, the committee resolved that", "Once upon a time there was a"] {
                 let ids: [Int32] = [tokenizer.eos] + tokenizer.encode(prompt)
                 let input = MLXArray(ids, [1, ids.count])
-                let ours = reed.logits(array: trunk.forward(tokens: input, state: nil, resets: nil).final[0])
+                let ours = reed.logits(array: languageModule.forward(tokens: input, state: nil, resets: nil).final[0])
                 let theirs = model(input, cache: nil)[0]
                 let n = tokenizer.vocabSize
                 worst = max(worst, maxAbs(ours[0..., 0 ..< n], theirs[0..., 0 ..< n]))
@@ -75,14 +75,14 @@ extension BraidMLXSuites {
         func stepMatchesForward() throws {
             let pack = try Pack.load(from: importedPacks[0])
             let tokenizer = try BraidTokenizer(folder: pack.tokenizerFolder)
-            let trunk = try Trunk(pack: pack)
+            let languageModule = try LanguageModule(pack: pack)
             let ids: [Int32] = [tokenizer.eos] + tokenizer.encode("It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness")
             let prefix = Array(ids.prefix(33))
-            let whole = trunk.forward(tokens: MLXArray(prefix, [1, prefix.count]), state: nil, resets: nil)
+            let whole = languageModule.forward(tokens: MLXArray(prefix, [1, prefix.count]), state: nil, resets: nil)
             var state = StateStack.zeros(config: pack.config, batch: 1)
             var worst: Float = 0
             for (t, token) in prefix.enumerated() {
-                let out = trunk.step(token: MLXArray([token]), state: state, reset: nil)
+                let out = languageModule.step(token: MLXArray([token]), state: state, reset: nil)
                 worst = max(worst, maxAbs(out.final[0], whole.final[0, t]))
                 state = out.state
             }

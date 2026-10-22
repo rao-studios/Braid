@@ -25,11 +25,11 @@ struct ImportCommand: ParsableCommand {
     var revision: String?
     @Option(help: "The pack's name (default: the repo's last path component).")
     var name: String?
-    @Option(help: "The first block of the commons' trunk, the blocks every Thread runs behind its own (default: half the blocks).")
+    @Option(help: "The first block of the commons' tail, the blocks every Thread runs behind its own head (default: half the blocks).")
     var cut: Int?
     @Option(name: .customLong("tap"), help: "The residual tap the default key reads, after this many blocks (default: the cut).")
     var tapAfterBlocks: Int?
-    @Flag(help: "Run the trunk once after the import: a greedy sample and the held-out NLL, recorded in pack.json.")
+    @Flag(help: "Run the commons once after the import: a greedy sample and the held-out NLL, recorded in pack.json.")
     var check = false
 
     func run() throws {
@@ -58,11 +58,11 @@ enum Importer {
         let packName = name ?? source.split(separator: "/").last.map(String.init) ?? source
         let imported = try PackImporter.importPack(folder: folder, name: packName, source: origin, cut: cut, tapAfterBlocks: tapAfterBlocks, into: area.packs) { note("import: \($0)") }
         if check {
-            note("import: running the trunk once")
+            note("import: running the commons once")
             let tokenizer = try BraidTokenizer(folder: imported.pack.tokenizerFolder)
-            let trunk = try Trunk(pack: imported.pack)
+            let languageModule = try LanguageModule(pack: imported.pack)
             let reed = imported.pack.reed(tokens: tokenizer.vocabSize)
-            let (sample, nll) = try Sampler.sampleAndNLL(trunk: trunk, reed: reed, tokenizer: tokenizer)
+            let (sample, nll) = try Sampler.sampleAndNLL(languageModule: languageModule, reed: reed, tokenizer: tokenizer)
             try PackImporter.record(referenceNLL: nll, sample: sample, in: imported.directory)
             print("  sample: \(sample.replacingOccurrences(of: "\n", with: "⏎"))")
             print(String(format: "  held-out NLL: %.3f nats/token", nll))
@@ -79,7 +79,7 @@ struct InitCommand: ParsableCommand {
     var base: String?
     @Flag(help: "Overwrite an existing braid.toml.")
     var force = false
-    @Flag(help: "Time the trunk on this machine (forward tokens/s, one training step, peak memory) at B×L 4×512, 8×512, 4×1024, 8×1024 and chunks 256 and 128; with an existing braid.toml, only measure.")
+    @Flag(help: "Time the language module on this machine (forward tokens/s, one training step, peak memory) at B×L 4×512, 8×512, 4×1024, 8×1024 and chunks 256 and 128; with an existing braid.toml, only measure.")
     var measure = false
 
     func run() throws {
@@ -119,7 +119,7 @@ struct InitCommand: ParsableCommand {
 
     static func measure(pack: Pack, area: WorkArea) throws {
         note("measure: pack \(pack.info.name) \(pack.sha256.prefix(12)); one MLX workload, nothing else should run")
-        let report = try TrunkMeasure.run(pack: pack, vocabTokens: pack.info.tokenizerVocabSize) { note("measure: \($0)") }
+        let report = try LanguageModuleMeasure.run(pack: pack, vocabTokens: pack.info.tokenizerVocabSize) { note("measure: \($0)") }
         let url = area.bench.appendingPathComponent("measure", isDirectory: true).appendingPathComponent("\(SessionLog.stamp()).json")
         try JSONCoding.write(report, to: url)
         print("   B      L  chunk   forward tok/s   step s   peak GB")
@@ -169,7 +169,7 @@ struct PackCommand: ParsableCommand {
     }
 
     struct PackShow: ParsableCommand {
-        static let configuration = CommandConfiguration(commandName: "show", abstract: "One pack's record, hashes re-derived, and the split: a Thread node and the commons' trunk.")
+        static let configuration = CommandConfiguration(commandName: "show", abstract: "One pack's record, hashes re-derived, and the split: a Thread node and the commons' tail.")
         @OptionGroup var workArea: WorkAreaOptions
         @Argument var reference: String
         func run() throws {
@@ -179,7 +179,7 @@ struct PackCommand: ParsableCommand {
                 let data = try JSONCoding.prettyEncoder().encode(pack.info)
                 print(String(decoding: data, as: UTF8.self))
                 print("hashes re-derived on load: ok")
-                for (label, value) in StorageMath(config: pack.config).table() where label.hasPrefix("a Thread node") || label.hasPrefix("the commons' trunk") {
+                for (label, value) in StorageMath(config: pack.config).table() where label.hasPrefix("a Thread node") || label.hasPrefix("the commons' tail") {
                     print("  \(label.padding(toLength: 30, withPad: " ", startingAt: 0)) \(value)")
                 }
             }

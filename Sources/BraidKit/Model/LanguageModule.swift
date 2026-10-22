@@ -1,21 +1,21 @@
 //
-//  Trunk.swift
+//  LanguageModule.swift
 //  BraidKit
 //
 //  Created by Ritesh Pakala.
 //  Copyright © 2026 Rao Studios LLC.
 //
-//  WHAT: The runner, laid out as the checkpoint names it: `backbone.embeddings`, `backbone.layers.N`,
-//        `backbone.norm_f`. The commons runs the pack whole, every block frozen; its blocks cut..<L,
-//        its embedding and its final norm are the trunk every Thread runs behind its own head, as
-//        the same module instances, never copied. A Thread's trunk is its head, blocks 0..<cut, in
-//        front of the commons' tail. The node runs it end to end and emits the normed last state;
-//        the reed is the embedding, applied by the cluster.
+//  WHAT: The language module, laid out as the checkpoint names it: `backbone.embeddings`,
+//        `backbone.layers.N`, `backbone.norm_f`. The commons runs the pack whole, every block frozen;
+//        its blocks cut..<L, its embedding and its final norm are its tail, which every Thread runs
+//        behind its own head as the same module instances, never copied. A Thread's language module
+//        is its head, blocks 0..<cut, in front of the commons' tail. The node runs it end to end and
+//        emits the normed last state; the reed is the embedding, applied by the cluster.
 //  PIN:  One final RMSNorm, applied here. The reed never re-norms. Taps capture the residual stream
 //        after a given number of blocks (the key's first half); no attention, no cache. A Thread's
-//        tail is the commons' own modules: never call a recursive unfreeze() or train(_:) on a Trunk,
-//        and never update a Trunk's parameters past its head. A head holds blocks 0..<cut and nothing
-//        else; a file that carries a block of the trunk is refused.
+//        tail is the commons' own modules: never call a recursive unfreeze() or train(_:) on a
+//        LanguageModule, and never update its parameters past its head. A head holds blocks 0..<cut
+//        and nothing else; a file that carries a block of the tail is refused.
 //
 
 import BraidCore
@@ -29,7 +29,7 @@ public struct TapRequest: Sendable, Equatable {
     public static let none = TapRequest()
 }
 
-public struct TrunkOutput {
+public struct LanguageModuleOutput {
     /// [B,L,D] (or [B,D] for a step): the normed last-layer state. The node's public output.
     public var final: MLXArray
     /// The residual stream after n blocks, for each n requested.
@@ -52,7 +52,7 @@ final class Backbone: Module {
 
     /// A head in front of a tail: the tail's modules themselves, not copies. The head is the dense
     /// prefix of `layers`, which the optimizer's gradient tree relies on.
-    init(head: [Mamba2Block], tail: Trunk.Tail) {
+    init(head: [Mamba2Block], tail: LanguageModule.Tail) {
         _embeddings.wrappedValue = tail.embeddings
         _layers.wrappedValue = head + tail.blocks
         _normF.wrappedValue = tail.normF
@@ -60,7 +60,7 @@ final class Backbone: Module {
     }
 }
 
-public final class Trunk: Module {
+public final class LanguageModule: Module {
     public var config: Mamba2Config
     /// SEAM: SHA-256 over the tail's arrays, the name a Thread's version must carry (RaoLM v2's definition).
     public private(set) var seamSHA256: String
@@ -86,7 +86,7 @@ public final class Trunk: Module {
         super.init()
     }
 
-    /// The whole model with fresh weights (the tests' tiny trunks). Its seam is the hash of what it holds.
+    /// The whole model with fresh weights (the tests' tiny ones). Its seam is the hash of what it holds.
     public convenience init(_ config: Mamba2Config) {
         let backbone = Backbone(config)
         self.init(config: config, backbone: backbone, seamSHA256: Self.seam(of: backbone, cut: config.cut))
@@ -117,22 +117,22 @@ public final class Trunk: Module {
     public var embedding: MLXArray { backbone.embeddings.weight }
     public var finalNorm: MLXArray { backbone.normF.weight }
     public var blocks: [Mamba2Block] { backbone.layers }
-    /// This trunk's own blocks 0..<cut.
+    /// Its own blocks 0..<cut.
     public var head: [Mamba2Block] { Array(backbone.layers[..<config.cut]) }
-    /// This trunk's blocks cut..<L, its embedding and its final norm, as a Thread borrows them. By rule
-    /// the tail every Thread runs is the commons'.
+    /// Its blocks cut..<L, its embedding and its final norm, as a Thread borrows them. By rule the
+    /// tail every Thread runs is the commons'.
     public var tail: Tail {
         Tail(embeddings: backbone.embeddings, blocks: Array(backbone.layers[config.cut...]), normF: backbone.normF, config: config, seamSHA256: seamSHA256)
     }
 
     /// A head from its arrays: blocks 0..<cut, each key as the checkpoint names it. A key of any other
-    /// block is refused, so a head file can never carry a piece of the trunk; a missing block is refused
+    /// block is refused, so a head file can never carry a piece of the tail; a missing block is refused
     /// too. The blocks come back trainable; the arrays are assigned, never copied.
     public static func makeHead(arrays: [String: MLXArray], config: Mamba2Config) throws -> [Mamba2Block] {
         var perBlock: [Int: [String: MLXArray]] = [:]
         for (key, value) in arrays {
             guard let index = blockIndex(ofKey: key) else { throw BraidFailure.data("blocks.safetensors holds \(key), which is no block's array; a head holds blocks 0..<\(config.cut)") }
-            guard index < config.cut else { throw BraidFailure.data("blocks.safetensors holds \(key), a block of the trunk; a head holds blocks 0..<\(config.cut)") }
+            guard index < config.cut else { throw BraidFailure.data("blocks.safetensors holds \(key), a block of the tail; a head holds blocks 0..<\(config.cut)") }
             perBlock[index, default: [:]][key.split(separator: ".").dropFirst(3).joined(separator: ".")] = value
         }
         let missing = (0..<config.cut).filter { perBlock[$0] == nil }
@@ -154,7 +154,7 @@ public final class Trunk: Module {
 
     /// A sequence. tokens [B,L] int32. `training` leaves the graph lazy for a gradient; otherwise
     /// every layer is evaluated as it goes, so the graph never grows with the document.
-    public func forward(tokens: MLXArray, state: StateStack?, resets: MLXArray?, taps: TapRequest = .none, training: Bool = false) -> TrunkOutput {
+    public func forward(tokens: MLXArray, state: StateStack?, resets: MLXArray?, taps: TapRequest = .none, training: Bool = false) -> LanguageModuleOutput {
         var h = backbone.embeddings(tokens)
         var layers: [LayerState] = []
         var residual: [Int: MLXArray] = [:]
@@ -169,11 +169,11 @@ public final class Trunk: Module {
         let final = backbone.normF(h)
         if !training { eval(final) }
         let position = (state?.position ?? -1) + tokens.dim(1)
-        return TrunkOutput(final: final, residual: residual, state: StateStack(layers: layers, position: position, prefixSHA256: nil))
+        return LanguageModuleOutput(final: final, residual: residual, state: StateStack(layers: layers, position: position, prefixSHA256: nil))
     }
 
     /// One token. token [B] int32.
-    public func step(token: MLXArray, state: StateStack, reset: MLXArray?, taps: TapRequest = .none) -> TrunkOutput {
+    public func step(token: MLXArray, state: StateStack, reset: MLXArray?, taps: TapRequest = .none) -> LanguageModuleOutput {
         var h = backbone.embeddings(token)
         var layers: [LayerState] = []
         var residual: [Int: MLXArray] = [:]
@@ -187,7 +187,7 @@ public final class Trunk: Module {
         let final = backbone.normF(h)
         eval(final)
         eval(layers.flatMap { [$0.conv, $0.ssm] })
-        return TrunkOutput(final: final, residual: residual, state: StateStack(layers: layers, position: state.position + 1, prefixSHA256: nil))
+        return LanguageModuleOutput(final: final, residual: residual, state: StateStack(layers: layers, position: state.position + 1, prefixSHA256: nil))
     }
 
     /// "backbone.layers.N.…" → N.
@@ -208,6 +208,6 @@ public final class Trunk: Module {
         for (i, block) in backbone.layers.enumerated() where i >= cut {
             for (key, array) in block.parameters().flattened() { arrays.append(("backbone.layers.\(i).\(key)", array)) }
         }
-        return PackHash.seam(embedding: backbone.embeddings.weight, norm: backbone.normF.weight, trunk: arrays)
+        return PackHash.seam(embedding: backbone.embeddings.weight, norm: backbone.normF.weight, tail: arrays)
     }
 }

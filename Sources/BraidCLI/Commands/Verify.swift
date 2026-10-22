@@ -26,7 +26,7 @@ struct VerifyCommand: ParsableCommand {
     @OptionGroup var workArea: WorkAreaOptions
     @Argument(help: "The session log (sessions/<stamp>-<id>.jsonl).")
     var session: String
-    @Flag(help: "Recompute every cited hit's key from the nearest state checkpoint (loads the trunk).")
+    @Flag(help: "Recompute every cited hit's key from the nearest state checkpoint (loads the language modules).")
     var keys = false
     @Flag(name: .customLong("all-hits"), help: "With --keys: recompute every logged hit's key, not only the cited ones.")
     var allHits = false
@@ -96,7 +96,7 @@ struct VerifyCommand: ParsableCommand {
         var loaded: [String: LoadedThread] = [:]
         let names = Set(logged.header.threads.filter { !$0.commons }.map(\.name) + logged.membership.filter { $0.kind == "attach" }.map(\.thread.name))
         let scheme = KeyScheme(parsing: packRecord.keyScheme) ?? .residual(afterBlocks: pack.config.tapAfterBlocks)
-        var commons: LocalNode? = nil                                                       // the trunk the Threads run behind, built once a Thread needs it
+        var commons: LocalNode? = nil                                                       // whose tail the Threads run, built once a Thread needs it
         for name in names {
             guard FileManager.default.fileExists(atPath: area.thread(name).record.path) else { note("verify: thread \(name) is not in the work area; its spans and traces are skipped"); continue }
             if commons == nil { commons = try ThreadStore.commons(pack: pack, scheme: scheme) }
@@ -126,7 +126,7 @@ struct VerifyCommand: ParsableCommand {
                         for (rank, hit) in record.hits.enumerated() where allHits || (hit.value == step.token && rank < 3) {
                             let entry = Int(hit.entry)
                             let target = TokenPosition(row: Int(index.keyRow[entry]), offset: Int(index.keyOffset[entry]))
-                            let (replayed, _) = try Replay.key(at: target, index: index, corpus: corpus, trunk: thread.node.trunk, pack: pack)
+                            let (replayed, _) = try Replay.key(at: target, index: index, corpus: corpus, languageModule: thread.node.languageModule, pack: pack)
                             let cosine = (replayed * index.key(entry: entry)).sum()
                             eval(cosine)
                             worst = max(worst, 1 - cosine.item(Float.self))

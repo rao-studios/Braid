@@ -7,10 +7,10 @@
 //
 //  WHAT: Builds a provenance index: every document whole from a zero state (eos ‖ partitions joined
 //        by the break ‖ eos), in state-carrying segments whose boundaries are the checkpoint
-//        positions (DocumentSegments). Each segment is run through the trunk at most 1,024 tokens at
-//        a time, scored by the reed against the next token, keyed, and recorded (DocumentEntries);
-//        the state after it is saved as a checkpoint. The replay recomputes any key from the
-//        nearest checkpoint.
+//        positions (DocumentSegments). Each segment is run through the language module at most
+//        1,024 tokens at a time, scored by the reed against the next token, keyed, and recorded
+//        (DocumentEntries); the state after it is saved as a checkpoint. The replay recomputes any
+//        key from the nearest checkpoint.
 //
 
 import BraidCore
@@ -21,7 +21,7 @@ public struct IndexBuildOptions: Sendable {
     public var scheme: KeyScheme
     public var alpha: Float = ProvenanceKey.alpha
     public var checkpoints = CheckpointPolicy()
-    /// The most tokens the trunk runs at once. A longer segment runs in pieces with the state carried
+    /// The most tokens the language module runs at once. A longer segment runs in pieces with the state carried
     /// and no checkpoint between them, so a segment's memory stays near 1 GB however long it is.
     public var pieceTokens = 1024
     /// Documents whose entries are left out of the index (the stitched bench's withheld set).
@@ -37,37 +37,37 @@ public struct IndexBuildResult {
 }
 
 public enum IndexBuilder {
-    /// Writes the index into `directory`. `blocksSHA256` names the thread weights the trunk holds.
-    public static func build(trunk: Trunk, reed: MLXReed, corpus: TokenizedCorpus, pack: Pack, blocksSHA256: String, threadID: String?, options: IndexBuildOptions,
+    /// Writes the index into `directory`. `blocksSHA256` names the thread weights the language module holds.
+    public static func build(languageModule: LanguageModule, reed: MLXReed, corpus: TokenizedCorpus, pack: Pack, blocksSHA256: String, threadID: String?, options: IndexBuildOptions,
                              into directory: URL, progress: (Int, Int) -> Void = { _, _ in }) throws -> IndexBuildResult {
-        let config = trunk.config
+        let config = languageModule.config
         let checkpointDirectory = directory.appendingPathComponent(IndexFiles.checkpointDirectory, isDirectory: true)
         var documents: [DocumentEntries] = []
         for (d, document) in corpus.documents.enumerated() {
             progress(d, corpus.documents.count)
             guard document.tokens.count >= 3 else { continue }
             let segments = DocumentSegments(document, corpus: corpus, policy: options.checkpoints)
-            documents.append(try indexDocument(document, in: segments, trunk: trunk, reed: reed, corpus: corpus, pack: pack, options: options, checkpointDirectory: checkpointDirectory))
+            documents.append(try indexDocument(document, in: segments, languageModule: languageModule, reed: reed, corpus: corpus, pack: pack, options: options, checkpointDirectory: checkpointDirectory))
             Memory.clearCache()
         }
         let arrays = IndexFiles.Arrays(joining: documents, keyDims: options.scheme.keyDims(config: config))
-        var info = indexInfo(for: documents, entries: arrays.values.count, trunk: trunk, pack: pack, corpus: corpus, options: options, blocksSHA256: blocksSHA256, threadID: threadID)
+        var info = indexInfo(for: documents, entries: arrays.values.count, languageModule: languageModule, pack: pack, corpus: corpus, options: options, blocksSHA256: blocksSHA256, threadID: threadID)
         let checkpoints = documents.flatMap(\.checkpoints)
         let manifest = CheckpointManifest(policy: options.checkpoints, checkpoints: checkpoints, totalBytes: checkpoints.count * StateStack.byteCount(config: config))
         try IndexFiles.write(arrays: arrays, info: &info, partitions: corpus.partitionRefs, sharedNgrams: corpus.sharedNgrams, manifest: manifest, to: directory)
         return IndexBuildResult(directory: directory, info: info, memorised: info.evalMemorisedFraction, meanLoss: info.evalLoss)
     }
 
-    /// One document keyed from a zero state, segment by segment: each segment run through the trunk
+    /// One document keyed from a zero state, segment by segment: each segment run through the language module
     /// a piece at a time, each piece scored, keyed and recorded, and the state after the segment
     /// saved unless it is the document's last.
-    static func indexDocument(_ document: TokenizedDocument, in segments: DocumentSegments, trunk: Trunk, reed: MLXReed, corpus: TokenizedCorpus, pack: Pack,
+    static func indexDocument(_ document: TokenizedDocument, in segments: DocumentSegments, languageModule: LanguageModule, reed: MLXReed, corpus: TokenizedCorpus, pack: Pack,
                               options: IndexBuildOptions, checkpointDirectory: URL) throws -> DocumentEntries {
         var entries = DocumentEntries()
         var state: StateStack? = nil
         for segment in segments.ranges {
             for piece in pieces(of: segment, tokens: options.pieceTokens) {
-                let out = SegmentKeys.run(trunk: trunk, segment: Array(document.tokens[piece]), state: state, scheme: options.scheme)
+                let out = SegmentKeys.run(languageModule: languageModule, segment: Array(document.tokens[piece]), state: state, scheme: options.scheme)
                 let (loss, entropy) = score(out.final, at: piece, of: document, reed: reed, eos: corpus.eos)
                 let keys = ProvenanceKey.make(mid: out.mid, final: out.final, alpha: options.alpha)
                 eval(keys, loss, entropy)
@@ -113,13 +113,13 @@ public enum IndexBuilder {
 
     /// index.json's record: what the index is bound to (the thread blocks, the pack, its seam,
     /// vocabulary and tokenizer, the corpus), its eval, and the documents it withholds.
-    private static func indexInfo(for documents: [DocumentEntries], entries: Int, trunk: Trunk, pack: Pack, corpus: TokenizedCorpus, options: IndexBuildOptions,
+    private static func indexInfo(for documents: [DocumentEntries], entries: Int, languageModule: LanguageModule, pack: Pack, corpus: TokenizedCorpus, options: IndexBuildOptions,
                                   blocksSHA256: String, threadID: String?) -> IndexInfo {
-        let config = trunk.config
+        let config = languageModule.config
         let eval = DocumentEntries.Eval(documents)
         var info = IndexInfo(keyScheme: options.scheme, alpha: options.alpha, keyDims: options.scheme.keyDims(config: config), count: entries,
                              documents: corpus.documents.count, partitions: corpus.partitions.count, blocksSHA256: blocksSHA256, packSHA256: pack.sha256,
-                             seamSHA256: trunk.seamSHA256, vocabularySHA256: pack.info.vocabularySHA256, corpusHash: "", tokenizerSHA256: pack.info.tokenizerSHA256,
+                             seamSHA256: languageModule.seamSHA256, vocabularySHA256: pack.info.vocabularySHA256, corpusHash: "", tokenizerSHA256: pack.info.tokenizerSHA256,
                              threadID: threadID, evalLoss: eval.loss, evalEntropy: eval.entropy, evalMemorisedFraction: eval.memorised, cut: config.cut,
                              paragraphBreak: corpus.paragraphBreak, eos: corpus.eos, checkpointsSHA256: "", indexSHA256: "",
                              createdAt: Date(timeIntervalSince1970: Date().timeIntervalSince1970.rounded(.down)))

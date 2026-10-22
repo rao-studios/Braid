@@ -6,8 +6,8 @@
 //  Copyright © 2026 Rao Studios LLC.
 //
 //  WHAT: The checks every node passes before it joins a braid: the reed's vocabulary, its hidden
-//        size, the braid's pack (the commons is exempt), the tokenizer, and the seam of the trunk it
-//        runs (the commons included: its tail is the trunk every Thread runs).
+//        size, the braid's pack (the commons is exempt), the tokenizer, and the seam of the tail it
+//        runs (the commons included: its tail is the one every Thread runs).
 //
 
 import Foundation
@@ -27,7 +27,7 @@ public enum Conformance {
             case .pack(let node, let expected, let found): return "\(node): pack \(found?.prefix(12) ?? "none") is not the braid's \(expected.prefix(12))"
             case .hiddenSize(let node, let expected, let found): return "\(node): hidden size \(found) is not the reed's \(expected)"
             case .tokenizer(let node, let expected, let found): return "\(node): tokenizer \(found.prefix(12)) is not the braid's \(expected.prefix(12))"
-            case .seam(let node, let expected, let found): return "\(node): seam \(found.prefix(12)) is not the braid's trunk \(expected.prefix(12))"
+            case .seam(let node, let expected, let found): return "\(node): seam \(found.prefix(12)) is not the braid's tail \(expected.prefix(12))"
             }
         }
     }

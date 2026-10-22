@@ -5,11 +5,12 @@
 //  Created by Ritesh Pakala.
 //  Copyright © 2026 Rao Studios LLC.
 //
-//  WHAT: The two-point provenance key on a recurrent trunk: K = [√α·mid/‖mid‖, √(1−α)·final/‖final‖],
-//        final the normed last-layer state (the node's public output), mid one of the sweep's
-//        attributes — the residual stream after n blocks (the default, the closest analog of
-//        RaoLM's tap), the per-channel energy of a layer's recurrent state, or that state's
-//        per-channel change. The scheme a version was keyed with is recorded in index.json.
+//  WHAT: The two-point provenance key on a recurrent language module: K = [√α·mid/‖mid‖,
+//        √(1−α)·final/‖final‖], final the normed last-layer state (the node's public output), mid
+//        one of the sweep's attributes — the residual stream after n blocks (the default, the
+//        closest analog of RaoLM's tap), the per-channel energy of a layer's recurrent state, or
+//        that state's per-channel change. The scheme a version was keyed with is recorded in
+//        index.json.
 //
 
 import BraidCore
@@ -31,11 +32,11 @@ public enum ProvenanceKey {
         concatenated([normalized(mid.asType(.float32)) * sqrt(alpha), normalized(final.asType(.float32)) * sqrt(1 - alpha)], axis: -1)
     }
 
-    /// The mid half for a scheme from a trunk output over a sequence ([…,L,·]).
-    public static func mid(scheme: KeyScheme, output: TrunkOutput, previousState: StateStack?) -> MLXArray {
+    /// The mid half for a scheme from a language module's output over a sequence ([…,L,·]).
+    public static func mid(scheme: KeyScheme, output: LanguageModuleOutput, previousState: StateStack?) -> MLXArray {
         switch scheme {
         case .residual(let n):
-            guard let residual = output.residual[n] else { fatalError("the trunk did not tap block \(n)") }
+            guard let residual = output.residual[n] else { fatalError("the language module did not tap block \(n)") }
             return residual
         case .pooledState(let layer):
             // Only the final state is available per call; a sequence of pooled states needs the

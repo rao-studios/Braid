@@ -33,7 +33,7 @@ extension BraidMLXSuites {
             var options = IndexBuildOptions(scheme: loaded.version.keyScheme)
             options.checkpoints.everyPartition = true
             let directory = FileManager.default.temporaryDirectory.appendingPathComponent("braid-ckpt-\(UUID().uuidString.prefix(8))", isDirectory: true)
-            _ = try IndexBuilder.build(trunk: loaded.node.trunk, reed: pack.reed(tokens: tokenizer.vocabSize), corpus: corpus, pack: pack, blocksSHA256: loaded.version.blocksSHA256,
+            _ = try IndexBuilder.build(languageModule: loaded.node.languageModule, reed: pack.reed(tokens: tokenizer.vocabSize), corpus: corpus, pack: pack, blocksSHA256: loaded.version.blocksSHA256,
                                        threadID: loaded.info.threadID, options: options, into: directory)
             return (pack, loaded, corpus, try ProvenanceIndex(directory: directory), directory)
         }
@@ -60,7 +60,7 @@ extension BraidMLXSuites {
             var farthest = 0
             for entry in sample.sorted() {
                 let target = TokenPosition(row: Int(index.keyRow[entry]), offset: Int(index.keyOffset[entry]))
-                let (replayed, distance) = try Replay.key(at: target, index: index, corpus: corpus, trunk: loaded.node.trunk, pack: pack)
+                let (replayed, distance) = try Replay.key(at: target, index: index, corpus: corpus, languageModule: loaded.node.languageModule, pack: pack)
                 let cosine = (replayed * index.key(entry: entry)).sum()
                 eval(cosine)
                 worst = max(worst, 1 - cosine.item(Float.self))
@@ -76,13 +76,13 @@ extension BraidMLXSuites {
             // output, within 1e-4, as continuing from a fresh forward over the same prefix from zero. The
             // raw states are reported relative to their size (segmented and one-shot scans accumulate
             // in a different order).
-            let trunk = loaded.node.trunk
+            let languageModule = loaded.node.languageModule
             for reference in checkpoints.prefix(6) {
                 guard let document = corpus.documents.first(where: { $0.documentID == reference.documentID }),
                       reference.position + 1 < document.tokens.count else { continue }
                 let prefix = Array(document.tokens[0 ... reference.position])
-                let fresh = trunk.forward(tokens: MLXArray(prefix, [1, prefix.count]), state: nil, resets: nil).state
-                let stored = try StateStack.load(from: directory.appendingPathComponent(IndexFiles.checkpointDirectory).appendingPathComponent(reference.file), expecting: trunk.config)
+                let fresh = languageModule.forward(tokens: MLXArray(prefix, [1, prefix.count]), state: nil, resets: nil).state
+                let stored = try StateStack.load(from: directory.appendingPathComponent(IndexFiles.checkpointDirectory).appendingPathComponent(reference.file), expecting: languageModule.config)
                 #expect(stored.prefixSHA256 == NodeCheckpoint.prefixHash(prefix))
                 var absolute: Float = 0
                 var scale: Float = 0
@@ -94,8 +94,8 @@ extension BraidMLXSuites {
                     scale = Swift.max(scale, m.item(Float.self))
                 }
                 let next = MLXArray([document.tokens[reference.position + 1]])
-                let fromFresh = trunk.step(token: next, state: fresh, reset: nil).final
-                let fromCheckpoint = trunk.step(token: next, state: stored, reset: nil).final
+                let fromFresh = languageModule.step(token: next, state: fresh, reset: nil).final
+                let fromCheckpoint = languageModule.step(token: next, state: stored, reset: nil).final
                 let finalDifference = abs(fromFresh - fromCheckpoint).max()
                 eval(finalDifference)
                 let final = finalDifference.item(Float.self)
@@ -120,7 +120,7 @@ extension BraidMLXSuites {
             bytes[bytes.count - 1] ^= 0x01
             try bytes.write(to: fileURL)
             let after = document.addresses[victim.position + 1]
-            #expect(throws: (any Error).self) { _ = try Replay.key(at: after, index: index, corpus: corpus, trunk: loaded.node.trunk, pack: pack) }
+            #expect(throws: (any Error).self) { _ = try Replay.key(at: after, index: index, corpus: corpus, languageModule: loaded.node.languageModule, pack: pack) }
         }
     }
 }

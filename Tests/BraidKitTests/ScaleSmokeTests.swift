@@ -6,12 +6,13 @@
 //  Copyright © 2026 Rao Studios LLC.
 //
 //  WHAT: Step 10's scale-out smoke on the work area's Threads: six Threads and the commons in one
-//        cluster, nodes advancing serially; one Thread detaches mid-answer and attaches again; every
-//        step's shares sum to 1, the log replays clean (arithmetic, memory recursion, shadow, traces,
-//        spans against the snapshots); and a braid of four nodes stays under 4 GB of peak memory, with
-//        the active memory once the nodes are loaded printed beside it. One partition of 16,384
-//        tokens or more indexes under 1.5 GB above the loaded Thread (a 16,384-token segment took
-//        9.25 GB before the trunk ran a segment 1,024 tokens at a time, 2026-10-19).
+//        cluster, nodes advancing serially; one Thread detaches mid-answer and attaches again;
+//        every step's shares sum to 1, the log replays clean (arithmetic, memory recursion, shadow,
+//        traces, spans against the snapshots); and a braid of four nodes stays under 4 GB of peak
+//        memory, with the active memory once the nodes are loaded printed beside it. One partition
+//        of 16,384 tokens or more indexes under 1.5 GB above the loaded Thread (a 16,384-token
+//        segment took 9.25 GB before the language module ran a segment 1,024 tokens at a time,
+//        2026-10-19).
 //
 
 import Foundation
@@ -125,7 +126,7 @@ extension BraidMLXSuites {
             Memory.clearCache()
             Memory.peakMemory = 0
             let before = Memory.activeMemory
-            let built = try IndexBuilder.build(trunk: loaded.node.trunk, reed: pack.reed(tokens: tokenizer.vocabSize), corpus: corpus, pack: pack, blocksSHA256: loaded.version.blocksSHA256,
+            let built = try IndexBuilder.build(languageModule: loaded.node.languageModule, reed: pack.reed(tokens: tokenizer.vocabSize), corpus: corpus, pack: pack, blocksSHA256: loaded.version.blocksSHA256,
                                                threadID: loaded.info.threadID, options: IndexBuildOptions(scheme: loaded.version.keyScheme), into: directory)
             let peak = Double(Memory.peakMemory - before) / 1_073_741_824
             let tokens = corpus.partitions[0].tokens.count

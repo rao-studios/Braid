@@ -133,7 +133,7 @@ public enum QuestionBench {
         guard braid.hasCommons else { throw BraidFailure.usage("bench question needs the commons: it rewrites the questions") }
         let commonsNode = braid.commonsNode
         let tokenizer = braid.tokenizer
-        let adapter = QuestionAdapter(trunk: commonsNode.trunk, reed: braid.reed, tokenizer: tokenizer)
+        let adapter = QuestionAdapter(languageModule: commonsNode.languageModule, reed: braid.reed, tokenizer: tokenizer)
         let threads = try braid.benchThreads(world: world) { progress?("warning: \($0)") }
 
         // The sets.

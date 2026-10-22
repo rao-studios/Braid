@@ -16,7 +16,8 @@
 //        thread, the studio's worker), synchronously. The tokenizer, the reed and the commons are
 //        built once per engine (or handed in): a Thread's head trains and indexes in front of the
 //        commons' tail, so the commons comes first. The corpus is tokenized once per build, and the
-//        trained trunk is the one that is indexed. braid.toml is saved only when an attach changes it.
+//        trained language module is the one that is indexed. braid.toml is saved only when an
+//        attach changes it.
 //
 
 import BraidCore
@@ -139,14 +140,14 @@ public final class BraidEngine {
         onEvent(.stage(thread: name, .snapshot))
         let snapshot = try CorpusSnapshot.load(from: layout.snapshot(hash: live.snapshotHash))
         let blocks = try ThreadStore.liveBlocks(layout, version: live, pack: pack)
-        let trunk = try threadTrunk(head: blocks)
+        let languageModule = try threadLanguageModule(head: blocks)
         _ = try tokenizer()
         let started = Date()
         note("thread \(name): re-keying v\(live.version) (\(live.keyScheme)) as \(keyScheme)\(checkpoints.everyPartition ? ", a checkpoint at every partition" : "")")
         let withheld = try ThreadStore.liveWithheld(layout, version: live)
         let info = try ThreadStore.info(layout)
         let context = BuildContext(name: name, layout: layout, threadID: info.threadID, snapshot: snapshot, facts: [], key: keyScheme, checkpoints: checkpoints,
-                                   exclude: { withheld }, trunk: trunk, live: live, started: started)
+                                   exclude: { withheld }, languageModule: languageModule, live: live, started: started)
         context.blocks = blocks
         context.totals = TrainingTotals(of: live)
         let version = try run([IndexStage(), PromoteStage(announce: false)], context)
@@ -174,11 +175,11 @@ public final class BraidEngine {
         note("thread \(name): \(snapshot.documentCount) documents, \(snapshot.partitionCount) partitions, corpus \(snapshot.corpusHash.prefix(12))")
         if !withheld.isEmpty { note("thread \(name): \(withheld.count) documents trained but withheld from the index (seed \(seed))") }
         _ = try tokenizer()
-        let trunk = try threadTrunk(head: nil)
+        let languageModule = try threadLanguageModule(head: nil)
         let started = Date()
         let info = try ThreadStore.info(layout)
         let context = BuildContext(name: name, layout: layout, threadID: info.threadID, snapshot: snapshot, facts: read.facts, key: key, checkpoints: settings.checkpoints,
-                                   exclude: { withheld }, trunk: trunk, live: nil, started: started)
+                                   exclude: { withheld }, languageModule: languageModule, live: nil, started: started)
         var stages: [BuildStage] = []
         if settings.training.trains { stages.append(TrainStage(plan: settings.training, seed: seed, continuing: false)) }
         stages += [IndexStage(), PromoteStage(announce: true)] as [BuildStage]
@@ -205,10 +206,10 @@ public final class BraidEngine {
         let started = Date()
         _ = try tokenizer()
         let blocks = try ThreadStore.liveBlocks(layout, version: live, pack: pack)
-        let trunk = try threadTrunk(head: blocks)
+        let languageModule = try threadLanguageModule(head: blocks)
         // The withheld set is the live version's, read when the index needs it (after training).
         let context = BuildContext(name: name, layout: layout, threadID: info.threadID, snapshot: snapshot, facts: read.facts, key: live.keyScheme, checkpoints: checkpoints,
-                                   exclude: { try ThreadStore.liveWithheld(layout, version: live) }, trunk: trunk, live: live, started: started)
+                                   exclude: { try ThreadStore.liveWithheld(layout, version: live) }, languageModule: languageModule, live: live, started: started)
         context.blocks = blocks
         context.totals = TrainingTotals(of: live)
         var stages: [BuildStage] = []
@@ -248,23 +249,23 @@ public final class BraidEngine {
         return reed
     }
 
-    /// The commons, built once per engine unless handed in: the pack whole, whose tail is the trunk
-    /// every head this engine trains or indexes runs behind.
+    /// The commons, built once per engine unless handed in: the pack whole, whose tail runs
+    /// behind every head this engine trains or indexes.
     public func commons() throws -> LocalNode {
         if let loadedCommons { return loadedCommons }
         guard let packRecord = config.pack else { throw BraidFailure.missing("braid.toml names no pack") }
         let node = try ThreadStore.commons(pack: pack, scheme: defaultKey(packRecord))
-        note("the commons: the pack whole; its trunk \(node.trunk.seamSHA256.prefix(12)) serves every Thread")
+        note("the commons: the pack whole; its tail \(node.languageModule.seamSHA256.prefix(12)) serves every Thread")
         loadedCommons = node
         return node
     }
 
     /// A head in front of the commons' tail: `head`'s arrays (a live version's blocks) or, with nil, the pack's own blocks 0..<cut.
-    private func threadTrunk(head arrays: [String: MLXArray]?) throws -> Trunk {
-        let head = try arrays.map { try Trunk.makeHead(arrays: $0, config: pack.config) } ?? Trunk.packHead(pack)
-        let trunk = Trunk(head: head, tail: try commons().trunk.tail)
-        eval(trunk)
-        return trunk
+    private func threadLanguageModule(head arrays: [String: MLXArray]?) throws -> LanguageModule {
+        let head = try arrays.map { try LanguageModule.makeHead(arrays: $0, config: pack.config) } ?? LanguageModule.packHead(pack)
+        let languageModule = LanguageModule(head: head, tail: try commons().languageModule.tail)
+        eval(languageModule)
+        return languageModule
     }
 
     /// Adds `name` to `[cluster] attach`, saving braid.toml only when the list changes.

@@ -54,10 +54,10 @@ struct ClusterCommand: ParsableCommand {
                 let scheme = KeyScheme(parsing: packRecord.keyScheme) ?? .residual(afterBlocks: pack.config.tapAfterBlocks)
                 note("cluster: loading the commons")
                 let commons = try ThreadStore.commons(pack: pack, scheme: scheme)
-                note(String(format: "cluster: the commons' trunk %@ · blocks %d–%d, the embedding and norm_f · %.0f MB · run by every Thread", String(commons.trunk.seamSHA256.prefix(12)),
-                            pack.config.cut, pack.config.numHiddenLayers - 1, Double(StorageMath(config: pack.config).trunkBytes) / 1_000_000))
+                note(String(format: "cluster: the commons' tail %@ · blocks %d–%d, the embedding and norm_f · %.0f MB · run by every Thread", String(commons.languageModule.seamSHA256.prefix(12)),
+                            pack.config.cut, pack.config.numHiddenLayers - 1, Double(StorageMath(config: pack.config).tailBytes) / 1_000_000))
                 if noCommons {
-                    note("cluster: the commons' strand is left out; its trunk still serves the Threads")
+                    note("cluster: the commons' strand is left out; its tail still serves the Threads")
                 } else {
                     try cluster.attach(commons)
                 }

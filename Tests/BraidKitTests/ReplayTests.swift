@@ -30,7 +30,7 @@ let liveThread: (WorkArea, Pack, LoadedThread)? = {
         return nil
     }
 }()
-/// The commons the live Thread was loaded behind: the trunk it runs.
+/// The commons the live Thread was loaded in front of: the tail it runs.
 var liveCommonsNode: LocalNode? { _ = liveThread; return liveCommons }
 
 extension BraidMLXSuites {
@@ -59,7 +59,7 @@ extension BraidMLXSuites {
             var farthest = 0
             for entry in sample.sorted().prefix(96) {
                 let target = TokenPosition(row: Int(index.keyRow[entry]), offset: Int(index.keyOffset[entry]))
-                let (replayed, distance) = try Replay.key(at: target, index: index, corpus: corpus, trunk: loaded.node.trunk, pack: pack)
+                let (replayed, distance) = try Replay.key(at: target, index: index, corpus: corpus, languageModule: loaded.node.languageModule, pack: pack)
                 let stored = index.key(entry: entry)
                 let cosine = (replayed * stored).sum()
                 eval(cosine)

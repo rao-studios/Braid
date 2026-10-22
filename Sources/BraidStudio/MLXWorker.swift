@@ -5,11 +5,12 @@
 //  Created by Ritesh Pakala.
 //  Copyright © 2026 Rao Studios LLC.
 //
-//  WHAT: The one thread that runs MLX for the studio: loading the pack, the commons (whose trunk every
-//        Thread runs behind its own head) and the Threads braid.toml attaches; generation; attaching a Thread (loading it first) and
-//        detaching one; creating a Thread. One job at a time, in order. Attach, detach and cancel
-//        requests are taken at token boundaries while a generation runs, so a Thread joins (and
-//        catches up on the session so far) or leaves mid-answer, as the cluster applies them.
+//  WHAT: The one thread that runs MLX for the studio: loading the pack, the commons (whose tail
+//        every Thread runs behind its own head) and the Threads braid.toml attaches; generation;
+//        attaching a Thread (loading it first) and detaching one; creating a Thread. One job at a
+//        time, in order. Attach, detach and cancel requests are taken at token boundaries while a
+//        generation runs, so a Thread joins (and catches up on the session so far) or leaves
+//        mid-answer, as the cluster applies them.
 //  PIN:  A Foundation Thread with a 64 MB stack, never the cooperative pool — a generation blocks
 //        for seconds and training for minutes. The pack, the nodes and the cluster live here and
 //        never cross to the UI; only Sendable values do. One session log per answer: its header
@@ -242,7 +243,7 @@ final class MLXWorker: @unchecked Sendable {
         let commons = try ThreadStore.commons(pack: pack, scheme: scheme)
         commonsNode = commons
         self.reed = reed
-        post(.jobProgress(.start, "the commons' trunk \(commons.trunk.seamSHA256.prefix(12)) serves every Thread"))
+        post(.jobProgress(.start, "the commons' tail \(commons.languageModule.seamSHA256.prefix(12)) serves every Thread"))
         try cluster.attach(commons)
         for name in config.attach {
             post(.jobProgress(.start, "loading \(name)"))
@@ -261,7 +262,7 @@ final class MLXWorker: @unchecked Sendable {
     private func status() -> BraidStatus {
         BraidStatus(fixtures: false, workArea: area?.root.path, packName: pack?.info.name, packSHA256: pack?.sha256,
                     strands: cluster?.strandNames ?? [], commons: cluster?.commonsIndex != nil, sessionsDirectory: area?.sessions,
-                    seamSHA256: commonsNode?.trunk.seamSHA256)
+                    seamSHA256: commonsNode?.languageModule.seamSHA256)
     }
 
     private func postThreads() {
@@ -314,7 +315,7 @@ final class MLXWorker: @unchecked Sendable {
         var contexts: [String: NodeContext] = [:]
         if request.question, let commonsNode, let reed {
             let attached = cluster.strandNames.compactMap { name in nodes[name].map { (name: name, node: $0) } }
-            let turn = try QuestionPath.prepare(question: request.prompt, adapter: QuestionAdapter(trunk: commonsNode.trunk, reed: reed, tokenizer: tokenizer),
+            let turn = try QuestionPath.prepare(question: request.prompt, adapter: QuestionAdapter(languageModule: commonsNode.languageModule, reed: reed, tokenizer: tokenizer),
                                                 nodes: attached, tokenizer: tokenizer, k: config.index.k, rewriteTokens: request.maxTokens)
             prompt = turn.prompt
             contexts = turn.contexts

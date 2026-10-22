@@ -330,7 +330,7 @@ enum BraidScreen: StudioScreen {
         if hasCommons {
             rows.append([
                 Text("Commons", style: Style(foreground: palette.goldColor, background: palette.base.background, attributes: .bold)),
-                Text((state.braid.status?.packName ?? "the pack") + (state.braid.status?.seamSHA256.map { " · trunk \($0.prefix(12)), every Thread's" } ?? ""), style: palette.dim),
+                Text((state.braid.status?.packName ?? "the pack") + (state.braid.status?.seamSHA256.map { " · tail \($0.prefix(12)), every Thread's" } ?? ""), style: palette.dim),
                 Text("\(glyphs.live) commons", style: palette.gold),
                 shareCell(view?.commons, view: view, colour: palette.goldColor, palette: palette, glyphs: glyphs, width: shareWidth),
             ])

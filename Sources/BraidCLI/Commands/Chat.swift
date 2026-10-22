@@ -8,9 +8,9 @@
 //  WHAT: `braid chat "<prompt>"`: one headless turn of the braid, printing the per-token block the
 //        studio shows. A prompt ending in "?" is a question: the commons rewrites it into a stem,
 //        each Thread finds in its own index the sentence before the stem's best match and completes
-//        the stem behind it, and the answer stops at the sentence's end. Any other prompt is completed
-//        as written. Every turn is logged as a session; --json prints the session's lines instead.
-//        Without a prompt, the studio opens (the GUI).
+//        the stem behind it, and the answer stops at the sentence's end. Any other prompt is
+//        completed as written. Every turn is logged as a session; --json prints the session's lines
+//        instead. Without a prompt, the studio opens (the GUI).
 //
 
 import ArgumentParser
@@ -61,7 +61,7 @@ struct ChatCommand: AsyncParsableCommand {
             let turn: QuestionTurn
             if isQuestion {
                 // The question path the bench measures: the commons' stem, each Thread's own context.
-                turn = try QuestionPath.prepare(question: prompt, adapter: QuestionAdapter(trunk: commons.trunk, reed: reed, tokenizer: tokenizer),
+                turn = try QuestionPath.prepare(question: prompt, adapter: QuestionAdapter(languageModule: commons.languageModule, reed: reed, tokenizer: tokenizer),
                                                 nodes: names.compactMap { name in nodes[name].map { (name: name, node: $0) } }, tokenizer: tokenizer,
                                                 k: config.index.k, rewriteTokens: maxTokens)
                 if !json {

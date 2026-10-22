@@ -32,12 +32,12 @@ public final class QuestionAdapter {
 
     static let questionWords: Set<String> = ["who", "what", "when", "where", "why", "how", "which", "is", "are", "was", "were", "did", "does", "do", "can", "could"]
 
-    public let trunk: Trunk
+    public let languageModule: LanguageModule
     public let reed: MLXReed
     public let tokenizer: BraidTokenizer
 
-    public init(trunk: Trunk, reed: MLXReed, tokenizer: BraidTokenizer) {
-        self.trunk = trunk
+    public init(languageModule: LanguageModule, reed: MLXReed, tokenizer: BraidTokenizer) {
+        self.languageModule = languageModule
         self.reed = reed
         self.tokenizer = tokenizer
     }
@@ -50,11 +50,11 @@ public final class QuestionAdapter {
     public func rewrite(_ question: String, maxTokens: Int = 24) -> QuestionRewrite {
         let started = Date()
         var ids: [Int32] = [tokenizer.eos] + tokenizer.encode(prompt(for: question))
-        var out = trunk.forward(tokens: MLXArray(ids, [1, ids.count]), state: nil, resets: nil)
+        var out = languageModule.forward(tokens: MLXArray(ids, [1, ids.count]), state: nil, resets: nil)
         var last = out.final[0, ids.count - 1]
         var generated: [Int32] = []
         for _ in 0..<maxTokens {
-            let logits = reed.logits(array: last.reshaped([1, trunk.config.hiddenSize]))
+            let logits = reed.logits(array: last.reshaped([1, languageModule.config.hiddenSize]))
             let next = Int32(argMax(logits, axis: -1).item(Int32.self))
             if next == tokenizer.eos { break }
             let text = tokenizer.text(next)
@@ -62,7 +62,7 @@ public final class QuestionAdapter {
             generated.append(next)
             ids.append(next)
             if text.contains("_") { break }
-            out = trunk.step(token: MLXArray([next]), state: out.state, reset: nil)
+            out = languageModule.step(token: MLXArray([next]), state: out.state, reset: nil)
             last = out.final[0]
         }
         let raw = tokenizer.decode(generated)
