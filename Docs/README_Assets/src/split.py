@@ -25,6 +25,48 @@ PLAYFAIR = os.path.expanduser("~/Library/Fonts/PlayfairDisplay-Italic-VariableFo
 BLUE, GREEN, ORANGE, GOLD, LINE = "#5e8fda", "#28a883", "#d8773f", "#c7a659", "#cbc8c0"
 COLOURS = (BLUE, GREEN, ORANGE)
 W, H = 1600, 1190
+
+# The header's rhythm, shared by Rao's plates: the mark's ink sits 70 px from the top and the left; every
+# header line's ink starts at the mark's left edge (an italic first glyph overhangs by its own amount, so
+# the page measures it); the title's ink starts 70 px under the mark's; what follows starts HEADER_GAP px
+# under the subtitle's baseline, and the page grows or shrinks to keep its foot.
+INK, TITLE_INK, HEADER_GAP = 70.5, 174, 54
+HEADER_JS = """<script>
+document.fonts.ready.then(() => {
+  const ctx = document.createElement("canvas").getContext("2d");
+  const measure = (el) => {
+    const cs = getComputedStyle(el), text = el.textContent.trim();
+    ctx.font = `italic ${cs.fontWeight} ${cs.fontSize} Playfair`;
+    const probe = document.createElement("span");
+    probe.style.cssText = "display:inline-block; width:0; height:0";
+    el.prepend(probe);
+    const baseline = probe.getBoundingClientRect().bottom;
+    probe.remove();
+    return {left: parseFloat(cs.paddingLeft), top: parseFloat(cs.top), baseline,
+            ink: baseline - ctx.measureText(text).actualBoundingBoxAscent, overhang: ctx.measureText(text[0]).actualBoundingBoxLeft};
+  };
+  const title = document.querySelector(".title"), sub = document.querySelector(".sub");
+  const t = measure(title), s = measure(sub), dy = __TITLE_INK__ - t.ink;
+  for (const [el, m] of [[title, t], [sub, s]]) {
+    el.style.left = (__INK__ - m.left + m.overhang) + "px";
+    el.style.top = (m.top + dy) + "px";
+  }
+  const header = ".mark, .caption, .title, .sub, script, style", rest = [...document.body.children].filter((el) => !el.matches(header));
+  let first = Infinity;
+  for (const el of rest) {
+    const r = el.getBoundingClientRect();
+    if (el instanceof SVGSVGElement) {
+      const b = el.getBBox();
+      if (b.width || b.height) first = Math.min(first, r.top + b.y);
+    } else if (r.width && r.height) first = Math.min(first, r.top);
+  }
+  const shift = Math.round(s.baseline + dy + __GAP__ - first);
+  for (const el of rest) el.style.translate = `0 ${shift}px`;
+  const height = parseFloat(getComputedStyle(document.body).height) + shift;
+  document.documentElement.style.height = document.body.style.height = height + "px";
+  document.body.dataset.height = height;
+});
+</script>""".replace("__INK__", str(INK)).replace("__TITLE_INK__", str(TITLE_INK)).replace("__GAP__", str(HEADER_GAP))
 MONO = "Menlo, 'SF Mono', monospace"
 SANS = "-apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif"
 
@@ -111,12 +153,12 @@ def page():
 html, body {{ margin: 0; width: {W}px; height: {H}px; overflow: hidden; }}
 body {{ position: relative; font-family: "Playfair", Georgia, serif; font-style: italic; color: #a29f97;
        background: radial-gradient(ellipse 90% 100% at 22% 20%, #20201c 0%, #191917 45%, #121211 100%); }}
-.mark {{ position: absolute; left: 62.5px; top: 50px; width: 64px; }}
-.caption {{ position: absolute; left: 150px; top: 68px; letter-spacing: .3em; font-size: 15px; color: #8b8a84; }}
-.title {{ position: absolute; left: 22px; padding-left: 40px; top: 104px; font-size: 98px; line-height: 1; font-weight: 500; letter-spacing: -.005em; padding-right: 30px; padding-bottom: 32px;
+.mark {{ position: absolute; left: 62.5px; top: 60px; width: 64px; }}
+.caption {{ position: absolute; left: 150px; top: 78px; letter-spacing: .3em; font-size: 15px; color: #8b8a84; }}
+.title {{ position: absolute; left: 22px; padding-left: 40px; top: 162px; font-size: 98px; line-height: 1; font-weight: 500; letter-spacing: -.005em; padding-right: 30px; padding-bottom: 32px;
          background: linear-gradient(100deg, #8d9097 0%, #c8cad0 35%, #f2f3f6 58%, #b6b9c1 100%);
          -webkit-background-clip: text; background-clip: text; color: transparent; }}
-.sub {{ position: absolute; left: 69px; top: 222px; font-size: 30px; color: #9b9991; }}
+.sub {{ position: absolute; left: 69px; top: 280px; font-size: 30px; color: #9b9991; }}
 svg {{ position: absolute; left: 0; top: 0; }}
 .design {{ position: absolute; top: 318px; }}
 .design .id {{ font-family: {MONO}; font-style: normal; font-size: 12.5px; color: {GOLD}; }}
@@ -156,6 +198,7 @@ svg {{ position: absolute; left: 0; top: 0; }}
   <div><h4>WHAT MAMBA2 ADDS</h4><p>A fixed-size state, 19 MB a strand at 130m whatever the context, with no cache that grows. Many strands can run, checkpoint and replay side by side. It makes the braid practical; it is not what makes detection work.</p></div>
 </div>
 <div class="tag">marks are by construction; C's are also measured, on craft, 2026-10-19 · Examples/proof.sh</div>
+{HEADER_JS}
 </body></html>"""
 
 
@@ -168,7 +211,9 @@ def main():
             browser = p.chromium.launch(channel="chrome")
             tab = browser.new_page(device_scale_factor=2, viewport={"width": W, "height": H})
             tab.goto("file://" + name)
-            tab.wait_for_timeout(200)
+            tab.wait_for_selector("body[data-height]", state="attached")
+            tab.set_viewport_size({"width": W, "height": round(float(tab.evaluate("document.body.dataset.height")))})
+            tab.wait_for_timeout(100)
             tab.screenshot(path=os.path.join(OUT, "what-the-split-buys.png"))
             browser.close()
     finally:

@@ -23,6 +23,48 @@ PLAYFAIR = os.path.expanduser("~/Library/Fonts/PlayfairDisplay-Italic-VariableFo
 
 GREEN, GOLD, LINE, BLUE = "#28a883", "#c7a659", "#cbc8c0", "#5e8fda"
 W, H = 1600, 1210
+
+# The header's rhythm, shared by Rao's plates: the mark's ink sits 70 px from the top and the left; every
+# header line's ink starts at the mark's left edge (an italic first glyph overhangs by its own amount, so
+# the page measures it); the title's ink starts 70 px under the mark's; what follows starts HEADER_GAP px
+# under the subtitle's baseline, and the page grows or shrinks to keep its foot.
+INK, TITLE_INK, HEADER_GAP = 70.5, 174, 54
+HEADER_JS = """<script>
+document.fonts.ready.then(() => {
+  const ctx = document.createElement("canvas").getContext("2d");
+  const measure = (el) => {
+    const cs = getComputedStyle(el), text = el.textContent.trim();
+    ctx.font = `italic ${cs.fontWeight} ${cs.fontSize} Playfair`;
+    const probe = document.createElement("span");
+    probe.style.cssText = "display:inline-block; width:0; height:0";
+    el.prepend(probe);
+    const baseline = probe.getBoundingClientRect().bottom;
+    probe.remove();
+    return {left: parseFloat(cs.paddingLeft), top: parseFloat(cs.top), baseline,
+            ink: baseline - ctx.measureText(text).actualBoundingBoxAscent, overhang: ctx.measureText(text[0]).actualBoundingBoxLeft};
+  };
+  const title = document.querySelector(".title"), sub = document.querySelector(".sub");
+  const t = measure(title), s = measure(sub), dy = __TITLE_INK__ - t.ink;
+  for (const [el, m] of [[title, t], [sub, s]]) {
+    el.style.left = (__INK__ - m.left + m.overhang) + "px";
+    el.style.top = (m.top + dy) + "px";
+  }
+  const header = ".mark, .caption, .title, .sub, script, style", rest = [...document.body.children].filter((el) => !el.matches(header));
+  let first = Infinity;
+  for (const el of rest) {
+    const r = el.getBoundingClientRect();
+    if (el instanceof SVGSVGElement) {
+      const b = el.getBBox();
+      if (b.width || b.height) first = Math.min(first, r.top + b.y);
+    } else if (r.width && r.height) first = Math.min(first, r.top);
+  }
+  const shift = Math.round(s.baseline + dy + __GAP__ - first);
+  for (const el of rest) el.style.translate = `0 ${shift}px`;
+  const height = parseFloat(getComputedStyle(document.body).height) + shift;
+  document.documentElement.style.height = document.body.style.height = height + "px";
+  document.body.dataset.height = height;
+});
+</script>""".replace("__INK__", str(INK)).replace("__TITLE_INK__", str(TITLE_INK)).replace("__GAP__", str(HEADER_GAP))
 MONO = "Menlo, 'SF Mono', monospace"
 
 LANES = [
@@ -58,12 +100,12 @@ def page():
 html, body {{ margin: 0; width: {W}px; height: {H}px; overflow: hidden; }}
 body {{ position: relative; font-family: "Playfair", Georgia, serif; font-style: italic; color: #a29f97;
        background: radial-gradient(ellipse 90% 100% at 22% 20%, #20201c 0%, #191917 45%, #121211 100%); }}
-.mark {{ position: absolute; left: 62.5px; top: 50px; width: 64px; }}
-.caption {{ position: absolute; left: 150px; top: 68px; letter-spacing: .3em; font-size: 15px; color: #8b8a84; }}
-.title {{ position: absolute; left: 21px; padding-left: 40px; top: 104px; font-size: 98px; line-height: 1; font-weight: 500; letter-spacing: -.005em; padding-right: 30px; padding-bottom: 32px;
+.mark {{ position: absolute; left: 62.5px; top: 60px; width: 64px; }}
+.caption {{ position: absolute; left: 150px; top: 78px; letter-spacing: .3em; font-size: 15px; color: #8b8a84; }}
+.title {{ position: absolute; left: 21px; padding-left: 40px; top: 162px; font-size: 98px; line-height: 1; font-weight: 500; letter-spacing: -.005em; padding-right: 30px; padding-bottom: 32px;
          background: linear-gradient(100deg, #8d9097 0%, #c8cad0 35%, #f2f3f6 58%, #b6b9c1 100%);
          -webkit-background-clip: text; background-clip: text; color: transparent; }}
-.sub {{ position: absolute; left: 69px; top: 222px; font-size: 30px; color: #9b9991; }}
+.sub {{ position: absolute; left: 69px; top: 280px; font-size: 30px; color: #9b9991; }}
 .lane {{ position: absolute; left: 70px; width: 1460px; height: 172px; box-sizing: border-box; border: 1px solid; border-radius: 14px; background: #1c1c19; padding: 14px 22px; }}
 .lh {{ display: flex; align-items: baseline; gap: 16px; }}
 .tag {{ font-size: 12px; letter-spacing: .24em; }}
@@ -106,6 +148,7 @@ body {{ position: relative; font-family: "Playfair", Georgia, serif; font-style:
   <li><span class="m">−</span><span>When several Threads hold the same fact there is nothing to follow, so no reason to lift one, unless a reliability score can be read from a record of trust and dependability.</span></li></ul></div>
 <div class="note"><b>Measured so far</b>, on Braid's own question path (2026-10-15): when an answer is exact, its citation is right, 14 of 14. Facts held by several Threads are not yet decided, 0 of 23. That second number is option B's problem, in a small test.</div>
 <div class="tag2">royalty railways · the thinking behind this is in Royalty Language &amp; Diffusion Models, paka.la</div>
+{HEADER_JS}
 </body></html>"""
 
 
@@ -118,7 +161,9 @@ def main():
             browser = p.chromium.launch(channel="chrome")
             tab = browser.new_page(device_scale_factor=2, viewport={"width": W, "height": H})
             tab.goto("file://" + name)
-            tab.wait_for_timeout(200)
+            tab.wait_for_selector("body[data-height]", state="attached")
+            tab.set_viewport_size({"width": W, "height": round(float(tab.evaluate("document.body.dataset.height")))})
+            tab.wait_for_timeout(100)
             tab.screenshot(path=os.path.join(OUT, "two-railways.png"))
             browser.close()
     finally:
